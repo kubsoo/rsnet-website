@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nat &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/nat/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Dwóch ISP z NAT na routerze i przełączanie w przypadku awarii</title>
+		<link>https://kubsoo.github.io/rsnet-website/dwoch-isp-z-nat-na-routerze-i-przelaczanie-w-przypadku-awarii/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/dwoch-isp-z-nat-na-routerze-i-przelaczanie-w-przypadku-awarii/#respond</comments>
+		<pubDate>Wed, 04 Oct 2017 19:54:42 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[2 isp]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[nat]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=478</guid>
+		<description><![CDATA[Załóżmy że mamy następującą sytuację. Mamy jeden router brzegowy, do którego podłączone są dwa łącza od ISP_1 i ISP_2. Łącze od ISP_1 jest naszym głównym łączem, a łącze od ISP_2&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-478">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="70a2450" class="elementor-element elementor-element-70a2450 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="a5aa10d" class="elementor-element elementor-element-a5aa10d elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c0097a4" class="elementor-element elementor-element-c0097a4 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #333333;">Załóżmy że mamy następującą sytuację. Mamy jeden router brzegowy, do którego podłączone są dwa łącza od ISP_1 i ISP_2. Łącze od ISP_1 jest naszym głównym łączem, a łącze od ISP_2 jest łączem zapasowym. W przypadku awarii łącza głównego łącze zapasowe ma przejąć funkcję łącza głównego. Wyżej opisana sieć wygląda następująco:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="32bbef6" class="elementor-element elementor-element-32bbef6 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="768216f" class="elementor-element elementor-element-768216f elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="feba704" class="elementor-element elementor-element-feba704 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="400" height="550" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/2nat_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/2nat_1.png 400w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/2nat_1-218x300.png 218w" sizes="(max-width: 400px) 100vw, 400px" />											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="8b58891" class="elementor-element elementor-element-8b58891 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="6f47b95" class="elementor-element elementor-element-6f47b95 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="20b1dcd" class="elementor-element elementor-element-20b1dcd elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #333333;">Stwórzmy powyższą topologię w GNS3:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1b93b78" class="elementor-element elementor-element-1b93b78 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="0153f21" class="elementor-element elementor-element-0153f21 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="d74f5f7" class="elementor-element elementor-element-d74f5f7 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="458" height="616" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/2nat_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/2nat_2.png 458w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/2nat_2-223x300.png 223w" sizes="(max-width: 458px) 100vw, 458px" />											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b2c7448" class="elementor-element elementor-element-b2c7448 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="f44e7f3" class="elementor-element elementor-element-f44e7f3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="bdb8430" class="elementor-element elementor-element-bdb8430 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #333333;">Nasz router, który będziemy konfigurować to R1. Pokaże jednak konfiguracje każdego urządzenia ISP_1, ISP_2, R3 i AlpineLinux-1.</span></p><p style="text-align: justify;"><span style="color: #333333;">Routery ISP_1 i ISP_2 są podłączone do routera R3, który podłączony jest do internetu, dzięki czemu na komputerze (Alpine-Linux-1) będziemy mogli przetestować działanie naszej konfiguracji w realnym środowisku. Jak podłączyć GNS3 do internetu można przeczytać pod tym <a href="https://kubsoo.github.io/rsnet-website/podlaczanie-gns3-vm-do-internetu/">wpisem</a>. </span></p><h4><span style="color: #333333;"> </span></h4><h4><span style="color: #333333;">Przygotowanie środowiska</span></h4><p><span style="color: #333333;">Konfiguracja ISP_1</span></p><pre><span style="color: #333333;">hostname ISP_1<br />!<br />interface FastEthernet0/0</span><br /><span style="color: #333333;"> ip address 11.11.11.2 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet1/0</span><br /><span style="color: #333333;"> ip address 13.13.13.2 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;"> network 11.11.11.0 0.0.0.255 area 0</span><br /><span style="color: #333333;"> network 13.13.13.0 0.0.0.255 area 0</span><br /><span style="color: #333333;">!</span></pre><p><span style="color: #333333;">Konfiguracja ISP_2</span></p><pre><span style="color: #333333;">hostname ISP_2<br />!<br />interface FastEthernet0/0</span><br /><span style="color: #333333;"> ip address 12.12.12.2 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet1/0</span><br /><span style="color: #333333;"> ip address 23.23.23.2 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;"> network 12.12.12.0 0.0.0.255 area 0</span><br /><span style="color: #333333;"> network 23.23.23.0 0.0.0.255 area 0</span></pre><p><span style="color: #333333;">Konfiguracja R3</span></p><pre><span style="color: #333333;">hostname R3<br />!<br />interface FastEthernet0/0</span><br /><span style="color: #333333;"> ip address dhcp</span><br /><span style="color: #333333;"> ip nat outside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet1/0</span><br /><span style="color: #333333;"> ip address 13.13.13.1 255.255.255.0</span><br /><span style="color: #333333;"> ip nat inside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet1/1</span><br /><span style="color: #333333;"> ip address 23.23.23.1 255.255.255.0</span><br /><span style="color: #333333;"> ip nat inside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;"> network 13.13.13.0 0.0.0.255 area 0</span><br /><span style="color: #333333;"> network 23.23.23.0 0.0.0.255 area 0</span><br /><span style="color: #333333;"> default-information originate</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip nat inside source list 100 interface FastEthernet0/0 overload</span><br />!<br /><span style="color: #333333;">access-list 100 permit ip 13.13.13.0 0.0.0.255 any</span><br /><span style="color: #333333;">access-list 100 permit ip 23.23.23.0 0.0.0.255 any<br />access-list 100 permit ip 11.11.11.0 0.0.0.255 any<br />access-list 100 permit ip 12.12.12.0 0.0.0.255 any<br /></span></pre><p><span style="color: #333333;">Konfiguracja AlpineLinux-1</span></p><pre><span style="color: #333333;">/ # ifconfig eth0 192.168.100.100 netmask 255.255.255.0</span><br /><span style="color: #333333;">/ # route add default gw 192.168.100.1 eth0</span></pre><h4>Konfiguracja R1</h4><pre><span style="color: #333333;">hostname R1</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;"> ip address 192.168.100.1 255.255.255.0</span><br /><span style="color: #333333;"> ip nat inside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet1/0</span><br /><span style="color: #333333;"> ip address 11.11.11.1 255.255.255.0</span><br /><span style="color: #333333;"> ip nat outside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet1/1</span><br /><span style="color: #333333;"> ip address 12.12.12.1 255.255.255.0</span><br /><span style="color: #333333;"> ip nat outside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip nat inside source route-map ISP_1 interface FastEthernet1/0 overload</span><br /><span style="color: #333333;">ip nat inside source route-map ISP_2 interface FastEthernet1/1 overload</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip route 0.0.0.0 0.0.0.0 11.11.11.2</span><br /><span style="color: #333333;">ip route 0.0.0.0 0.0.0.0 12.12.12.2 10</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">access-list 100 permit ip 192.168.100.0 0.0.0.255 any</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">route-map ISP_1 permit 10</span><br /><span style="color: #333333;"> match ip address 100</span><br /><span style="color: #333333;"> match interface FastEthernet1/0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">route-map ISP_2 permit 10</span><br /><span style="color: #333333;"> match ip address 100</span><br /><span style="color: #333333;"> match interface FastEthernet1/1</span><br /><span style="color: #333333;">!</span></pre><h5><span style="color: #333333;">WYJAŚNIENIE KONFIGURACJI R1</span></h5><p style="text-align: justify;"><span style="color: #333333;">Na R1 skonfigurowane są dwa NATy, jeden przez intefejs FastEthernet1/0, drugi przez intefejs FastEthernet1/1. Ponieważ nie możemy skonfigurować klasycznego NATa poleceniem: ip nat inside source list ACL_NR interface INT_NAME overload wskazującego na dwa różne interfejsy musimy skorzystać z route-map: route-map ISP_1 i route-map ISP_2. Dodatkowo skonfigurowane są na R1 dwie trasy domyślne, jedna wskazująca na router ISP_1: <strong>ip route 0.0.0.0 0.0.0.0 11.11.11.2</strong> i druga wskazująca na router ISP_2: <strong>ip route 0.0.0.0 0.0.0.0 12.12.12.2 10. </strong>Ta trasa to tzw pływająca trasa statyczna, która posiada dystans administracyjny (10) wyższy niż domyślnie posiada trasa statyczna (1), czyli nie będzie tego wpisu w tablicy routingu routera R1, dopóki wpis pierwszy wpis statyczny wskazujący na trasę domyślną przez ISP_1 będzie istniał. Sprawdźmy to wydając komendę show ip route:</span></p><pre><span style="color: #333333;">R1#show ip route</span><br /><span style="color: #333333;">Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP</span><br /><span style="color: #333333;"> D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area</span><br /><span style="color: #333333;"> N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2</span><br /><span style="color: #333333;"> E1 - OSPF external type 1, E2 - OSPF external type 2</span><br /><span style="color: #333333;"> i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2</span><br /><span style="color: #333333;"> ia - IS-IS inter area, * - candidate default, U - per-user static route</span><br /><span style="color: #333333;"> o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP</span><br /><span style="color: #333333;"> + - replicated route, % - next hop override</span><br /><br /><span style="color: #333333;">Gateway of last resort is 11.11.11.2 to network 0.0.0.0</span><br /><br /><span style="color: #333333;">S* 0.0.0.0/0 [1/0] via 11.11.11.2</span><br /><span style="color: #333333;"> 11.0.0.0/8 is variably subnetted, 2 subnets, 2 masks</span><br /><span style="color: #333333;">C 11.11.11.0/24 is directly connected, FastEthernet1/0</span><br /><span style="color: #333333;">L 11.11.11.1/32 is directly connected, FastEthernet1/0</span><br /><span style="color: #333333;"> 12.0.0.0/8 is variably subnetted, 2 subnets, 2 masks</span><br /><span style="color: #333333;">C 12.12.12.0/24 is directly connected, FastEthernet1/1</span><br /><span style="color: #333333;">L 12.12.12.1/32 is directly connected, FastEthernet1/1</span><br /><span style="color: #333333;"> 192.168.100.0/24 is variably subnetted, 2 subnets, 2 masks</span><br /><span style="color: #333333;">C 192.168.100.0/24 is directly connected, FastEthernet0/0</span><br /><span style="color: #333333;">L 192.168.100.1/32 is directly connected, FastEthernet0/0</span></pre><p style="text-align: justify;"> </p><p style="text-align: justify;"><span style="color: #333333;">Przetestujmy teraz działanie internetu na hoście AlpineLinux-1 wydając komendę ping 8.8.8.8:</span></p><pre><span style="color: #333333;">/ # ping 8.8.8.8</span><br /><span style="color: #333333;">PING 8.8.8.8 (8.8.8.8): 56 data bytes</span><br /><span style="color: #333333;">64 bytes from 8.8.8.8: seq=0 ttl=56 time=50.648 ms</span><br /><span style="color: #333333;">64 bytes from 8.8.8.8: seq=1 ttl=56 time=56.079 ms</span><br /><span style="color: #333333;">64 bytes from 8.8.8.8: seq=2 ttl=56 time=47.610 ms</span><br /><span style="color: #333333;">64 bytes from 8.8.8.8: seq=3 ttl=56 time=52.085 ms</span><br /><span style="color: #333333;">64 bytes from 8.8.8.8: seq=4 ttl=56 time=54.151 ms</span></pre><p><span style="color: #333333;">Teraz sprawdźmy co się stanie jak padnie nam łącze do ISP_1, zasymulujmy to wyłączając internet fastethernet1/0:</span></p><pre><span style="color: #333333;">R1(config)#int fastEthernet 1/0</span><br /><span style="color: #333333;">R1(config-if)#sh</span></pre><p style="text-align: justify;"><span style="color: #333333;">Sprawdźmy teraz jeszcze raz łączność do adresu 8.8.8.8. </span></p><pre><span style="color: #333333;">/ # ping 8.8.8.8</span><br /><span style="color: #333333;">PING 8.8.8.8 (8.8.8.8): 56 data bytes</span></pre><p style="text-align: justify;"><span style="color: #333333;">Nie widzimy żadnej odpowiedzi, sprawdźmy dlaczego wydając komendę show ip nat translations: </span></p><pre><span style="color: #333333;">R1#show ip nat translations</span><br /><span style="color: #333333;">Pro Inside global Inside local Outside local Outside global</span><br /><span style="color: #333333;">icmp 11.11.11.1:1025 192.168.100.100:11520 8.8.8.8:11520 8.8.8.8:1025</span></pre><p style="text-align: justify;"><span style="color: #333333;">Jak widać z wyniku powyższej komendy ruch do adresu 8.8.8.8 jest translatowany przez interfejs prowadzący do ISP_1 (Inside global 11.11.11.1), spowodowane jest to tym, że wpisy w tablicy translacji na routerze Cisco domyślnie są przechowywane przez 24 godziny. Sprawdźmy co się stanie jak wyczyścimy wpisy w tablicy translacji, możemy to zrobić poleceniem clear ip nat translations *</span></p><pre><span style="color: #333333;">R1#clear ip nat translation *</span></pre><p style="text-align: justify;"><span style="color: #333333;">Wydajmy teraz jeszcze raz na hoście AlpineLinux-1 komendę ping 8.8.8.8.</span></p><pre><span style="color: #333333;">/ # ping 8.8.8.8</span><br /><span style="color: #333333;">PING 8.8.8.8 (8.8.8.8): 56 data bytes</span><br /><span style="color: #333333;">64 bytes from 8.8.8.8: seq=93 ttl=56 time=63.069 ms</span><br /><span style="color: #333333;">64 bytes from 8.8.8.8: seq=94 ttl=56 time=57.092 ms</span><br /><span style="color: #333333;">64 bytes from 8.8.8.8: seq=95 ttl=56 time=70.336 ms</span><br /><span style="color: #333333;">64 bytes from 8.8.8.8: seq=96 ttl=56 time=54.099 ms</span><br /><span style="color: #333333;">64 bytes from 8.8.8.8: seq=97 ttl=56 time=48.091 ms</span></pre><p><span style="color: #333333;">Udało się ping działa !!!</span></p><p><span style="color: #333333;">Zobaczmy teraz tablicę translacji nat:</span></p><pre><span style="color: #333333;">R1# show ip nat translation</span><br /><span style="color: #333333;">Pro Inside global Inside local Outside local Outside global</span><br /><span style="color: #333333;">icmp 12.12.12.1:1024 192.168.100.100:12288 8.8.8.8:12288 8.8.8.8:1024</span></pre><p style="text-align: justify;"><span style="color: #333333;">Teraz możemy zaobserwować. że ruch do adresu 8.8.8.8 jest translatowany przez interfejs prowadzący do ISP_2 (Inside global 12.12.12.1). </span></p><p style="text-align: justify;"><span style="color: #333333;">Czy możemy jakoś rozwiązać powyższy problem, tak żeby nie było potrzeby wykonywania tej komendy za każdym razem gdy padnie nam łącze?</span></p><p style="text-align: justify;"><span style="color: #333333;">Możemy, używając EEM (<span style="color: #ff0000;"><a style="color: #ff0000;" href="https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-embedded-event-manager-eem/index.html">Cisco IOS Embedded Event Manager</a></span>).</span></p><p style="text-align: justify;"><span style="color: #333333;">Dodajmy do konfiguracji R1 następujące wpisy:</span></p><pre><span style="color: #333333;">event manager applet CLEAR_NAT_1</span><br /><span style="color: #333333;"> event syslog pattern "LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/0, changed state"</span><br /><span style="color: #333333;"> action 1.0 cli command "enable"</span><br /><span style="color: #333333;"> action 2.0 cli command "clear ip nat translation *"</span><br /><span style="color: #333333;">event manager applet CLEAR_NAT_2</span><br /><span style="color: #333333;"> event syslog pattern "LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/1, changed state"</span><br /><span style="color: #333333;"> action 1.0 cli command "enable"</span><br /><span style="color: #333333;"> action 2.0 cli command "clear ip nat translation *"</span></pre><p style="text-align: justify;"><span style="color: #333333;">Powyższa konfiguracja działa następująco: w momencie pojawienia się na konsoli routera logu typu LINEPROTO-5-U-DOWN na interfejsie FastEthernet1/0 lub FastEthernet1/1 wykona komendy clear ip nat translation *. Czyli to co wpisywaliśmy wcześniej ręcznie wykona się automatycznie. Przetestujmy teraz jak wygląda łączność do 8.8.8.8 z hosta AlpineLinux-1 w przypadku awarii łacza do ISP_1. Najpierw wykonajmy komendę ping i obserwujmy jej działanie cały czas. A potem przejdźmy do routera R1 i zasymulujmy awarie łącza.</span></p><pre><span style="color: #333333;">R1(config)#int fa1/0</span><br /><span style="color: #333333;">R1(config-if)#sh</span><br /><span style="color: #333333;">R1(config-if)#</span><br /><span style="color: #333333;">*Nov 26 13:25:20.803: %LINK-5-CHANGED: Interface FastEthernet1/0, changed state to administratively down</span><br /><span style="color: #333333;">*Nov 26 13:25:21.803: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/0, changed state to down</span></pre><p><span style="color: #333333;">Sprawdźmy co dzieje się na hoście AlpineLinux-1:</span></p><pre><span style="color: #333333;">64 bytes from 8.8.8.8: seq=93 ttl=56 time=63.069 ms</span><br /><span style="color: #333333;">64 bytes from 8.8.8.8: seq=94 ttl=56 time=57.092 ms</span><br /><span style="color: #333333;">64 bytes from 8.8.8.8: seq=95 ttl=56 time=70.336 ms</span><br /><span style="color: #333333;">64 bytes from 8.8.8.8: seq=96 ttl=56 time=54.099 ms</span></pre><p style="text-align: justify;"><span style="color: #333333;">Cały czas mamy łączność, czyli nasz skrypt EEM zadziałał prawidłowo i wyczyścił wpisy NAT, sprawdźmy to komendą show ip nat translation:</span></p><pre><span style="color: #333333;">R1#show ip nat translation</span><br /><span style="color: #333333;">Pro Inside global Inside local Outside local Outside global</span><br /><span style="color: #333333;">icmp 12.12.12.1:1024 192.168.100.100:12288 8.8.8.8:12288 8.8.8.8:1024</span></pre><p style="text-align: justify;">Widzimy, że translacje NAT wskazują na łącze do ISP_2, więc poprzednie wpisy wskazujące na ISP_1 wyczyściły się zgodnie z przewidywaniami. </p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="576e52c" class="elementor-element elementor-element-576e52c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="60d293b" class="elementor-element elementor-element-60d293b elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/dwoch-isp-z-nat-na-routerze-i-przelaczanie-w-przypadku-awarii/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>CISCO S2S VPN z VTI &#8211; te same adresy LAN</title>
+		<link>https://kubsoo.github.io/rsnet-website/cisco-vpn-te-sama-adresacja-lokalna/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/cisco-vpn-te-sama-adresacja-lokalna/#respond</comments>
+		<pubDate>Mon, 11 Sep 2017 21:50:58 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[nat]]></category>
+		<category><![CDATA[vpn]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=144</guid>
+		<description><![CDATA[W idealnym świecie nie mamy do czynienia z zachodzącymi na siebie adresami IP. W praktyce jednak okazuje się, że często łącząc dwie lokalizacje zdalne po VPN okazuje się, że lokalne&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">W idealnym świecie nie mamy do czynienia z zachodzącymi na siebie adresami IP. W praktyce jednak okazuje się, że często łącząc dwie lokalizacje zdalne po VPN okazuje się, że lokalne adresy nachodzą na siebie. Jeśli taka sytuacja wystąpi to mamy dwa rozwiązania:</p>
+<ol>
+<li style="text-align: justify;">Zmienić adresację w jednej z lokalizacji.</li>
+<li style="text-align: justify;">Zastosować NAT</li>
+</ol>
+<p style="text-align: justify;">Czasami rozwiązanie pierwsze nie wchodzi w grę i musimy posiłkować się NATem. W tym wpisie pokażę jak wykorzystać NAT źródłowy w dwóch zdalnych lokalizacjach w których wykorzystywane są te same adresy IP.</p>
+<p><span id="more-144"></span></p>
+<p><strong>SCENARIUSZ</strong></p>
+<p>Mamy dwie lokalizacje (nazwijmy je A i B) w lokalizacji A mamy router R1, w lokalizacji B mamy router R2. W każdej z lokalizacji wykorzystywana jest podsieć 10.10.10.0/24. Oddziały łączymy ze sobą VPNem. Następnie korzystając z NAT&#8217;a robimy następujące translacje:</p>
+<p style="text-align: left;">Lokalizacja A &#8211;    10.10.10.0/24   -&gt;   10.100.100.0/24</p>
+<p style="text-align: left;">Lokalizacja B &#8211;    10.10.10.0/24   -&gt;   10.200.200.0/24</p>
+<p>&nbsp;</p>
+<p style="text-align: center;">Schemat połączenia oraz adresacja:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/09/nat1.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-153 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/09/nat1.png" alt="" width="553" height="130" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/09/nat1.png 553w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/09/nat1-300x71.png 300w" sizes="(max-width: 553px) 100vw, 553px" /></a></p>
+<p>&nbsp;</p>
+<p style="text-align: center;">Translacje:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/09/nat.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-152 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/09/nat.png" alt="" width="580" height="191" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/09/nat.png 580w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/09/nat-300x99.png 300w" sizes="(max-width: 580px) 100vw, 580px" /></a></p>
+<p>&nbsp;</p>
+<p><strong>ROZWIĄZANIE:</strong></p>
+<p style="text-align: justify;">Poniżej znajduje się konfiguracja routerów R1 i R2. Podstawowa konfiguracja obejmuje konfigurację interfejsów oraz tunelu VPN. Jako sieci lokalne w lokalizacjach A i B posłużą interfejsy loopback0.</p>
+<p>Podstawowa konfiguracja R1:</p>
+<pre>crypto isakmp policy 10
+ encr aes
+ authentication pre-share
+ group 5
+!
+crypto isakmp key cisco123 address 0.0.0.0 0.0.0.0
+!
+!
+crypto ipsec transform-set TSET esp-aes esp-sha-hmac
+!
+crypto ipsec profile PROFILE
+ set transform-set TSET
+!
+!
+interface Loopback0
+ ip address 10.10.10.1 255.255.255.0
+!
+interface Tunnel0
+ ip address 10.0.0.1 255.255.255.0
+ tunnel source FastEthernet0/0
+ tunnel destination 13.13.13.1
+ tunnel mode ipsec ipv4
+ tunnel protection ipsec profile PROFILE
+!
+interface FastEthernet0/0
+ ip address 11.11.11.1 255.255.255.0</pre>
+<p>Podstawowa konfiguracja R2:</p>
+<pre>crypto isakmp policy 10
+ encr aes
+ authentication pre-share
+ group 5
+!
+crypto isakmp key cisco123 address 0.0.0.0 0.0.0.0
+!
+!
+crypto ipsec transform-set TSET esp-aes esp-sha-hmac
+!
+crypto ipsec profile PROFILE
+ set transform-set TSET
+!
+!
+interface Loopback0
+ ip address 10.10.10.1 255.255.255.0
+!
+interface Tunnel0
+ ip address 10.0.0.2 255.255.255.0
+ tunnel source FastEthernet0/0
+ tunnel destination 11.11.11.1
+ tunnel mode ipsec ipv4
+ tunnel protection ipsec profile PROFILE
+!
+interface FastEthernet0/0
+ ip address 13.13.13.1 255.255.255.0</pre>
+<p>Konfiguracja NAT na R1:</p>
+<pre>interface Tunnel0
+ ip nat outside
+!
+interface Loopback0
+ ip nat inside
+!
+ip nat inside source static network 10.10.10.0 10.100.100.0 /24</pre>
+<p>Konfiguracja NAT na R2:</p>
+<pre>interface Tunnel0
+ ip nat outside
+!
+interface Loopback0
+ ip nat inside
+!
+ip nat inside source static network 10.10.10.0 10.200.200.0 /24</pre>
+<p>Musimy jeszcze ustawić routing na sieci translatowane czyli 10.200.200.0/24 oraz 10.100.100.0/24. Najprościej to zrobić dodając odpowiednie trasy statyczne na obu routerach:</p>
+<p>R1</p>
+<pre>R1(config)#ip route 10.200.200.0 255.255.255.0 10.0.0.2</pre>
+<p>R2</p>
+<pre>R2(config)#ip route 10.100.100.0 255.255.255.0 10.0.0.1</pre>
+<p>&nbsp;</p>
+<p><strong>TESTY</strong></p>
+<p>Przetestujmy teraz naszą konfigurację.</p>
+<p>Lokalizacja A -&gt; Lokalizacja B</p>
+<p>Jako, że nasze lokalizacje nie posiadają żadnych hostów do testów posłużymy się adresami loopback0 na routerach.</p>
+<pre>R1#ping ip 10.200.200.1 source loopback 0
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.200.200.1, timeout is 2 seconds:
+Packet sent with a source address of 10.10.10.1
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 40/41/48 ms</pre>
+<p>Lokalizacja B -&gt; Lokalizacja A</p>
+<pre>R2#ping ip 10.100.100.0 source loopback 0
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.100.100.0, timeout is 2 seconds:
+Packet sent with a source address of 10.10.10.1
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 28/32/44 ms</pre>
+<p>Sprawdźmy jeszcze co pokazuje debug ip icmp na obu routerach oraz polecenie sh ip nat translations</p>
+<pre>R1#debug ip icmp
+ICMP packet debugging is on
+R1#ping ip 10.200.200.1 source loopback 0
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.200.200.1, timeout is 2 seconds:
+Packet sent with a source address of 10.10.10.1
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 12/18/20 ms
+R1#
+*Oct 25 09:08:20.711: ICMP: echo reply rcvd, src 10.200.200.1, dst 10.10.10.1
+*Oct 25 09:08:20.727: ICMP: echo reply rcvd, src 10.200.200.1, dst 10.10.10.1
+*Oct 25 09:08:20.747: ICMP: echo reply rcvd, src 10.200.200.1, dst 10.10.10.1
+*Oct 25 09:08:20.767: ICMP: echo reply rcvd, src 10.200.200.1, dst 10.10.10.1
+*Oct 25 09:08:20.791: ICMP: echo reply rcvd, src 10.200.200.1, dst 10.10.10.1</pre>
+<p>&nbsp;</p>
+<pre>R2#debug ip icmp
+ICMP packet debugging is on
+R2#
+*Oct 25 09:08:20.163: ICMP: echo reply sent, src 10.10.10.1, dst 10.100.100.1
+*Oct 25 09:08:20.195: ICMP: echo reply sent, src 10.10.10.1, dst 10.100.100.1
+*Oct 25 09:08:20.215: ICMP: echo reply sent, src 10.10.10.1, dst 10.100.100.1
+*Oct 25 09:08:20.239: ICMP: echo reply sent, src 10.10.10.1, dst 10.100.100.1
+*Oct 25 09:08:20.259: ICMP: echo reply sent, src 10.10.10.1, dst 10.100.100.1</pre>
+<p>&nbsp;</p>
+<pre>R1#show ip nat translations
+Pro Inside global Inside local Outside local Outside global
+--- 10.100.100.0 10.10.10.0 --- ---
+--- 10.100.100.1 10.10.10.1 --- ---</pre>
+<p>&nbsp;</p>
+<pre>R2#show ip nat translations
+Pro Inside global Inside local Outside local Outside global
+--- 10.200.200.1 10.10.10.1 --- ---
+--- 10.200.200.0 10.10.10.0 --- ---</pre>
+<p>Widzimy, że przy pingowaniu adresu 10.200.200.1 z Loopack0 na R1,  R2 myśli, że otrzymuje pakiety od adresu 10.100.100.1 dzięki zastosowanej translacji.</p>
+<p>&nbsp;</p>
+<p><strong>WNIOSKI</strong></p>
+<p style="text-align: justify;">Stosując NAT źródłowy na obu routerach za którymi mamy tą adresację możemy takie sieci połączyć ze sobą bez konieczności zmiany adresów jednej z nich. Stosując NAT może pojawić się problem jeśli na interfejsie tunelowym mamy konfigurację: ip nat inside. Np. w przypadku gdy udostępniamy połączenie internetowe do oddziału zdalnego, w takim przypadku nie będziemy mogli skorzystać z tego rozwiązania, ponieważ interfejs nie może mieć jednocześnie konfiguracji ip nat inside oraz ip nat outside.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/cisco-vpn-te-sama-adresacja-lokalna/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>ntp &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/ntp/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Skrypt python do zmiany serwerów ntp na CISCO</title>
+		<link>https://kubsoo.github.io/rsnet-website/skrypt-python-do-zmiany-serwerow-ntp-na-cisco/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/skrypt-python-do-zmiany-serwerow-ntp-na-cisco/#respond</comments>
+		<pubDate>Sun, 15 Oct 2017 20:38:08 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[netmiko]]></category>
+		<category><![CDATA[ntp]]></category>
+		<category><![CDATA[python]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=602</guid>
+		<description><![CDATA[W poniższym wpisie pokażę prosty skrypt w Pythonie wykorzystujący bibliotekę netmiko oraz textfsm. Skrypt będzie łączył sie po ssh ze switchami CISCO i zmieniać adresy serwerów ntp na nowe. Wyobraźmy&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-602">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="26968f8" class="elementor-element elementor-element-26968f8 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="2ffd70b" class="elementor-element elementor-element-2ffd70b elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="3c40220" class="elementor-element elementor-element-3c40220 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #333333;">W poniższym wpisie pokażę prosty skrypt w Pythonie wykorzystujący bibliotekę netmiko oraz textfsm. Skrypt będzie łączył sie po ssh ze switchami CISCO i zmieniać adresy serwerów ntp na nowe.</span></p><p style="text-align: justify;"><span style="color: #333333;">Wyobraźmy sobie sytuację że mamy 20 switchy ze skonfigurowanymi następującymi adresami serwerów ntp:</span></p><pre><span style="color: #333333;">SWITCH-1#show run | in ntp</span><br /><span style="color: #333333;">ntp server 192.168.55.100</span><br /><span style="color: #333333;">ntp server 192.168.60.100</span></pre><p style="text-align: justify;"><span style="color: #333333;">Dostaliśmy informację, że niedługo nastąpi zmiana adresów IP serwerów ntp na nowe następujące adresy:</span></p><p><span style="color: #333333;">10.0.10.1, 10.0.10.2, 10.0.10.3</span></p><p style="text-align: justify;"><span style="color: #333333;">i musimy na wszystkich switchach zamienić adresy serwerów ntp. Możemy to zrobić ręcznie, logując się na każdy switch i wydając komendy:</span></p><p style="text-align: justify;"><span style="color: #333333;"> no ntp server &#8230; </span></p><p style="text-align: justify;"><span style="color: #333333;">ntp server..</span></p><p style="text-align: justify;"><span style="color: #333333;">albo wykorzystać skrypt, który zrobi to za nas. </span></p><p> </p><h5><strong>ZACZYNAMY</strong></h5><p style="text-align: justify;"><span style="color: #333333;">Skrypt realizujący to zadanie będzie działał następująco:</span></p><ol><li><span style="color: #333333;">Logowanie do urządzenia</span></li><li><span style="color: #333333;">Wykonanie komendy show run | in ntp i zapisanie wyników</span></li><li><span style="color: #333333;">Usunięcie starych serwerów ntp z wyników z punktu 2.</span></li><li><span style="color: #333333;">Ustawienie nowych serwerów ntp</span></li></ol><p style="text-align: justify;"><span style="color: #333333;">Skrypt będzie wykorzystywał pliki z komendami, dzięki czemu będziemy mogli go w łatwy sposób przerabiać do innych potrzeb (nie tylko do zmian serwerów ntp). Wystarczy wyedytować  pliki commands.txt i commands2.txt oraz zmienić plik textfsm, który parsuje wyniki polecenia z pliku commands2.txt. Zapraszam do przeczytania moich wpisów o <a href="https://kubsoo.github.io/rsnet-website/cisco-python-netmiko/">Netmiko</a> i <a href="https://kubsoo.github.io/rsnet-website/cisco-cli-textfsm/">TextFSM</a>, które napewno rozjaśnią poniższy skrypt.</span></p><p> </p><p><span style="color: #333333;"><strong>SKRYPT</strong></span></p><p><span style="color: #333333;">config_cisco.py </span></p><pre><span style="color: #333333;">#!/usr/bin/python</span><br /><br /><span style="color: #333333;">from netmiko import ConnectHandler</span><br /><span style="color: #333333;">import sys, textfsm</span><br /><br /><span style="color: #333333;">def check_cmd(ip, username, password,commands):</span><br /><span style="color: #333333;"> # nawiązanie połączenia do urządzenia</span><br /><span style="color: #333333;"> ssh_connection = ConnectHandler(</span><br /><span style="color: #333333;"> device_type='cisco_ios',</span><br /><span style="color: #333333;"> ip=ip,</span><br /><span style="color: #333333;"> username=username,</span><br /><span style="color: #333333;"> password=password,</span><br /><span style="color: #333333;"> )</span><br /><span style="color: #333333;"> result = ""</span><br /><span style="color: #333333;"> for i in commands:</span><br /><span style="color: #333333;">    result += ssh_connection.send_command(i)+"\n"</span><br /><span style="color: #333333;"> # zamknięcie połączenia</span><br /><span style="color: #333333;"> ssh_connection.disconnect()</span><br /><br /><span style="color: #333333;"> return result</span><br /><br /><span style="color: #333333;">def set_cmd(ip, username, password,commands):</span><br /><span style="color: #333333;"> # nawiązanie połączenia do urządzenia</span><br /><span style="color: #333333;"> ssh_connection = ConnectHandler(</span><br /><span style="color: #333333;"> device_type='cisco_ios',</span><br /><span style="color: #333333;"> ip=ip,</span><br /><span style="color: #333333;"> username=username,</span><br /><span style="color: #333333;"> password=password,</span><br /><span style="color: #333333;"> )</span><br /><span style="color: #333333;"> result = ssh_connection.send_config_set(commands)</span><br /><span style="color: #333333;"> # zamknięcie połączenia</span><br /><span style="color: #333333;"> ssh_connection.disconnect()</span><br /><br /><span style="color: #333333;"> return result</span><br /><br /><span style="color: #333333;">if __name__ == "__main__":</span><br /><span style="color: #333333;"> if len(sys.argv) != 4:</span><br /><span style="color: #333333;">   print("\nSkrypt do zmiany adresów serwerów ntp na urzadzeniach cisco:")</span><br /><span style="color: #333333;">   print("\tconfig_cisco.py &lt;device_ip&gt;,&lt;device_ip&gt; &lt;użytkownik&gt; &lt;hasło&gt; \n\n")</span><br /><span style="color: #333333;">   print("\tprzykładowe użycie: config_cisco.py 192.168.10.10,192.168.10.11 admin cisco123 \n\n")</span><br /><span style="color: #333333;">   sys.exit(0)</span><br /><br /><span style="color: #333333;"> devices = sys.argv[1]</span><br /><span style="color: #333333;"> username = sys.argv[2]</span><br /><span style="color: #333333;"> password = sys.argv[3]</span><br /><span style="color: #333333;"> set_file = "commands.txt"</span><br /><span style="color: #333333;"> get_file = "commands2.txt"</span><br /><br /><span style="color: #333333;"> f = open(set_file,'r')</span><br /><span style="color: #333333;"> commands = f.read().splitlines()</span><br /><span style="color: #333333;"> f.close</span><br /><br /><span style="color: #333333;"> f = open(get_file,'r')</span><br /><span style="color: #333333;"> commands2 = f.read().splitlines()</span><br /><span style="color: #333333;"> f.close</span><br /><br /><span style="color: #333333;"> device = devices.split(',')</span><br /><span style="color: #333333;"> re_table = textfsm.TextFSM(open("config_devices.textfsm"))</span><br /><br /><span style="color: #333333;"> for i in switch:</span><br /><span style="color: #333333;">   print "wykonywanie komend z pliku (%s) dla urządzenia %s" %(get_file,i)</span><br /><br /><span style="color: #333333;"> #sprawdzanie czy sa juz jakies ntp servery</span><br /><span style="color: #333333;"> #sprawdzenie odbywa sie przy pomocy komend z pliku get_file</span><br /><span style="color: #333333;"> check_out = check_cmd(i,username,password,commands2)</span><br /><span style="color: #333333;"> fsm_results = re_table.ParseText(check_out)</span><br /><br /><span style="color: #333333;"> commands3=[]</span><br /><span style="color: #333333;"> #sprawdzanie czy juz jest jakis ntp server, jesli jest to go usuwamy</span><br /><span style="color: #333333;"> for j in fsm_results:</span><br /><span style="color: #333333;">   commands3.append('no '+' '.join(j))</span><br /><span style="color: #333333;">   set_out = set_cmd(i,username,password,commands3)</span><br /><br /><span style="color: #333333;"> print "wykonywanie komend z pliku (%s) dla switcha %s" % (set_file,i)</span><br /><span style="color: #333333;"> #ustawienie nowych serwerow ntp, czyli komend z pliku set_file</span><br /><span style="color: #333333;"> set_out = set_cmd(i,username,password,commands)</span><br /><br /><span style="color: #333333;"> #koniec<br /> print "koniec"</span></pre><h5><span style="color: #333333;">Plik config_devices.textfsm</span></h5><pre><span style="color: #333333;">Value ntp (\S+)</span><br /><span style="color: #333333;">Value server (\S+)</span><br /><span style="color: #333333;">Value ip (.+)</span><br /><br /><span style="color: #333333;">Start</span><br /><span style="color: #333333;"> ^${ntp}\s+${server}\s+${ip} -&gt; Record</span></pre><h5><span style="color: #333333;">Pliki z komendami: </span></h5><p><span style="color: #333333;">commands.txt</span></p><pre><span style="color: #333333;">ntp server 10.0.10.1</span><br /><span style="color: #333333;">ntp server 10.0.10.2</span><br /><span style="color: #333333;">ntp server 10.0.10.3</span></pre><p><span style="color: #333333;">commands2.txt</span></p><pre><span style="color: #333333;">show run | in ntp server</span></pre><p><span style="color: #333333;">Skrypt uruchamiamy następującym poleceniem:</span></p><pre style="text-align: justify;"><span style="color: #333333;">config_devices.py 192.168.10.10,192.168.10.11,192.168.10.12,192.168.10.13,192.168.10.14,192.168.10.15,192.168.10.16,192.168.10.17,192.168.10.18,192.168.10.19,192.168.10.20,192.168.10.21,192.168.10.22,192.168.10.23,192.168.10.24,192.168.10.25,192.168.10.26,192.168.10.27,192.168.10.28,192.168.10.29 admin cisco123</span></pre><p style="text-align: justify;"><span style="color: #333333;">Oczywiście skrypt można napisać w inny sposób, nie korzystając z textfsm i plików z komendami, ale chciałem pokazać textfsm, bo uważam że jest to nieodzowna biblioteka przy pracy z urządzeniami Cisco i napewno będę publikował więcej skryptów z jej wykorzystaniem.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/skrypt-python-do-zmiany-serwerow-ntp-na-cisco/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

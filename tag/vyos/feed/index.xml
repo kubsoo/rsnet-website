@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>vyos &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/vyos/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>VyOS + CISCO w GNS3</title>
+		<link>https://kubsoo.github.io/rsnet-website/vyos-cisco-w-gns3/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/vyos-cisco-w-gns3/#respond</comments>
+		<pubDate>Thu, 28 Sep 2017 21:03:56 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[GNS3]]></category>
+		<category><![CDATA[vyos]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=480</guid>
+		<description><![CDATA[VyOS to system operacyjny spełniający rolę routera. Jest on darmowy i oparty na Debianie. W tym wpisie pokażę jak połączyć router CISCO i VyOS w programie GNS3. VyOS można uruchomić&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;"><a href="https://vyos.io/" title="">VyOS</a> to system operacyjny spełniający rolę routera. Jest on darmowy i oparty na Debianie. W tym wpisie pokażę jak połączyć router CISCO i VyOS w programie <a href="https://www.gns3.com/" title="">GNS3</a>.</p>
+<p style="text-align: justify;">VyOS można uruchomić pod GNS3 na kilka sposobów, ja pokaże najłatwiejszy według mnie, czyli import appliance. W tym celu wchodzimy na stronę <a href="https://www.gns3.com/marketplace/appliances" title="">www.gns3.com/marketplace/appliances</a> wybieramy VyOS i ściągamy plik <a href="https://www.gns3.com/external/download?url=https%3A%2F%2Fraw.githubusercontent.com%2FGNS3%2Fgns3-registry%2Fmaster%2Fappliances%2Fvyos.gns3a" title="">vyos.gns3a</a>. Następnie otwieramy GNS3 i wybieramy File -&gt; Import appliance</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos1.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-481 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos1.png" alt="" width="806" height="527" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos1.png 806w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos1-300x196.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos1-768x502.png 768w" sizes="(max-width: 806px) 100vw, 806px" /></a></p>
+<p>W trakcie importowania pojawi się następujące okienko:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos5.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-485 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos5.png" alt="" width="703" height="535" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos5.png 703w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos5-300x228.png 300w" sizes="(max-width: 703px) 100vw, 703px" /></a></p>
+<p style="text-align: justify;">Będziemy mieli do wyboru kilka wersji systemu VyOS, jeśli nie mamy obrazu *.iso, oraz pliku z obrazem dysku *.qcow2 dostaniemy w polu Status informacje: Missing lub Missing files. Brakujące pliki możemy pobrać klikając przycisk Download w prawym dolnym rogu, a następnie po pobraniu wciskamy przycisk Import w celu zaimportowania plików. Po tych operacjach powinniśmy w statusie mieć na zielono Found i Ready to Install.</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos6.png" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-486 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos6.png" alt="" width="703" height="533" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos6.png 703w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos6-300x227.png 300w" sizes="(max-width: 703px) 100vw, 703px" /></a></p>
+<p style="text-align: justify;">Jak mamy Ready to install to klikamy kilkukrotnie next i czekamy chwilę aż maszyna się załaduje do GNS3. Jak wszystko przebiegło pomyślnie to w GNS3 w All devices powinniśmy zobaczyć router VyOS:</p>
+<p style="text-align: justify;"><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos7.png" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-487 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos7.png" alt="" width="806" height="519" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos7.png 806w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos7-300x193.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos7-768x495.png 768w" sizes="(max-width: 806px) 100vw, 806px" /></a></p>
+<h4></h4>
+<h4>VYOS + CISCO PRZYKŁAD:</h4>
+<p style="text-align: justify;">Teraz zobaczmy możliwości VyOS na prostym przykładzie. Topologia składa się z dwóch routerów. Routera Cisco R1 (c7200) oraz routera VyOS. Routery połączone są ze sobą bezpośrednio zgodnie z poniższą topologią.</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos8.png" data-rel="lightbox-image-4" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-488 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos8.png" alt="" width="404" height="187" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos8.png 404w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos8-300x139.png 300w" sizes="(max-width: 404px) 100vw, 404px" /></a></p>
+<p>Konfiguracja R1:</p>
+<pre><span style="color: #010101; font-family: Calibri;">interface FastEthernet0/0</span>
+<span style="color: #010101; font-family: Calibri;">   ip address 192.168.10.1 255.255.255.0</span></pre>
+<p>Konfiguracja VyOS:</p>
+<pre><span style="color: #010101; font-family: Calibri;">vyos@vyos:~$ configure</span>
+<span style="color: #010101; font-family: Calibri;">[edit]</span>
+<span style="color: #010101; font-family: Calibri;">vyos@vyos#</span>
+<span style="color: #010101; font-family: Calibri;">[edit]</span>
+<span style="color: #010101; font-family: Calibri;">vyos@vyos# set interfaces ethernet eth0 address 192.168.10.2/24</span>
+<span style="color: #010101; font-family: Calibri;">[edit]</span>
+<span style="color: #010101; font-family: Calibri;">vyos@vyos# commit</span>
+<span style="color: #010101; font-family: Calibri;">[edit]</span>
+<span style="color: #010101; font-family: Calibri;">vyos@vyos# save</span>
+<span style="color: #010101; font-family: Calibri;">Saving configuration to '/config/config.boot'...</span>
+<span style="color: #010101; font-family: Calibri;">Done</span></pre>
+<p>Status interfejsu na R1:</p>
+<pre><span style="color: #010101; font-family: Calibri;">R1#show ip int brief
+Interface              IP-Address      OK? Method Status                Protocol</span>
+<span style="color: #010101; font-family: Calibri;">FastEthernet0/0        192.168.10.1    YES manual up                    up</span></pre>
+<p>Status interfejsu na VyOS:</p>
+<pre><span style="color: #010101; font-family: Calibri;">vyos@vyos:~$ show int
+Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+Interface        IP Address                        S/L  Description
+---------        ----------                        ---  -----------
+eth0            192.168.10.2/24               u/u
+eth1             -                                 u/u
+eth2             -                                 u/u
+lo               127.0.0.1/8                       u/u
+                 ::1/128</span></pre>
+<p>Sprawdźmy teraz łączność pomiędzy routerami:</p>
+<pre>R1#ping 192.168.10.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.10.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 4/9/12 ms</pre>
+<pre><span style="color: #010101; font-family: Calibri;">vyos@vyos# ping 192.168.10.1</span>
+<span style="color: #010101; font-family: Calibri;">PING 192.168.10.1 (192.168.10.1) 56(84) bytes of data.</span>
+<span style="color: #010101; font-family: Calibri;">64 bytes from 192.168.10.1: icmp_req=1 ttl=255 time=32.8 ms</span>
+<span style="color: #010101; font-family: Calibri;">64 bytes from 192.168.10.1: icmp_req=2 ttl=255 time=5.85 ms</span>
+<span style="color: #010101; font-family: Calibri;">^C</span>
+<span style="color: #010101; font-family: Calibri;">--- 192.168.10.1 ping statistics ---</span>
+<span style="color: #010101; font-family: Calibri;">2 packets transmitted, 2 received, 0% packet loss, time 1001ms</span>
+<span style="color: #010101; font-family: Calibri;">rtt min/avg/max/mdev = 5.854/19.346/32.839/13.493 ms</span></pre>
+<p style="text-align: justify;">Jak mamy już podstawową łączność między routerami zrobioną to spróbujmy skonfigurować pomiędzy routerami protokół routingu OSPF. Skonfigurujmy w tym celu na routerach intefejsy loopback i rozgłośmy je w OSPF.</p>
+<p>Konfiguracja R1:</p>
+<pre>interface Loopback0
+ ip address 10.0.10.1 255.255.255.0
+!
+router ospf 10
+ network 10.0.10.0 0.0.0.255 area 0
+ network 192.168.10.0 0.0.0.255 area 0
+!</pre>
+<div>
+<div>Konfiguracja VyOS:</div>
+<div>
+<pre>vyos@vyos# set interfaces loopback lo address 10.0.0.1/24
+[edit]
+vyos@vyos# set protocols ospf area 0 network 192.168.10.0/24
+[edit]
+vyos@vyos# set protocols ospf area 0 network 10.0.0.1/24
+[edit]
+vyos@vyos# commit</pre>
+</div>
+</div>
+<p style="text-align: justify;">Po wydaniu komendy commit na vyos na konsoli routera dostaniemy następującą informację:</p>
+<pre>R1#
+*Nov 19 20:45:17.287: %OSPF-5-ADJCHG: Process 10, Nbr 192.168.10.2 on FastEthernet0/0 from LOADING to FULL, Loading Done
+R1#</pre>
+<p style="text-align: justify;">Co oznacza, że utworzyła się relacja sąsiedztwa pomiędzy routerami. Zweryfikujmy to wydając komendy show ip ospf neighbor:</p>
+<pre>R1#show ip ospf neighbor
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+192.168.10.2      1   FULL/BDR        00:00:30    192.168.10.2    FastEthernet0/0</pre>
+<pre>vyos@vyos:~$ show ip ospf neighbor
+Neighbor ID Pri State           Dead Time Address         Interface            RXmtL RqstL DBsmL
+192.168.10.1      1 Full/DR           38.945s 192.168.10.1    eth0:192.168.10.2        0     0     0</pre>
+<p style="text-align: justify;">Oba routery mają status FULL, router vyos został routerem designated (DR) natomiast router R1 routerem backup designated (BDR).  Sprawdźmy teraz tablicę routingu obu routerów:</p>
+<pre>R1#show ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+       + - replicated route, % - next hop override
+
+Gateway of last resort is not set
+      10.0.0.0/24 is subnetted, 1 subnets
+<strong>O        10.0.0.1/24 [110/11] via 192.168.10.2, 00:00:14, FastEthernet0/0</strong>
+      192.168.10.0/24 is variably subnetted, 2 subnets, 2 masks
+C        192.168.10.0/24 is directly connected, FastEthernet0/0
+L        192.168.10.1/32 is directly connected, FastEthernet0/0</pre>
+<div>
+<pre>vyos@vyos:~$ show ip route
+Codes: K - kernel route, C - connected, S - static, R - RIP, O - OSPF,
+       I - ISIS, B - BGP, &gt; - selected route, * - FIB route
+
+O   10.0.0.0/24 [110/10] is directly connected, lo, 00:05:03
+C&gt;* 10.0.0.0/24 is directly connected, lo
+<strong>O&gt;* 10.0.10.0/24 [110/11] via 192.168.10.1, eth0, 00:00:06</strong>
+C&gt;* 127.0.0.0/8 is directly connected, lo
+O   192.168.10.0/24 [110/10] is directly connected, eth0, 00:07:50
+C&gt;* 192.168.10.0/24 is directly connected, eth0</pre>
+</div>
+<div style="text-align: justify;"> Jak widać z powyższych wyników komend show ip route, routery wymieniły się trasami poprawnie.</div>
+<h4></h4>
+<h4>PODSUMOWANIE</h4>
+<p style="text-align: justify;">VyOS jest bardzo dobrą alternatywą dla tradycyjnych routerów. Jak widać konfiguracja jest bardzo podobna do routerów firmy CISCO, właściwie większość komend typu show jest identycznych. Dodatkową zaletą jest to, że obraz VyOS jest całkowicie darmowy, więc możemy go postawić na dowolnym komputerze i cieszyć się z możliwości jakie daje, bez konieczności wydawania pieniędzy na drogie rozwiązania sprzętowe.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/vyos-cisco-w-gns3/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

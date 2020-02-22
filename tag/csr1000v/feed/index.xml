@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>CSR1000V &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/csr1000v/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>CSR1000V w GNS3</title>
+		<link>https://kubsoo.github.io/rsnet-website/csr1000v-w-gns3/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/csr1000v-w-gns3/#respond</comments>
+		<pubDate>Sun, 20 Aug 2017 22:24:33 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[CSR1000V]]></category>
+		<category><![CDATA[GNS3]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=500</guid>
+		<description><![CDATA[CSR1000v można uruchomić pod GNS3 na kilka sposobów, ja pokaże najłatwiejszy według mnie, czyli import appliance. W tym celu wchodzimy na stronę www.gns3.com/marketplace/appliances wybieramy Cisco CSR1000v i ściągamy plik cisco-csr1000v.gns3a. Następnie otwieramy GNS3 i&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">CSR1000v można uruchomić pod GNS3 na kilka sposobów, ja pokaże najłatwiejszy według mnie, czyli import appliance. W tym celu wchodzimy na stronę <a href="https://www.gns3.com/marketplace/appliances" title="">www.gns3.com/marketplace/appliances</a> wybieramy Cisco CSR1000v i ściągamy plik <a href="https://www.gns3.com/external/download?url=https%3A%2F%2Fraw.githubusercontent.com%2FGNS3%2Fgns3-registry%2Fmaster%2Fappliances%2Fcisco-csr1000v.gns3a" title="">cisco-csr1000v.gns3a</a>. Następnie otwieramy GNS3 i wybieramy File -&gt; Import appliance</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-504 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr.png" alt="" width="270" height="381" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr.png 270w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr-213x300.png 213w" sizes="(max-width: 270px) 100vw, 270px" /></a></p>
+<p style="text-align: justify;">W trakcie importowania pojawi się następujące okienko:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-506 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3.png" alt="" width="702" height="534" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3.png 702w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3-300x228.png 300w" sizes="(max-width: 702px) 100vw, 702px" /></a></p>
+<p style="text-align: justify;">Będziemy mieli do wyboru kilka wersji CSR1000V, jeśli nie mamy obrazu *.iso, oraz pliku z obrazem dysku *.qcow2 dostaniemy w polu Status informacje: Missing lub Missing files. Brakujące pliki możemy pobrać klikając przycisk Download w prawym dolnym rogu. Zostaniemy przekierowani na stronę cisco. W celu ściągnięcia oprogramowania ze strony cisco.com musimy posiadać konto na stronie cisco.com oraz ważny kontrakt serwisowy umożliwiający ściąganie oprogramowania. Niestety od wersji 3.15 nie da się ściągnąć obrazu ze strony cisco bez ważnego kontraktu serwisowego. Jeśli nie mamy kontraktu serwisowego możemy poszukać obrazu w internecie. Po tych operacjach powinniśmy w statusie mieć na zielono Found i Ready to Install.<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-506 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3.png" alt="" width="702" height="534" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3.png 702w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3-300x228.png 300w" sizes="(max-width: 702px) 100vw, 702px" /></a></p>
+<p style="text-align: justify;">Jak mamy Ready to install to klikamy kilkukrotnie next i czekamy chwilę aż maszyna się załaduje do GNS3 (może to potrwać chwilę). Jak wszystko przebiegło pomyślnie to w GNS3 w All devices powinniśmy zobaczyć router CSR1000V:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr4.png" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-507 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr4.png" alt="" width="804" height="411" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr4.png 804w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr4-300x153.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr4-768x393.png 768w" sizes="(max-width: 804px) 100vw, 804px" /></a></p>
+<p>Teraz pozostaje tylko uruchomienie maszyny:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr5.png" data-rel="lightbox-image-4" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-508 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr5.png" alt="" width="898" height="349" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr5.png 898w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr5-300x117.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr5-768x298.png 768w" sizes="(max-width: 898px) 100vw, 898px" /></a></p>
+<p style="text-align: justify;">Po uruchomieniu na maszynie jest wgrana startowa licencja, która ogranicza przepustowość do wartości 1000kb/s:</p>
+<pre>Router#show platform hardware throughput level
+The current throughput level is 1000 kb/s</pre>
+<div><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr6.png" data-rel="lightbox-image-5" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-509 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr6.png" alt="" width="901" height="384" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr6.png 901w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr6-300x128.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr6-768x327.png 768w" sizes="(max-width: 901px) 100vw, 901px" /></a></div>
+<div style="text-align: justify;">Do przetestowania funkcjonalności wystarczy, natomiast jeśli chcemy podnieść przepustowość musimy wgrać licencję, którą możemy za darmo mieć w wersji trial 60 dniowej. W tym celu wchodzimy na stronę: <a href="http://cisco.com/go/license" title="">http://cisco.com/go/license</a> wybieramy Licenses -&gt; Get Licenses -&gt; Demo and evaluation&#8230;</div>
+<div><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr8.png" data-rel="lightbox-image-6" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-511 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr8.png" alt="" width="1245" height="445" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr8.png 1245w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr8-300x107.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr8-768x275.png 768w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr8-1024x366.png 1024w" sizes="(max-width: 1245px) 100vw, 1245px" /></a>A następnie wybrać router Cisco Cloud Services Router 1000V:</div>
+<p><img class="alignnone size-full wp-image-512" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr9.png" alt="" width="1012" height="711" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr9.png 1012w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr9-300x211.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr9-768x540.png 768w" sizes="(max-width: 1012px) 100vw, 1012px" /></p>
+<p>i odpowiednią licencję (np. 2.5Gbps Full Featured (AX) 60 day evaluation license):</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/csr10-1.png" data-rel="lightbox-image-7" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-517 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/csr10-1.png" alt="" width="1015" height="713" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/csr10-1.png 1015w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/csr10-1-300x211.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/csr10-1-768x539.png 768w" sizes="(max-width: 1015px) 100vw, 1015px" /></a></p>
+<p style="text-align: justify;">Teraz pozostaje jeszcze wpisać UDI Serial Number, który znajdziemy na CSR1000V wydając komendę:</p>
+<pre>Router#show license udi
+SlotID   PID                    SN                      UDI
+--------------------------------------------------------------------------------
+*        CSR1000V              9S5WVGH2A77     CSR1000V:9S5WVGH2A77</pre>
+<p style="text-align: justify;">Po wklejeniu UDI do pola UDI Serial Number klikamy Next, a następnie Submit. Licencja się wygenerowała, teraz zostaje tylko ściągnąć ją na na dysk CSR1000V do flasha i zainstalować na routerze wydać komendy:</p>
+<pre>Router#license install bootflash:lic25ax.lic
+Router(config)#license boot level ax
+Router#wr
+Router#reload</pre>
+<p>Po restarcie router powinien mieć poprawną licencję, możemy to zweryfikować komendami:</p>
+<pre>Router#show license detail
+Router#show platform hardware throughput level</pre>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/csr1000v-w-gns3/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

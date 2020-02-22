@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>virtual link &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/virtual-link/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>OSPF Virtual Link</title>
+		<link>https://kubsoo.github.io/rsnet-website/ospf-virtual-link/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/ospf-virtual-link/#respond</comments>
+		<pubDate>Sat, 30 Sep 2017 19:33:35 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[ospf]]></category>
+		<category><![CDATA[virtual link]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=618</guid>
+		<description><![CDATA[OSPF jest protokołem typu link state, czyli wszystkie routery wymieniają się między sobą trasami i każdy z nich oblicza trasy zgodnie z algorytmem Dijsktry. Każda zmiana w sieci, niesie za&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-618">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="e5cf567" class="elementor-element elementor-element-e5cf567 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="29a7675" class="elementor-element elementor-element-29a7675 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="143605a" class="elementor-element elementor-element-143605a elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #333333;"> OSPF jest protokołem typu link state, czyli wszystkie routery wymieniają się między sobą trasami i każdy z nich oblicza trasy zgodnie z <a style="color: #333333;" href="https://pl.wikipedia.org/wiki/Algorytm_Dijkstry"><span style="color: #ff0000;">algorytmem Dijsktry</span></a>. Każda zmiana w sieci, niesie za sobą konieczność ponownego przeliczania tras. W dużych sieciach, gdzie jest dużo routerów każdy z nich musi przeliczać trasy co wpływa na stabilność pracy sieci oraz na czas konwergencji. OSPF umożliwia podział sieci na obszary (area) dzięki czemu tylko routery w tym samym obszarze przetwarzają LSA między sobą, natomiast między obszarami są tzw routery brzegowe, ABR (Area Border Router), które umożliwiają sumaryzowanie tras dzięki czemu routery w innych obszarach nie muszą znać wszystkich tras z innego obszaru ani nie muszą brać udziału w przeliczaniu tych tras, co poprawia stabilność pracy zmniejsza obciążenie routerów oraz skraca czas konwergencji. Każdy obszar musi być połączony do obszaru szkieletowego (area 0). Czasami projekt sieci OSPF jest taki, że mamy obszary, które nie są podłączone do obszaru 0, np. tak jak to ma miejsce na poniższym diagramie:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="4bb2ab9" class="elementor-element elementor-element-4bb2ab9 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c7e2bc1" class="elementor-element elementor-element-c7e2bc1 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="b618ea1" class="elementor-element elementor-element-b618ea1 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="644" height="418" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ospf_vlink.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ospf_vlink.png 644w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ospf_vlink-300x195.png 300w" sizes="(max-width: 644px) 100vw, 644px" />											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="58f65d2" class="elementor-element elementor-element-58f65d2 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="4d83f0e" class="elementor-element elementor-element-4d83f0e elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="bfb86cb" class="elementor-element elementor-element-bfb86cb elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #333333;">Sieć skonfigurowana jest następująco:</span></p><p><span style="color: #333333;">R1</span></p><pre><span style="color: #333333;">hostname R1</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;">  ip address 192.168.12.1 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;"> network 192.168.12.0 0.0.0.255 area 0<br /></span></pre><p><span style="color: #333333;">R2</span></p><pre><span style="color: #333333;">hostname R2</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;">  ip address 192.168.12.2 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet1/0</span><br /><span style="color: #333333;">  ip address 192.168.23.2 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;">  network 192.168.12.0 0.0.0.255 area 0</span><br /><span style="color: #333333;">  network 192.168.23.0 0.0.0.255 area 10</span><br /><br /></pre><p><span style="color: #333333;">R3</span></p><pre><span style="color: #333333;">hostname R3</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;">  ip address 192.168.34.3 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet1/0</span><br /><span style="color: #333333;">  ip address 192.168.23.3 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;">  network 192.168.23.0 0.0.0.255 area 10</span><br /><span style="color: #333333;">  network 192.168.34.0 0.0.0.255 area 20</span></pre><p><span style="color: #333333;">R4</span></p><pre><span style="color: #333333;">hostname R4</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;">  ip address 192.168.34.4 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;">  network 192.168.34.0 0.0.0.255 area 20</span></pre><div style="text-align: justify;"><span style="color: #333333;">Sprawdźmy jak wygląda wynik komendy show ip ospf neighbor na R4 i jego tablica routingu:</span></div><pre><span style="color: #333333;">R4#show ip ospf neighbor</span><br /><br /><span style="color: #333333;">Neighbor ID Pri State Dead Time Address Interface</span><br /><span style="color: #333333;">192.168.34.3 1 FULL/BDR 00:00:32 192.168.34.3 FastEthernet0/0</span></pre><pre><span style="color: #333333;">R4#show ip route</span><br /><span style="color: #333333;">Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP</span><br /><span style="color: #333333;">  D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area</span><br /><span style="color: #333333;">  N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2</span><br /><span style="color: #333333;">  E1 - OSPF external type 1, E2 - OSPF external type 2</span><br /><span style="color: #333333;">  i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2</span><br /><span style="color: #333333;">  ia - IS-IS inter area, * - candidate default, U - per-user static route</span><br /><span style="color: #333333;">  o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP</span><br /><span style="color: #333333;">  + - replicated route, % - next hop override</span><br /><br /><span style="color: #333333;">Gateway of last resort is not set</span><br /><br /><span style="color: #333333;">  192.168.34.0/24 is variably subnetted, 2 subnets, 2 masks</span><br /><span style="color: #333333;">C 192.168.34.0/24 is directly connected, FastEthernet0/0</span><br /><span style="color: #333333;">L 192.168.34.4/32 is directly connected, FastEthernet0/0</span></pre><div style="text-align: justify;"><span style="color: #333333;">Jak widać relacja sąsiedztwa z routerem R3 się nawiązała, ale nie mamy na tym routerze tras z OSPF&#8217;a, ponieważ obszar 20 (area 20) nie jest połączony do obszaru szkieletowego (area 0), tylko do obszaru 10 (area 10). Rozwiązaniem tej sytuacji jest łącze wirtualne (Virtual Link). Dzięki łączu wirtualnemu możemy zapewnić obszarowi 20 bezpośredni dostęp do obszaru szkieletowego.</span></div><div> </div><h5><span style="color: #333333;">KONFIGURACJA VIRTUAL LINK</span></h5><div><span style="color: #333333;">Virtual Link konfigurujemy na routerach R3 i R2.</span></div><div> </div><pre><span style="color: #333333;">R2(config-router)#area 10 virtual-link 192.168.34.3</span><br /><span style="color: #333333;">R2(config-router)#</span><br /><span style="color: #333333;">*Nov 21 13:14:37.135: %OSPF-5-ADJCHG: Process 1, Nbr 192.168.34.3 on OSPF_VL0 from LOADING to FULL, Loading Done</span><br /><br /><span style="color: #333333;">R3(config-router)#area 10 virtual-link 192.168.23.2</span><br /><span style="color: #333333;">R3(config-router)#</span><br /><span style="color: #333333;">*Nov 21 13:14:36.419: %OSPF-5-ADJCHG: Process 1, Nbr 192.168.23.2 on OSPF_VL0 from LOADING to FULL, Loading Done</span></pre><div><span style="color: #333333;">Zobaczmy jak teraz wygląda tablica routingu na R4.</span></div><pre><span style="color: #333333;">R4#show ip route</span><br /><span style="color: #333333;">Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP</span><br /><span style="color: #333333;">  D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area</span><br /><span style="color: #333333;">  N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2</span><br /><span style="color: #333333;">  E1 - OSPF external type 1, E2 - OSPF external type 2</span><br /><span style="color: #333333;">  i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2</span><br /><span style="color: #333333;">  ia - IS-IS inter area, * - candidate default, U - per-user static route</span><br /><span style="color: #333333;">  o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP</span><br /><span style="color: #333333;">  + - replicated route, % - next hop override</span><br /><span style="color: #333333;"><br />Gateway of last resort is not set</span><br /><br /><span style="color: #333333;"><b>O IA 192.168.12.0/24 [110/3] via 192.168.34.3, 00:01:29, FastEthernet0/0</b></span><br /><span style="color: #333333;"><b>O IA 192.168.23.0/24 [110/2] via 192.168.34.3, 00:01:34, FastEthernet0/0</b></span><br /><span style="color: #333333;">  192.168.34.0/24 is variably subnetted, 2 subnets, 2 masks</span><br /><span style="color: #333333;">C 192.168.34.0/24 is directly connected, FastEthernet0/0</span><br /><span style="color: #333333;">L 192.168.34.4/32 is directly connected, FastEthernet0/0</span></pre><div style="text-align: justify;"><span style="color: #333333;">Pojawiły nam się trasy z OSPF, czyli łączność pomiędzy routerami R1 i R4 powinna działać:</span></div><pre><span style="color: #333333;">R1#ping 192.168.34.4</span><br /><span style="color: #333333;">Type escape sequence to abort.</span><br /><span style="color: #333333;">Sending 5, 100-byte ICMP Echos to 192.168.34.4, timeout is 2 seconds:</span><br /><span style="color: #333333;">!!!!!</span><br /><span style="color: #333333;">Success rate is 100 percent (5/5), round-trip min/avg/max = 44/57/64 ms</span></pre><pre><span style="color: #333333;">R4#ping 192.168.12.1</span><br /><span style="color: #333333;">Type escape sequence to abort.</span><br /><span style="color: #333333;">Sending 5, 100-byte ICMP Echos to 192.168.12.1, timeout is 2 seconds:</span><br /><span style="color: #333333;">!!!!!</span><br /><span style="color: #333333;">Success rate is 100 percent (5/5), round-trip min/avg/max = 40/46/52 ms</span></pre><div style="text-align: justify;"><span style="color: #333333;">Sprawdźmy wynik komendy show ip ospf neighbor na R2 i R3. </span></div><pre><span style="color: #333333;">R3#show ip ospf neighbor</span><br /><br /><span style="color: #333333;">Neighbor ID Pri State Dead Time Address Interface</span><br /><span style="color: #333333;">192.168.23.2 0 FULL/ - 00:00:15 192.168.23.2 OSPF_VL0</span><br /><span style="color: #333333;">192.168.23.2 1 FULL/BDR 00:00:35 192.168.23.2 FastEthernet1/0</span><br /><span style="color: #333333;">192.168.34.4 1 FULL/DR 00:00:37 192.168.34.4 FastEthernet0/0</span><br /><br /><span style="color: #333333;">R2#show ip ospf neighbor</span><br /><br /><span style="color: #333333;">Neighbor ID Pri State Dead Time Address Interface</span><br /><span style="color: #333333;">192.168.34.3 0 FULL/ - - 192.168.23.3 OSPF_VL0</span><br /><span style="color: #333333;">192.168.12.1 1 FULL/BDR 00:00:31 192.168.12.1 FastEthernet0/0</span><br /><span style="color: #333333;">192.168.34.3 1 FULL/DR 00:00:30 192.168.23.3 FastEthernet1/0</span></pre><div style="text-align: justify;"><span style="color: #333333;">Widzimy, że R3 posiada teraz relację sąsiedztwa z R2 przez interfejs wirtualny OSPF_VL0. </span></div><div style="text-align: justify;"> </div><div style="text-align: justify;"><span style="color: #333333;">Więcej informacji o Virtual Link dostaniemy wydając komendę show ip ospf virtual-links:</span></div><pre><span style="color: #333333;">R3#show ip ospf virtual-links</span><br /><span style="color: #333333;">Virtual Link OSPF_VL0 to router 192.168.23.2 is up</span><br /><span style="color: #333333;">  Run as demand circuit</span><br /><span style="color: #333333;">  DoNotAge LSA allowed.</span><br /><span style="color: #333333;">  Transit area 10, via interface FastEthernet1/0</span><br /><span style="color: #333333;"> Topology-MTID Cost Disabled Shutdown Topology Name</span><br /><span style="color: #333333;">  0 1 no no Base</span><br /><span style="color: #333333;">  Transmit Delay is 1 sec, State POINT_TO_POINT,</span><br /><span style="color: #333333;">  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5</span><br /><span style="color: #333333;">  Hello due in 00:00:08</span><br /><span style="color: #333333;">  Adjacency State FULL (Hello suppressed)</span><br /><span style="color: #333333;">  Index 1/3, retransmission queue length 0, number of retransmission 0</span><br /><span style="color: #333333;">  First 0x0(0)/0x0(0) Next 0x0(0)/0x0(0)</span><br /><span style="color: #333333;">  Last retransmission scan length is 0, maximum is 0</span><br /><span style="color: #333333;">  Last retransmission scan time is 0 msec, maximum is 0 msec</span><br /><br /><span style="color: #333333;">R2#show ip ospf virtual-links</span><br /><span style="color: #333333;">Virtual Link OSPF_VL0 to router 192.168.34.3 is up</span><br /><span style="color: #333333;">  Run as demand circuit</span><br /><span style="color: #333333;">  DoNotAge LSA allowed.</span><br /><span style="color: #333333;">  Transit area 10, via interface FastEthernet1/0</span><br /><span style="color: #333333;"> Topology-MTID Cost Disabled Shutdown Topology Name</span><br /><span style="color: #333333;">  0 1 no no Base</span><br /><span style="color: #333333;">  Transmit Delay is 1 sec, State POINT_TO_POINT,</span><br /><span style="color: #333333;">  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5</span><br /><span style="color: #333333;">  Hello due in 00:00:09</span><br /><span style="color: #333333;">  Adjacency State FULL (Hello suppressed)</span><br /><span style="color: #333333;">  Index 2/3, retransmission queue length 0, number of retransmission 0</span><br /><span style="color: #333333;">  First 0x0(0)/0x0(0) Next 0x0(0)/0x0(0)</span><br /><span style="color: #333333;">  Last retransmission scan length is 0, maximum is 0</span><br /><span style="color: #333333;">  Last retransmission scan time is 0 msec, maximum is 0 msec</span></pre><div> </div><div> </div><div> </div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/ospf-virtual-link/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,1032 @@
+<!DOCTYPE html> 
+<html class="no-js" lang="pl-PL">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://kubsoo.github.io/rsnet-website/xmlrpc.php">
+	
+	<title>Palo Alto API backup konfiguracji &#8211; Python skrypt &#8211; RSNET.PL</title>
+<script>document.documentElement.className = document.documentElement.className.replace("no-js","js");</script>
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="RSNET.PL &raquo; Kanał z wpisami" href="https://kubsoo.github.io/rsnet-website/feed/" />
+<link rel="alternate" type="application/rss+xml" title="RSNET.PL &raquo; Kanał z komentarzami" href="https://kubsoo.github.io/rsnet-website/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="RSNET.PL &raquo; Palo Alto API backup konfiguracji &#8211; Python skrypt Kanał z komentarzami" href="https://kubsoo.github.io/rsnet-website/palo-alto-api-backup-konfiguracji-python-skrypt/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/kubsoo.github.io\/rsnet-website\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.0.4' type='text/css' media='all' />
+<link rel='stylesheet' id='es-widget-css-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/email-subscribers/widget/es-widget.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='gdpr-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/gdpr/assets/css/gdpr-public.css?ver=2.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-lightbox-swipebox-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/responsive-lightbox/assets/swipebox/css/swipebox.min.css?ver=2.0.5' type='text/css' media='all' />
+<link rel='stylesheet' id='style-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/style.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/responsive.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='tablepress-default-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/tablepress/css/default.min.css?ver=1.9.1' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=3.8.0' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-animations-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=2.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=2.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-global-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/uploads/elementor/css/global.css?ver=1539853008' type='text/css' media='all' />
+<link rel='stylesheet' id='google-fonts-1-css'  href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;subset=latin-ext&#038;ver=4.9.8' type='text/css' media='all' />
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var GDPR = {"ajaxurl":"https:\/\/kubsoo.github.io\/rsnet-website\/wp-admin\/admin-ajax.php","logouturl":"","i18n":{"aborting":"Aborting","logging_out":"You are being logged out.","continue":"Continue","cancel":"Cancel","ok":"OK","close_account":"Close your account?","close_account_warning":"Your account will be closed and all data will be permanently deleted and cannot be recovered. Are you sure?","are_you_sure":"Are you sure?","policy_disagree":"By disagreeing you will no longer have access to our site and will be logged out."},"is_user_logged_in":"","refresh":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/gdpr/assets/js/gdpr-public.js?ver=2.1.0'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/responsive-lightbox/assets/swipebox/js/jquery.swipebox.min.js?ver=2.0.5'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/responsive-lightbox/assets/infinitescroll/infinite-scroll.pkgd.min.js?ver=4.9.8'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","customEvents":"","activeGalleries":"1","animation":"1","hideCloseButtonOnMobile":"0","removeBarsOnMobile":"0","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080","useSVG":"1","loopAtEnd":"0","woocommerce_gallery":"0","ajaxurl":"https:\/\/kubsoo.github.io\/rsnet-website\/wp-admin\/admin-ajax.php","nonce":"c89d6a2167"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/responsive-lightbox/js/front.js?ver=2.0.5'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/jquery.flexslider.min.js?ver=4.9.8'></script>
+<link rel='https://api.w.org/' href='https://kubsoo.github.io/rsnet-website/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://kubsoo.github.io/rsnet-website/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://kubsoo.github.io/rsnet-website/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Exploit na jądro Linux &#8211; podniesienie uprawnień do roota' href='https://kubsoo.github.io/rsnet-website/exploit-na-jadro-linux-podniesienie-uprawnien-do-roota/' />
+<link rel='next' title='DMVPN faza 1 + IPSEC &#8211; konfiguracja' href='https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja-2/' />
+<meta name="generator" content="WordPress 4.9.8" />
+<link rel="canonical" href="https://kubsoo.github.io/rsnet-website/palo-alto-api-backup-konfiguracji-python-skrypt/" />
+<link rel='shortlink' href='https://kubsoo.github.io/rsnet-website/?p=998' />
+<link rel="alternate" type="application/json+oembed" href="https://kubsoo.github.io/rsnet-website/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhttps://kubsoo.github.io/rsnet-website%2Fpalo-alto-api-backup-konfiguracji-python-skrypt%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://kubsoo.github.io/rsnet-website/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhttps://kubsoo.github.io/rsnet-website%2Fpalo-alto-api-backup-konfiguracji-python-skrypt%2F&#038;format=xml" />
+<!--[if lt IE 9]>
+<script src="https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/ie/html5.js"></script>
+<script src="https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/ie/selectivizr.js"></script>
+<![endif]-->
+<style type="text/css">
+/* Dynamic CSS: For no styles in head, copy and put the css below in your custom.css or child theme's style.css, disable dynamic styles */
+body { font-family: Georgia, serif; }
+.boxed #wrapper, .container-inner { max-width: 1200px; }
+.sidebar .widget { padding-left: 20px; padding-right: 20px; }
+
+::selection { background-color: #dd3333; }
+::-moz-selection { background-color: #dd3333; }
+
+a,
+.themeform label .required,
+#flexslider-featured .flex-direction-nav .flex-next:hover,
+#flexslider-featured .flex-direction-nav .flex-prev:hover,
+.post-hover:hover .post-title a,
+.post-title a:hover,
+.post-nav li a:hover i,
+.post-nav li a:hover span,
+.sidebar .post-nav li a:hover i,
+.sidebar .post-nav li a:hover span,
+.content .post-nav li a:hover i,
+.content .post-nav li a:hover span,
+.widget_rss ul li a,
+.widget_calendar a,
+.alx-tab .tab-item-category a,
+.alx-posts .post-item-category a,
+.alx-tab li:hover .tab-item-title a,
+.alx-tab li:hover .tab-item-comment a,
+.alx-posts li:hover .post-item-title a,
+.dark .widget a:hover,
+.dark .widget_rss ul li a,
+.dark .widget_calendar a,
+.dark .alx-tab .tab-item-category a,
+.dark .alx-posts .post-item-category a,
+.dark .alx-tab li:hover .tab-item-title a,
+.dark .alx-tab li:hover .tab-item-comment a,
+.dark .alx-posts li:hover .post-item-title a,
+.comment-tabs li.active a,
+.comment-awaiting-moderation,
+.child-menu a:hover,
+.child-menu .current_page_item > a,
+.wp-pagenavi a { color: #dd3333; }
+
+.themeform input[type="submit"],
+.themeform button[type="submit"],
+.s1 .sidebar-top,
+.s1 .sidebar-toggle,
+.s2 .sidebar-top,
+.s2 .sidebar-toggle,
+#flexslider-featured .flex-control-nav li a.flex-active,
+.post-tags a:hover,
+.author-bio .bio-avatar:after,
+.jp-play-bar, 
+.jp-volume-bar-value,
+.widget_calendar caption,
+.dark .widget_calendar caption,
+.commentlist li.bypostauthor > .comment-body:after,
+.commentlist li.comment-author-admin > .comment-body:after { background-color: #dd3333; }
+
+.s3 .social-links li a:hover,
+.post-format .format-container,
+.dark .alx-tabs-nav li.active a { border-color: #dd3333; }
+
+.alx-tabs-nav li.active a,
+.comment-tabs li.active a,
+.wp-pagenavi a:hover,
+.wp-pagenavi a:active,
+.wp-pagenavi span.current { border-bottom-color: #dd3333!important; }					
+				
+
+#header,
+.s3 { background-color: #0a0a0a; }
+@media only screen and (min-width: 720px) {
+	#nav-header .nav ul { background-color: #0a0a0a; }
+}			
+				
+
+#nav-footer.nav-container,
+#footer-bottom #back-to-top { background-color: #0a0a0a; }
+@media only screen and (min-width: 720px) {
+	#nav-footer .nav ul { background-color: #0a0a0a; }
+}			
+				
+.site-title a img { max-height: 40px; }
+body { background-color: #ededed; }
+</style>
+</head>
+
+<body class="post-template-default single single-post postid-998 single-format-standard col-2cl boxed topbar-enabled elementor-default elementor-page elementor-page-998">
+
+<div id="wrapper">
+
+	<header id="header" class="group">
+	
+					<nav class="nav-container group" id="nav-topbar">
+				<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+				<div class="nav-text"><!-- put your mobile menu text here --></div>
+				<div class="nav-wrap container"><ul id="menu-menu" class="nav container-inner group"><li id="menu-item-259" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-259"><a href="https://kubsoo.github.io/rsnet-website/">Strona główna</a></li>
+<li id="menu-item-914" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-914"><a href="https://kubsoo.github.io/rsnet-website/category/linux/">Linux</a></li>
+<li id="menu-item-924" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-924"><a href="https://kubsoo.github.io/rsnet-website/category/python/">Python</a></li>
+<li id="menu-item-265" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-265"><a href="https://kubsoo.github.io/rsnet-website/kontakt/">Kontakt</a></li>
+</ul></div>
+				
+				<div class="container">
+					<div class="container-inner">		
+						<div class="toggle-search"><i class="fa fa-search"></i></div>
+						<div class="search-expand">
+							<div class="search-expand-inner">
+								<form method="get" class="searchform themeform" action="https://kubsoo.github.io/rsnet-website/">
+	<div>
+		<input type="text" class="search" name="s" onblur="if(this.value=='')this.value='To search type and hit enter';" onfocus="if(this.value=='To search type and hit enter')this.value='';" value="To search type and hit enter" />
+	</div>
+</form>							</div>
+						</div>
+					</div><!--/.container-inner-->
+				</div><!--/.container-->
+				
+			</nav><!--/#nav-topbar-->
+				
+		<div class="container group">
+			<div class="container-inner">
+								<div class="group pad">
+					<p class="site-title"><a href="https://kubsoo.github.io/rsnet-website/" rel="home">RSNET.PL</a></p>
+					<p class="site-description">wszystko o sieciach komputerowych</p>									</div>
+								
+			</div><!--/.container-inner-->
+		</div><!--/.container-->
+		
+				
+	</header><!--/#header-->
+	
+	<div class="container" id="page">
+		<div class="container-inner">			
+			<div class="main">
+				<div class="sidebar s3 group"></div>
+				<div class="main-inner group">
+<div class="content">
+	
+	<div class="page-title pad group">
+
+			<ul class="meta-single group">
+			<li class="category"><a href="https://kubsoo.github.io/rsnet-website/category/poradnik/" rel="category tag">Poradnik</a> <span>/</span> <a href="https://kubsoo.github.io/rsnet-website/category/python/" rel="category tag">Python</a></li>
+					</ul>
+		
+	
+</div><!--/.page-title-->	
+	<div class="pad group">
+		
+					<article class="post-998 post type-post status-publish format-standard has-post-thumbnail hentry category-poradnik category-python tag-backup tag-palo-alto tag-python tag-skrypt">	
+				<div class="post-inner group">
+					
+					<h1 class="post-title">Palo Alto API backup konfiguracji &#8211; Python skrypt</h1>
+					<p class="post-byline">by <a href="https://kubsoo.github.io/rsnet-website/author/admin/" title="Wpisy, których autorem jest admin" rel="author">admin</a> &middot; Grudzień 28, 2017</p>
+					
+										
+					<div class="clear"></div>
+					
+					<div class="entry themeform share">	
+						<div class="entry-inner">
+									<div class="elementor elementor-998">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="b4f5b76" class="elementor-element elementor-element-b4f5b76 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e876d39" class="elementor-element elementor-element-e876d39 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="93d42a5" class="elementor-element elementor-element-93d42a5 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Korzystając z API możemy na firewallach Palo Alto wykonywać komendy przez przeglądarkę jednym zapytaniem bez konieczności otwierania interfejsu do zarządzania i klikania po menu.</span></p><p style="text-align: justify;"><span style="color: #000000;"> </span></p><p> </p><h5><span style="color: #000000;">PRZYKŁAD</span></h5><p style="text-align: justify;"><span style="color: #000000;">Do celów demonstracji możliwości API na Palo Alto posłużyłem się topologią zbudowaną z GNS3 składającą się z 3 firewalli, switcha oraz dwóch maszyn wirtualnych (gns3-webterm &#8211; do dostepu do API przez przeglądarkę, oraz NetworkAutomation &#8211; maszyna z pythonem na której będziemy pisać skrypt).</span></p><p><strong><span style="color: #000000;">TOPOLOGIA</span></strong></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="c4f19c4" class="elementor-element elementor-element-c4f19c4 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="d5954f2" class="elementor-element elementor-element-d5954f2 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="fbbda61" class="elementor-element elementor-element-fbbda61 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/topology_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="605" height="452" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/topology_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/topology_1.png 605w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/topology_1-300x224.png 300w" sizes="(max-width: 605px) 100vw, 605px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b322071" class="elementor-element elementor-element-b322071 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e50c5f5" class="elementor-element elementor-element-e50c5f5 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="a0120da" class="elementor-element elementor-element-a0120da elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">API</span></h5><p style="text-align: justify;"><span style="color: #000000;">W celu dostępu do API musimy wygenerować klucz API, który będzie wykorzystywany do zapytań do API. Klucz jest generowany z użytkownika i hasła, więc jeśli posiadamy kilka firewalli i na każdym z nich mamy tego samego usera i hasło to klucz będzie taki sam dla każdego urządzenia.</span></p><p><span style="color: #000000;">Do generacji klucza służy następujące zapytanie:</span></p><pre><strong><span style="color: #000000;">https://firewall_ip/api/?type=keygen&amp;user=username&amp;password=password</span></strong></pre><p style="text-align: justify;"><span style="color: #000000;">Sprawdźmy jak to wygląda na żywo. W tym celu wchodzimy do gns3-webterm i wpisujemy w przeglądarce podany URL zamieniając firewall_ip na jeden z adresów IP firewalli oraz wpisując poprawny login i hasło:</span></p><pre><strong><span style="color: #000000;">https://192.168.0.201/api/?type=keygen&amp;user=admin&amp;password=admin</span></strong></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="ef99376" class="elementor-element elementor-element-ef99376 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="46d5900" class="elementor-element elementor-element-46d5900 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="0334c79" class="elementor-element elementor-element-0334c79 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/key.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="272" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/key.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/key.png 925w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/key-300x113.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/key-768x290.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="8423225" class="elementor-element elementor-element-8423225 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="d7567a9" class="elementor-element elementor-element-d7567a9 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="1c80ac7" class="elementor-element elementor-element-1c80ac7 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Jak widać z powyższego screena dostaliśmy w odpowiedzi plik XML, który zawiera klucz postaci:</span></p><pre><strong><em><span style="color: #000000;">LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09</span></em></strong></pre><p style="text-align: justify;"><span style="color: #000000;">To samo możemy uzyskać na maszynie NetworkAutomation korzystając z programu curl i komendy:</span></p><pre><strong><span style="color: #000000;">root@NetworkAutomation-1:~# curl -X GET 'https://192.168.0.201/api/?type=keygen&amp;user=admin&amp;password=admin' --insecure</span></strong><br /><br /><span style="color: #000000;">&lt;response status = 'success'&gt;&lt;result&gt;&lt;key&gt;<strong>LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09</strong>&lt;/key&gt;&lt;/result&gt;&lt;/response&gt;</span></pre><p style="text-align: justify;"><span style="color: #000000;">Po otrzymaniu klucza możemy wykonać jakąś komendę przez API. Listę komend i składnię zapytań możemy znaleźć wpisując w przeglądarce https://firewall_ip/api</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="da390d6" class="elementor-element elementor-element-da390d6 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="6b697e5" class="elementor-element elementor-element-6b697e5 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="bd09749" class="elementor-element elementor-element-bd09749 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title="">
+							<img width="420" height="406" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api.png 420w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api-300x290.png 300w" sizes="(max-width: 420px) 100vw, 420px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="477fe4a" class="elementor-element elementor-element-477fe4a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="26f5cf7" class="elementor-element elementor-element-26f5cf7 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="74d6cd6" class="elementor-element elementor-element-74d6cd6 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">Do eksportu konfiguracji służy zapytanie postaci:</span></p><pre><span style="color: #000000;"><strong>https://firewall_ip/api/?type=export&amp;category=configuration&amp;key=&lt;key&gt;</strong></span></pre><p style="text-align: justify;"><span style="color: #000000;">gdzie &lt;key&gt; to klucz otrzymany z wcześniejszej komendy. Całe zapytanie wygląda więc następująco:</span></p><pre><strong><span style="color: #000000;">https://192.168.0.201/api/?type=export&amp;category=configuration&amp;key=LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09</span></strong></pre><div><span style="color: #000000;">W odpowiedzi dostaniemy plik xml z konfiguracją:</span></div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="bddc825" class="elementor-element elementor-element-bddc825 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="22b08fb" class="elementor-element elementor-element-22b08fb elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="71a647a" class="elementor-element elementor-element-71a647a elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title="">
+							<img width="592" height="564" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api_1.png 592w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api_1-300x286.png 300w" sizes="(max-width: 592px) 100vw, 592px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1266fa3" class="elementor-element elementor-element-1266fa3 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="99e7162" class="elementor-element elementor-element-99e7162 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="d49c11c" class="elementor-element elementor-element-d49c11c elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Spróbujmy teraz to samo uzyskać korzystając z curl&#8217;a:</span></p><pre><strong><span style="color: #000000;">root@NetworkAutomation-1:~# curl -X GET 'https://192.168.0.201/api/?type=export&amp;category=configuration&amp;key=LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09' --insecure</span></strong></pre><pre><span style="color: #000000;">&lt;config version="7.1.0" urldb="paloaltonetworks"&gt;&lt;mgt-config&gt;&lt;users&gt;&lt;entry name="admin"&gt;&lt;phash&gt;fnRL/G5lXVMug&lt;/phash&gt;&lt;permissions&gt;&lt;role-based&gt;&lt;superuser&gt;yes&lt;/superuser&gt;&lt;/role-based&gt;&lt;/permissions&gt;&lt;/entry&gt;&lt;/users&gt;&lt;/mgt-config&gt;&lt;shared&gt;&lt;application/&gt;&lt;application-group/&gt;&lt;service/&gt;&lt;service-group/&gt;&lt;botnet&gt;&lt;configuration&gt;&lt;http&gt;&lt;dynamic-dns&gt;&lt;enabled&gt;yes&lt;/enabled&gt;&lt;threshold&gt;5&lt;/threshold&gt;&lt;/dynamic-dns&gt;&lt;malware-sites&gt;&lt;enabled&gt;yes&lt;/enabled&gt;&lt;threshold&gt;5&lt;/threshold&gt;&lt;/malware-sites&gt;&lt;recent-domains&gt;&lt;enabled&gt;yes&lt;/enabled&gt;&lt;threshold&gt;5&lt;/threshold&gt;&lt;/recent-domains&gt;&lt;ip-domains&gt;&lt;enabled&gt;yes&lt;/enabled&gt;&lt;threshold&gt;10&lt;/threshold&gt;&lt;/ip-domains&gt;&lt;executables-from-unknown-sites&gt;&lt;enabled&gt;yes&lt;/enabled&gt;&lt;threshold&gt;5&lt;/threshold&gt;&lt;/executables-from-unknown-sites&gt;&lt;/http&gt;&lt;other-applications&gt;&lt;irc&gt;yes&lt;/irc&gt;&lt;/other-applications&gt;&lt;unknown-applications&gt;&lt;unknown-tcp&gt;&lt;destinations-per-hour&gt;10&lt;/destinations-per-hour&gt;&lt;sessions-per-hour&gt;10&lt;/sessions-per-hour&gt;&lt;session-length&gt;&lt;maximum-bytes&gt;100&lt;/maximum-bytes&gt;&lt;minimum-bytes&gt;50&lt;/minimum-bytes&gt;&lt;/session-length&gt;&lt;/unknown-tcp&gt;&lt;unknown-udp&gt;&lt;destinations-per-hour&gt;10&lt;/destinations-per-hour&gt;&lt;sessions-per-hour&gt;10&lt;/sessions-per-hour&gt;&lt;session-length&gt;&lt;maximum-bytes&gt;100&lt;/maximum-bytes&gt;&lt;minimum-bytes&gt;50&lt;/minimum-bytes&gt;&lt;/session-length&gt;&lt;/unknown-udp&gt;&lt;/unknown-applications&gt;&lt;/configuration&gt; ........</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="5fc70e6" class="elementor-element elementor-element-5fc70e6 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="d958656" class="elementor-element elementor-element-d958656 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="aa607b2" class="elementor-element elementor-element-aa607b2 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Widzimy, że otrzymaliśmy ten sam plik xml. Teraz możemy spróbować napisać skrypt, który wykona tą operację za nas i zapisze taki plik na dysk, dla każdego z firewalli.</span></p><h5> </h5><h5><span style="color: #000000;">SKRYPT</span></h5></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="fed1942" class="elementor-element elementor-element-fed1942 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="296c5ed" class="elementor-element elementor-element-296c5ed elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="6e95d2c" class="elementor-element elementor-element-6e95d2c elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Skrypt jest bardzo prosty i wygląda nastepująco:</span></p><p><strong><span style="color: #000000;">backup_config.py</span></strong></p><pre><span style="color: #000000;">#!/usr/bin/python</span><br /><br /><span style="color: #000000;">import requests, datetime</span><br /><span style="color: #000000;">from lxml import etree</span><br /><br /><span style="color: #000000;">firewalls_ip = [</span><br /><span style="color: #000000;"> '192.168.0.201',</span><br /><span style="color: #000000;"> '192.168.0.202',</span><br /><span style="color: #000000;"> '192.168.0.203'</span><br /><span style="color: #000000;">]</span><br /><br /><span style="color: #000000;">date_1 = datetime.datetime.now().strftime("%Y-%m-%d_%H:%M")</span><br /><span style="color: #000000;">key = 'LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09'</span><br /><br /><span style="color: #000000;">params = (</span><br /><span style="color: #000000;"> ('type', 'export'),</span><br /><span style="color: #000000;"> ('category', 'configuration'),</span><br /><span style="color: #000000;"> ('key', key),</span><br /><span style="color: #000000;">)</span><br /><br /><span style="color: #000000;">for hostname in firewalls_ip:</span><br /><span style="color: #000000;"> print "Saving config for : %s" %hostname</span><br /><span style="color: #000000;"> url = "https://"+hostname+"/api/"</span><br /><span style="color: #000000;"> response = requests.get(url, params=params, verify=False)</span><br /><span style="color: #000000;"> xml_str = response.text</span><br /><span style="color: #000000;"> root = etree.fromstring(xml_str)</span><br /><br /><span style="color: #000000;"> filename = "running-config-"+hostname+"-"+date_1+".xml"</span><br /><span style="color: #000000;"> file = open(filename,"w")</span><br /><span style="color: #000000;"> file.write("""<!--?xml version="1.0"?-->\n""")</span><br /><span style="color: #000000;"> file.write(etree.tostring(root, pretty_print=True))</span><br /><span style="color: #000000;"> file.close()</span></pre><p style="text-align: justify;"><span style="color: #000000;">Sprawdźmy jego działanie w praktyce:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="e7c6fc3" class="elementor-element elementor-element-e7c6fc3 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="1beea1b" class="elementor-element elementor-element-1beea1b elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="b0baaf8" class="elementor-element elementor-element-b0baaf8 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><pre><strong><span style="color: #000000;">root@NetworkAutomation-1:~# ./backup_config.py</span></strong><br /><span style="color: #000000;">Saving config for : 192.168.0.201</span><br /><span style="color: #000000;">/usr/local/lib/python2.7/dist-packages/urllib3/connectionpool.py:858: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings</span><br /><span style="color: #000000;"> InsecureRequestWarning)</span><br /><span style="color: #000000;">Saving config for : 192.168.0.202</span><br /><span style="color: #000000;">/usr/local/lib/python2.7/dist-packages/urllib3/connectionpool.py:858: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings</span><br /><span style="color: #000000;"> InsecureRequestWarning)</span><br /><span style="color: #000000;">Saving config for : 192.168.0.203</span><br /><span style="color: #000000;">/usr/local/lib/python2.7/dist-packages/urllib3/connectionpool.py:858: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings</span><br /><span style="color: #000000;"> InsecureRequestWarning)</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="e5b9742" class="elementor-element elementor-element-e5b9742 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="d779413" class="elementor-element elementor-element-d779413 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c630b88" class="elementor-element elementor-element-c630b88 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Skrypt wykonał się z ostrzeżeniami, ale możemy je zignorować. Pojawiły się one, ponieważ wszystkie urządzenia posiadają domyślne certyfikaty, które nie są zaufane.</span></p><p style="text-align: justify;"><span style="color: #000000;">Sprawdźmy teraz jak wygląda katalog w którym jest skrypt:</span></p><pre><span style="color: #000000;">-rwxr-xr-x 1 root root 809 Dec 28 19:36 <strong>backup_config.py</strong></span><br /><span style="color: #000000;">-rw-r--r-- 1 root root 9161 Dec 28 19:36 running-config-192.168.0.201-2017-12-28_19:36.xml</span><br /><span style="color: #000000;">-rw-r--r-- 1 root root 9161 Dec 28 19:36 running-config-192.168.0.202-2018-12-28_19:36.xml</span><br /><span style="color: #000000;">-rw-r--r-- 1 root root 9161 Dec 28 19:36 running-config-192.168.0.203-2018-12-28_19:36.xml</span></pre><p style="text-align: justify;"><span style="color: #000000;">Widać, że stworzone zostały trzy pliki zgodnie z oczekiwaniami dla każdego z firewalli. Otwórzmy teraz jeden z nich i zobaczmy jak wygląda:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="de8fae7" class="elementor-element elementor-element-de8fae7 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="963807b" class="elementor-element elementor-element-963807b elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="110b5a6" class="elementor-element elementor-element-110b5a6 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><pre><strong><span style="color: #000000;">root@NetworkAutomation-1:~# cat running-config-192.168.0.201-2017-12-28_19:36.xml</span></strong><br /><br /><span style="color: #000000;">&lt;?xml version="1.0"?&gt;</span><br /><span style="color: #000000;">&lt;config version="7.1.0" urldb="paloaltonetworks"&gt;</span><br /><span style="color: #000000;">  &lt;mgt-config&gt;</span><br /><span style="color: #000000;">    &lt;users&gt;</span><br /><span style="color: #000000;">      &lt;entry name="admin"&gt;</span><br /><span style="color: #000000;">         &lt;phash&gt;fnRL/G5lXVMug&lt;/phash&gt;</span><br /><span style="color: #000000;">         &lt;permissions&gt;</span><br /><span style="color: #000000;">           &lt;role-based&gt;</span><br /><span style="color: #000000;">             &lt;superuser&gt;yes&lt;/superuser&gt;</span><br /><span style="color: #000000;">           &lt;/role-based&gt;</span><br /><span style="color: #000000;">         &lt;/permissions&gt;</span><br /><span style="color: #000000;">      &lt;/entry&gt;</span><br /><span style="color: #000000;">    &lt;/users&gt;</span><br /><span style="color: #000000;">  &lt;/mgt-config&gt;</span><br /><span style="color: #000000;">  &lt;shared&gt;</span><br /><span style="color: #000000;">    &lt;application/&gt;</span><br /><span style="color: #000000;">    &lt;application-group/&gt;</span><br /><span style="color: #000000;">    &lt;service/&gt;</span><br /><span style="color: #000000;">    &lt;service-group/&gt;</span><br /><span style="color: #000000;">    &lt;botnet&gt;</span><br /><span style="color: #000000;">       &lt;configuration&gt;</span><br /><span style="color: #000000;">         &lt;http&gt;</span><br /><span style="color: #000000;">           &lt;dynamic-dns&gt;</span><br /><span style="color: #000000;">             &lt;enabled&gt;yes&lt;/enabled&gt;</span><br /><span style="color: #000000;">             &lt;threshold&gt;5&lt;/threshold&gt;</span><br /><span style="color: #000000;">           &lt;/dynamic-dns&gt;<br />     ...</span></pre><p> </p><h5><span style="color: #000000;">PODSUMOWANIE</span></h5></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="f6d1c33" class="elementor-element elementor-element-f6d1c33 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="a3ba6ef" class="elementor-element elementor-element-a3ba6ef elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="61cf95e" class="elementor-element elementor-element-61cf95e elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Jak widać API na urządzeniach Palo Alto umożliwia w łatwy sposób eksportować konfigurację, dzięki czemu w przypadku awarii urządzenia mamy kopię konfiguracji. Jest to bardzo przydatne zwłaszcza w sytuacji gdy mamy wiele firewalli do administracji. W kolejnych wpisach pokaże więcej możliwości wykorzystania API na urządzeniach Palo Alto.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+															</div>
+						<div class="sharrre-container">
+	<span>Share</span>
+	<div id="twitter" data-url="https://kubsoo.github.io/rsnet-website/palo-alto-api-backup-konfiguracji-python-skrypt/" data-text="Palo Alto API backup konfiguracji &#8211; Python skrypt" data-title="Tweet"></div>
+	<div id="facebook" data-url="https://kubsoo.github.io/rsnet-website/palo-alto-api-backup-konfiguracji-python-skrypt/" data-text="Palo Alto API backup konfiguracji &#8211; Python skrypt" data-title="Like"></div>
+	<div id="googleplus" data-url="https://kubsoo.github.io/rsnet-website/palo-alto-api-backup-konfiguracji-python-skrypt/" data-text="Palo Alto API backup konfiguracji &#8211; Python skrypt" data-title="+1"></div>
+	<div id="pinterest" data-url="https://kubsoo.github.io/rsnet-website/palo-alto-api-backup-konfiguracji-python-skrypt/" data-text="Palo Alto API backup konfiguracji &#8211; Python skrypt" data-title="Pin It"></div>
+</div><!--/.sharrre-container-->
+
+<script type="text/javascript">
+	// Sharrre
+	jQuery(document).ready(function(){
+		jQuery('#twitter').sharrre({
+			share: {
+				twitter: true
+			},
+			template: '<a class="box" href="#"><div class="count" href="#"><i class="fa fa-plus"></i></div><div class="share"><i class="fa fa-twitter"></i></div></a>',
+			enableHover: false,
+			enableTracking: true,
+			buttons: { twitter: {via: ''}},
+			click: function(api, options){
+				api.simulateClick();
+				api.openPopup('twitter');
+			}
+		});
+		jQuery('#facebook').sharrre({
+			share: {
+				facebook: true
+			},
+			template: '<a class="box" href="#"><div class="count" href="#">{total}</div><div class="share"><i class="fa fa-facebook-square"></i></div></a>',
+			enableHover: false,
+			enableTracking: true,
+			buttons:{layout: 'box_count'},
+			click: function(api, options){
+				api.simulateClick();
+				api.openPopup('facebook');
+			}
+		});
+		jQuery('#googleplus').sharrre({
+			share: {
+				googlePlus: true
+			},
+			template: '<a class="box" href="#"><div class="count" href="#">{total}</div><div class="share"><i class="fa fa-google-plus-square"></i></div></a>',
+			enableHover: false,
+			enableTracking: true,
+			buttons:{size: 'tall'},
+			urlCurl: 'https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/sharrre.php',
+			click: function(api, options){
+				api.simulateClick();
+				api.openPopup('googlePlus');
+			}
+		});
+		jQuery('#pinterest').sharrre({
+			share: {
+				pinterest: true
+			},
+			template: '<a class="box" href="#" rel="nofollow"><div class="count" href="#">{total}</div><div class="share"><i class="fa fa-pinterest"></i></div></a>',
+			enableHover: false,
+			enableTracking: true,
+			buttons: {
+			pinterest: {
+				description: 'Palo Alto API backup konfiguracji &#8211; Python skrypt',media: 'https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/palo_api_ico_large.png'				}
+			},
+			click: function(api, options){
+				api.simulateClick();
+				api.openPopup('pinterest');
+			}
+		});
+		
+				
+	});
+</script>						<div class="clear"></div>				
+					</div><!--/.entry-->
+					
+				</div><!--/.post-inner-->	
+			</article><!--/.post-->				
+				
+		<div class="clear"></div>
+		
+		<p class="post-tags"><span>Tags:</span> <a href="https://kubsoo.github.io/rsnet-website/tag/backup/" rel="tag">backup</a><a href="https://kubsoo.github.io/rsnet-website/tag/palo-alto/" rel="tag">palo alto</a><a href="https://kubsoo.github.io/rsnet-website/tag/python/" rel="tag">python</a><a href="https://kubsoo.github.io/rsnet-website/tag/skrypt/" rel="tag">skrypt</a></p>		
+				
+				
+		
+
+<h4 class="heading">
+	<i class="fa fa-hand-o-right"></i>You may also like...</h4>
+
+<ul class="related-posts group">
+	
+		<li class="related post-hover">
+		<article class="post-671 post type-post status-publish format-standard has-post-thumbnail hentry category-poradnik tag-bdr tag-dr tag-ospf tag-podstawy">
+
+			<div class="post-thumbnail">
+				<a href="https://kubsoo.github.io/rsnet-website/ospf-podstawy/" title="OSPF podstawy">
+											<img width="520" height="245" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/02/ospf_basics_ico_large-520x245.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/02/ospf_basics_ico_large-520x245.png 520w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/02/ospf_basics_ico_large-300x141.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/02/ospf_basics_ico_large-720x340.png 720w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/02/ospf_basics_ico_large.png 510w" sizes="(max-width: 520px) 100vw, 520px" />																								</a>
+							</div><!--/.post-thumbnail-->
+			
+			<div class="related-inner">
+				
+				<h4 class="post-title">
+					<a href="https://kubsoo.github.io/rsnet-website/ospf-podstawy/" rel="bookmark" title="OSPF podstawy">OSPF podstawy</a>
+				</h4><!--/.post-title-->
+				
+				<div class="post-meta group">
+					<p class="post-date">21 Lut, 2017</p>
+				</div><!--/.post-meta-->
+			
+			</div><!--/.related-inner-->
+
+		</article>
+	</li><!--/.related-->
+		<li class="related post-hover">
+		<article class="post-102 post type-post status-publish format-standard has-post-thumbnail hentry category-poradnik tag-poradnik tag-ssh tag-windows">
+
+			<div class="post-thumbnail">
+				<a href="https://kubsoo.github.io/rsnet-website/windows-ssh-server/" title="Windows SSH Server">
+											<img width="520" height="245" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2015/06/win_ssh_ico_large-520x245.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2015/06/win_ssh_ico_large-520x245.png 520w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2015/06/win_ssh_ico_large-720x340.png 720w" sizes="(max-width: 520px) 100vw, 520px" />																								</a>
+							</div><!--/.post-thumbnail-->
+			
+			<div class="related-inner">
+				
+				<h4 class="post-title">
+					<a href="https://kubsoo.github.io/rsnet-website/windows-ssh-server/" rel="bookmark" title="Windows SSH Server">Windows SSH Server</a>
+				</h4><!--/.post-title-->
+				
+				<div class="post-meta group">
+					<p class="post-date">24 Lut, 2017</p>
+				</div><!--/.post-meta-->
+			
+			</div><!--/.related-inner-->
+
+		</article>
+	</li><!--/.related-->
+		<li class="related post-hover">
+		<article class="post-480 post type-post status-publish format-standard has-post-thumbnail hentry category-poradnik tag-cisco tag-gns3 tag-poradnik tag-vyos">
+
+			<div class="post-thumbnail">
+				<a href="https://kubsoo.github.io/rsnet-website/vyos-cisco-w-gns3/" title="VyOS + CISCO w GNS3">
+											<img width="520" height="245" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/vyos_gsn3_ico_large-520x245.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/vyos_gsn3_ico_large-520x245.png 520w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/vyos_gsn3_ico_large-300x141.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/vyos_gsn3_ico_large-720x340.png 720w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/vyos_gsn3_ico_large.png 510w" sizes="(max-width: 520px) 100vw, 520px" />																								</a>
+							</div><!--/.post-thumbnail-->
+			
+			<div class="related-inner">
+				
+				<h4 class="post-title">
+					<a href="https://kubsoo.github.io/rsnet-website/vyos-cisco-w-gns3/" rel="bookmark" title="VyOS + CISCO w GNS3">VyOS + CISCO w GNS3</a>
+				</h4><!--/.post-title-->
+				
+				<div class="post-meta group">
+					<p class="post-date">28 Wrz, 2017</p>
+				</div><!--/.post-meta-->
+			
+			</div><!--/.related-inner-->
+
+		</article>
+	</li><!--/.related-->
+		
+</ul><!--/.post-related-->
+
+		
+		
+<div id="comments" class="themeform">
+	
+	
+					<!-- comments open, no comments -->
+			
+		
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Dodaj komentarz <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://kubsoo.github.io/rsnet-website/palo-alto-api-backup-konfiguracji-python-skrypt/#respond" style="display:none;">Anuluj pisanie odpowiedzi</a></small></h3>			<form action="https://kubsoo.github.io/rsnet-website/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes"><span id="email-notes">Twój adres email nie zostanie opublikowany.</span> Pola, których wypełnienie jest wymagane, są oznaczone symbolem <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Komentarz</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Podpis <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Witryna internetowa</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Opublikuj komentarz" /> <input type='hidden' name='comment_post_ID' value='998' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="5c6328bb53" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="18"/></p>			</form>
+			</div><!-- #respond -->
+	<p class="akismet_comment_form_privacy_notice">This site uses Akismet to reduce spam. <a href="https://akismet.com/privacy/" target="_blank" rel="nofollow noopener">Learn how your comment data is processed</a>.</p>
+</div><!--/#comments-->		
+	</div><!--/.pad-->
+	
+</div><!--/.content-->
+
+	
+	<div class="sidebar s1 dark">
+		
+		<a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+		
+		<div class="sidebar-content">
+			
+				<ul class="post-nav group">
+		<li class="next"><a href="https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja-2/" rel="next"><i class="fa fa-chevron-right"></i><strong>Next story</strong> <span>DMVPN faza 1 + IPSEC &#8211; konfiguracja</span></a></li>
+		<li class="previous"><a href="https://kubsoo.github.io/rsnet-website/exploit-na-jadro-linux-podniesienie-uprawnien-do-roota/" rel="prev"><i class="fa fa-chevron-left"></i><strong>Previous story</strong> <span>Exploit na jądro Linux &#8211; podniesienie uprawnień do roota</span></a></li>
+	</ul>
+			
+						
+			<div id="email-subscribers-3" class="widget widget_text elp-widget"><h3>Newsletter</h3>        <div class="es_form_container">
+            <form class="es_widget_form" data-es_form_id="es_widget_form">
+				                    <div class="es_caption">Chcesz otrzymywać powiadomienia o nowych wpisach prosto na Twój e-mail?</div>
+								                    <div class="es_lablebox">
+                        <label class="es_widget_form_name">Nazwa</label>
+                    </div>
+                    <div class="es_textbox">
+                        <input type="text" id="es_txt_name" class="es_textbox_class" name="es_txt_name" value="" maxlength="60">
+                    </div>
+				                <div class="es_lablebox">
+                    <label class="es_widget_form_email">E-mail *</label>
+                </div>
+                <div class="es_textbox">
+                    <input type="email" id="es_txt_email" class="es_textbox_class" name="es_txt_email" value="" maxlength="60" required>
+                </div>
+				<p><label class="gdpr-label"><input type="checkbox" name="user_consents[polityka-prywatnoci]" id="polityka-prywatnoci-consent" value="1" required>Przeczytałem/am i zgadzam się z polityką prywatności. <a href="https://kubsoo.github.io/rsnet-website/polityka-prywatnosci/">LINK</a></label></p>                <div class="es_button">
+                    <input type="submit" id="es_txt_button" class="es_textbox_button es_submit_button" name="es_txt_button" value="Subskrypcja">
+                </div>
+                <div class="es_msg" id="es_widget_msg">
+                    <span id="es_msg"></span>
+                </div>
+								<div style="position:absolute; left: -5000px"><input type="text" name="es_required_field" class="es_required_field" tabindex="-1" autocomplete="es_test"/></div>
+                <input type="hidden" id="es_txt_group" name="es_txt_group" value="Public">
+				                <input type="hidden" name="es-subscribe" id="es-subscribe" value="7b4448552a"/>
+            </form>
+			        </div>
+        </div><div id="search-5" class="widget widget_search"><h3>Wyszukiwarka</h3><form method="get" class="searchform themeform" action="https://kubsoo.github.io/rsnet-website/">
+	<div>
+		<input type="text" class="search" name="s" onblur="if(this.value=='')this.value='To search type and hit enter';" onfocus="if(this.value=='To search type and hit enter')this.value='';" value="To search type and hit enter" />
+	</div>
+</form></div>		<div id="recent-posts-4" class="widget widget_recent_entries">		<h3>Najnowsze wpisy</h3>		<ul>
+											<li>
+					<a href="https://kubsoo.github.io/rsnet-website/bgp-wyrazenia-regularne-2/">Spanning Tree Protocol &#8211; podstawy</a>
+									</li>
+											<li>
+					<a href="https://kubsoo.github.io/rsnet-website/bgp-wyrazenia-regularne/">BGP &#8211; wyrażenia regularne</a>
+									</li>
+											<li>
+					<a href="https://kubsoo.github.io/rsnet-website/urpf-unicast-reverse-path-forwarding/">URPF &#8211; Unicast Reverse Path Forwarding</a>
+									</li>
+											<li>
+					<a href="https://kubsoo.github.io/rsnet-website/palo-alto-api-reguly-python-skrypt/">Palo Alto API tworzenie reguł &#8211; Python skrypt</a>
+									</li>
+											<li>
+					<a href="https://kubsoo.github.io/rsnet-website/cgi_python/">Programowanie CGI Pythona</a>
+									</li>
+					</ul>
+		</div><div id="categories-4" class="widget widget_categories"><h3>Kategorie</h3>		<ul>
+	<li class="cat-item cat-item-41"><a href="https://kubsoo.github.io/rsnet-website/category/faq/" >FAQ</a> (1)
+</li>
+	<li class="cat-item cat-item-55"><a href="https://kubsoo.github.io/rsnet-website/category/linux/" >Linux</a> (2)
+</li>
+	<li class="cat-item cat-item-50"><a href="https://kubsoo.github.io/rsnet-website/category/na-szybko/" >Na szybko</a> (3)
+</li>
+	<li class="cat-item cat-item-5"><a href="https://kubsoo.github.io/rsnet-website/category/poradnik/" >Poradnik</a> (37)
+</li>
+	<li class="cat-item cat-item-59"><a href="https://kubsoo.github.io/rsnet-website/category/python/" >Python</a> (4)
+</li>
+		</ul>
+</div><div id="text-5" class="widget widget_text"><h3>LINKI</h3>			<div class="textwidget"><p><a href="http://firewall.cx/">firewall.cx</a></p>
+<p><a href="http://packetlife.net/">packetlife.net</a></p>
+<p><a href="http://ccie-or-null.net/">ccie-or-null.net</a></p>
+<p><a href="http://hackingcisco.blogspot.com/">hackingcisco.blogspot.<wbr />com</a></p>
+<p><a href="http://ccieblogger.com/">ccieblogger.com</a></p>
+</div>
+		</div><div id="archives-4" class="widget widget_archive"><h3>Archiwum</h3>		<ul>
+			<li><a href='https://kubsoo.github.io/rsnet-website/2018/08/'>Sierpień 2018</a>&nbsp;(1)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2018/07/'>Lipiec 2018</a>&nbsp;(2)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2018/03/'>Marzec 2018</a>&nbsp;(1)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2018/02/'>Luty 2018</a>&nbsp;(1)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2018/01/'>Styczeń 2018</a>&nbsp;(1)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/12/'>Grudzień 2017</a>&nbsp;(10)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/10/'>Październik 2017</a>&nbsp;(9)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/09/'>Wrzesień 2017</a>&nbsp;(7)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/08/'>Sierpień 2017</a>&nbsp;(2)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/05/'>Maj 2017</a>&nbsp;(2)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/03/'>Marzec 2017</a>&nbsp;(2)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/02/'>Luty 2017</a>&nbsp;(2)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/01/'>Styczeń 2017</a>&nbsp;(2)</li>
+		</ul>
+		</div><div id="tag_cloud-3" class="widget widget_tag_cloud"><h3>Tagi</h3><div class="tagcloud"><a href="https://kubsoo.github.io/rsnet-website/tag/2-isp/" class="tag-cloud-link tag-link-40 tag-link-position-1" style="font-size: 8pt;" aria-label="2 isp (1 element)">2 isp</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/bgp/" class="tag-cloud-link tag-link-49 tag-link-position-2" style="font-size: 11.620689655172pt;" aria-label="bgp (3 elementów)">bgp</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/ccna/" class="tag-cloud-link tag-link-22 tag-link-position-3" style="font-size: 8pt;" aria-label="ccna (1 element)">ccna</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/certyfikaty/" class="tag-cloud-link tag-link-43 tag-link-position-4" style="font-size: 8pt;" aria-label="certyfikaty (1 element)">certyfikaty</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/cisco/" class="tag-cloud-link tag-link-12 tag-link-position-5" style="font-size: 21.034482758621pt;" aria-label="cisco (23 elementów)">cisco</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/cli/" class="tag-cloud-link tag-link-19 tag-link-position-6" style="font-size: 8pt;" aria-label="cli (1 element)">cli</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/csr1000v/" class="tag-cloud-link tag-link-3 tag-link-position-7" style="font-size: 8pt;" aria-label="CSR1000V (1 element)">CSR1000V</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/dhcp/" class="tag-cloud-link tag-link-24 tag-link-position-8" style="font-size: 8pt;" aria-label="dhcp (1 element)">dhcp</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/dmvpn/" class="tag-cloud-link tag-link-62 tag-link-position-9" style="font-size: 10.172413793103pt;" aria-label="dmvpn (2 elementów)">dmvpn</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/dr/" class="tag-cloud-link tag-link-45 tag-link-position-10" style="font-size: 8pt;" aria-label="dr (1 element)">dr</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/faq/" class="tag-cloud-link tag-link-42 tag-link-position-11" style="font-size: 8pt;" aria-label="faq (1 element)">faq</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/faza-1/" class="tag-cloud-link tag-link-63 tag-link-position-12" style="font-size: 10.172413793103pt;" aria-label="faza 1 (2 elementów)">faza 1</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/gns3/" class="tag-cloud-link tag-link-2 tag-link-position-13" style="font-size: 13.793103448276pt;" aria-label="GNS3 (5 elementów)">GNS3</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/hsrp/" class="tag-cloud-link tag-link-23 tag-link-position-14" style="font-size: 8pt;" aria-label="hsrp (1 element)">hsrp</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/ikev1/" class="tag-cloud-link tag-link-27 tag-link-position-15" style="font-size: 8pt;" aria-label="ikev1 (1 element)">ikev1</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/ipsec/" class="tag-cloud-link tag-link-26 tag-link-position-16" style="font-size: 12.827586206897pt;" aria-label="ipsec (4 elementów)">ipsec</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/ise/" class="tag-cloud-link tag-link-30 tag-link-position-17" style="font-size: 8pt;" aria-label="ISE (1 element)">ISE</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/konfiguracja/" class="tag-cloud-link tag-link-65 tag-link-position-18" style="font-size: 10.172413793103pt;" aria-label="konfiguracja (2 elementów)">konfiguracja</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/linux/" class="tag-cloud-link tag-link-7 tag-link-position-19" style="font-size: 14.637931034483pt;" aria-label="linux (6 elementów)">linux</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/nat/" class="tag-cloud-link tag-link-14 tag-link-position-20" style="font-size: 10.172413793103pt;" aria-label="nat (2 elementów)">nat</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/netmiko/" class="tag-cloud-link tag-link-16 tag-link-position-21" style="font-size: 11.620689655172pt;" aria-label="netmiko (3 elementów)">netmiko</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/nhrp/" class="tag-cloud-link tag-link-64 tag-link-position-22" style="font-size: 10.172413793103pt;" aria-label="nhrp (2 elementów)">nhrp</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/nmap/" class="tag-cloud-link tag-link-20 tag-link-position-23" style="font-size: 8pt;" aria-label="nmap (1 element)">nmap</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/ntp/" class="tag-cloud-link tag-link-36 tag-link-position-24" style="font-size: 8pt;" aria-label="ntp (1 element)">ntp</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/ospf/" class="tag-cloud-link tag-link-37 tag-link-position-25" style="font-size: 10.172413793103pt;" aria-label="ospf (2 elementów)">ospf</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/palo-alto/" class="tag-cloud-link tag-link-53 tag-link-position-26" style="font-size: 11.620689655172pt;" aria-label="palo alto (3 elementów)">palo alto</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/paramiko/" class="tag-cloud-link tag-link-17 tag-link-position-27" style="font-size: 10.172413793103pt;" aria-label="paramiko (2 elementów)">paramiko</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/podstawy/" class="tag-cloud-link tag-link-44 tag-link-position-28" style="font-size: 11.620689655172pt;" aria-label="podstawy (3 elementów)">podstawy</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/poradnik/" class="tag-cloud-link tag-link-4 tag-link-position-29" style="font-size: 22pt;" aria-label="Poradnik (28 elementów)">Poradnik</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/python/" class="tag-cloud-link tag-link-15 tag-link-position-30" style="font-size: 16.931034482759pt;" aria-label="python (10 elementów)">python</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/rancid/" class="tag-cloud-link tag-link-13 tag-link-position-31" style="font-size: 10.172413793103pt;" aria-label="rancid (2 elementów)">rancid</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/rdp/" class="tag-cloud-link tag-link-11 tag-link-position-32" style="font-size: 8pt;" aria-label="rdp (1 element)">rdp</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/rest-api/" class="tag-cloud-link tag-link-29 tag-link-position-33" style="font-size: 8pt;" aria-label="rest api (1 element)">rest api</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/skrypt/" class="tag-cloud-link tag-link-66 tag-link-position-34" style="font-size: 10.172413793103pt;" aria-label="skrypt (2 elementów)">skrypt</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/ssh/" class="tag-cloud-link tag-link-10 tag-link-position-35" style="font-size: 13.793103448276pt;" aria-label="ssh (5 elementów)">ssh</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/tclsh/" class="tag-cloud-link tag-link-28 tag-link-position-36" style="font-size: 8pt;" aria-label="tclsh (1 element)">tclsh</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/textfsm/" class="tag-cloud-link tag-link-18 tag-link-position-37" style="font-size: 10.172413793103pt;" aria-label="textfsm (2 elementów)">textfsm</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/unnumbered/" class="tag-cloud-link tag-link-31 tag-link-position-38" style="font-size: 8pt;" aria-label="unnumbered (1 element)">unnumbered</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/urpf/" class="tag-cloud-link tag-link-39 tag-link-position-39" style="font-size: 8pt;" aria-label="urpf (1 element)">urpf</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/virtual-link/" class="tag-cloud-link tag-link-38 tag-link-position-40" style="font-size: 8pt;" aria-label="virtual link (1 element)">virtual link</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/vm/" class="tag-cloud-link tag-link-25 tag-link-position-41" style="font-size: 8pt;" aria-label="vm (1 element)">vm</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/vpn/" class="tag-cloud-link tag-link-8 tag-link-position-42" style="font-size: 12.827586206897pt;" aria-label="vpn (4 elementów)">vpn</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/vrf/" class="tag-cloud-link tag-link-35 tag-link-position-43" style="font-size: 8pt;" aria-label="vrf (1 element)">vrf</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/vyos/" class="tag-cloud-link tag-link-34 tag-link-position-44" style="font-size: 8pt;" aria-label="vyos (1 element)">vyos</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/windows/" class="tag-cloud-link tag-link-9 tag-link-position-45" style="font-size: 11.620689655172pt;" aria-label="windows (3 elementów)">windows</a></div>
+</div>			
+		</div><!--/.sidebar-content-->
+		
+	</div><!--/.sidebar-->
+
+		
+
+				</div><!--/.main-inner-->
+			</div><!--/.main-->			
+		</div><!--/.container-inner-->
+	</div><!--/.container-->
+
+	<footer id="footer">
+		
+				<div class="container" id="footer-ads">
+			<div class="container-inner">
+							</div><!--/.container-inner-->
+		</div><!--/.container-->
+				
+				
+		<div class="container dark" id="footer-widgets">
+			<div class="container-inner">
+				
+				<div class="pad group">
+																
+					<div class="footer-widget-1 grid one-full last">
+						<div id="email-subscribers-2" class="widget widget_text elp-widget"><h3>Newsletter</h3>        <div class="es_form_container">
+            <form class="es_widget_form" data-es_form_id="es_widget_form">
+				                    <div class="es_caption">Chcesz otrzymywać powiadomienia o nowych wpisach prosto na Twój e-mail?</div>
+								                    <div class="es_lablebox">
+                        <label class="es_widget_form_name">Nazwa</label>
+                    </div>
+                    <div class="es_textbox">
+                        <input type="text" id="es_txt_name" class="es_textbox_class" name="es_txt_name" value="" maxlength="60">
+                    </div>
+				                <div class="es_lablebox">
+                    <label class="es_widget_form_email">E-mail *</label>
+                </div>
+                <div class="es_textbox">
+                    <input type="email" id="es_txt_email" class="es_textbox_class" name="es_txt_email" value="" maxlength="60" required>
+                </div>
+				<p><label class="gdpr-label"><input type="checkbox" name="user_consents[polityka-prywatnoci]" id="polityka-prywatnoci-consent" value="1" required>Przeczytałem/am i zgadzam się z polityką prywatności. <a href="https://kubsoo.github.io/rsnet-website/polityka-prywatnosci/">LINK</a></label></p>                <div class="es_button">
+                    <input type="submit" id="es_txt_button" class="es_textbox_button es_submit_button" name="es_txt_button" value="Subskrypcja">
+                </div>
+                <div class="es_msg" id="es_widget_msg">
+                    <span id="es_msg"></span>
+                </div>
+								<div style="position:absolute; left: -5000px"><input type="text" name="es_required_field" class="es_required_field" tabindex="-1" autocomplete="es_test"/></div>
+                <input type="hidden" id="es_txt_group" name="es_txt_group" value="Public">
+				                <input type="hidden" name="es-subscribe" id="es-subscribe" value="7b4448552a"/>
+            </form>
+			        </div>
+        </div>					</div>
+					
+															</div><!--/.pad-->
+				
+			</div><!--/.container-inner-->
+		</div><!--/.container-->	
+				
+				
+		<div class="container" id="footer-bottom">
+			<div class="container-inner">
+				
+				<a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+				
+				<div class="pad group">
+					
+					<div class="grid one-half">
+						
+												
+						<div id="copyright">
+															<p>RSNET.PL &copy; 2020. All Rights Reserved.</p>
+								<p><a href="https://kubsoo.github.io/rsnet-website/polityka-prywatnosci/">Polityka prywatności</a></p>
+													</div><!--/#copyright-->
+						
+												
+					</div>
+					
+					<div class="grid one-half last">	
+											</div>
+				
+				</div><!--/.pad-->
+				
+			</div><!--/.container-inner-->
+		</div><!--/.container-->
+		
+	</footer><!--/#footer-->
+
+</div><!--/#wrapper-->
+
+
+<!-- BEGIN Clicky Analytics v1.5 Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->
+<script type="text/javascript">
+var clicky_site_ids = clicky_site_ids || [];
+clicky_site_ids.push(101086100);
+(function() {
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//static.getclicky.com/js';
+  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+})();
+</script>
+<noscript><p><img alt='Clicky' width='1' height='1' src='//in.getclicky.com/100746374ns.gif' /></p></noscript>
+<!-- END Clicky Analytics v1.5 Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->
+<div class="gdpr gdpr-overlay"></div>
+<div class="gdpr gdpr-privacy-preferences">
+	<div class="gdpr-wrapper">
+		<form method="post" class="gdpr-privacy-preferences-frm">
+			<input type="hidden" name="action" value="gdpr_update_privacy_preferences">
+			<input type="hidden" id="update-privacy-preferences-nonce" name="update-privacy-preferences-nonce" value="ec0c495d2f" /><input type="hidden" name="_wp_http_referer" value="/palo-alto-api-backup-konfiguracji-python-skrypt/" />			<header>
+				<div class="gdpr-box-title">
+					<h3>Privacy Preference Center</h3>
+					<span class="gdpr-close"></span>
+				</div>
+			</header>
+			<div class="gdpr-mobile-menu">
+				<button type="button">Options</button>
+			</div>
+			<div class="gdpr-content">
+				<div class="gdpr-tabs">
+					<ul class="">
+						<li><button type="button" class="gdpr-tab-button gdpr-active" data-target="gdpr-consent-management">Consent Management</button></li>
+																	</ul>
+					<ul class="gdpr-policies">
+																													<li><a href="https://kubsoo.github.io/rsnet-website/polityka-prywatnosci/" target="_blank">Polityka prywatności</a></li>
+																		</ul>
+				</div>
+				<div class="gdpr-tab-content">
+					<div class="gdpr-consent-management gdpr-active">
+						<header>
+							<h4>Consent Management</h4>
+						</header>
+						<div class="gdpr-info">
+							<p></p>
+																								<div class="gdpr-cookies-used">
+										<div class="gdpr-cookie-title">
+											<p>Polityka prywatności</p>
+																							<span class="gdpr-always-active">Required</span>
+												<input type="hidden" name="user_consents[]" value="polityka-prywatnoci" checked style="display:none;">
+																					</div>
+										<div class="gdpr-cookies">
+											<span>Przeczytałem/am i zgadzam się z polityką prywatności. <a href="https://kubsoo.github.io/rsnet-website/polityka-prywatnosci/">LINK</a></span>
+										</div>
+									</div>
+																					</div>
+					</div>
+														</div>
+				<input type="hidden" name="all_cookies" value="[]">
+			</div>
+			<footer>
+				<input type="submit" value="Save Preferences">
+			</footer>
+		</form>
+	</div>
+</div>
+
+<div class="gdpr gdpr-general-confirmation">
+	<div class="gdpr-wrapper">
+		<header>
+			<div class="gdpr-box-title">
+				<h3></h3>
+				<span class="gdpr-close"></span>
+			</div>
+		</header>
+		<div class="gdpr-content">
+			<p></p>
+		</div>
+		<footer>
+			<button class="gdpr-ok">OK</button>
+		</footer>
+	</div>
+</div>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/kubsoo.github.io\/rsnet-website\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Potwierd\u017a, \u017ce nie jeste\u015b robotem."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.0.4'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var es_widget_page_notices = {"es_email_notice":"Prosz\u0119 wprowad\u017a adres mailowy","es_success_message":"Zarejestrowano subskrypcj\u0119.","es_success_notice":"Twoja subskrypcja zako\u0144czy\u0142a si\u0119 sukcesem! Prosimy sprawdzi\u0107 swoj\u0105 skrzynk\u0119 pocztow\u0105 i potwierdzi\u0107 subskrypcj\u0119. Je\u015bli wiadomo\u015b\u0107 nie pojawi si\u0119 w ci\u0105gu kilku minut, sprawd\u017a folder spam\/kosz.","es_email_exists":"Adres email ju\u017c istnieje!","es_error":"Ups\u2026 Wyst\u0105pi\u0142 nieoczekiwany b\u0142\u0105d.","es_invalid_email":"Niepoprawny adres email","es_try_later":"Spr\u00f3buj po pewnym czasie","es_ajax_url":"https:\/\/kubsoo.github.io\/rsnet-website\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/email-subscribers/widget/es-widget-page.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/jquery.fitvids.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/scripts.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/jquery.sharrre.min.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
+<script async="async" type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/akismet/_inc/form.js?ver=4.0.8'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-includes/js/jquery/ui/position.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/lib/dialog/dialog.min.js?ver=4.5.0'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/lib/swiper/swiper.jquery.min.js?ver=4.4.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var elementorFrontendConfig = {"isEditMode":"","is_rtl":"","breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"version":"2.2.5","urls":{"assets":"https:\/\/kubsoo.github.io\/rsnet-website\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"general":{"elementor_global_image_lightbox":"yes","elementor_enable_lightbox_in_editor":"yes"}},"post":{"id":998,"title":"Palo Alto API backup konfiguracji - Python skrypt","excerpt":""}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=2.2.5'></script>
+<!--[if lt IE 9]>
+<script src="https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/ie/respond.js"></script>
+<![endif]-->
+</body>
+</html>

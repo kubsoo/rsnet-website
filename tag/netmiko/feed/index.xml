@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>netmiko &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/netmiko/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Skrypt python do zmiany serwerów ntp na CISCO</title>
+		<link>https://kubsoo.github.io/rsnet-website/skrypt-python-do-zmiany-serwerow-ntp-na-cisco/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/skrypt-python-do-zmiany-serwerow-ntp-na-cisco/#respond</comments>
+		<pubDate>Sun, 15 Oct 2017 20:38:08 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[netmiko]]></category>
+		<category><![CDATA[ntp]]></category>
+		<category><![CDATA[python]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=602</guid>
+		<description><![CDATA[W poniższym wpisie pokażę prosty skrypt w Pythonie wykorzystujący bibliotekę netmiko oraz textfsm. Skrypt będzie łączył sie po ssh ze switchami CISCO i zmieniać adresy serwerów ntp na nowe. Wyobraźmy&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-602">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="26968f8" class="elementor-element elementor-element-26968f8 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="2ffd70b" class="elementor-element elementor-element-2ffd70b elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="3c40220" class="elementor-element elementor-element-3c40220 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #333333;">W poniższym wpisie pokażę prosty skrypt w Pythonie wykorzystujący bibliotekę netmiko oraz textfsm. Skrypt będzie łączył sie po ssh ze switchami CISCO i zmieniać adresy serwerów ntp na nowe.</span></p><p style="text-align: justify;"><span style="color: #333333;">Wyobraźmy sobie sytuację że mamy 20 switchy ze skonfigurowanymi następującymi adresami serwerów ntp:</span></p><pre><span style="color: #333333;">SWITCH-1#show run | in ntp</span><br /><span style="color: #333333;">ntp server 192.168.55.100</span><br /><span style="color: #333333;">ntp server 192.168.60.100</span></pre><p style="text-align: justify;"><span style="color: #333333;">Dostaliśmy informację, że niedługo nastąpi zmiana adresów IP serwerów ntp na nowe następujące adresy:</span></p><p><span style="color: #333333;">10.0.10.1, 10.0.10.2, 10.0.10.3</span></p><p style="text-align: justify;"><span style="color: #333333;">i musimy na wszystkich switchach zamienić adresy serwerów ntp. Możemy to zrobić ręcznie, logując się na każdy switch i wydając komendy:</span></p><p style="text-align: justify;"><span style="color: #333333;"> no ntp server &#8230; </span></p><p style="text-align: justify;"><span style="color: #333333;">ntp server..</span></p><p style="text-align: justify;"><span style="color: #333333;">albo wykorzystać skrypt, który zrobi to za nas. </span></p><p> </p><h5><strong>ZACZYNAMY</strong></h5><p style="text-align: justify;"><span style="color: #333333;">Skrypt realizujący to zadanie będzie działał następująco:</span></p><ol><li><span style="color: #333333;">Logowanie do urządzenia</span></li><li><span style="color: #333333;">Wykonanie komendy show run | in ntp i zapisanie wyników</span></li><li><span style="color: #333333;">Usunięcie starych serwerów ntp z wyników z punktu 2.</span></li><li><span style="color: #333333;">Ustawienie nowych serwerów ntp</span></li></ol><p style="text-align: justify;"><span style="color: #333333;">Skrypt będzie wykorzystywał pliki z komendami, dzięki czemu będziemy mogli go w łatwy sposób przerabiać do innych potrzeb (nie tylko do zmian serwerów ntp). Wystarczy wyedytować  pliki commands.txt i commands2.txt oraz zmienić plik textfsm, który parsuje wyniki polecenia z pliku commands2.txt. Zapraszam do przeczytania moich wpisów o <a href="https://kubsoo.github.io/rsnet-website/cisco-python-netmiko/">Netmiko</a> i <a href="https://kubsoo.github.io/rsnet-website/cisco-cli-textfsm/">TextFSM</a>, które napewno rozjaśnią poniższy skrypt.</span></p><p> </p><p><span style="color: #333333;"><strong>SKRYPT</strong></span></p><p><span style="color: #333333;">config_cisco.py </span></p><pre><span style="color: #333333;">#!/usr/bin/python</span><br /><br /><span style="color: #333333;">from netmiko import ConnectHandler</span><br /><span style="color: #333333;">import sys, textfsm</span><br /><br /><span style="color: #333333;">def check_cmd(ip, username, password,commands):</span><br /><span style="color: #333333;"> # nawiązanie połączenia do urządzenia</span><br /><span style="color: #333333;"> ssh_connection = ConnectHandler(</span><br /><span style="color: #333333;"> device_type='cisco_ios',</span><br /><span style="color: #333333;"> ip=ip,</span><br /><span style="color: #333333;"> username=username,</span><br /><span style="color: #333333;"> password=password,</span><br /><span style="color: #333333;"> )</span><br /><span style="color: #333333;"> result = ""</span><br /><span style="color: #333333;"> for i in commands:</span><br /><span style="color: #333333;">    result += ssh_connection.send_command(i)+"\n"</span><br /><span style="color: #333333;"> # zamknięcie połączenia</span><br /><span style="color: #333333;"> ssh_connection.disconnect()</span><br /><br /><span style="color: #333333;"> return result</span><br /><br /><span style="color: #333333;">def set_cmd(ip, username, password,commands):</span><br /><span style="color: #333333;"> # nawiązanie połączenia do urządzenia</span><br /><span style="color: #333333;"> ssh_connection = ConnectHandler(</span><br /><span style="color: #333333;"> device_type='cisco_ios',</span><br /><span style="color: #333333;"> ip=ip,</span><br /><span style="color: #333333;"> username=username,</span><br /><span style="color: #333333;"> password=password,</span><br /><span style="color: #333333;"> )</span><br /><span style="color: #333333;"> result = ssh_connection.send_config_set(commands)</span><br /><span style="color: #333333;"> # zamknięcie połączenia</span><br /><span style="color: #333333;"> ssh_connection.disconnect()</span><br /><br /><span style="color: #333333;"> return result</span><br /><br /><span style="color: #333333;">if __name__ == "__main__":</span><br /><span style="color: #333333;"> if len(sys.argv) != 4:</span><br /><span style="color: #333333;">   print("\nSkrypt do zmiany adresów serwerów ntp na urzadzeniach cisco:")</span><br /><span style="color: #333333;">   print("\tconfig_cisco.py &lt;device_ip&gt;,&lt;device_ip&gt; &lt;użytkownik&gt; &lt;hasło&gt; \n\n")</span><br /><span style="color: #333333;">   print("\tprzykładowe użycie: config_cisco.py 192.168.10.10,192.168.10.11 admin cisco123 \n\n")</span><br /><span style="color: #333333;">   sys.exit(0)</span><br /><br /><span style="color: #333333;"> devices = sys.argv[1]</span><br /><span style="color: #333333;"> username = sys.argv[2]</span><br /><span style="color: #333333;"> password = sys.argv[3]</span><br /><span style="color: #333333;"> set_file = "commands.txt"</span><br /><span style="color: #333333;"> get_file = "commands2.txt"</span><br /><br /><span style="color: #333333;"> f = open(set_file,'r')</span><br /><span style="color: #333333;"> commands = f.read().splitlines()</span><br /><span style="color: #333333;"> f.close</span><br /><br /><span style="color: #333333;"> f = open(get_file,'r')</span><br /><span style="color: #333333;"> commands2 = f.read().splitlines()</span><br /><span style="color: #333333;"> f.close</span><br /><br /><span style="color: #333333;"> device = devices.split(',')</span><br /><span style="color: #333333;"> re_table = textfsm.TextFSM(open("config_devices.textfsm"))</span><br /><br /><span style="color: #333333;"> for i in switch:</span><br /><span style="color: #333333;">   print "wykonywanie komend z pliku (%s) dla urządzenia %s" %(get_file,i)</span><br /><br /><span style="color: #333333;"> #sprawdzanie czy sa juz jakies ntp servery</span><br /><span style="color: #333333;"> #sprawdzenie odbywa sie przy pomocy komend z pliku get_file</span><br /><span style="color: #333333;"> check_out = check_cmd(i,username,password,commands2)</span><br /><span style="color: #333333;"> fsm_results = re_table.ParseText(check_out)</span><br /><br /><span style="color: #333333;"> commands3=[]</span><br /><span style="color: #333333;"> #sprawdzanie czy juz jest jakis ntp server, jesli jest to go usuwamy</span><br /><span style="color: #333333;"> for j in fsm_results:</span><br /><span style="color: #333333;">   commands3.append('no '+' '.join(j))</span><br /><span style="color: #333333;">   set_out = set_cmd(i,username,password,commands3)</span><br /><br /><span style="color: #333333;"> print "wykonywanie komend z pliku (%s) dla switcha %s" % (set_file,i)</span><br /><span style="color: #333333;"> #ustawienie nowych serwerow ntp, czyli komend z pliku set_file</span><br /><span style="color: #333333;"> set_out = set_cmd(i,username,password,commands)</span><br /><br /><span style="color: #333333;"> #koniec<br /> print "koniec"</span></pre><h5><span style="color: #333333;">Plik config_devices.textfsm</span></h5><pre><span style="color: #333333;">Value ntp (\S+)</span><br /><span style="color: #333333;">Value server (\S+)</span><br /><span style="color: #333333;">Value ip (.+)</span><br /><br /><span style="color: #333333;">Start</span><br /><span style="color: #333333;"> ^${ntp}\s+${server}\s+${ip} -&gt; Record</span></pre><h5><span style="color: #333333;">Pliki z komendami: </span></h5><p><span style="color: #333333;">commands.txt</span></p><pre><span style="color: #333333;">ntp server 10.0.10.1</span><br /><span style="color: #333333;">ntp server 10.0.10.2</span><br /><span style="color: #333333;">ntp server 10.0.10.3</span></pre><p><span style="color: #333333;">commands2.txt</span></p><pre><span style="color: #333333;">show run | in ntp server</span></pre><p><span style="color: #333333;">Skrypt uruchamiamy następującym poleceniem:</span></p><pre style="text-align: justify;"><span style="color: #333333;">config_devices.py 192.168.10.10,192.168.10.11,192.168.10.12,192.168.10.13,192.168.10.14,192.168.10.15,192.168.10.16,192.168.10.17,192.168.10.18,192.168.10.19,192.168.10.20,192.168.10.21,192.168.10.22,192.168.10.23,192.168.10.24,192.168.10.25,192.168.10.26,192.168.10.27,192.168.10.28,192.168.10.29 admin cisco123</span></pre><p style="text-align: justify;"><span style="color: #333333;">Oczywiście skrypt można napisać w inny sposób, nie korzystając z textfsm i plików z komendami, ale chciałem pokazać textfsm, bo uważam że jest to nieodzowna biblioteka przy pracy z urządzeniami Cisco i napewno będę publikował więcej skryptów z jej wykorzystaniem.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/skrypt-python-do-zmiany-serwerow-ntp-na-cisco/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Cisco CLI + TextFSM</title>
+		<link>https://kubsoo.github.io/rsnet-website/cisco-cli-textfsm/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/cisco-cli-textfsm/#respond</comments>
+		<pubDate>Tue, 26 Sep 2017 19:41:12 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[cli]]></category>
+		<category><![CDATA[netmiko]]></category>
+		<category><![CDATA[paramiko]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[ssh]]></category>
+		<category><![CDATA[textfsm]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=198</guid>
+		<description><![CDATA[W poprzednich wpisach pokazałem jak można wykorzystać Pythona i biblioteki Netmiko, Paramiko do wydawania komend w Cisco IOS. Tradycyjnie SSH jest używany do łączenia się z urządzeniem sieciowym, wydawania polecenia i&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">W poprzednich wpisach pokazałem jak można wykorzystać Pythona i biblioteki Netmiko, Paramiko do wydawania komend w Cisco IOS. Tradycyjnie SSH jest używany do łączenia się z urządzeniem sieciowym, wydawania polecenia i zrzutu wyników zwykłego tekstu z powrotem do użytkownika.</p>
+<p style="text-align: justify;">W celu automatyzacji niektórych czynności musimy często wyniki z komend sformatować w sposób umożliwiający wydobywanie tylko niektórych informacji. W tym celu możemy posłużyć się biblioteką Pythona <a href="https://github.com/google/textfsm" title="">textFSM</a>.</p>
+<p><span id="more-198"></span></p>
+<p style="text-align: justify;">Zobaczmy jak korzystając z textFSM przetwarzać wyniki komend CISCO IOS. Do pracy z textFSM przyda się podstawowa wiedza z wyrażeń regularnych, jednak nie jest ona niezbędna. Pokaże jak szybko nauczyć się podstawowych wyrażeń regularnych. Budując wyrażenia regularne będziemy posługiwać się stroną <a href="http://regex101.com/" title="">regex101.com.</a></p>
+<p>Przed przystąpieniem do pracy z textFSM musimy go zainstalować:</p>
+<pre>pip install textfsm
+Collecting textfsm
+ Downloading textfsm-0.3.2.tar.gz
+Installing collected packages: textfsm
+ Running setup.py install for textfsm ... done
+Successfully installed textfsm-0.3.2</pre>
+<p>a następnie w skrypcie Pythona musimy go zaimportować:</p>
+<pre>Python 2.7.14 (v2.7.14:84471935ed, Sep 16 2017, 20:25:58) [MSC v.1500 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import textfsm</pre>
+<p style="text-align: justify;">Załóżmy, że chcemy z routera Cisco wyciągnąć takie informacje jak:</p>
+<ul>
+<li style="text-align: justify;">hostname,</li>
+<li style="text-align: justify;">model,</li>
+<li style="text-align: justify;">uptime,</li>
+<li style="text-align: justify;">serial number,</li>
+<li style="text-align: justify;">ios,</li>
+<li>software version.</li>
+</ul>
+<p style="text-align: justify;">Skrzystajmy więc z biblioteki netmiko i podłączmy się przez ssh do routera R1 o adresie IP 192.168.174.200 korzystając z użytkownika admin o haśle cisco i wydajmy polecenie show version.</p>
+<pre>&gt;&gt;&gt; from netmiko import ConnectHandler
+&gt;&gt;&gt; cisco = {'device_type':'cisco_ios','ip':'192.168.174.200','username':'admin','password':'cisco'}
+&gt;&gt;&gt; net_connect = ConnectHandler(**cisco)
+&gt;&gt;&gt; output = net_connect.send_command('show version') 
+&gt;&gt;&gt; ssh_connection.disconnect()
+&gt;&gt;&gt; print output</pre>
+<p style="text-align: justify;">Wynik komendy show version najlepiej zapisać w notatniku,  bo przyda nam się do zbudowania wyrażeń regularnych:</p>
+<pre>Cisco IOS Software, 7200 Software (C7200-JK9S-M), Version 12.4(13b), RELEASE SOFTWARE (fc3)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2007 by Cisco Systems, Inc.
+Compiled Wed 25-Apr-07 03:18 by prod_rel_team
+
+ROM: ROMMON Emulation Microcode
+BOOTLDR: 7200 Software (C7200-JK9S-M), Version 12.4(13b), RELEASE SOFTWARE (fc3)
+
+R1 uptime is 1 minute
+System returned to ROM by unknown reload cause - suspect boot_data[BOOT_COUNT] 0x0, BOOT_COUNT 0, BOOTDATA 19
+System image file is "tftp://255.255.255.255/unknown"
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Cisco 7206VXR (NPE400) processor (revision A) with 491520K/32768K bytes of memory.
+Processor board ID 4279256517
+R7000 CPU at 150MHz, Implementation 39, Rev 2.1, 256KB L2 Cache
+6 slot VXR midplane, Version 2.1
+
+Last reset from power-on
+
+PCI bus mb0_mb1 (Slots 0, 1, 3 and 5) has a capacity of 600 bandwidth points.
+Current configuration on bus mb0_mb1 has a total of 600 bandwidth points.
+This configuration is within the PCI bus capacity and is supported.
+
+PCI bus mb2 (Slots 2, 4, 6) has a capacity of 600 bandwidth points.
+Current configuration on bus mb2 has a total of 0 bandwidth points
+This configuration is within the PCI bus capacity and is supported.
+
+Please refer to the following document "Cisco 7200 Series Port Adaptor
+Hardware Configuration Guidelines" on Cisco.com &lt;http://www.cisco.com&gt;/
+for c7200 bandwidth points oversubscription and usage guidelines.
+
+
+
+3 FastEthernet interfaces
+509K bytes of NVRAM.
+
+8192K bytes of Flash internal SIMM (Sector size 256K).
+Configuration register is 0x2102</pre>
+<p>Przykładowe użycie biblioteki wygląda następująco:</p>
+<pre>&gt;&gt;&gt; re_table = textfsm.TextFSM(open("template.textfsm"))
+&gt;&gt;&gt; fsm_results = re_table1.ParseText(output)</pre>
+<p style="text-align: justify;">gdzie output to surowy tekst wyniku naszej komendy show version, a template.textfsm to plik zawierający szablon z wyrażeniami regularnymi dla naszej komendy show version i informacji które chcemy z niej wyciągnąć.</p>
+<p>template.textfsm</p>
+<pre>Value hostname (\S+)
+Value model (\S+)
+Value uptime (.+)
+Value serial ([^ ,]+)
+Value ios (\S+)
+Value version ([^ ,]+)
+Start
+ ^.*Software.*Version\s+${version}
+ ^${hostname}\s+uptime\s+is\s+${uptime}
+ ^Cisco\s+${model}.+
+ ^System\s+image\s+file\s+is\s+.${ios}.
+ ^Processor\s+board\s+ID\s+${serial}</pre>
+<p>Sprawdźmy co zawiera zmienna fsm_results:</p>
+<pre>&gt;&gt;&gt; print fsm_results
+[[u'R1', u'7206VXR', u'4 weeks, 1 day, 8 hours, 19 minutes', u'4279256517', u'tftp://255.255.255.255/unknown', u'12.4(13b)']]</pre>
+<p style="text-align: justify;">Jest to tablica, z której w łatwy sposób możemy wyciągnać interesującą nas rzecz. Np. jeśli chcemy wyświetlić sam numer seryjny routera, wystarczy że wpiszemy:</p>
+<pre>&gt;&gt; fsm_results[0][3]
+u'4279256517'</pre>
+<p>&nbsp;</p>
+<p style="text-align: justify;">Pokażę teraz jak stworzyć zawartość pliku template.textfsm. Otwórzmy stronę <a href="http://regex101.com/" title="">regex101.com</a> i wklejmy w polu TEST STRING wynik komendy show version:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex1-1.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="alignnone wp-image-215 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex1-1.png" alt="" width="1227" height="747" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex1-1.png 1227w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex1-1-300x183.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex1-1-768x468.png 768w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex1-1-1024x623.png 1024w" sizes="(max-width: 1227px) 100vw, 1227px" /></a></p>
+<p style="text-align: justify;">Strona powyższa pozwoli nam przetestować regex, który wyciąga odpowiednią informację. Najważniejsze regexy które należy znać to:</p>
+<p>\s+    spacja występująca raz lub więcej razy</p>
+<p>\S+   dowolny znak bez spacji występujących raz lub więcej razy</p>
+<p>.+      dowolny znak występujący od 1 do nieskończoności razy</p>
+<p style="text-align: justify;">Jeśli nie znamy wyrażeń regularnych możemy skorzystać z pomocy na stronie regex101.com. Weźmy wyrażenie regularne którego nie znamy, np. [^ ,]+ i wklejmy w pole REGULAR EXPRESSION, otrzymamy taki wynik:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex3.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="wp-image-229 size-full aligncenter" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex3.png" alt="" width="1507" height="275" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex3.png 1507w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex3-300x55.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex3-768x140.png 768w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex3-1024x187.png 1024w" sizes="(max-width: 1507px) 100vw, 1507px" /></a></p>
+<p style="text-align: justify;">Po prawej stronie mamy wyjaśnienie (EXPLANATION) co robi dane wyrażenie regularne. W tym przypadku jest to dowolna znak, oprócz spacji i przecinka które występujący raz lub więcej razy.</p>
+<p>&nbsp;</p>
+<p>Wróćmy teraz do textFSM. Zawartość pliku template.textfsm wygląda następująco:</p>
+<pre>Value   wartosc1     regex
+Value   wartosc2     regex
+Start
+^regex    ${wartosc1}
+^regex    ${wartosc2}</pre>
+<p style="text-align: justify;">Domyślnie textFSM działa następująco.  Parser textFSM tworzy tablice wartości [wartosc1,wartosc2,..] na podstawie szablonu template.textfsm. Najpierw sprawdzana jest pierwsza linijka tekstu &#8211; w moim przypadku jest to tekst ze zmiennej output (re_table1.ParseText(output)) i sprawdzane są wyrażenia regularne po kolei (Start ^regex -&gt; ^regex &#8230;). Jeśli któreś wyrażenie regularne dla danej wartości pasuje, to zapisywana jest wartość wyrażenia regularnego do buforu. Następnie sprawdzana jest druga linijka i również dla drugiej linijki sprawdzane są wyrażenia regularne po kolei tak jak dla pierwszej linijki, jak któreś z nich pasuje, to zapisywana jest wartość tego wyrażenia do buforu. Na końcu bufor zawiera wartości dla pól Value, które są w takiej kolejności jak zadeklarowane wartości w pliku template.textfsm.</p>
+<p style="text-align: justify;">Najlepiej pokazać tworzenie zawartości pliku textfsm na przykladzie. Weźmy teraz dla przykładu ios. Do wyciągnięcia informacji o pliku z systemem IOS musimy stworzyć regex o postaci:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex2.png" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-219 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex2.png" alt="" width="1215" height="604" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex2.png 1215w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex2-300x149.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex2-768x382.png 768w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/regex2-1024x509.png 1024w" sizes="(max-width: 1215px) 100vw, 1215px" /></a></p>
+<p style="text-align: justify;">Jak widać z powyższego zrzutu ekranu, dokładnie taki regex wyciągnie nam informacje o IOS.</p>
+<pre>Value ios (\S+) 
+
+^System\s+image\s+file\s+is\s+.${ios}.</pre>
+<p style="text-align: justify;">Więcej gotowych szablonów dla różnych komend dla różnych urządzeń znajduje się pod poniższym <a href="https://github.com/networktocode/ntc-templates/tree/master/templates">linkiem</a>.</p>
+<p style="text-align: justify;">Polecam naukę wyrażeń regularnych, bo przydają się one bardzo często, chociażby do takich czynności jak praca z textfsm, które jest bardzo pomocnym narzędziem do automatyzacji pracy z urządzeniami sieciowymi.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/cisco-cli-textfsm/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>CISCO + Python + Netmiko</title>
+		<link>https://kubsoo.github.io/rsnet-website/cisco-python-netmiko/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/cisco-python-netmiko/#respond</comments>
+		<pubDate>Wed, 20 Sep 2017 23:48:17 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[netmiko]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[ssh]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=166</guid>
+		<description><![CDATA[Python i biblioteka Netmiko mogą stanowić fantastyczne uzupełnienie codziennej pracy z urządzeniami CISCO. W poniższym wpisie pokaże jak wykonać dowolną komendę na urządzeniu z CISCO IOS przy pomocy skryptu Python.&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">Python i biblioteka <a href="https://github.com/ktbyers/netmiko">Netmiko</a> mogą stanowić fantastyczne uzupełnienie codziennej pracy z urządzeniami CISCO. W poniższym wpisie pokaże jak wykonać dowolną komendę na urządzeniu z CISCO IOS przy pomocy skryptu Python.</p>
+<p style="text-align: justify;">Biblioteka netmiko wspiera oprócz urządzeń Cisco również masę innych produktów takich jak:</p>
+<p>Regularly tested</p>
+<p>Arista vEOS<br />
+Cisco ASA<br />
+Cisco IOS<br />
+Cisco IOS-XE<br />
+Cisco IOS-XR<br />
+Cisco NX-OS<br />
+Cisco SG300<br />
+HP Comware7<br />
+HP ProCurve<br />
+Juniper Junos<br />
+Linux</p>
+<p><span id="more-166"></span>Limited testing</p>
+<p>Alcatel AOS6/AOS8<br />
+Avaya ERS<br />
+Avaya VSP<br />
+Brocade VDX<br />
+Brocade ICX/FastIron<br />
+Brocade MLX/NetIron<br />
+Cisco WLC<br />
+Dell-Force10 DNOS9<br />
+Dell PowerConnect<br />
+Huawei<br />
+Mellanox<br />
+Palo Alto PAN-OS<br />
+Pluribus<br />
+Ubiquiti EdgeOS<br />
+Vyatta VyOS</p>
+<p>Experimental</p>
+<p>A10<br />
+Accedian<br />
+Alcatel-Lucent SR-OS<br />
+Aruba<br />
+Ciena SAOS<br />
+Cisco Telepresence<br />
+CheckPoint Gaia<br />
+Enterasys<br />
+Extreme EXOS<br />
+Extreme Wing<br />
+F5 LTM<br />
+Fortinet<br />
+MRV Communications OptiSwitch</p>
+<p>W celu zainstalowania biblioteki netmiko wykonujemy następującą komendę:</p>
+<pre>pip install netmiko
+</pre>
+<pre>Collecting netmiko
+ Downloading netmiko-1.4.3.tar.gz (47kB)
+ 100% |################################| 51kB 287kB/s
+Collecting paramiko&gt;=1.13.0 (from netmiko)
+ Downloading paramiko-2.3.1-py2.py3-none-any.whl (182kB)
+ 100% |################################| 184kB 975kB/s
+Collecting scp&gt;=0.10.0 (from netmiko)
+ Downloading scp-0.10.2-py2.py3-none-any.whl
+Collecting pyyaml (from netmiko)
+ Downloading PyYAML-3.12-cp27-cp27m-win_amd64.whl (197kB)
+ 100% |################################| 204kB 1.2MB/s
+Collecting pynacl&gt;=1.0.1 (from paramiko&gt;=1.13.0-&gt;netmiko)
+ Downloading PyNaCl-1.1.2-cp27-cp27m-win_amd64.whl (130kB)
+ 100% |################################| 133kB 1.2MB/s
+Collecting cryptography&gt;=1.5 (from paramiko&gt;=1.13.0-&gt;netmiko)
+ Downloading cryptography-2.1.2-cp27-cp27m-win_amd64.whl (1.3MB)
+ 100% |################################| 1.3MB 660kB/s
+Collecting bcrypt&gt;=3.1.3 (from paramiko&gt;=1.13.0-&gt;netmiko)
+ Downloading bcrypt-3.1.4-cp27-cp27m-win_amd64.whl
+Collecting pyasn1&gt;=0.1.7 (from paramiko&gt;=1.13.0-&gt;netmiko)
+ Downloading pyasn1-0.3.7-py2.py3-none-any.whl (63kB)
+ 100% |################################| 71kB 2.5MB/s
+Collecting six (from pynacl&gt;=1.0.1-&gt;paramiko&gt;=1.13.0-&gt;netmiko)
+ Downloading six-1.11.0-py2.py3-none-any.whl
+Collecting cffi&gt;=1.4.1 (from pynacl&gt;=1.0.1-&gt;paramiko&gt;=1.13.0-&gt;netmiko)
+ Downloading cffi-1.11.2-cp27-cp27m-win_amd64.whl (163kB)
+ 100% |################################| 163kB 2.4MB/s
+Collecting idna&gt;=2.1 (from cryptography&gt;=1.5-&gt;paramiko&gt;=1.13.0-&gt;netmiko)
+ Downloading idna-2.6-py2.py3-none-any.whl (56kB)
+ 100% |################################| 61kB 4.4MB/s
+Collecting enum34; python_version &lt; "3" (from cryptography&gt;=1.5-&gt;paramiko&gt;=1.13.0-&gt;netmiko)
+ Downloading enum34-1.1.6-py2-none-any.whl
+Collecting asn1crypto&gt;=0.21.0 (from cryptography&gt;=1.5-&gt;paramiko&gt;=1.13.0-&gt;netmiko)
+ Downloading asn1crypto-0.23.0-py2.py3-none-any.whl (99kB)
+ 100% |################################| 102kB 2.4MB/s
+Collecting ipaddress; python_version &lt; "3" (from cryptography&gt;=1.5-&gt;paramiko&gt;=1.13.0-&gt;netmiko)
+ Downloading ipaddress-1.0.18-py2-none-any.whl
+Collecting pycparser (from cffi&gt;=1.4.1-&gt;pynacl&gt;=1.0.1-&gt;paramiko&gt;=1.13.0-&gt;netmiko)
+ Downloading pycparser-2.18.tar.gz (245kB)
+ 100% |################################| 256kB 2.6MB/s
+Installing collected packages: six, pycparser, cffi, pynacl, idna, enum34, asn1crypto, ipaddress, cryptography, bcrypt, pyasn1, paramiko, scp, pyyaml, netmiko
+ Running setup.py install for pycparser ... done
+ Running setup.py install for netmiko ... done
+Successfully installed asn1crypto-0.23.0 bcrypt-3.1.4 cffi-1.11.2 cryptography-2.1.2 enum34-1.1.6 idna-2.6 ipaddress-1.0.18 netmiko-1.4.3 paramiko-2.3.1 pyasn1-0.3.7 pycparser-2.18 pynacl-1.1.2 pyyaml-3.12 scp-0.10.2 six-1.11.0</pre>
+<p><strong>PIERWSZY SKRYPT</strong></p>
+<p dir="ltr" style="text-align: justify;" data-placeholder="Tłumaczenie">Najpierw musimy zaimportować funkcję ConnectHandler z biblioteki netmiko. <span lang="pl">Następnie definiujemy słownik urządzeń sieciowych składający się z typu urządzenia, adresu IP, nazwy użytkownika i hasła, który reprezentuje urządzenie do którego chcemy nawiązać połączenie ssh. (netmiko umożliwia również połączenia telnet, należy w tym celu zmienić device_type z cisco_ios na cisco_ios_telnet). </span></p>
+<p dir="ltr" style="text-align: justify;" data-placeholder="Tłumaczenie">W moim przypadku chcę się podłączyć przez ssh do routera R1 o adresie IP 192.168.174.200 korzystając z użytkownika admin o haśle cisco.</p>
+<pre>Python 2.7.14 (v2.7.14:84471935ed, Sep 16 2017, 20:25:58) [MSC v.1500 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; from netmiko import ConnectHandler
+&gt;&gt;&gt; cisco = {'device_type':'cisco_ios','ip':'192.168.174.200','username':'admin','password':'cisco'}
+&gt;&gt;&gt; net_connect = ConnectHandler(**cisco)</pre>
+<p style="text-align: justify;">Po wydaniu ostatniej komendy net_connect = ConnectHandler(**cisco) następuję połączenie ssh do routera, można to zweryfikować logując się na urządzenie i wydając komendę: show users</p>
+<pre>R1#show users
+ Line User Host(s) Idle Location
+* 0 con 0 idle 00:00:00
+ 2 vty 0 admin idle 00:09:25 192.168.174.1
+
+Interface User Mode Idle Peer Address</pre>
+<p>Teraz możemy wykonać dowolną komendę i wypisać ją na ekranie:</p>
+<pre>&gt;&gt;&gt; output = net_connect.send_command('show ip int brief')
+&gt;&gt;&gt; print output
+Interface IP-Address OK? Method Status Protocol
+FastEthernet0/0 192.168.174.200 YES manual up up
+FastEthernet1/0 10.0.10.1 YES NVRAM up up
+FastEthernet1/1 unassigned YES NVRAM administratively down down</pre>
+<p>&nbsp;</p>
+<pre>&gt;&gt;&gt; output = net_connect.send_command('show run')
+&gt;&gt;&gt; print output
+ Building configuration...
+
+Current configuration : 1175 bytes
+ !
+ ! Last configuration change at 17:59:31 UTC Wed Oct 25 2017
+ !
+ version 15.2
+ service timestamps debug datetime msec
+ service timestamps log datetime msec
+ !
+ hostname R1
+ !
+ boot-start-marker
+ boot-end-marker
+ !
+ !
+ !
+ no aaa new-model
+ no ip icmp rate-limit unreachable
+ ip cef
+ !
+ !
+ !
+ no ip domain lookup
+ ip domain name cisco
+ no ipv6 cef
+ !
+ !
+ multilink bundle-name authenticated
+ !
+ !
+ !
+ username admin privilege 15 secret 5 $1$EVqH$s80zvoLdjFQM88a6ifTpA/
+ !
+ !
+ ip tcp synwait-time 5
+ !
+ !
+ !
+ interface FastEthernet0/0
+ ip address 192.168.174.200 255.255.255.0
+ duplex full
+ !
+ interface FastEthernet1/0
+ ip address 10.0.10.1 255.255.255.0
+ speed auto
+ duplex auto
+ !
+ interface FastEthernet1/1
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+ !
+ ip forward-protocol nd
+ !
+ !
+ ip http server
+ no ip http secure-server
+ ip route 0.0.0.0 0.0.0.0 192.168.174.1
+ !
+ !
+ !
+ control-plane
+ !
+ !
+ line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+ line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+ line vty 0 4
+ login local
+ transport input ssh
+ !
+ !
+ end</pre>
+<p>Kilka przydatnych metod dostępnych w netmiko:</p>
+<ul>
+<li>net_connect.config_mode() &#8212; Enter into config mode</li>
+<li>net_connect.check_config_mode() &#8212; Check if you are in config mode, return a boolean</li>
+<li>net_connect.exit_config_mode() &#8212; Exit config mode</li>
+<li>net_connect.clear_buffer() &#8212; Clear the output buffer on the remote device</li>
+<li>net_connect.enable() &#8212; Enter enable mode</li>
+<li>net_connect.exit_enable_mode() &#8212; Exit enable mode</li>
+<li>net_connect.find_prompt() &#8212; Return the current router prompt</li>
+<li>net_connect.commit(arguments) &#8212; Execute a commit action on Juniper and IOS-XR</li>
+<li>net_connect.disconnect() &#8212; Close the SSH connection</li>
+<li>net_connect.send_command(arguments) &#8212; Send command down the SSH channel, return output back</li>
+<li>net_connect.send_config_set(arguments) &#8212; Send a set of configuration commands to remote device</li>
+<li>net_connect.send_config_from_file(arguments) &#8212; Send a set of configuration commands loaded from a file</li>
+</ul>
+<p>&nbsp;</p>
+<p style="text-align: justify;">W dalszych wpisach pokażę więcej możliwości i przykładowe skrypty z wykorzystaniem biblioteki netmiko.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/cisco-python-netmiko/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

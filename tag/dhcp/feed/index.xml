@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>dhcp &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/dhcp/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>DHCP Linux + TextFSM</title>
+		<link>https://kubsoo.github.io/rsnet-website/dhcp-linux-textfsm/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/dhcp-linux-textfsm/#respond</comments>
+		<pubDate>Thu, 05 Oct 2017 20:39:17 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[dhcp]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[textfsm]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=354</guid>
+		<description><![CDATA[We wpisie Cisco CLI + TextFSM pokazałem jak można wykorzystać bibliotekę textfsm do obrabiania wyników komend na urządzeniach z Cisco IOS. W tym wpisie pokażę jak uniwersalna jest ta biblioteka&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">We wpisie <a href="https://kubsoo.github.io/rsnet-website/cisco-cli-textfsm/" title="">Cisco CLI + TextFSM</a> pokazałem jak można wykorzystać bibliotekę textfsm do obrabiania wyników komend na urządzeniach z Cisco IOS. W tym wpisie pokażę jak uniwersalna jest ta biblioteka na przykładzie serwera DHCP postawionego na systemie Linux i wyciągania danych z pliku konfiguracyjnego.</p>
+<p style="text-align: justify;">Plik konfiguracyjny serwera <a href="https://www.isc.org/downloads/dhcp/" title="">ISC-DHCP</a> znajduje się domyślnie w /etc/dhcpd.conf i ma postać:</p>
+<pre>ddns-update-style none;
+log-facility local7;
+
+subnet 10.99.10.0 netmask 255.255.255.0 {
+        option routers                  10.99.10.1;
+        option subnet-mask              255.255.255.0;
+        option broadcast-address        10.99.10.255;
+        option domain-name-servers      10.99.10.100;
+        option ntp-servers              10.99.10.1;
+        option netbios-name-servers     10.99.10.1;
+        option netbios-node-type 2;
+        default-lease-time 86400;
+        max-lease-time 86400;
+
+        host KOMPUTER_01 {hardware ethernet 28:d2:44:fa:2c:49;  fixed-address 10.99.10.11;}   #Komputer 01
+        host KOMPUTER_02 {hardware ethernet 00:CC:D1:38:AC:45;  fixed-address 10.99.10.12;} #Komputer 02
+        host KOMPUTER_03 {hardware ethernet 01:AC:D2:33:AA:41;  fixed-address 10.99.10.13;} #Komputer 03
+        host KOMPUTER_04 {hardware ethernet 44:1E:A1:2F:62:A0;  fixed-address 10.99.10.14;} #Komputer 04
+        host KOMPUTER_05 {hardware ethernet EC:F4:BB:47:0B:0D;  fixed-address 10.99.10.15;} #Komputer 05
+        host KOMPUTER_06 {hardware ethernet f0:de:f1:61:c3:91;  fixed-address 10.99.10.16;} #Komputer 06
+        host KOMPUTER_02 {hardware ethernet 50:7B:9D:04:CD:0D;  fixed-address 10.99.10.17;} #Komputer 07
+        host KOMPUTER_02 {hardware ethernet C8:5B:76:5B:22:05;  fixed-address 10.99.10.18;} #Komputer 08
+        #host KOMPUTER_02 {hardware ethernet 00:CC:D1:38:AC:45;  fixed-address 10.99.10.19;} #Komputer 09
+}
+
+subnet  10.152.187.0 netmask 255.255.255.0 {
+        option routers                  10.152.187.1;
+        option subnet-mask              255.255.255.0;
+        option broadcast-address        10.152.187.255;
+        option domain-name-servers      194.168.4.100;
+        option ntp-servers              10.152.187.1;
+        option netbios-name-servers     10.152.187.1;
+        option netbios-node-type 2;
+        default-lease-time 86400;
+        max-lease-time 86400;
+
+        host KOMPUTER_11 {hardware ethernet 00:22:AA:66:55:9B;    fixed-address 10.152.187.2;}     #Komputer 11
+}</pre>
+<p>Załóżmy że z tego pliku chcemy wyciągnąć takie informacje jak:</p>
+<p>nazwa hosta, adres MAC, adres IP oraz komentarz.</p>
+<p style="text-align: justify;">Możemy do tego celu użyć dostępnych w linuxie narzędzi do pracy z tekstem (grep, awk, cut), natomiast dużo łatwiej i szybciej możemy napisać skrypt w Pythonie wykorzystujący bibliotekę textFSM.</p>
+<p>Skrypt realizujący to zdanie dhcp.py wygląda następująco:</p>
+<pre>#!/usr/bin/python
+import textfsm
+
+file = open("/etc/dhcpd.conf","r")    
+text = file.read()
+file.close()
+re_table = textfsm.TextFSM(open("dhcp.textfsm"))
+fsm_results = re_table.ParseText(text)
+
+for i in fsm_results:
+   i[1] = i[1].lower()
+   print i[0]+','+i[1]+','+i[2]+','+i[3]</pre>
+<p style="text-align: justify;">Plik dhcp.textfsm zawierający szablon z wyrażeniami regularnymi ma postać:</p>
+<pre>Value hostname (\S+)
+Value mac ([^ ;]+)
+Value ip ([^ ;]+)
+Value description (.+)
+
+Start
+  ^\s*host\s+${hostname}\s+{hardware\s+ethernet\s+${mac}\S+\s+fixed-address\s+${ip}+\S+\s+#${description} -&gt; Record</pre>
+<p>Wynik działania powyższego skryptu to:</p>
+<pre>root@vm01:~# ./dhcp.py
+
+KOMPUTER_01,28:d2:44:fa:2c:49,10.99.10.11,Komputer 01
+
+KOMPUTER_02,00:cc:d1:38:ac:45,10.99.10.12,Komputer 02
+
+KOMPUTER_03,01:ac:d2:33:aa:41,10.99.10.13,Komputer 03
+
+KOMPUTER_04,44:1e:a1:2f:62:a0,10.99.10.14,Komputer 04
+
+KOMPUTER_05,ec:f4:bb:47:0b:0d,10.99.10.15,Komputer 05
+
+KOMPUTER_06,f0:de:f1:61:c3:91,10.99.10.16,Komputer 06
+
+KOMPUTER_02,50:7b:9d:04:cd:0d,10.99.10.17,Komputer 07
+
+KOMPUTER_02,c8:5b:76:5b:22:05,10.99.10.18,Komputer 08
+
+KOMPUTER_11,00:22:aa:66:55:9b,10.152.187.2,Komputer 11</pre>
+<p style="text-align: justify;">Otrzymaliśmy więc to co chcieliśmy, czyli nazwę hosta, adres MAC, adres IP, oraz komentarz. W celach kosmetycznych skrypt wypisuje wyniki na ekranie oddzielone przecinkami, czyli możemy sobie takie wyniki zaimportować np. do Excela.</p>
+<h4></h4>
+<p>&nbsp;</p>
+<h4>OMÓWIENIE SKRYPTU dhcp.py</h4>
+<p>Przejdźmy teraz do omówienia skryptu linijka po linijce.</p>
+<p><strong><em>#!/usr/bin/python </em></strong>&#8212;&gt; powoduje uruchomienie pliku jako program w Pythonie</p>
+<p><em><strong>import textfsm</strong> </em>&#8212;&gt;<em> </em>import biblioteki textfsm</p>
+<p style="text-align: justify;"><em><strong>file=open(&#8222;/etc/dhcpd.conf&#8221;,&#8221;r&#8221;) </strong></em>&#8212;&gt; do otwarcia pliku wykorzystamy wbudowaną funkcję open, plik otwieramy do odczytu “r”</p>
+<p style="text-align: justify;"><em><strong>text=file.read() </strong></em>&#8212;&gt; funkcja read() odczytuje zawartość pliku i przypisuje całą zawartość do zmiennej text</p>
+<p><em><strong>file.close()</strong></em> &#8212;&gt; funkcja zamykająca plik</p>
+<p style="text-align: justify;"><em><strong>re_table=textfsm.TextFSM(open(&#8222;dhcp.textfsm&#8221;)) </strong></em>&#8212;&gt;<em><strong> </strong></em>otwarcie pliku szablonu dhcp.textfsm przez textfsm</p>
+<p style="text-align: justify;"><em><strong>fsm_results=re_table.ParseText(text) </strong></em>&#8212;&gt; wykonanie parsowania tekstu ze zmiennej text i przypisanie wyniku do listy fsm_results</p>
+<p style="text-align: justify;"><em><strong>for i in fsm_results: </strong></em>&#8211;&gt; petla for, która przetwarza każdy element z listy fsm_results, przetwarzany element jest również listą</p>
+<p style="text-align: justify; padding-left: 30px;"><em><strong>i[1] = i[1].lower() </strong></em>&#8212;&gt; dla elementu na drugiej pozycji przetwarzanej listy (w tym przypadku jest to adres MAC, który może być zarówno małymi jak i dużymi literami pisany) wykonaj funkcję lower(), czyli zamień duże na małe litery</p>
+<p style="text-align: justify; padding-left: 30px;"><em><strong>print i[0]+’,&#8217;+i[1]+’,&#8217;+i[2]+’,&#8217;+i[3] </strong></em>&#8212;&gt; wypisanie na ekranie 4 elementów listy (hostname, adres mac, adres IP, komentarz) przedzielonych przecinkami</p>
+<p>&nbsp;</p>
+<h4>OMÓWIENIE SZABLONU dhcp.textfsm</h4>
+<p style="text-align: justify;">W przypadku braku znajomości wyrażeń regularnych tworzenie szablonu dhcp.textfsm najlepiej wykonywać z wykorzystaniem strony <a href="http://regex101.com/" title="">regex101.com</a>. Poniżej screen z tej strony z wyrażeniem regularnych użytym w skrypcie dhcp.py:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/regex1-1.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-387 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/regex1-1.png" alt="" width="983" height="494" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/regex1-1.png 983w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/regex1-1-300x151.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/regex1-1-768x386.png 768w" sizes="(max-width: 983px) 100vw, 983px" /></a></p>
+<p style="text-align: justify;">Z powyższego screena widać, że wszystkie interesujące nas informacje zostały dopasowane prawidłowo</p>
+<ul>
+<li>Group1 &#8211; kolor zielony &#8211; hostname</li>
+<li>Group2 &#8211; kolor czerwony &#8211; adres MAC</li>
+<li>Group3 &#8211; kolor pomarańczowy  &#8211; adres IP</li>
+<li>Group4 &#8211; kolor fioletowy &#8211; komentarz</li>
+</ul>
+<p>Jeśli weźmiemy plik dhcp.textfsm:</p>
+<pre>Value hostname (\S+) 
+Value mac ([^ ;]+) 
+Value ip ([^ ;]+) 
+Value description (.+) 
+
+Start
+   ^\s*host\s+${hostname}\s+{hardware\s+ethernet\s+${mac}\S+\s+fixed-address\s+${ip}+\S+\s+#${description} -&gt; Record</pre>
+<p style="text-align: justify;">i podstawimy do wyrażenia regularnego występującego po słowie Start wyrażenia regularne dla odpowiednich wartości, to otrzymamy dokładnie to wyrażenie które zostało użyte w polu REGULAR EXPRESSION na stronie regex101.com:</p>
+<pre>^\s*host\s+(\S+)\s+{hardware\s+ethernet\s+([^ ;]+)\S+\s+fixed-address\s+([^ ;]+)+\S+\s+#(.+) -&gt; Record</pre>
+<p style="text-align: justify;">W powyższym wyrażeniu regularnym korzystamy właściwie tylko z kombinacji znaków które występują w każdej linijce (typu: hardware, ethernet, host, fixed-address) oraz z następujących wzorców:</p>
+<p>\s+    spacja występująca raz lub więcej razy</p>
+<p>\S+   dowolny znak bez spacji występujących raz lub więcej razy</p>
+<p>.+      dowolny znak występujący raz lub więcej razy</p>
+<p style="text-align: justify;">[^ ;]+    dowolna kombinacja znaków nie zawierająca spacji oraz średnika występując raz lub więcej razy</p>
+<p style="text-align: justify;">W pliku dhcp.textfsm po wyrażeniu regularnym w sekcji Start występuje coś takiego: &#8222;-&gt; Record&#8221;. Oznacza to tyle, że po znalezieniu dopasowania wyniki są zapisywane do tablicy i następuje analiza kolejnej linii. Dzięki temu możemy otrzymać wiele wyników, a nie tak jak we wpisie o <a href="https://kubsoo.github.io/rsnet-website/cisco-cli-textfsm/">Cisco CLI i textFSM</a> tylko jeden.</p>
+<p style="text-align: justify;">Strona regex101.com jest bardzo pomocna w debugowaniu przyczyn błędnego wyciągania informacji przez textfsm. Jeśli nasze wyrażenie regularne po wklejeniu go na stronę oraz tekstu, na którym będzie wykonywanie to wyrażenie nie będzie dopasowywało tak jak tego oczekujemy, to tym bardziej nasz skrypt również tego nie dopasuje.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/dhcp-linux-textfsm/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

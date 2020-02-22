@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>dr &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/dr/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>OSPF podstawy</title>
+		<link>https://kubsoo.github.io/rsnet-website/ospf-podstawy/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/ospf-podstawy/#respond</comments>
+		<pubDate>Tue, 21 Feb 2017 20:43:32 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[bdr]]></category>
+		<category><![CDATA[dr]]></category>
+		<category><![CDATA[ospf]]></category>
+		<category><![CDATA[podstawy]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=671</guid>
+		<description><![CDATA[OSPF podstawowe informacje OSPF (Open Shortest Path First) &#8211; wolnym tłumaczeniu &#8222;pierwszeństwo ma najkrótsza ścieżka&#8221; jest protokołem routingu typu IGP (Interior Gateway Protocol). OSPF został przedstawiony w 1998 jako protokół&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-671">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="0041a22" class="elementor-element elementor-element-0041a22 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="84d3a84" class="elementor-element elementor-element-84d3a84 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="0b782b0" class="elementor-element elementor-element-0b782b0 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">OSPF podstawowe informacje</span></h5><p style="text-align: justify;"><span style="color: #333333;">OSPF (Open Shortest Path First) &#8211; wolnym tłumaczeniu &#8222;pierwszeństwo ma najkrótsza ścieżka&#8221; jest protokołem routingu typu IGP (Interior Gateway Protocol). OSPF został przedstawiony w 1998 jako protokół otwarty i takim jest do dnia dzisiejszego. Dla IPv4 korzystamy obecnie z OSPFv2, natomiast dla IPv6 z OSPFv3. OSPF jest dobrze skalowalny w większych sieciach, ponieważ umożliwia budowę struktury hierarchicznej opartej o obszary.  OSPF jest protokołem typu link-state w ramach jednego obszaru, natomiast pomiędzy obszarami zachowuje się jak protokół typu distance-vector. OSPF wspiera <a href="http://www.tech-faq.com/vlsm.html">VLSM</a> (Variable Length Subnet Mask). Dystans administracyjny protokołu OSPF wynosi 110. W obrębie jednego obszaru wszystkie routery wymieniają się między sobą informacją o stanie łączy i każdy z nich przelicza trasy  samodzielnie. OSPF korzysta z kosztu do wyznaczenia najlepszej trasy. Domyślnie koszt wynosi 10^8 / bandwidth w bits/s (dla 100Mbit łącza koszt wynosi 1). Poniżej znajduje się tabelka z domyślnymi kosztami dla poszczególnych pasm: </span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="a745315" class="elementor-element elementor-element-a745315 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="6aa1961" class="elementor-element elementor-element-6aa1961 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c8fe181" class="elementor-element elementor-element-c8fe181 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #333333;">
+<table id="tablepress-1" class="tablepress tablepress-id-1">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Bandwidth</th><th class="column-2">Koszt OSPF</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">100Gbps</td><td class="column-2">1</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">40Gbps</td><td class="column-2">1</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">10Gbps</td><td class="column-2">1</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">1Gbps</td><td class="column-2">1</td>
+</tr>
+<tr class="row-6 even">
+	<td class="column-1">100Mbps</td><td class="column-2">1</td>
+</tr>
+<tr class="row-7 odd">
+	<td class="column-1">10Mbps</td><td class="column-2">10</td>
+</tr>
+<tr class="row-8 even">
+	<td class="column-1">1.544Mbps</td><td class="column-2">64</td>
+</tr>
+<tr class="row-9 odd">
+	<td class="column-1">768Kbps</td><td class="column-2">133</td>
+</tr>
+<tr class="row-10 even">
+	<td class="column-1">128Kbps</td><td class="column-2">781</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-1 from cache --></span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="f97c216" class="elementor-element elementor-element-f97c216 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c1dbb9a" class="elementor-element elementor-element-c1dbb9a elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="84d8c16" class="elementor-element elementor-element-84d8c16 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><div class="elementor-background-overlay"><span style="color: #333333;"> </span></div><div class="elementor-widget-wrap ui-sortable"><div id="" class="elementor-element elementor-element-edit-mode elementor-element-c0d3a35 elementor-widget ui-sortable-handle elementor-widget-text-editor elementor-widget-can-edit" data-id="c0d3a35" data-element_type="text-editor.default" data-model-cid="c47"><div class="elementor-element-overlay"><span style="color: #333333;"> </span></div><div class="elementor-widget-container"><div class="elementor-text-editor elementor-clearfix elementor-inline-editing" data-elementor-setting-key="editor" data-elementor-inline-editing-toolbar="advanced"><p><span style="color: #333333;">W skrócie</span></p><ul><li><span style="color: #333333;">protokół routingu typu stan-łącza (link-state)</span></li><li><span style="color: #333333;">protokół otwarty (IETF)</span></li><li><span style="color: #333333;">korzysta z algorytmu <a style="color: #333333;" href="https://pl.wikipedia.org/wiki/Algorytm_Dijkstry">Djikstry</a> </span></li><li><span style="color: #333333;">bezklasowy</span></li><li><span style="color: #333333;">wspiera VLSM (variable length subnet mask)</span></li><li><span style="color: #333333;">Aktualizacje są wysyłane na adresy multicast (224.0.0.5 i 224.0.0.6)</span></li><li><span style="color: #333333;">metryka = koszt (koszt = 10^8/pasmo w bitach na sekundę)</span></li><li><span style="color: #333333;">Dystans administracyjny = 110</span></li><li><span style="color: #333333;">Umożliwia równoważenie obciążenia przez 4 ścieżki z takimi samymi kosztami</span></li></ul></div></div></div></div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="16f01f9" class="elementor-element elementor-element-16f01f9 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="2f055a2" class="elementor-element elementor-element-2f055a2 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="0e16e49" class="elementor-element elementor-element-0e16e49 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">Nagłówek pakietu OSPF</span></h5><pre><span style="color: #333333;">        0                   1                   2                   3
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |   Version #   |     Type      |         Packet length         |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |                          Router ID                            |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |                           Area ID                             |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |           Checksum            |             AuType            |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |                       Authentication                          |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |                       Authentication                          |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="7dda601" class="elementor-element elementor-element-7dda601 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e6e45e3" class="elementor-element elementor-element-e6e45e3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="ff5023d" class="elementor-element elementor-element-ff5023d elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #333333;">Każdy pakiet OSPF zaczyna się standardowym 24 bajtowym nagłówkiem w skład którego wchodzą następujące pola:</span></p><p><span style="color: #333333;"><strong>Version</strong> (8 bitów) &#8211; numer wersji OSPF. Są 3 wersje OSPFv1, OSPFv2 (IPv4) i OSPFv3 (IPv6)</span></p><p><span style="color: #333333;"><strong>Type</strong> (8 bitów) &#8211; typ pakietu:</span></p><p style="padding-left: 30px;"><span style="color: #333333;">1- Hello packet</span><br /><span style="color: #333333;">2- Database Descriptor packet</span><br /><span style="color: #333333;">3- Link State Request packet</span><br /><span style="color: #333333;">4- Link State Update packet</span><br /><span style="color: #333333;">5- Link State Acknowledgment packet</span></p><p><span style="color: #333333;"><strong>Packet length</strong> (16 bitów) &#8211; długość pakietu OSPF</span></p><p><span style="color: #333333;"><strong>Router ID</strong> (32 bity) &#8211; identyfikator routera</span></p><p><span style="color: #333333;"><strong>Area ID</strong> (32 bity) &#8211; numer obszaru OSPF</span></p><p><span style="color: #333333;"><strong>Checksum</strong> (16 bitów) &#8211; suma kontrolna pakietu OSPF, bez pola Authentication</span></p><p><span style="color: #333333;"><strong>AuType</strong> (16 bitów) &#8211; typ uwierzytelniania</span></p><p style="padding-left: 30px;"><span style="color: #333333;">0- brak hasła</span><br /><span style="color: #333333;">1- hasło w otwartym tekście</span><br /><span style="color: #333333;">2- uwierzytelnianie MD5</span></p><p style="text-align: justify;"><span style="color: #333333;"><strong>Authentication</strong> (64 bity) &#8211; dane uwierzytelniające do weryfikacji integralności pakietu</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="7afcba1" class="elementor-element elementor-element-7afcba1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="81bc5f3" class="elementor-element elementor-element-81bc5f3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="9ec86d8" class="elementor-element elementor-element-9ec86d8 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">Typy pakietów OSPF</span></h5><ol><li><span style="color: #333333;"><strong>Hello</strong> &#8211; pakiety hello służą do utrzymywania i zestawiania relacji sąsiedztwa między routerami OSPF</span></li><li style="text-align: justify;"><span style="color: #333333;"><strong>Database Description</strong> &#8211; pakiet zawierający bazę danych z trasami</span></li><li style="text-align: justify;"><span style="color: #333333;"><strong>Link State Request</strong> &#8211; żądanie aktualnej informacji o stanie łączy od sąsiada</span></li><li style="text-align: justify;"><span style="color: #333333;"><strong>Link State Update</strong> &#8211; aktualizacja informacji o stanie łączy danego routera</span></li><li><span style="color: #333333;"><strong>Link State ACK</strong> &#8211; potwierdzenie otrzymania pakietu OSPF</span></li></ol></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="56fb147" class="elementor-element elementor-element-56fb147 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="92a5128" class="elementor-element elementor-element-92a5128 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="b6b4c02" class="elementor-element elementor-element-b6b4c02 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;"><strong>Stany procesu OSPF</strong></span></h5><div><ol><li><span style="color: #333333;">Down</span></li><li><span style="color: #333333;">Init</span></li><li><span style="color: #333333;">2 way</span></li><li><span style="color: #333333;">Exstart</span></li><li><span style="color: #333333;">Exchange</span></li><li><span style="color: #333333;">Loading</span></li><li><span style="color: #333333;">Full</span></li></ol><p style="text-align: justify;"><span style="color: #333333;">Router z uruchomionym procesem OSPF może być w jednym z 7 stanów. Dokładny opis poszczególnych stanów wraz ze szczegółowymi informacjami można znaleźć pod tym</span> <a href="http://www.firewall.cx/networking-topics/routing/ospf-routing-protocol/1142-ospf-adjacency-neighbor-states-forming-process.html">linkiem</a>.</p></div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="c53b1ff" class="elementor-element elementor-element-c53b1ff elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="ba823bd" class="elementor-element elementor-element-ba823bd elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c0d3a35" class="elementor-element elementor-element-c0d3a35 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333; background-color: initial;">Router ID</span></h5><div style="text-align: justify;"><span style="color: #333333;">Wykorzystywany do identyfikacji każdego routera. Router-id jest wybierany następująco:</span></div><ol><li><span style="color: #333333;">Ustawiany ręcznie (polecenie router-id X.X.X.X)</span></li><li><span style="color: #333333;">Najwyższy adres IP interfejsu logicznego</span></li><li><span style="color: #333333;">Najwyższy adres IP aktywnego interfejsu fizycznego</span></li></ol><pre><span style="color: #333333;">Router(config)#router ospf 1</span><br /><br /><span style="color: #333333;">Router(config)#router-id 1.1.1.1</span></pre><h5><span style="color: #333333;">Designated Router i Backup Designated Router</span></h5><p style="text-align: justify;"><span style="color: #333333;">W sieciach wielodostępowych (typu broadcast i non broadcast multiaccess) gdzie mamy dużo urządzeń na których uruchomiony jest protokół routingu OSPF pojawia się problem z dużą ilością relacji sąsiedztwa a co za tym idzie z duża ilością ruchu generowanego przez OSPF. Rozwiązaniem tego stanu jest router desygnowany oraz zapasowy. Dzięki routerowi desygnowanego routery w sieci nie wymieniają się informacjami o sieciach z wszystkimi pozostałymi routerami, a wymieniają się tylko z routerami DR i BDR.</span></p><p><strong><span style="color: #333333;">Wybór DR i BDR</span></strong></p><ol><li><span style="color: #333333;">Router z najwyższym priorytetem jest DR</span></li><li><span style="color: #333333;">Router z drugim najwyższym priorytetem jest BDR</span></li><li style="text-align: justify;"><span style="color: #333333;">Domyślny priorytet to 1</span></li><li style="text-align: justify;"><span style="color: #333333;">Jeśli priorytet jest taki sam przy wyborze DR i BDR, DR zostaje router z wyższym router-id, a BDR router z drugim najwyższym router-id</span></li><li style="text-align: justify;"><span style="color: #333333;">Router z priorytetem 0 nie może zostać DR ani BDR</span></li><li style="text-align: justify;"><span style="color: #333333;">Router który nie jest DR ani BDR pełni rolę DROTHER</span></li><li><span style="color: #333333;">Wybór DR i BDR nie działa w sposób preemptive </span></li></ol><div> </div><div><span style="color: #333333;">Pomiędzy routerami DR, BDR i DROTHER występując następujące stany:</span></div><div> </div><div><span style="color: #333333;">DR/BDR -&gt; DROTHER -&gt; FULL</span></div><div><span style="color: #333333;">DROTHER -&gt; DR/BDR -&gt; FULL</span></div><div><span style="color: #333333;">DROTHER -&gt; DROTHER -&gt; 2 Way</span></div><div> </div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="483678e" class="elementor-element elementor-element-483678e elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="f5f4b54" class="elementor-element elementor-element-f5f4b54 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c266761" class="elementor-element elementor-element-c266761 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><strong><span style="color: #333333;">Konfiguracja OSPF w pojedynczym obszarze</span></strong></h5><p style="text-align: justify;"><span style="color: #333333;">Konfiguracja OSPF na routerach CISCO jest bardzo prosta. Wystaczy wydać komendę router ospf &lt;numer_procesu&gt; a następnie wpisać listę sieci, które chcemy rozgłaszać i na których chcemy uruchomić proces. Zbudujmy sobię prostą topologię złożoną z dwóch routerów i skonfigurujmy na nich OSPF.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="122715b" class="elementor-element elementor-element-122715b elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="5e0c468" class="elementor-element elementor-element-5e0c468 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="e02b562" class="elementor-element elementor-element-e02b562 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="623" height="217" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ospf_adj_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ospf_adj_2.png 623w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ospf_adj_2-300x104.png 300w" sizes="(max-width: 623px) 100vw, 623px" />											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="8c029b1" class="elementor-element elementor-element-8c029b1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="02e9552" class="elementor-element elementor-element-02e9552 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="7a1014f" class="elementor-element elementor-element-7a1014f elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><div><span style="color: #333333;">R1 </span></div><pre><span style="color: #333333;">hostname R1</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet 0/0</span><br /><span style="color: #333333;">  ip address 192.168.0.1 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface Loopback0</span><br /><span style="color: #333333;">  ip address 1.1.1.1 255.255.255.255</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;">   network 192.168.0.0 0.0.0.255 area 0</span><br /><span style="color: #333333;">   network 1.1.1.1 0.0.0.0 area 0</span></pre><div><span style="color: #333333;">R2</span></div><pre><span style="color: #333333;">hostname R2</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet 0/0</span><br /><span style="color: #333333;">  ip address 192.168.0.2 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface Loopback0</span><br /><span style="color: #333333;"> ip address 2.2.2.2 255.255.255.255</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;">   network 192.168.0.0 0.0.0.255 area 0</span><br /><span style="color: #333333;">   network 2.2.2.2 0.0.0.0 area 0</span></pre><div style="text-align: justify;"><span style="color: #333333;">Prześledźmy proces formowania się relacji sąsiedztwa między routerami R1 i R2. Możemy to zrobić wydając komendę debug ip ospf adj na jednym z routerów i zresetujmy proces ospf.</span></div><pre><span style="color: #333333;">R2#debug ip ospf adj</span><br /><span style="color: #333333;">OSPF adjacency debugging is on</span><br /><span style="color: #333333;">R2#clear ip ospf process</span><br /><span style="color: #333333;">Reset ALL OSPF processes? [no]: yes</span><br /><span style="color: #333333;">R2#<br /></span><span style="color: #333333;">*Feb 21 10:30:50.395: OSPF-1 ADJ Lo0: Interface going Down</span><br /><span style="color: #333333;">*Feb 21 10:30:50.395: OSPF-1 ADJ Lo0: 2.2.2.2 address 2.2.2.2 is dead, state DOWN</span><br /><span style="color: #333333;">*Feb 21 10:30:50.395: OSPF-1 ADJ Fa0/0: Interface going Down</span><br /><span style="color: #333333;">*Feb 21 10:30:50.395: OSPF-1 ADJ Fa0/0: 1.1.1.1 address 192.168.0.1 is dead, state DOWN</span><br /><span style="color: #333333;">*Feb 21 10:30:50.395: %OSPF-5-ADJCHG: Process 1, Nbr 1.1.1.1 on FastEthernet0/0 from FULL to DOWN, Neighbor Down: Interface down or detached</span><br /><span style="color: #333333;">*Feb 21 10:30:50.395: OSPF-1 ADJ Fa0/0: Neighbor change event</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: DR/BDR election</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect BDR 2.2.2.2</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect DR 2.2.2.2</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect BDR 0.0.0.0</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect DR 2.2.2.2</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: DR: 2.2.2.2 (Id) BDR: none</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Remember old DR 1.1.1.1 (id)</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0:</span><br /><strong><span style="color: #333333;">R2#2.2.2.2 address 192.168.0.2 is dead, state DOWN</span></strong><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Neighbor change event</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: DR/BDR election</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect BDR 0.0.0.0</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect DR 0.0.0.0</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect BDR 0.0.0.0</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect DR 0.0.0.0</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: DR: none BDR: none</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Flush network LSA immediately</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Remember old DR 2.2.2.2 (id)</span><br /><span style="color: #333333;">*Feb 21 10:30:50.403: OSPF-1 ADJ Lo0: Interface going Up</span><br /><span style="color: #333333;">*Feb 21 10:30:50.403: OSPF-1 ADJ Fa0/0: Interface going Up</span><br /><strong><span style="color: #333333;">*Feb 21 10:30:50.427: OSPF-1 ADJ Fa0/0: 2 Way Communication to 1.1.1.1, state 2WAY</span></strong><br /><span style="color: #333333;">*Feb 21 10:30:50.427: OSPF-1 ADJ Fa0/0: Backup seen event before WAIT timer</span><br /><span style="color: #333333;">*Feb 21 10:30:50.431: OSPF-1 ADJ Fa0/0: DR/BDR election</span><br /><span style="color: #333333;">*Feb 21 10:30:50.431: OSPF-</span><br /><span style="color: #333333;">R2#1 ADJ Fa0/0: Elect BDR 2.2.2.2</span><br /><span style="color: #333333;">*Feb 21 10:30:50.431: OSPF-1 ADJ Fa0/0: Elect DR 1.1.1.1</span><br /><span style="color: #333333;">*Feb 21 10:30:50.435: OSPF-1 ADJ Fa0/0: Elect BDR 2.2.2.2</span><br /><span style="color: #333333;">*Feb 21 10:30:50.435: OSPF-1 ADJ Fa0/0: Elect DR 1.1.1.1</span><br /><span style="color: #333333;">*Feb 21 10:30:50.439: OSPF-1 ADJ Fa0/0: DR: 1.1.1.1 (Id) BDR: 2.2.2.2 (Id)</span><br /><span style="color: #333333;">*Feb 21 10:30:50.439: OSPF-1 ADJ Fa0/0: Nbr 1.1.1.1: Prepare dbase exchange</span><br /><span style="color: #333333;">*Feb 21 10:30:50.443: OSPF-1 ADJ Fa0/0: Send DBD to 1.1.1.1 seq 0x962 opt 0x52 flag 0x7 len 32</span><br /><strong><span style="color: #333333;">*Feb 21 10:30:50.483: OSPF-1 ADJ Fa0/0: Rcv DBD from 1.1.1.1 seq 0x55A opt 0x52 flag 0x7 len 32 mtu 1500 state EXSTART</span></strong><br /><span style="color: #333333;">*Feb 21 10:30:50.483: OSPF-1 ADJ Fa0/0: First DBD and we are not SLAVE</span><br /><strong><span style="color: #333333;">*Feb 21 10:30:50.483: OSPF-1 ADJ Fa0/0: Rcv DBD from 1.1.1.1 seq 0x962 opt 0x52 flag 0x2 len 72 mtu 1500 state EXSTART</span></strong><br /><span style="color: #333333;">*Feb 21 10:30:50.483: OSPF-1 ADJ Fa0/0: NBR Negotiation Done. We are the MASTER</span><br /><span style="color: #333333;">*Feb 21 10:30:50.483: OSPF-1 ADJ Fa0/0: Nbr 1.1.1.1: Summary list built, size 0</span><br /><span style="color: #333333;">*Feb 21 10:30:50.483: OSPF-1 ADJ Fa0/0:</span><br /><span style="color: #333333;">R2# Send DBD to 1.1.1.1 seq 0x963 opt 0x52 flag 0x1 len 32</span><br /><strong><span style="color: #333333;">*Feb 21 10:30:50.491: OSPF-1 ADJ Fa0/0: Rcv DBD from 1.1.1.1 seq 0x963 opt 0x52 flag 0x0 len 32 mtu 1500 state EXCHANGE</span></strong><br /><span style="color: #333333;">*Feb 21 10:30:50.491: OSPF-1 ADJ Fa0/0: Exchange Done with 1.1.1.1</span><br /><span style="color: #333333;">*Feb 21 10:30:50.491: OSPF-1 ADJ Fa0/0: Send LS REQ to 1.1.1.1 length 48 LSA count 2</span><br /><span style="color: #333333;">*Feb 21 10:30:50.503: OSPF-1 ADJ Fa0/0: Rcv LS UPD from 1.1.1.1 length 108 LSA count 2</span><br /><span style="color: #333333;">*Feb 21 10:30:50.503: OSPF-1 ADJ Fa0/0: Synchronized with 1.1.1.1, state FULL</span><br /><strong><span style="color: #333333;">*Feb 21 10:30:50.503: %OSPF-5-ADJCHG: Process 1, Nbr 1.1.1.1 on FastEthernet0/0 from LOADING to FULL, Loading Done</span></strong><br /><span style="color: #333333;">*Feb 21 10:30:50.507: OSPF-1 ADJ Fa0/0: Nbr 1.1.1.1: Clean-up dbase exchange</span><br /><span style="color: #333333;">*Feb 21 10:30:52.283: OSPF-1 ADJ Fa0/0: Neighbor change event</span><br /><span style="color: #333333;">*Feb 21 10:30:52.283: OSPF-1 ADJ Fa0/0: DR/BDR election</span><br /><strong><span style="color: #333333;">*Feb 21 10:30:52.283: OSPF-1 ADJ Fa0/0: Elect BDR 2.2.2.2</span></strong><br /><strong><span style="color: #333333;">*Feb 21 10:30:52.283: OSPF-1 ADJ Fa0/0: Elect DR 1.1.1.1</span></strong><br /><span style="color: #333333;">*Feb 21 10:30:52.283: OSPF-1 ADJ Fa0/0: DR: 1.</span><br /><span style="color: #333333;">R2#1.1.1 (Id) BDR: 2.2.2.2 (Id)</span></pre><div style="text-align: justify;"><span style="color: #333333;">Z wyniku powyższej komendy możemy zauważyć, że w naszym przypadku DR został router o ID 1.1.1.1, czyli R1 a BDR router o ID 2.2.2.2, czyli R2. Możemy to zweryfikować wydając komendę:</span></div><pre><span style="color: #333333;">R1#show ip ospf interface fastEthernet 0/0</span><br /><span style="color: #333333;">FastEthernet0/0 is up, line protocol is up</span><br /><span style="color: #333333;">  Internet Address 192.168.0.1/24, Area 0, Attached via Network Statement</span><br /><span style="color: #333333;">  Process ID 1, Router ID 1.1.1.1, Network Type BROADCAST, Cost: 1</span><br /><span style="color: #333333;">  Topology-MTID Cost Disabled Shutdown Topology Name</span><br /><span style="color: #333333;">  0 1 no no Base</span><br /><span style="color: #333333;">  Transmit Delay is 1 sec, State DR, Priority 1</span><br /><span style="color: #333333;">  <strong>Designated Router (ID) 1.1.1.1</strong>, Interface address 192.168.0.1</span><br /><span style="color: #333333;">  <strong>Backup Designated router (ID) 2.2.2.2</strong>, Interface address 192.168.0.2</span><br /><span style="color: #333333;">  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5</span><br /><span style="color: #333333;">  oob-resync timeout 40</span><br /><span style="color: #333333;">  Hello due in 00:00:03</span><br /><span style="color: #333333;">  Supports Link-local Signaling (LLS)</span><br /><span style="color: #333333;">  Cisco NSF helper support enabled</span><br /><span style="color: #333333;">  IETF NSF helper support enabled</span><br /><span style="color: #333333;">  Index 1/1, flood queue length 0</span><br /><span style="color: #333333;">  Next 0x0(0)/0x0(0)</span><br /><span style="color: #333333;">  Last flood scan length is 0, maximum is 1</span><br /><span style="color: #333333;">  Last flood scan time is 0 msec, maximum is 0 msec</span><br /><span style="color: #333333;">  Neighbor Count is 1, Adjacent neighbor count is 1</span><br /><span style="color: #333333;">  Adjacent with neighbor 2.2.2.2 (Backup Designated Router)</span><br /><span style="color: #333333;">  Suppress hello for 0 neighbor(s)</span></pre><pre><span style="color: #333333;">R2#show ip ospf interface fastEthernet 0/0</span><br /><span style="color: #333333;">FastEthernet0/0 is up, line protocol is up</span><br /><span style="color: #333333;">  Internet Address 192.168.0.2/24, Area 0, Attached via Network Statement</span><br /><span style="color: #333333;">  Process ID 1, Router ID 2.2.2.2, Network Type BROADCAST, Cost: 1</span><br /><span style="color: #333333;">  Topology-MTID Cost Disabled Shutdown Topology Name</span><br /><span style="color: #333333;">  0 1 no no Base</span><br /><span style="color: #333333;">  Transmit Delay is 1 sec, State BDR, Priority 1</span><br /><span style="color: #333333;">  <strong>Designated Router (ID) 1.1.1.1</strong>, Interface address 192.168.0.1</span><br /><span style="color: #333333;">  <strong>Backup Designated router (ID) 2.2.2.2</strong>, Interface address 192.168.0.2</span><br /><span style="color: #333333;">  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5</span><br /><span style="color: #333333;">  oob-resync timeout 40</span><br /><span style="color: #333333;">  Hello due in 00:00:05</span><br /><span style="color: #333333;">  Supports Link-local Signaling (LLS)</span><br /><span style="color: #333333;">  Cisco NSF helper support enabled</span><br /><span style="color: #333333;">  IETF NSF helper support enabled</span><br /><span style="color: #333333;">  Index 1/1, flood queue length 0</span><br /><span style="color: #333333;">  Next 0x0(0)/0x0(0)</span><br /><span style="color: #333333;">  Last flood scan length is 1, maximum is 1</span><br /><span style="color: #333333;">  Last flood scan time is 0 msec, maximum is 0 msec</span><br /><span style="color: #333333;">  Neighbor Count is 1, Adjacent neighbor count is 1</span><br /><span style="color: #333333;">  Adjacent with neighbor 1.1.1.1 (Designated Router)</span><br /><span style="color: #333333;">  Suppress hello for 0 neighbor(s)</span><span style="color: #333333;"> </span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="dd270a1" class="elementor-element elementor-element-dd270a1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="729fd50" class="elementor-element elementor-element-729fd50 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="bd9bee8" class="elementor-element elementor-element-bd9bee8 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">Przydatne komendy</span></h5><p style="text-align: justify;"><span style="color: #333333;"><strong>show ip ospf neighbor</strong> &#8211; wyświetlenie listy sąsiadów OSPF</span></p><p style="text-align: justify;"><span style="color: #333333;"><strong>show ip protocols</strong> &#8211; wyświetlenie podstawowych informacji o skonfigurowanym protokole routingu</span></p><p><span style="color: #333333;"><strong>show ip route ospf</strong> &#8211; wyświetlenie tablicy routingu OSPF</span></p><p style="text-align: justify;"><span style="color: #333333;"><strong>show ip ospf interface brief</strong> &#8211; wyświetlenie interfejsów z kosztami OSPF</span></p><p style="text-align: justify;"><span style="color: #333333;"><strong>show ip ospf database</strong> &#8211; wyświetlenie pełnej bazy danych OSPF</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/ospf-podstawy/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>tclsh &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/tclsh/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Tclsh + CISCO</title>
+		<link>https://kubsoo.github.io/rsnet-website/tclsh-cisco/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/tclsh-cisco/#respond</comments>
+		<pubDate>Mon, 02 Oct 2017 21:45:24 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[tclsh]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=427</guid>
+		<description><![CDATA[Na urządzeniach z CISCO IOS oraz CISCO IOS-XE zainstalowany jest interpreter języka skryptowego TCL. Dzięki czemu możemy tworzyć i wykonywać skrypty bezpośrednio na urządzeniach CISCO. Jest to bardzo przydatne i&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">Na urządzeniach z CISCO IOS oraz CISCO IOS-XE zainstalowany jest interpreter języka skryptowego <a href="https://pl.wikipedia.org/wiki/Tcl_(j%C4%99zyk_programowania)" title="">TCL</a>. Dzięki czemu możemy tworzyć i wykonywać skrypty bezpośrednio na urządzeniach CISCO. Jest to bardzo przydatne i w poniższych przykładach pokażę do czego można tego użyć.</p>
+<p style="text-align: justify;">Opracowano kila metod uruchamiani skryptów TCL na oprogramowaniu CISCO IOS. Powłoka <a href="https://www.tcl.tk/man/tcl8.4/UserCmd/tclsh.htm" title="">TCLSH</a> może zostać uruchomiona, a polecenia mogą być wprowadzane linijka po linijce. Powłoka TCLSH została wprowadzona w wersji IOS 12.3(2)T. W celu wejścia do tclsh należy wydać komendę tclsh:</p>
+<pre>R1#tclsh
+R1(tcl)#</pre>
+<p>Wyjście z tclsh odbywa się przy pomocy komendy tclquit:</p>
+<pre>R1(tcl)#tclquit
+R1#</pre>
+<p style="text-align: justify;">Po wprowadzeniu komend Tcl są one wysyłane do interpretera Tcl. Jeśli polecenie są rozpoznawane jako poprawne polecenie Tcl to jest ono wykonywanie. Jeśli polecenie nie jest rozpoznawanym poleceniem Tcl to jest ono wysyłane do parsera CLI Cisco IOS. Jeśli polecenie nie jest rozpoznawane ani jako Tcl ani jako polecenie Cisco IOS to wyświetlane są dwa komunikaty o błędach:</p>
+<pre>R1(tcl)#command
+invalid command name "command" ^
+% Invalid input detected at '^' marker.</pre>
+<p style="text-align: justify;">Powyżej widać te dwa komunikaty o błędach po wpisaniu komendy command. Spróbujmy teraz wpisać komendę cisco, np. show ip int brief:</p>
+<pre>R1(tcl)#show ip int brief
+Interface IP-Address OK? Method Status Protocol
+FastEthernet0/0 unassigned YES unset administratively down down
+FastEthernet1/0 unassigned YES unset administratively down down
+FastEthernet1/1 unassigned YES unset administratively down down</pre>
+<p>a następnie wykonajmy kilka komend Tcl:</p>
+<pre>R1(tcl)#set a 10
+10
+R1(tcl)#set b 20
+20
+R1(tcl)#set c [expr $a + $b]
+30</pre>
+<p style="text-align: justify;">Poradnik z podstawowymi komendami języka skryptowego Tcl znajduje się pod tym <a href="http://zetcode.com/lang/tcl/" title="">linkiem</a>.</p>
+<p style="text-align: justify;">Wstępnie napisany skrypt Tcl można utworzyć również poza urządzeniem, następnie przekopiować do pamięci flash urządzenia i wtedy go uruchomić.</p>
+<p style="text-align: justify;">Komendy Cisco IOS w Tcl w trybie uprzywilejowanym możemy wydawać w następujący sposób:</p>
+<p>(tcl)#exec cisco_ios_command   &#8211; komenda w trybie uprzywilejowanym</p>
+<pre>R1(tcl)#exec show inventory
+NAME: "Chassis", DESCR: "Cisco 7206VXR, 6-slot chassis"
+PID: CISCO7206VXR , VID: , SN: 4279256517
+
+NAME: "NPE400 0", DESCR: "Cisco 7200VXR Network Processing Engine NPE-400"
+PID: NPE-400 , VID: , SN: 11111111
+
+NAME: "module 0", DESCR: "I/O FastEthernet (TX-ISL)"
+PID: C7200-IO-FE-MII/RJ, VID: , SN: 4294967295
+
+NAME: "module 1", DESCR: "Dual Port FastEthernet (RJ45)"
+PID: PA-2FE-FX , VID: , SN: XXX00000000
+
+NAME: "Power Supply 0", DESCR: "Cisco 7200 AC Power Supply"
+PID: PWR-7200-AC , VID: , SN:
+
+NAME: "Power Supply 1", DESCR: "Cisco 7200 AC Power Supply"
+PID: PWR-7200-AC , VID: , SN:</pre>
+<p>(tcl)#ios_config cisco_ios_command &#8211; komenda w trybie konfiguracji</p>
+<pre>R1(tcl)#ios_config "int fa0/0" "no sh"
+R1(tcl)#
+*Nov 10 13:08:21.887: %SYS-5-CONFIG_I: Configured from console by console
+R1(tcl)#
+*Nov 10 13:08:23.799: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state to up
+*Nov 10 13:08:24.799: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+R1(tcl)#</pre>
+<h4>Skrypt 1</h4>
+<p style="text-align: justify;">Skrypt 1 będzie klasycznym skryptem, wykonującym komendę ping dla zadanych adresów IP. W moim przykładzie posłużę się następującą topologią:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/tclsh.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-433 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/tclsh.png" alt="" width="415" height="339" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/tclsh.png 415w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/tclsh-300x245.png 300w" sizes="(max-width: 415px) 100vw, 415px" /></a>Adresacja IP:</p>
+<p>R1 &#8211; fa0/0 &#8211; 192.168.1.1/24</p>
+<p>R2 &#8211; fa0/0 &#8211; 192.168.1.2/24</p>
+<p>R3 &#8211; fa0/0 &#8211; 192.168.1.3/24</p>
+<p>R4 &#8211; fa0/0 &#8211; 192.168.1.4/24</p>
+<p>R5 &#8211; fa0/0 &#8211; 192.168.1.5/24</p>
+<p style="text-align: justify;">Skrypt stwórzmy na routerze R1. Skrypt będzie wykonywał polecenie ping na adresy interfejsów fa0/0 dla każdego z routerów od R1 do R5. W skrypcie skorzystamy z pętli foreach:</p>
+<pre><span class="k">foreach</span> <span class="o">&lt;</span>zmienne<span class="o">&gt;</span> <span class="o">&lt;</span>lista<span class="o">&gt;</span> <span class="k">[</span><span class="o">&lt;</span><span class="nv">zmienne</span> lista<span class="o">&gt;</span>...<span class="k">]</span> <span class="o">&lt;</span>skrypt<span class="o">&gt;</span></pre>
+<pre>R1(tcl)#foreach address {
++&gt;(tcl)#192.168.1.1
++&gt;(tcl)#192.168.1.2
++&gt;(tcl)#192.168.1.3
++&gt;(tcl)#192.168.1.4
++&gt;(tcl)#192.168.1.5} {ping $address
++&gt;(tcl)#}
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.1.1, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/4 ms
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.1.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 8/10/16 ms
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.1.3, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 8/13/20 ms
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.1.4, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 16/18/20 ms
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.1.5, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 4/8/12 ms
+R1(tcl)#</pre>
+<p style="text-align: justify;">Jak możemy zaobserwować powyżej skrypt wykonał się poprawnie. Przejdźmy teraz do drugiego przykładu.</p>
+<h4>Skrypt 2</h4>
+<p style="text-align: justify;">Skrypt 2 będzie połączeniem komend Tcl oraz wyrażeń regularnych. Spróbujemy z routera R1 wyciągnąć z komendy show version informację o numerze seryjnym. Wyrażenia regularne do wyciągania informacji z komend Cisco IOS są dokładniej opisane w tym <a href="https://kubsoo.github.io/rsnet-website/cisco-cli-textfsm/" title="">wpisie</a>.</p>
+<p>Zacznijmy pisać skrypt:</p>
+<p>Wydajmy polecenie (tcl)#exec show ver</p>
+<pre>...
+Cisco 7206VXR (NPE400) processor (revision A) with 491520K/32768K bytes of memory.
+<strong>Processor board ID 4279256517</strong>
+R7000 CPU at 150MHz, Implementation 39, Rev 2.1, 256KB L2 Cache
+6 slot VXR midplane, Version 2.1
+...</pre>
+<p style="text-align: justify;">Numer seryjny urządzenia możemy znaleźć w linijce zaczynającej się od Processor board ID. W moim przypadku jest to <strong>4279256517. </strong>Wklejmy teraz tą linijkę do regex101 i napiszmy wyrażenie regularne:<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/regex.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-442 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/regex.png" alt="" width="979" height="404" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/regex.png 979w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/regex-300x124.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/regex-768x317.png 768w" sizes="(max-width: 979px) 100vw, 979px" /></a></p>
+<p>Nasze wyrażenie regularne będzie mieć postać:</p>
+<p style="padding-left: 30px;"><em>Processor\sboard\sID\s(\S+)</em></p>
+<p>Skrypt wyciągający tą informację będzie wyglądał następująco:</p>
+<pre>R1(tcl)#set sh_ver [exec show ver]
+R1(tcl)#regexp {Processor\sboard\sID\s(\S+)} $sh_ver line_with_serial serial
+1
+R1(tcl)#puts $serial
+4279256517</pre>
+<p style="text-align: justify;">Prześledźmy ten skrypt linijka po linijce. Pierwsza linijka przypisuję do zmiennej sh_ver wynik komendy show version. W drugiej linijce sprawdzamy dopasowanie (występujące między nawiasami po slowie regexp) tekstu ze zmiennej sh_ver a następnie wynik zapisujemy do zmiennych:</p>
+<p>line-with-serial -&gt; całe dopasowanie</p>
+<p>serial -&gt; dopasowanie z nawiasu(), czyli nasz numer seryjny</p>
+<p style="text-align: justify;">Jeśli dopasowanie zostało znalezione to powyższa komenda zwraca wynik 1, jeśli nie to zwraca wynik 0.</p>
+<p>Ostatnia linijka R1(tcl)#puts $serial wyświetla numer seryjny.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/tclsh-cisco/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

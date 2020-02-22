@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>konfiguracja &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/konfiguracja/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>DMVPN faza 1 + IPSEC &#8211; konfiguracja</title>
+		<link>https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja-2/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja-2/#respond</comments>
+		<pubDate>Tue, 02 Jan 2018 19:36:21 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Na szybko]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[dmvpn]]></category>
+		<category><![CDATA[faza 1]]></category>
+		<category><![CDATA[ipsec]]></category>
+		<category><![CDATA[konfiguracja]]></category>
+		<category><![CDATA[nhrp]]></category>
+		<category><![CDATA[Poradnik]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=983</guid>
+		<description><![CDATA[We wpisie https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja/ pokazałem jak skonfigurować DMVPN w fazie 1 z dynamicznymi mapowaniami NHRP. W tym wpisie pokażę jak do tak przygotowanej konfiguracji dodać konfigurację IPSEC, tak żeby łączność pomiędzy urządzeniami była&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-983">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="1c79627" class="elementor-element elementor-element-1c79627 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="9c650a4" class="elementor-element elementor-element-9c650a4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="7aa1a3f" class="elementor-element elementor-element-7aa1a3f elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">We wpisie </span><span style="color: #ff0000;"><span style="background-color: initial;"><a href="https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja/" title="">https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja/</a> </span></span><span style="color: #000000;">pokazałem jak skonfigurować DMVPN w fazie 1 z dynamicznymi mapowaniami NHRP. W tym wpisie pokażę jak do tak przygotowanej konfiguracji dodać konfigurację IPSEC, tak żeby łączność pomiędzy urządzeniami była zabezpieczona przy wykorzystaniu IPSEC.</span></p><p><span style="color: #000000;">Przypomnijmy jeszcze raz topologię oraz konfigurację DMVPN w fazie 1 z dynamicznymi mapowaniami NHRP.</span></p><h5><span style="color: #000000;">Topologia</span></h5></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="918b75f" class="elementor-element elementor-element-918b75f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="a3ada10" class="elementor-element elementor-element-a3ada10 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="af0170c" class="elementor-element elementor-element-af0170c elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/dmvpn_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="521" height="410" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/dmvpn_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/dmvpn_1.png 521w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/dmvpn_1-300x236.png 300w" sizes="(max-width: 521px) 100vw, 521px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b91bbb2" class="elementor-element elementor-element-b91bbb2 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="24ea96d" class="elementor-element elementor-element-24ea96d elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="1cde9a9" class="elementor-element elementor-element-1cde9a9 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Konfiguracja DMVPN</span></h5><p><span style="color: #000000;">R1</span></p><pre><span style="color: #000000;">hostname HUB</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Tunnel0</span><br /><span style="color: #000000;"> ip address 172.22.10.1 255.255.255.0</span><br /><span style="color: #000000;"> ip nhrp network-id 123</span><br /><span style="color: #000000;"> tunnel source FastEthernet0/0</span><br /><span style="color: #000000;"> tunnel mode gre multipoint</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.10.1 255.255.255.0</span><br /><span style="color: #000000;">!</span></pre><p><span style="color: #000000;">R2</span></p><pre><span style="color: #000000;">hostname SPOKE1</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Tunnel0</span><br /><span style="color: #000000;"> ip address 172.22.10.2 255.255.255.0</span><br /><span style="color: #000000;"> ip nhrp map 172.22.10.1 192.168.10.1</span><br /><span style="color: #000000;"> ip nhrp network-id 123</span><br /><span style="color: #000000;"> ip nhrp nhs 172.22.10.1</span><br /><span style="color: #000000;"> tunnel source FastEthernet0/0</span><br /><span style="color: #000000;"> tunnel destination 192.168.10.1</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.10.2 255.255.255.0</span><br /><span style="color: #000000;">!<br /></span></pre><p><span style="color: #000000;">R3</span></p><pre><span style="color: #000000;">hostname SPOKE2</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Tunnel0</span><br /><span style="color: #000000;"> ip address 172.22.10.3 255.255.255.0</span><br /><span style="color: #000000;"> ip nhrp map 172.22.10.1 192.168.10.1</span><br /><span style="color: #000000;"> ip nhrp network-id 123</span><br /><span style="color: #000000;"> ip nhrp nhs 172.22.10.1</span><br /><span style="color: #000000;"> tunnel source FastEthernet0/0</span><br /><span style="color: #000000;"> tunnel destination 192.168.10.1</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.10.3 255.255.255.0</span><br /><span style="color: #000000;">!</span></pre><p><span style="color: #000000;">R4</span></p><pre><span style="color: #000000;">hostname SPOKE3</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Tunnel0</span><br /><span style="color: #000000;"> ip address 172.22.10.4 255.255.255.0</span><br /><span style="color: #000000;"> ip nhrp map 172.22.10.1 192.168.10.1</span><br /><span style="color: #000000;"> ip nhrp network-id 123</span><br /><span style="color: #000000;"> ip nhrp nhs 172.22.10.1</span><br /><span style="color: #000000;"> tunnel source FastEthernet0/0</span><br /><span style="color: #000000;"> tunnel destination 192.168.10.1</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.10.4 255.255.255.0</span><br /><span style="color: #000000;">!</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="3448fe7" class="elementor-element elementor-element-3448fe7 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e27c1b9" class="elementor-element elementor-element-e27c1b9 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5327d05" class="elementor-element elementor-element-5327d05 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">KONFIGURACJA IPSEC</span></h5><p style="text-align: justify;"><span style="color: #000000;">Przed przystąpieniem do konfigurowania IPSEC sprawdźmy jak wygląda ruch w DMVPN widziany na interfejsie fa0/0 routera R1. Posłużymy się do tego wiresharkiem:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="f0ff15a" class="elementor-element elementor-element-f0ff15a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="5140eb2" class="elementor-element elementor-element-5140eb2 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="7a3277c" class="elementor-element elementor-element-7a3277c elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/dmvpn_ipsec_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title="">
+							<img width="531" height="387" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/dmvpn_ipsec_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/dmvpn_ipsec_1.png 531w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/dmvpn_ipsec_1-300x219.png 300w" sizes="(max-width: 531px) 100vw, 531px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b17b5e7" class="elementor-element elementor-element-b17b5e7 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="589037f" class="elementor-element elementor-element-589037f elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c878c6c" class="elementor-element elementor-element-c878c6c elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"></div>
+				</div>
+				</div>
+				<div data-id="8fac96c" class="elementor-element elementor-element-8fac96c elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Po uruchomieniu wiresharka spingujmy router R3 (SPOKE-2) z routera R2 (SPOKE-1). W tym celu wydajmy polecene ping 172.22.10.3 na routerze R2 (SPOKE-1).</span></p><pre><span style="color: #000000;">SPOKE1#ping 172.22.10.3</span><br /><span style="color: #000000;">Type escape sequence to abort.</span><br /><span style="color: #000000;">Sending 5, 100-byte ICMP Echos to 172.22.10.3, timeout is 2 seconds:</span><br /><span style="color: #000000;">!!!!!</span><br /><span style="color: #000000;">Success rate is 100 percent (5/5), round-trip min/avg/max = 28/40/60 ms</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="0338328" class="elementor-element elementor-element-0338328 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="7a03318" class="elementor-element elementor-element-7a03318 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="65cc2c6" class="elementor-element elementor-element-65cc2c6 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">Sprawdźmy jak wygląda ten ruch w wiresharku:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="08f4f45" class="elementor-element elementor-element-08f4f45 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="ea272e5" class="elementor-element elementor-element-ea272e5 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="acc17e8" class="elementor-element elementor-element-acc17e8 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="360" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_1.png 927w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_1-300x150.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_1-768x384.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="be7f356" class="elementor-element elementor-element-be7f356 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="dcaf817" class="elementor-element elementor-element-dcaf817 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5f2cc63" class="elementor-element elementor-element-5f2cc63 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Widzimy, że ruch nie jest szyfrowany  i możemy go podsłuchać. Spróbujmy go teraz zabezpieczyć przy pomocy IPSECa.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="09909ea" class="elementor-element elementor-element-09909ea elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="df729e2" class="elementor-element elementor-element-df729e2 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="a197922" class="elementor-element elementor-element-a197922 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">Konfiguracja IPSEC na każdym routerze wygląda tak samo:</span></p><p><strong><span style="color: #000000;">R1 (HUB), R2 (SPOKE1), R3 (SPOKE2), R4 (SPOKE3)</span></strong></p><pre><span style="color: #000000;">crypto isakmp policy 10</span><br /><span style="color: #000000;"> encr aes</span><br /><span style="color: #000000;"> authentication pre-share</span><br /><span style="color: #000000;"> group 2</span><br /><span style="color: #000000;">crypto isakmp key cisco123 address 0.0.0.0</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">crypto ipsec transform-set TSET esp-aes esp-sha-hmac</span><br /><span style="color: #000000;"> mode transport</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">crypto ipsec profile IPSEC_PROFILE</span><br /><span style="color: #000000;"> set transform-set TSET</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">int tunnel 0</span><br /><span style="color: #000000;"> tunnel protection ipsec profile IPSEC_PROFILE</span></pre><p style="text-align: justify;"><span style="color: #000000;">Po skonfigurowaniu IPSEC sprawdźmy czy zestawił się on poprawnie (isakmp sa i ipsec sa). Wystarczy, że dokonamy sprawdzenia na routerze R1 (HUB), ponieważ routery R2, R3, R4 zestawiają tunele tylko z nim.</span></p><p><span style="color: #000000;"><strong>R1 (HUB)</strong></span></p><pre><span style="color: #000000;">HUB#show crypto isakmp sa</span><br /><span style="color: #000000;">IPv4 Crypto ISAKMP SA</span><br /><span style="color: #000000;">dst src state conn-id status</span><br /><span style="color: #000000;">192.168.10.4 192.168.10.1 QM_IDLE 1005 ACTIVE</span><br /><span style="color: #000000;">192.168.10.1 192.168.10.4 QM_IDLE 1004 ACTIVE</span><br /><span style="color: #000000;">192.168.10.1 192.168.10.3 QM_IDLE 1003 ACTIVE</span><br /><span style="color: #000000;">192.168.10.1 192.168.10.2 QM_IDLE 1001 ACTIVE</span><br /><span style="color: #000000;">192.168.10.2 192.168.10.1 QM_IDLE 1002 ACTIVE</span><br /><span style="color: #000000;">192.168.10.3 192.168.10.1 QM_IDLE 1006 ACTIVE</span></pre><pre><span style="color: #000000;">HUB#show crypto ipsec sa</span><br /><br /><span style="color: #000000;">interface: Tunnel0</span><br /><span style="color: #000000;"> Crypto map tag: Tunnel0-head-0, local addr 192.168.10.1</span><br /><br /><span style="color: #000000;">protected vrf: (none)</span><br /><span style="color: #000000;"> local ident (addr/mask/prot/port): (192.168.10.1/255.255.255.255/47/0)</span><br /><span style="color: #000000;"> remote ident (addr/mask/prot/port): (192.168.10.3/255.255.255.255/47/0)</span><br /><span style="color: #000000;"> current_peer 192.168.10.3 port 500</span><br /><span style="color: #000000;"> PERMIT, flags={origin_is_acl,}</span><br /><span style="color: #000000;"> #pkts encaps: 6, #pkts encrypt: 6, #pkts digest: 6</span><br /><span style="color: #000000;"> #pkts decaps: 7, #pkts decrypt: 7, #pkts verify: 7</span><br /><span style="color: #000000;"> #pkts compressed: 0, #pkts decompressed: 0</span><br /><span style="color: #000000;"> #pkts not compressed: 0, #pkts compr. failed: 0</span><br /><span style="color: #000000;"> #pkts not decompressed: 0, #pkts decompress failed: 0</span><br /><span style="color: #000000;"> #send errors 0, #recv errors 0</span><br /><br /><span style="color: #000000;">local crypto endpt.: 192.168.10.1, remote crypto endpt.: 192.168.10.3</span><br /><span style="color: #000000;"> path mtu 1500, ip mtu 1500, ip mtu idb (none)</span><br /><span style="color: #000000;"> current outbound spi: 0x4D074ABE(1292323518)</span><br /><span style="color: #000000;"> PFS (Y/N): N, DH group: none</span><br /><br /><span style="color: #000000;">inbound esp sas:</span><br /><span style="color: #000000;"> spi: 0xA8B99213(2830733843)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 7, flow_id: 7, sibling_flags 80000000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4329808/3210)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x81E2FE13(2179137043)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 9, flow_id: 9, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4282574/3210)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x7BDEB7FE(2078193662)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 17, flow_id: 17, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4298093/3218)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">inbound ah sas:</span><br /><br /><span style="color: #000000;">inbound pcp sas:</span><br /><br /><span style="color: #000000;">outbound esp sas:</span><br /><span style="color: #000000;"> spi: 0x2B6C154D(728503629)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 8, flow_id: 8, sibling_flags 80000000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4329808/3210)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x1A5D7249(442331721)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 10, flow_id: 10, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4282574/3210)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x4D074ABE(1292323518)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 18, flow_id: 18, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4298093/3218)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">outbound ah sas:</span><br /><br /><span style="color: #000000;">outbound pcp sas:</span><br /><br /><span style="color: #000000;">protected vrf: (none)</span><br /><span style="color: #000000;"> local ident (addr/mask/prot/port): (192.168.10.1/255.255.255.255/47/0)</span><br /><span style="color: #000000;"> remote ident (addr/mask/prot/port): (192.168.10.2/255.255.255.255/47/0)</span><br /><span style="color: #000000;"> current_peer 192.168.10.2 port 500</span><br /><span style="color: #000000;"> PERMIT, flags={origin_is_acl,}</span><br /><span style="color: #000000;"> #pkts encaps: 6, #pkts encrypt: 6, #pkts digest: 6</span><br /><span style="color: #000000;"> #pkts decaps: 7, #pkts decrypt: 7, #pkts verify: 7</span><br /><span style="color: #000000;"> #pkts compressed: 0, #pkts decompressed: 0</span><br /><span style="color: #000000;"> #pkts not compressed: 0, #pkts compr. failed: 0</span><br /><span style="color: #000000;"> #pkts not decompressed: 0, #pkts decompress failed: 0</span><br /><span style="color: #000000;"> #send errors 0, #recv errors 0</span><br /><br /><span style="color: #000000;">local crypto endpt.: 192.168.10.1, remote crypto endpt.: 192.168.10.2</span><br /><span style="color: #000000;"> path mtu 1500, ip mtu 1500, ip mtu idb (none)</span><br /><span style="color: #000000;"> current outbound spi: 0x72B18574(1924236660)</span><br /><span style="color: #000000;"> PFS (Y/N): N, DH group: none</span><br /><br /><span style="color: #000000;">inbound esp sas:</span><br /><span style="color: #000000;"> spi: 0x532102AC(1394672300)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 1, flow_id: 1, sibling_flags 80000000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4349860/3205)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0xA0B95616(2696500758)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 3, flow_id: 3, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4203743/3205)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x3D891B1C(1032395548)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 5, flow_id: 5, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4371005/3208)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">inbound ah sas:</span><br /><br /><span style="color: #000000;">inbound pcp sas:</span><br /><br /><span style="color: #000000;">outbound esp sas:</span><br /><span style="color: #000000;"> spi: 0x8888EE44(2290675268)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 2, flow_id: 2, sibling_flags 80000000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4349860/3205)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x85FE093(140501139)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 4, flow_id: 4, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4203743/3205)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x72B18574(1924236660)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 6, flow_id: 6, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4371005/3208)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">outbound ah sas:</span><br /><br /><span style="color: #000000;">outbound pcp sas:</span><br /><br /><span style="color: #000000;">protected vrf: (none)</span><br /><span style="color: #000000;"> local ident (addr/mask/prot/port): (192.168.10.1/255.255.255.255/47/0)</span><br /><span style="color: #000000;"> remote ident (addr/mask/prot/port): (192.168.10.4/255.255.255.255/47/0)</span><br /><span style="color: #000000;"> current_peer 192.168.10.4 port 500</span><br /><span style="color: #000000;"> PERMIT, flags={origin_is_acl,}</span><br /><span style="color: #000000;"> #pkts encaps: 1, #pkts encrypt: 1, #pkts digest: 1</span><br /><span style="color: #000000;"> #pkts decaps: 2, #pkts decrypt: 2, #pkts verify: 2</span><br /><span style="color: #000000;"> #pkts compressed: 0, #pkts decompressed: 0</span><br /><span style="color: #000000;"> #pkts not compressed: 0, #pkts compr. failed: 0</span><br /><span style="color: #000000;"> #pkts not decompressed: 0, #pkts decompress failed: 0</span><br /><span style="color: #000000;"> #send errors 0, #recv errors 0</span><br /><br /><span style="color: #000000;">local crypto endpt.: 192.168.10.1, remote crypto endpt.: 192.168.10.4</span><br /><span style="color: #000000;"> path mtu 1500, ip mtu 1500, ip mtu idb (none)</span><br /><span style="color: #000000;"> current outbound spi: 0xD87AECE3(3631934691)</span><br /><span style="color: #000000;"> PFS (Y/N): N, DH group: none</span><br /><br /><span style="color: #000000;">inbound esp sas:</span><br /><span style="color: #000000;"> spi: 0xFCF21C61(4243725409)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 11, flow_id: 11, sibling_flags 80000000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4192015/3216)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x8DACF8C3(2376923331)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 13, flow_id: 13, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4370183/3216)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0xF7D288AB(4157769899)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 15, flow_id: 15, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4608000/3218)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">inbound ah sas:</span><br /><br /><span style="color: #000000;">inbound pcp sas:</span><br /><br /><span style="color: #000000;">outbound esp sas:</span><br /><span style="color: #000000;"> spi: 0xE7B4AE5B(3887378011)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 12, flow_id: 12, sibling_flags 80000000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4192015/3216)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x3D9E28E5(1033775333)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 14, flow_id: 14, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4370183/3216)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0xD87AECE3(3631934691)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 16, flow_id: 16, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4608000/3218)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">outbound ah sas:</span><br /><br /><span style="color: #000000;">outbound pcp sas:</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="18bc1c6" class="elementor-element elementor-element-18bc1c6 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="cb65ff2" class="elementor-element elementor-element-cb65ff2 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="8e75408" class="elementor-element elementor-element-8e75408 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Jak widać z wyników powyższych komend wszystkie tunele zestawiły się poprawnie.</span></p><p> </p></div>
+				</div>
+				</div>
+				<div data-id="325aa58" class="elementor-element elementor-element-325aa58 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">WERYFIKACJA</span></h5><p style="text-align: justify;"><span style="color: #000000;">Sprawdźmy teraz co widać w wiresharku przy pingowaniu routera R3 (SPOKE-2) z routera R2 (SPOKE-1). </span></p><pre><span style="color: #000000;">SPOKE1#ping 172.22.10.3</span><br /><span style="color: #000000;">Type escape sequence to abort.</span><br /><span style="color: #000000;">Sending 5, 100-byte ICMP Echos to 172.22.10.3, timeout is 2 seconds:</span><br /><span style="color: #000000;">!!!!!</span><br /><span style="color: #000000;">Success rate is 100 percent (5/5), round-trip min/avg/max = 28/40/60 ms</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="2da996a" class="elementor-element elementor-element-2da996a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="272c8d5" class="elementor-element elementor-element-272c8d5 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="71ebfc5" class="elementor-element elementor-element-71ebfc5 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c3add74" class="elementor-element elementor-element-c3add74 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="1995834" class="elementor-element elementor-element-1995834 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="573" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_2.png 725w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_2-300x239.png 300w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="f849e56" class="elementor-element elementor-element-f849e56 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="cc127c4" class="elementor-element elementor-element-cc127c4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="fd3de14" class="elementor-element elementor-element-fd3de14 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5> </h5><h5><span style="color: #000000;">PODSUMOWANIE</span></h5><p style="text-align: justify;"><span style="color: #000000;">Jak widać zgodnie z teorią <a style="color: #000000;" href="https://kubsoo.github.io/rsnet-website/ipsec-vpn-teoria/">IPSEC</a> w wiresharku przy pingowaniu widzimy adresy 192.168.10.X (ponieważ skonfigurowaliśmy IPSEC w trybie transportowym), ponadto nie widzimy jaki ruch jest przesyłany. Widzimy tylko pakiety ESP które składają się z ESP SPI oraz numeru sekwencyjnego. DMVPN w połączeniu z IPSEC jest bardzo dobrą kombinacją do budowania skalowanych sieci VPN między oddziałami firmy, ponieważ przy dodawaniu nowego oddziału (SPOKE) dzięki zastosowaniu DMVPN nie musimy nic konfigurować na naszym HUBie i taki nowy oddział po skonfigurowaniu będzie miał łączność pomiędzy innymi oddziałami a IPSEC pozwoli dodatkowo zabezpieczyć transmisję.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja-2/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>DMVPN faza 1 &#8211; konfiguracja</title>
+		<link>https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja/#respond</comments>
+		<pubDate>Mon, 18 Dec 2017 18:17:16 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Na szybko]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[dmvpn]]></category>
+		<category><![CDATA[faza 1]]></category>
+		<category><![CDATA[konfiguracja]]></category>
+		<category><![CDATA[nhrp]]></category>
+		<category><![CDATA[Poradnik]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=956</guid>
+		<description><![CDATA[Dynamic Multipoint VPN (DMVPN) faza 1, czyli tunele hub-and-spoke z dynamicznymi mapowaniami NHRP Topologia Konfiguracja R1 hostname HUB!interface Tunnel0 ip address 172.22.10.1 255.255.255.0 ip nhrp network-id 123 tunnel source FastEthernet0/0 tunnel&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-956">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="1c79627" class="elementor-element elementor-element-1c79627 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="9c650a4" class="elementor-element elementor-element-9c650a4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="7aa1a3f" class="elementor-element elementor-element-7aa1a3f elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;"><strong>Dynamic Multipoint VPN (DMVPN) faza 1</strong>, czyli tunele hub-and-spoke z dynamicznymi mapowaniami NHRP</span></p><h5><span style="color: #000000;">Topologia</span></h5></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="918b75f" class="elementor-element elementor-element-918b75f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="a3ada10" class="elementor-element elementor-element-a3ada10 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="af0170c" class="elementor-element elementor-element-af0170c elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/dmvpn_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="521" height="410" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/dmvpn_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/dmvpn_1.png 521w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/dmvpn_1-300x236.png 300w" sizes="(max-width: 521px) 100vw, 521px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b91bbb2" class="elementor-element elementor-element-b91bbb2 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="24ea96d" class="elementor-element elementor-element-24ea96d elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="1cde9a9" class="elementor-element elementor-element-1cde9a9 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Konfiguracja</span></h5><p><span style="color: #000000;">R1</span></p><pre><span style="color: #000000;">hostname HUB</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Tunnel0</span><br /><span style="color: #000000;"> ip address 172.22.10.1 255.255.255.0</span><br /><span style="color: #000000;"> ip nhrp network-id 123</span><br /><span style="color: #000000;"> tunnel source FastEthernet0/0</span><br /><span style="color: #000000;"> tunnel mode gre multipoint</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.10.1 255.255.255.0</span><br /><span style="color: #000000;">!</span></pre><p><span style="color: #000000;">R2</span></p><pre><span style="color: #000000;">hostname SPOKE1</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Tunnel0</span><br /><span style="color: #000000;"> ip address 172.22.10.2 255.255.255.0</span><br /><span style="color: #000000;"> ip nhrp map 172.22.10.1 192.168.10.1</span><br /><span style="color: #000000;"> ip nhrp network-id 123</span><br /><span style="color: #000000;"> ip nhrp nhs 172.22.10.1</span><br /><span style="color: #000000;"> tunnel source FastEthernet0/0</span><br /><span style="color: #000000;"> tunnel destination 192.168.10.1</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.10.2 255.255.255.0</span><br /><span style="color: #000000;">!<br /></span></pre><p><span style="color: #000000;">R3</span></p><pre><span style="color: #000000;">hostname SPOKE2</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Tunnel0</span><br /><span style="color: #000000;"> ip address 172.22.10.3 255.255.255.0</span><br /><span style="color: #000000;"> ip nhrp map 172.22.10.1 192.168.10.1</span><br /><span style="color: #000000;"> ip nhrp network-id 123</span><br /><span style="color: #000000;"> ip nhrp nhs 172.22.10.1</span><br /><span style="color: #000000;"> tunnel source FastEthernet0/0</span><br /><span style="color: #000000;"> tunnel destination 192.168.10.1</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.10.3 255.255.255.0</span><br /><span style="color: #000000;">!</span></pre><p><span style="color: #000000;">R4</span></p><pre><span style="color: #000000;">hostname SPOKE3</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Tunnel0</span><br /><span style="color: #000000;"> ip address 172.22.10.4 255.255.255.0</span><br /><span style="color: #000000;"> ip nhrp map 172.22.10.1 192.168.10.1</span><br /><span style="color: #000000;"> ip nhrp network-id 123</span><br /><span style="color: #000000;"> ip nhrp nhs 172.22.10.1</span><br /><span style="color: #000000;"> tunnel source FastEthernet0/0</span><br /><span style="color: #000000;"> tunnel destination 192.168.10.1</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.10.4 255.255.255.0</span><br /><span style="color: #000000;">!</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="3448fe7" class="elementor-element elementor-element-3448fe7 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e27c1b9" class="elementor-element elementor-element-e27c1b9 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5327d05" class="elementor-element elementor-element-5327d05 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Przydatne komendy</span></h5><ul><li><span style="color: #000000;">show dmvpn</span></li><li><span style="color: #000000;">show ip nhrp</span></li></ul><p> </p><p><strong><span style="color: #000000;">HUB (R1)</span></strong></p><pre><span style="color: #000000;">HUB#show dmvpn</span><br /><span style="color: #000000;">Legend: Attrb --&gt; S - Static, D - Dynamic, I - Incomplete</span><br /><span style="color: #000000;"> N - NATed, L - Local, X - No Socket</span><br /><span style="color: #000000;"> # Ent --&gt; Number of NHRP entries with same NBMA peer</span><br /><span style="color: #000000;"> NHS Status: E --&gt; Expecting Replies, R --&gt; Responding, W --&gt; Waiting</span><br /><span style="color: #000000;"> UpDn Time --&gt; Up or Down Time for a Tunnel</span><br /><span style="color: #000000;">==========================================================================</span><br /><br /><span style="color: #000000;">Interface: Tunnel0, IPv4 NHRP Details</span><br /><span style="color: #000000;">Type:Hub, NHRP Peers:3,</span><br /><br /><span style="color: #000000;"># Ent Peer NBMA Addr Peer Tunnel Add State UpDn Tm Attrb</span><br /><span style="color: #000000;"> ----- --------------- --------------- ----- -------- -----</span><br /><span style="color: #000000;"> 1 192.168.10.2 172.22.10.2 UP 01:36:59 D</span><br /><span style="color: #000000;"> 1 192.168.10.3 172.22.10.3 UP 01:36:59 D</span><br /><span style="color: #000000;"> 1 192.168.10.4 172.22.10.4 UP 01:36:59 D</span></pre><pre><span style="color: #000000;">HUB#show ip nhrp</span><br /><span style="color: #000000;">172.22.10.2/32 via 172.22.10.2</span><br /><span style="color: #000000;"> Tunnel0 created 01:37:43, expire 01:42:15</span><br /><span style="color: #000000;"> Type: dynamic, Flags: unique registered used</span><br /><span style="color: #000000;"> NBMA address: 192.168.10.2</span><br /><span style="color: #000000;">172.22.10.3/32 via 172.22.10.3</span><br /><span style="color: #000000;"> Tunnel0 created 01:37:44, expire 01:42:15</span><br /><span style="color: #000000;"> Type: dynamic, Flags: unique registered used</span><br /><span style="color: #000000;"> NBMA address: 192.168.10.3</span><br /><span style="color: #000000;">172.22.10.4/32 via 172.22.10.4</span><br /><span style="color: #000000;"> Tunnel0 created 01:37:44, expire 01:42:15</span><br /><span style="color: #000000;"> Type: dynamic, Flags: unique registered used</span><br /><span style="color: #000000;"> NBMA address: 192.168.10.4</span></pre><p><strong><span style="color: #000000;">SPOKE1 (R2)</span></strong></p><pre><span style="color: #000000;">SPOKE1#show dmvpn</span><br /><span style="color: #000000;">Legend: Attrb --&gt; S - Static, D - Dynamic, I - Incomplete</span><br /><span style="color: #000000;"> N - NATed, L - Local, X - No Socket</span><br /><span style="color: #000000;"> # Ent --&gt; Number of NHRP entries with same NBMA peer</span><br /><span style="color: #000000;"> NHS Status: E --&gt; Expecting Replies, R --&gt; Responding, W --&gt; Waiting</span><br /><span style="color: #000000;"> UpDn Time --&gt; Up or Down Time for a Tunnel</span><br /><span style="color: #000000;">==========================================================================</span><br /><br /><span style="color: #000000;">Interface: Tunnel0, IPv4 NHRP Details</span><br /><span style="color: #000000;">Type:Spoke, NHRP Peers:1,</span><br /><br /><span style="color: #000000;"># Ent Peer NBMA Addr Peer Tunnel Add State UpDn Tm Attrb</span><br /><span style="color: #000000;"> ----- --------------- --------------- ----- -------- -----</span><br /><span style="color: #000000;"> 1 192.168.10.1 172.22.10.1 UP 01:39:36 S</span></pre><pre><span style="color: #000000;">SPOKE1#show ip nhrp</span><br /><span style="color: #000000;">172.22.10.1/32 via 172.22.10.1</span><br /><span style="color: #000000;"> Tunnel0 created 01:40:09, never expire</span><br /><span style="color: #000000;"> Type: static, Flags:</span><br /><span style="color: #000000;"> NBMA address: 192.168.10.1</span></pre><p><strong><span style="color: #000000;">SPOKE2 (R3)</span></strong></p><pre><span style="color: #000000;">SPOKE2#show dmvpn</span><br /><span style="color: #000000;">Legend: Attrb --&gt; S - Static, D - Dynamic, I - Incomplete</span><br /><span style="color: #000000;"> N - NATed, L - Local, X - No Socket</span><br /><span style="color: #000000;"> # Ent --&gt; Number of NHRP entries with same NBMA peer</span><br /><span style="color: #000000;"> NHS Status: E --&gt; Expecting Replies, R --&gt; Responding, W --&gt; Waiting</span><br /><span style="color: #000000;"> UpDn Time --&gt; Up or Down Time for a Tunnel</span><br /><span style="color: #000000;">==========================================================================</span><br /><br /><span style="color: #000000;">Interface: Tunnel0, IPv4 NHRP Details</span><br /><span style="color: #000000;">Type:Spoke, NHRP Peers:1,</span><br /><br /><span style="color: #000000;"># Ent Peer NBMA Addr Peer Tunnel Add State UpDn Tm Attrb</span><br /><span style="color: #000000;"> ----- --------------- --------------- ----- -------- -----</span><br /><span style="color: #000000;"> 1 192.168.10.1 172.22.10.1 UP 01:40:38 S</span></pre><pre><span style="color: #000000;">SPOKE2#show ip nhrp</span><br /><span style="color: #000000;">172.22.10.1/32 via 172.22.10.1</span><br /><span style="color: #000000;"> Tunnel0 created 01:41:17, never expire</span><br /><span style="color: #000000;"> Type: static, Flags:</span><br /><span style="color: #000000;"> NBMA address: 192.168.10.1</span></pre><p><strong><span style="color: #000000;">SPOKE3 (R4)</span></strong></p><pre><span style="color: #000000;">SPOKE3#show dmvpn</span><br /><span style="color: #000000;">Legend: Attrb --&gt; S - Static, D - Dynamic, I - Incomplete</span><br /><span style="color: #000000;"> N - NATed, L - Local, X - No Socket</span><br /><span style="color: #000000;"> # Ent --&gt; Number of NHRP entries with same NBMA peer</span><br /><span style="color: #000000;"> NHS Status: E --&gt; Expecting Replies, R --&gt; Responding, W --&gt; Waiting</span><br /><span style="color: #000000;"> UpDn Time --&gt; Up or Down Time for a Tunnel</span><br /><span style="color: #000000;">==========================================================================</span><br /><br /><span style="color: #000000;">Interface: Tunnel0, IPv4 NHRP Details</span><br /><span style="color: #000000;">Type:Spoke, NHRP Peers:1,</span><br /><br /><span style="color: #000000;"># Ent Peer NBMA Addr Peer Tunnel Add State UpDn Tm Attrb</span><br /><span style="color: #000000;"> ----- --------------- --------------- ----- -------- -----</span><br /><span style="color: #000000;"> 1 192.168.10.1 172.22.10.1 UP 01:41:40 S</span></pre><pre><span style="color: #000000;">SPOKE3#show ip nhrp</span><br /><span style="color: #000000;">172.22.10.1/32 via 172.22.10.1</span><br /><span style="color: #000000;"> Tunnel0 created 01:42:22, never expire</span><br /><span style="color: #000000;"> Type: static, Flags:</span><br /><span style="color: #000000;"> NBMA address: 192.168.10.1</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="f0ff15a" class="elementor-element elementor-element-f0ff15a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="5140eb2" class="elementor-element elementor-element-5140eb2 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="d1bee35" class="elementor-element elementor-element-d1bee35 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;"><strong>WERYFIKACJA</strong></span></h5><p><span style="color: #000000;">traceroute SPOKE1 -&gt; SPOKE2</span></p><pre><span style="color: #000000;">SPOKE1#traceroute 172.22.10.3</span><br /><span style="color: #000000;">Type escape sequence to abort.</span><br /><span style="color: #000000;">Tracing the route to 172.22.10.3</span><br /><span style="color: #000000;">VRF info: (vrf in name/id, vrf out name/id)</span><br /><span style="color: #000000;"> 1 172.22.10.1 20 msec 8 msec 12 msec</span><br /><span style="color: #000000;"> 2 172.22.10.3 32 msec 20 msec 24 msec</span></pre><p><span style="color: #000000;">traceroute SPOKE1 -&gt; SPOKE3 </span></p><pre><span style="color: #000000;">SPOKE1#traceroute 172.22.10.4</span><br /><span style="color: #000000;">Type escape sequence to abort.</span><br /><span style="color: #000000;">Tracing the route to 172.22.10.4</span><br /><span style="color: #000000;">VRF info: (vrf in name/id, vrf out name/id)</span><br /><span style="color: #000000;"> 1 172.22.10.1 16 msec 8 msec 8 msec</span><br /><span style="color: #000000;"> 2 172.22.10.4 20 msec 20 msec 24 msec</span></pre><p><span style="color: #000000;">traceroute SPOKE2 -&gt; SPOKE3</span></p><pre><span style="color: #000000;">SPOKE2#traceroute 172.22.10.4</span><br /><span style="color: #000000;">Type escape sequence to abort.</span><br /><span style="color: #000000;">Tracing the route to 172.22.10.4</span><br /><span style="color: #000000;">VRF info: (vrf in name/id, vrf out name/id)</span><br /><span style="color: #000000;"> 1 172.22.10.1 20 msec 20 msec 12 msec</span><br /><span style="color: #000000;"> 2 172.22.10.4 20 msec 20 msec 32 msec</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b17b5e7" class="elementor-element elementor-element-b17b5e7 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="589037f" class="elementor-element elementor-element-589037f elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c878c6c" class="elementor-element elementor-element-c878c6c elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Jak widać ruch między oddziałami typu SPOKE (172.22.10.2,172.22.10.3,172.22.10.4) odbywa się przez HUB (172.22.10.1). Wyjaśnienie działania DMVPN oraz więcej informacji na temat pozostałych faz DMVPN w następnych wpisach.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

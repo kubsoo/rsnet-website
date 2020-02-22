@@ -1,0 +1,817 @@
+<!DOCTYPE html> 
+<html class="no-js" lang="pl-PL">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://kubsoo.github.io/rsnet-website/xmlrpc.php">
+	
+	<title>OSPF Virtual Link &#8211; RSNET.PL</title>
+<script>document.documentElement.className = document.documentElement.className.replace("no-js","js");</script>
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="RSNET.PL &raquo; Kanał z wpisami" href="https://kubsoo.github.io/rsnet-website/feed/" />
+<link rel="alternate" type="application/rss+xml" title="RSNET.PL &raquo; Kanał z komentarzami" href="https://kubsoo.github.io/rsnet-website/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="RSNET.PL &raquo; OSPF Virtual Link Kanał z komentarzami" href="https://kubsoo.github.io/rsnet-website/ospf-virtual-link/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/kubsoo.github.io\/rsnet-website\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.0.4' type='text/css' media='all' />
+<link rel='stylesheet' id='es-widget-css-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/email-subscribers/widget/es-widget.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='gdpr-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/gdpr/assets/css/gdpr-public.css?ver=2.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-lightbox-swipebox-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/responsive-lightbox/assets/swipebox/css/swipebox.min.css?ver=2.0.5' type='text/css' media='all' />
+<link rel='stylesheet' id='style-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/style.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/responsive.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='tablepress-default-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/tablepress/css/default.min.css?ver=1.9.1' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=3.8.0' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-animations-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=2.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=2.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-global-css'  href='https://kubsoo.github.io/rsnet-website/wp-content/uploads/elementor/css/global.css?ver=1539853008' type='text/css' media='all' />
+<link rel='stylesheet' id='google-fonts-1-css'  href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;subset=latin-ext&#038;ver=4.9.8' type='text/css' media='all' />
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var GDPR = {"ajaxurl":"https:\/\/kubsoo.github.io\/rsnet-website\/wp-admin\/admin-ajax.php","logouturl":"","i18n":{"aborting":"Aborting","logging_out":"You are being logged out.","continue":"Continue","cancel":"Cancel","ok":"OK","close_account":"Close your account?","close_account_warning":"Your account will be closed and all data will be permanently deleted and cannot be recovered. Are you sure?","are_you_sure":"Are you sure?","policy_disagree":"By disagreeing you will no longer have access to our site and will be logged out."},"is_user_logged_in":"","refresh":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/gdpr/assets/js/gdpr-public.js?ver=2.1.0'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/responsive-lightbox/assets/swipebox/js/jquery.swipebox.min.js?ver=2.0.5'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/responsive-lightbox/assets/infinitescroll/infinite-scroll.pkgd.min.js?ver=4.9.8'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","customEvents":"","activeGalleries":"1","animation":"1","hideCloseButtonOnMobile":"0","removeBarsOnMobile":"0","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080","useSVG":"1","loopAtEnd":"0","woocommerce_gallery":"0","ajaxurl":"https:\/\/kubsoo.github.io\/rsnet-website\/wp-admin\/admin-ajax.php","nonce":"c89d6a2167"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/responsive-lightbox/js/front.js?ver=2.0.5'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/jquery.flexslider.min.js?ver=4.9.8'></script>
+<link rel='https://api.w.org/' href='https://kubsoo.github.io/rsnet-website/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://kubsoo.github.io/rsnet-website/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://kubsoo.github.io/rsnet-website/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Nmap w Pythonie' href='https://kubsoo.github.io/rsnet-website/nmap-w-pythonie/' />
+<link rel='next' title='HSRP podstawowa konfiguracja' href='https://kubsoo.github.io/rsnet-website/hsrp-podstawowa-konfiguracja/' />
+<meta name="generator" content="WordPress 4.9.8" />
+<link rel="canonical" href="https://kubsoo.github.io/rsnet-website/ospf-virtual-link/" />
+<link rel='shortlink' href='https://kubsoo.github.io/rsnet-website/?p=618' />
+<link rel="alternate" type="application/json+oembed" href="https://kubsoo.github.io/rsnet-website/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhttps://kubsoo.github.io/rsnet-website%2Fospf-virtual-link%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://kubsoo.github.io/rsnet-website/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhttps://kubsoo.github.io/rsnet-website%2Fospf-virtual-link%2F&#038;format=xml" />
+<!--[if lt IE 9]>
+<script src="https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/ie/html5.js"></script>
+<script src="https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/ie/selectivizr.js"></script>
+<![endif]-->
+<style type="text/css">
+/* Dynamic CSS: For no styles in head, copy and put the css below in your custom.css or child theme's style.css, disable dynamic styles */
+body { font-family: Georgia, serif; }
+.boxed #wrapper, .container-inner { max-width: 1200px; }
+.sidebar .widget { padding-left: 20px; padding-right: 20px; }
+
+::selection { background-color: #dd3333; }
+::-moz-selection { background-color: #dd3333; }
+
+a,
+.themeform label .required,
+#flexslider-featured .flex-direction-nav .flex-next:hover,
+#flexslider-featured .flex-direction-nav .flex-prev:hover,
+.post-hover:hover .post-title a,
+.post-title a:hover,
+.post-nav li a:hover i,
+.post-nav li a:hover span,
+.sidebar .post-nav li a:hover i,
+.sidebar .post-nav li a:hover span,
+.content .post-nav li a:hover i,
+.content .post-nav li a:hover span,
+.widget_rss ul li a,
+.widget_calendar a,
+.alx-tab .tab-item-category a,
+.alx-posts .post-item-category a,
+.alx-tab li:hover .tab-item-title a,
+.alx-tab li:hover .tab-item-comment a,
+.alx-posts li:hover .post-item-title a,
+.dark .widget a:hover,
+.dark .widget_rss ul li a,
+.dark .widget_calendar a,
+.dark .alx-tab .tab-item-category a,
+.dark .alx-posts .post-item-category a,
+.dark .alx-tab li:hover .tab-item-title a,
+.dark .alx-tab li:hover .tab-item-comment a,
+.dark .alx-posts li:hover .post-item-title a,
+.comment-tabs li.active a,
+.comment-awaiting-moderation,
+.child-menu a:hover,
+.child-menu .current_page_item > a,
+.wp-pagenavi a { color: #dd3333; }
+
+.themeform input[type="submit"],
+.themeform button[type="submit"],
+.s1 .sidebar-top,
+.s1 .sidebar-toggle,
+.s2 .sidebar-top,
+.s2 .sidebar-toggle,
+#flexslider-featured .flex-control-nav li a.flex-active,
+.post-tags a:hover,
+.author-bio .bio-avatar:after,
+.jp-play-bar, 
+.jp-volume-bar-value,
+.widget_calendar caption,
+.dark .widget_calendar caption,
+.commentlist li.bypostauthor > .comment-body:after,
+.commentlist li.comment-author-admin > .comment-body:after { background-color: #dd3333; }
+
+.s3 .social-links li a:hover,
+.post-format .format-container,
+.dark .alx-tabs-nav li.active a { border-color: #dd3333; }
+
+.alx-tabs-nav li.active a,
+.comment-tabs li.active a,
+.wp-pagenavi a:hover,
+.wp-pagenavi a:active,
+.wp-pagenavi span.current { border-bottom-color: #dd3333!important; }					
+				
+
+#header,
+.s3 { background-color: #0a0a0a; }
+@media only screen and (min-width: 720px) {
+	#nav-header .nav ul { background-color: #0a0a0a; }
+}			
+				
+
+#nav-footer.nav-container,
+#footer-bottom #back-to-top { background-color: #0a0a0a; }
+@media only screen and (min-width: 720px) {
+	#nav-footer .nav ul { background-color: #0a0a0a; }
+}			
+				
+.site-title a img { max-height: 40px; }
+body { background-color: #ededed; }
+</style>
+</head>
+
+<body class="post-template-default single single-post postid-618 single-format-standard col-2cl boxed topbar-enabled elementor-default elementor-page elementor-page-618">
+
+<div id="wrapper">
+
+	<header id="header" class="group">
+	
+					<nav class="nav-container group" id="nav-topbar">
+				<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+				<div class="nav-text"><!-- put your mobile menu text here --></div>
+				<div class="nav-wrap container"><ul id="menu-menu" class="nav container-inner group"><li id="menu-item-259" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-259"><a href="https://kubsoo.github.io/rsnet-website/">Strona główna</a></li>
+<li id="menu-item-914" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-914"><a href="https://kubsoo.github.io/rsnet-website/category/linux/">Linux</a></li>
+<li id="menu-item-924" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-924"><a href="https://kubsoo.github.io/rsnet-website/category/python/">Python</a></li>
+<li id="menu-item-265" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-265"><a href="https://kubsoo.github.io/rsnet-website/kontakt/">Kontakt</a></li>
+</ul></div>
+				
+				<div class="container">
+					<div class="container-inner">		
+						<div class="toggle-search"><i class="fa fa-search"></i></div>
+						<div class="search-expand">
+							<div class="search-expand-inner">
+								<form method="get" class="searchform themeform" action="https://kubsoo.github.io/rsnet-website/">
+	<div>
+		<input type="text" class="search" name="s" onblur="if(this.value=='')this.value='To search type and hit enter';" onfocus="if(this.value=='To search type and hit enter')this.value='';" value="To search type and hit enter" />
+	</div>
+</form>							</div>
+						</div>
+					</div><!--/.container-inner-->
+				</div><!--/.container-->
+				
+			</nav><!--/#nav-topbar-->
+				
+		<div class="container group">
+			<div class="container-inner">
+								<div class="group pad">
+					<p class="site-title"><a href="https://kubsoo.github.io/rsnet-website/" rel="home">RSNET.PL</a></p>
+					<p class="site-description">wszystko o sieciach komputerowych</p>									</div>
+								
+			</div><!--/.container-inner-->
+		</div><!--/.container-->
+		
+				
+	</header><!--/#header-->
+	
+	<div class="container" id="page">
+		<div class="container-inner">			
+			<div class="main">
+				<div class="sidebar s3 group"></div>
+				<div class="main-inner group">
+<div class="content">
+	
+	<div class="page-title pad group">
+
+			<ul class="meta-single group">
+			<li class="category"><a href="https://kubsoo.github.io/rsnet-website/category/poradnik/" rel="category tag">Poradnik</a></li>
+					</ul>
+		
+	
+</div><!--/.page-title-->	
+	<div class="pad group">
+		
+					<article class="post-618 post type-post status-publish format-standard has-post-thumbnail hentry category-poradnik tag-ospf tag-poradnik tag-virtual-link">	
+				<div class="post-inner group">
+					
+					<h1 class="post-title">OSPF Virtual Link</h1>
+					<p class="post-byline">by <a href="https://kubsoo.github.io/rsnet-website/author/admin/" title="Wpisy, których autorem jest admin" rel="author">admin</a> &middot; Wrzesień 30, 2017</p>
+					
+										
+					<div class="clear"></div>
+					
+					<div class="entry themeform share">	
+						<div class="entry-inner">
+									<div class="elementor elementor-618">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="e5cf567" class="elementor-element elementor-element-e5cf567 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="29a7675" class="elementor-element elementor-element-29a7675 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="143605a" class="elementor-element elementor-element-143605a elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #333333;"> OSPF jest protokołem typu link state, czyli wszystkie routery wymieniają się między sobą trasami i każdy z nich oblicza trasy zgodnie z <a style="color: #333333;" href="https://pl.wikipedia.org/wiki/Algorytm_Dijkstry"><span style="color: #ff0000;">algorytmem Dijsktry</span></a>. Każda zmiana w sieci, niesie za sobą konieczność ponownego przeliczania tras. W dużych sieciach, gdzie jest dużo routerów każdy z nich musi przeliczać trasy co wpływa na stabilność pracy sieci oraz na czas konwergencji. OSPF umożliwia podział sieci na obszary (area) dzięki czemu tylko routery w tym samym obszarze przetwarzają LSA między sobą, natomiast między obszarami są tzw routery brzegowe, ABR (Area Border Router), które umożliwiają sumaryzowanie tras dzięki czemu routery w innych obszarach nie muszą znać wszystkich tras z innego obszaru ani nie muszą brać udziału w przeliczaniu tych tras, co poprawia stabilność pracy zmniejsza obciążenie routerów oraz skraca czas konwergencji. Każdy obszar musi być połączony do obszaru szkieletowego (area 0). Czasami projekt sieci OSPF jest taki, że mamy obszary, które nie są podłączone do obszaru 0, np. tak jak to ma miejsce na poniższym diagramie:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="4bb2ab9" class="elementor-element elementor-element-4bb2ab9 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c7e2bc1" class="elementor-element elementor-element-c7e2bc1 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="b618ea1" class="elementor-element elementor-element-b618ea1 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="644" height="418" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ospf_vlink.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ospf_vlink.png 644w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ospf_vlink-300x195.png 300w" sizes="(max-width: 644px) 100vw, 644px" />											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="58f65d2" class="elementor-element elementor-element-58f65d2 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="4d83f0e" class="elementor-element elementor-element-4d83f0e elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="bfb86cb" class="elementor-element elementor-element-bfb86cb elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #333333;">Sieć skonfigurowana jest następująco:</span></p><p><span style="color: #333333;">R1</span></p><pre><span style="color: #333333;">hostname R1</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;">  ip address 192.168.12.1 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;"> network 192.168.12.0 0.0.0.255 area 0<br /></span></pre><p><span style="color: #333333;">R2</span></p><pre><span style="color: #333333;">hostname R2</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;">  ip address 192.168.12.2 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet1/0</span><br /><span style="color: #333333;">  ip address 192.168.23.2 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;">  network 192.168.12.0 0.0.0.255 area 0</span><br /><span style="color: #333333;">  network 192.168.23.0 0.0.0.255 area 10</span><br /><br /></pre><p><span style="color: #333333;">R3</span></p><pre><span style="color: #333333;">hostname R3</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;">  ip address 192.168.34.3 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet1/0</span><br /><span style="color: #333333;">  ip address 192.168.23.3 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;">  network 192.168.23.0 0.0.0.255 area 10</span><br /><span style="color: #333333;">  network 192.168.34.0 0.0.0.255 area 20</span></pre><p><span style="color: #333333;">R4</span></p><pre><span style="color: #333333;">hostname R4</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;">  ip address 192.168.34.4 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;">  network 192.168.34.0 0.0.0.255 area 20</span></pre><div style="text-align: justify;"><span style="color: #333333;">Sprawdźmy jak wygląda wynik komendy show ip ospf neighbor na R4 i jego tablica routingu:</span></div><pre><span style="color: #333333;">R4#show ip ospf neighbor</span><br /><br /><span style="color: #333333;">Neighbor ID Pri State Dead Time Address Interface</span><br /><span style="color: #333333;">192.168.34.3 1 FULL/BDR 00:00:32 192.168.34.3 FastEthernet0/0</span></pre><pre><span style="color: #333333;">R4#show ip route</span><br /><span style="color: #333333;">Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP</span><br /><span style="color: #333333;">  D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area</span><br /><span style="color: #333333;">  N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2</span><br /><span style="color: #333333;">  E1 - OSPF external type 1, E2 - OSPF external type 2</span><br /><span style="color: #333333;">  i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2</span><br /><span style="color: #333333;">  ia - IS-IS inter area, * - candidate default, U - per-user static route</span><br /><span style="color: #333333;">  o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP</span><br /><span style="color: #333333;">  + - replicated route, % - next hop override</span><br /><br /><span style="color: #333333;">Gateway of last resort is not set</span><br /><br /><span style="color: #333333;">  192.168.34.0/24 is variably subnetted, 2 subnets, 2 masks</span><br /><span style="color: #333333;">C 192.168.34.0/24 is directly connected, FastEthernet0/0</span><br /><span style="color: #333333;">L 192.168.34.4/32 is directly connected, FastEthernet0/0</span></pre><div style="text-align: justify;"><span style="color: #333333;">Jak widać relacja sąsiedztwa z routerem R3 się nawiązała, ale nie mamy na tym routerze tras z OSPF&#8217;a, ponieważ obszar 20 (area 20) nie jest połączony do obszaru szkieletowego (area 0), tylko do obszaru 10 (area 10). Rozwiązaniem tej sytuacji jest łącze wirtualne (Virtual Link). Dzięki łączu wirtualnemu możemy zapewnić obszarowi 20 bezpośredni dostęp do obszaru szkieletowego.</span></div><div> </div><h5><span style="color: #333333;">KONFIGURACJA VIRTUAL LINK</span></h5><div><span style="color: #333333;">Virtual Link konfigurujemy na routerach R3 i R2.</span></div><div> </div><pre><span style="color: #333333;">R2(config-router)#area 10 virtual-link 192.168.34.3</span><br /><span style="color: #333333;">R2(config-router)#</span><br /><span style="color: #333333;">*Nov 21 13:14:37.135: %OSPF-5-ADJCHG: Process 1, Nbr 192.168.34.3 on OSPF_VL0 from LOADING to FULL, Loading Done</span><br /><br /><span style="color: #333333;">R3(config-router)#area 10 virtual-link 192.168.23.2</span><br /><span style="color: #333333;">R3(config-router)#</span><br /><span style="color: #333333;">*Nov 21 13:14:36.419: %OSPF-5-ADJCHG: Process 1, Nbr 192.168.23.2 on OSPF_VL0 from LOADING to FULL, Loading Done</span></pre><div><span style="color: #333333;">Zobaczmy jak teraz wygląda tablica routingu na R4.</span></div><pre><span style="color: #333333;">R4#show ip route</span><br /><span style="color: #333333;">Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP</span><br /><span style="color: #333333;">  D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area</span><br /><span style="color: #333333;">  N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2</span><br /><span style="color: #333333;">  E1 - OSPF external type 1, E2 - OSPF external type 2</span><br /><span style="color: #333333;">  i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2</span><br /><span style="color: #333333;">  ia - IS-IS inter area, * - candidate default, U - per-user static route</span><br /><span style="color: #333333;">  o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP</span><br /><span style="color: #333333;">  + - replicated route, % - next hop override</span><br /><span style="color: #333333;"><br />Gateway of last resort is not set</span><br /><br /><span style="color: #333333;"><b>O IA 192.168.12.0/24 [110/3] via 192.168.34.3, 00:01:29, FastEthernet0/0</b></span><br /><span style="color: #333333;"><b>O IA 192.168.23.0/24 [110/2] via 192.168.34.3, 00:01:34, FastEthernet0/0</b></span><br /><span style="color: #333333;">  192.168.34.0/24 is variably subnetted, 2 subnets, 2 masks</span><br /><span style="color: #333333;">C 192.168.34.0/24 is directly connected, FastEthernet0/0</span><br /><span style="color: #333333;">L 192.168.34.4/32 is directly connected, FastEthernet0/0</span></pre><div style="text-align: justify;"><span style="color: #333333;">Pojawiły nam się trasy z OSPF, czyli łączność pomiędzy routerami R1 i R4 powinna działać:</span></div><pre><span style="color: #333333;">R1#ping 192.168.34.4</span><br /><span style="color: #333333;">Type escape sequence to abort.</span><br /><span style="color: #333333;">Sending 5, 100-byte ICMP Echos to 192.168.34.4, timeout is 2 seconds:</span><br /><span style="color: #333333;">!!!!!</span><br /><span style="color: #333333;">Success rate is 100 percent (5/5), round-trip min/avg/max = 44/57/64 ms</span></pre><pre><span style="color: #333333;">R4#ping 192.168.12.1</span><br /><span style="color: #333333;">Type escape sequence to abort.</span><br /><span style="color: #333333;">Sending 5, 100-byte ICMP Echos to 192.168.12.1, timeout is 2 seconds:</span><br /><span style="color: #333333;">!!!!!</span><br /><span style="color: #333333;">Success rate is 100 percent (5/5), round-trip min/avg/max = 40/46/52 ms</span></pre><div style="text-align: justify;"><span style="color: #333333;">Sprawdźmy wynik komendy show ip ospf neighbor na R2 i R3. </span></div><pre><span style="color: #333333;">R3#show ip ospf neighbor</span><br /><br /><span style="color: #333333;">Neighbor ID Pri State Dead Time Address Interface</span><br /><span style="color: #333333;">192.168.23.2 0 FULL/ - 00:00:15 192.168.23.2 OSPF_VL0</span><br /><span style="color: #333333;">192.168.23.2 1 FULL/BDR 00:00:35 192.168.23.2 FastEthernet1/0</span><br /><span style="color: #333333;">192.168.34.4 1 FULL/DR 00:00:37 192.168.34.4 FastEthernet0/0</span><br /><br /><span style="color: #333333;">R2#show ip ospf neighbor</span><br /><br /><span style="color: #333333;">Neighbor ID Pri State Dead Time Address Interface</span><br /><span style="color: #333333;">192.168.34.3 0 FULL/ - - 192.168.23.3 OSPF_VL0</span><br /><span style="color: #333333;">192.168.12.1 1 FULL/BDR 00:00:31 192.168.12.1 FastEthernet0/0</span><br /><span style="color: #333333;">192.168.34.3 1 FULL/DR 00:00:30 192.168.23.3 FastEthernet1/0</span></pre><div style="text-align: justify;"><span style="color: #333333;">Widzimy, że R3 posiada teraz relację sąsiedztwa z R2 przez interfejs wirtualny OSPF_VL0. </span></div><div style="text-align: justify;"> </div><div style="text-align: justify;"><span style="color: #333333;">Więcej informacji o Virtual Link dostaniemy wydając komendę show ip ospf virtual-links:</span></div><pre><span style="color: #333333;">R3#show ip ospf virtual-links</span><br /><span style="color: #333333;">Virtual Link OSPF_VL0 to router 192.168.23.2 is up</span><br /><span style="color: #333333;">  Run as demand circuit</span><br /><span style="color: #333333;">  DoNotAge LSA allowed.</span><br /><span style="color: #333333;">  Transit area 10, via interface FastEthernet1/0</span><br /><span style="color: #333333;"> Topology-MTID Cost Disabled Shutdown Topology Name</span><br /><span style="color: #333333;">  0 1 no no Base</span><br /><span style="color: #333333;">  Transmit Delay is 1 sec, State POINT_TO_POINT,</span><br /><span style="color: #333333;">  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5</span><br /><span style="color: #333333;">  Hello due in 00:00:08</span><br /><span style="color: #333333;">  Adjacency State FULL (Hello suppressed)</span><br /><span style="color: #333333;">  Index 1/3, retransmission queue length 0, number of retransmission 0</span><br /><span style="color: #333333;">  First 0x0(0)/0x0(0) Next 0x0(0)/0x0(0)</span><br /><span style="color: #333333;">  Last retransmission scan length is 0, maximum is 0</span><br /><span style="color: #333333;">  Last retransmission scan time is 0 msec, maximum is 0 msec</span><br /><br /><span style="color: #333333;">R2#show ip ospf virtual-links</span><br /><span style="color: #333333;">Virtual Link OSPF_VL0 to router 192.168.34.3 is up</span><br /><span style="color: #333333;">  Run as demand circuit</span><br /><span style="color: #333333;">  DoNotAge LSA allowed.</span><br /><span style="color: #333333;">  Transit area 10, via interface FastEthernet1/0</span><br /><span style="color: #333333;"> Topology-MTID Cost Disabled Shutdown Topology Name</span><br /><span style="color: #333333;">  0 1 no no Base</span><br /><span style="color: #333333;">  Transmit Delay is 1 sec, State POINT_TO_POINT,</span><br /><span style="color: #333333;">  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5</span><br /><span style="color: #333333;">  Hello due in 00:00:09</span><br /><span style="color: #333333;">  Adjacency State FULL (Hello suppressed)</span><br /><span style="color: #333333;">  Index 2/3, retransmission queue length 0, number of retransmission 0</span><br /><span style="color: #333333;">  First 0x0(0)/0x0(0) Next 0x0(0)/0x0(0)</span><br /><span style="color: #333333;">  Last retransmission scan length is 0, maximum is 0</span><br /><span style="color: #333333;">  Last retransmission scan time is 0 msec, maximum is 0 msec</span></pre><div> </div><div> </div><div> </div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+															</div>
+						<div class="sharrre-container">
+	<span>Share</span>
+	<div id="twitter" data-url="https://kubsoo.github.io/rsnet-website/ospf-virtual-link/" data-text="OSPF Virtual Link" data-title="Tweet"></div>
+	<div id="facebook" data-url="https://kubsoo.github.io/rsnet-website/ospf-virtual-link/" data-text="OSPF Virtual Link" data-title="Like"></div>
+	<div id="googleplus" data-url="https://kubsoo.github.io/rsnet-website/ospf-virtual-link/" data-text="OSPF Virtual Link" data-title="+1"></div>
+	<div id="pinterest" data-url="https://kubsoo.github.io/rsnet-website/ospf-virtual-link/" data-text="OSPF Virtual Link" data-title="Pin It"></div>
+</div><!--/.sharrre-container-->
+
+<script type="text/javascript">
+	// Sharrre
+	jQuery(document).ready(function(){
+		jQuery('#twitter').sharrre({
+			share: {
+				twitter: true
+			},
+			template: '<a class="box" href="#"><div class="count" href="#"><i class="fa fa-plus"></i></div><div class="share"><i class="fa fa-twitter"></i></div></a>',
+			enableHover: false,
+			enableTracking: true,
+			buttons: { twitter: {via: ''}},
+			click: function(api, options){
+				api.simulateClick();
+				api.openPopup('twitter');
+			}
+		});
+		jQuery('#facebook').sharrre({
+			share: {
+				facebook: true
+			},
+			template: '<a class="box" href="#"><div class="count" href="#">{total}</div><div class="share"><i class="fa fa-facebook-square"></i></div></a>',
+			enableHover: false,
+			enableTracking: true,
+			buttons:{layout: 'box_count'},
+			click: function(api, options){
+				api.simulateClick();
+				api.openPopup('facebook');
+			}
+		});
+		jQuery('#googleplus').sharrre({
+			share: {
+				googlePlus: true
+			},
+			template: '<a class="box" href="#"><div class="count" href="#">{total}</div><div class="share"><i class="fa fa-google-plus-square"></i></div></a>',
+			enableHover: false,
+			enableTracking: true,
+			buttons:{size: 'tall'},
+			urlCurl: 'https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/sharrre.php',
+			click: function(api, options){
+				api.simulateClick();
+				api.openPopup('googlePlus');
+			}
+		});
+		jQuery('#pinterest').sharrre({
+			share: {
+				pinterest: true
+			},
+			template: '<a class="box" href="#" rel="nofollow"><div class="count" href="#">{total}</div><div class="share"><i class="fa fa-pinterest"></i></div></a>',
+			enableHover: false,
+			enableTracking: true,
+			buttons: {
+			pinterest: {
+				description: 'OSPF Virtual Link',media: 'https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ospf_virtual_link_ico_large.png'				}
+			},
+			click: function(api, options){
+				api.simulateClick();
+				api.openPopup('pinterest');
+			}
+		});
+		
+				
+	});
+</script>						<div class="clear"></div>				
+					</div><!--/.entry-->
+					
+				</div><!--/.post-inner-->	
+			</article><!--/.post-->				
+				
+		<div class="clear"></div>
+		
+		<p class="post-tags"><span>Tags:</span> <a href="https://kubsoo.github.io/rsnet-website/tag/ospf/" rel="tag">ospf</a><a href="https://kubsoo.github.io/rsnet-website/tag/poradnik/" rel="tag">Poradnik</a><a href="https://kubsoo.github.io/rsnet-website/tag/virtual-link/" rel="tag">virtual link</a></p>		
+				
+				
+		
+
+<h4 class="heading">
+	<i class="fa fa-hand-o-right"></i>You may also like...</h4>
+
+<ul class="related-posts group">
+	
+		<li class="related post-hover">
+		<article class="post-102 post type-post status-publish format-standard has-post-thumbnail hentry category-poradnik tag-poradnik tag-ssh tag-windows">
+
+			<div class="post-thumbnail">
+				<a href="https://kubsoo.github.io/rsnet-website/windows-ssh-server/" title="Windows SSH Server">
+											<img width="520" height="245" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2015/06/win_ssh_ico_large-520x245.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2015/06/win_ssh_ico_large-520x245.png 520w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2015/06/win_ssh_ico_large-720x340.png 720w" sizes="(max-width: 520px) 100vw, 520px" />																								</a>
+							</div><!--/.post-thumbnail-->
+			
+			<div class="related-inner">
+				
+				<h4 class="post-title">
+					<a href="https://kubsoo.github.io/rsnet-website/windows-ssh-server/" rel="bookmark" title="Windows SSH Server">Windows SSH Server</a>
+				</h4><!--/.post-title-->
+				
+				<div class="post-meta group">
+					<p class="post-date">24 Lut, 2017</p>
+				</div><!--/.post-meta-->
+			
+			</div><!--/.related-inner-->
+
+		</article>
+	</li><!--/.related-->
+		<li class="related post-hover">
+		<article class="post-1070 post type-post status-publish format-standard has-post-thumbnail hentry category-poradnik tag-cisco tag-gns3 tag-poradnik tag-urpf">
+
+			<div class="post-thumbnail">
+				<a href="https://kubsoo.github.io/rsnet-website/urpf-unicast-reverse-path-forwarding/" title="URPF &#8211; Unicast Reverse Path Forwarding">
+											<img width="520" height="245" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/urpf_ico_large-520x245.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/urpf_ico_large-520x245.png 520w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/urpf_ico_large-300x141.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/urpf_ico_large-720x340.png 720w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/urpf_ico_large.png 510w" sizes="(max-width: 520px) 100vw, 520px" />																								</a>
+							</div><!--/.post-thumbnail-->
+			
+			<div class="related-inner">
+				
+				<h4 class="post-title">
+					<a href="https://kubsoo.github.io/rsnet-website/urpf-unicast-reverse-path-forwarding/" rel="bookmark" title="URPF &#8211; Unicast Reverse Path Forwarding">URPF &#8211; Unicast Reverse Path Forwarding</a>
+				</h4><!--/.post-title-->
+				
+				<div class="post-meta group">
+					<p class="post-date">29 Lip, 2018</p>
+				</div><!--/.post-meta-->
+			
+			</div><!--/.related-inner-->
+
+		</article>
+	</li><!--/.related-->
+		<li class="related post-hover">
+		<article class="post-186 post type-post status-publish format-standard has-post-thumbnail hentry category-poradnik tag-cisco tag-paramiko tag-python tag-ssh">
+
+			<div class="post-thumbnail">
+				<a href="https://kubsoo.github.io/rsnet-website/cisco-python-paramiko/" title="CISCO + Python + Paramiko">
+											<img width="520" height="245" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/paramiko_ico_large-520x245.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/paramiko_ico_large-520x245.png 520w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/paramiko_ico_large-300x141.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/paramiko_ico_large-720x340.png 720w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/09/paramiko_ico_large.png 510w" sizes="(max-width: 520px) 100vw, 520px" />																								</a>
+							</div><!--/.post-thumbnail-->
+			
+			<div class="related-inner">
+				
+				<h4 class="post-title">
+					<a href="https://kubsoo.github.io/rsnet-website/cisco-python-paramiko/" rel="bookmark" title="CISCO + Python + Paramiko">CISCO + Python + Paramiko</a>
+				</h4><!--/.post-title-->
+				
+				<div class="post-meta group">
+					<p class="post-date">21 Wrz, 2017</p>
+				</div><!--/.post-meta-->
+			
+			</div><!--/.related-inner-->
+
+		</article>
+	</li><!--/.related-->
+		
+</ul><!--/.post-related-->
+
+		
+		
+<div id="comments" class="themeform">
+	
+	
+					<!-- comments open, no comments -->
+			
+		
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Dodaj komentarz <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://kubsoo.github.io/rsnet-website/ospf-virtual-link/#respond" style="display:none;">Anuluj pisanie odpowiedzi</a></small></h3>			<form action="https://kubsoo.github.io/rsnet-website/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes"><span id="email-notes">Twój adres email nie zostanie opublikowany.</span> Pola, których wypełnienie jest wymagane, są oznaczone symbolem <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Komentarz</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Podpis <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Witryna internetowa</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Opublikuj komentarz" /> <input type='hidden' name='comment_post_ID' value='618' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="f68b5aa653" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="57"/></p>			</form>
+			</div><!-- #respond -->
+	<p class="akismet_comment_form_privacy_notice">This site uses Akismet to reduce spam. <a href="https://akismet.com/privacy/" target="_blank" rel="nofollow noopener">Learn how your comment data is processed</a>.</p>
+</div><!--/#comments-->		
+	</div><!--/.pad-->
+	
+</div><!--/.content-->
+
+	
+	<div class="sidebar s1 dark">
+		
+		<a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+		
+		<div class="sidebar-content">
+			
+				<ul class="post-nav group">
+		<li class="next"><a href="https://kubsoo.github.io/rsnet-website/hsrp-podstawowa-konfiguracja/" rel="next"><i class="fa fa-chevron-right"></i><strong>Next story</strong> <span>HSRP podstawowa konfiguracja</span></a></li>
+		<li class="previous"><a href="https://kubsoo.github.io/rsnet-website/nmap-w-pythonie/" rel="prev"><i class="fa fa-chevron-left"></i><strong>Previous story</strong> <span>Nmap w Pythonie</span></a></li>
+	</ul>
+			
+						
+			<div id="email-subscribers-3" class="widget widget_text elp-widget"><h3>Newsletter</h3>        <div class="es_form_container">
+            <form class="es_widget_form" data-es_form_id="es_widget_form">
+				                    <div class="es_caption">Chcesz otrzymywać powiadomienia o nowych wpisach prosto na Twój e-mail?</div>
+								                    <div class="es_lablebox">
+                        <label class="es_widget_form_name">Nazwa</label>
+                    </div>
+                    <div class="es_textbox">
+                        <input type="text" id="es_txt_name" class="es_textbox_class" name="es_txt_name" value="" maxlength="60">
+                    </div>
+				                <div class="es_lablebox">
+                    <label class="es_widget_form_email">E-mail *</label>
+                </div>
+                <div class="es_textbox">
+                    <input type="email" id="es_txt_email" class="es_textbox_class" name="es_txt_email" value="" maxlength="60" required>
+                </div>
+				<p><label class="gdpr-label"><input type="checkbox" name="user_consents[polityka-prywatnoci]" id="polityka-prywatnoci-consent" value="1" required>Przeczytałem/am i zgadzam się z polityką prywatności. <a href="https://kubsoo.github.io/rsnet-website/polityka-prywatnosci/">LINK</a></label></p>                <div class="es_button">
+                    <input type="submit" id="es_txt_button" class="es_textbox_button es_submit_button" name="es_txt_button" value="Subskrypcja">
+                </div>
+                <div class="es_msg" id="es_widget_msg">
+                    <span id="es_msg"></span>
+                </div>
+								<div style="position:absolute; left: -5000px"><input type="text" name="es_required_field" class="es_required_field" tabindex="-1" autocomplete="es_test"/></div>
+                <input type="hidden" id="es_txt_group" name="es_txt_group" value="Public">
+				                <input type="hidden" name="es-subscribe" id="es-subscribe" value="7b4448552a"/>
+            </form>
+			        </div>
+        </div><div id="search-5" class="widget widget_search"><h3>Wyszukiwarka</h3><form method="get" class="searchform themeform" action="https://kubsoo.github.io/rsnet-website/">
+	<div>
+		<input type="text" class="search" name="s" onblur="if(this.value=='')this.value='To search type and hit enter';" onfocus="if(this.value=='To search type and hit enter')this.value='';" value="To search type and hit enter" />
+	</div>
+</form></div>		<div id="recent-posts-4" class="widget widget_recent_entries">		<h3>Najnowsze wpisy</h3>		<ul>
+											<li>
+					<a href="https://kubsoo.github.io/rsnet-website/bgp-wyrazenia-regularne-2/">Spanning Tree Protocol &#8211; podstawy</a>
+									</li>
+											<li>
+					<a href="https://kubsoo.github.io/rsnet-website/bgp-wyrazenia-regularne/">BGP &#8211; wyrażenia regularne</a>
+									</li>
+											<li>
+					<a href="https://kubsoo.github.io/rsnet-website/urpf-unicast-reverse-path-forwarding/">URPF &#8211; Unicast Reverse Path Forwarding</a>
+									</li>
+											<li>
+					<a href="https://kubsoo.github.io/rsnet-website/palo-alto-api-reguly-python-skrypt/">Palo Alto API tworzenie reguł &#8211; Python skrypt</a>
+									</li>
+											<li>
+					<a href="https://kubsoo.github.io/rsnet-website/cgi_python/">Programowanie CGI Pythona</a>
+									</li>
+					</ul>
+		</div><div id="categories-4" class="widget widget_categories"><h3>Kategorie</h3>		<ul>
+	<li class="cat-item cat-item-41"><a href="https://kubsoo.github.io/rsnet-website/category/faq/" >FAQ</a> (1)
+</li>
+	<li class="cat-item cat-item-55"><a href="https://kubsoo.github.io/rsnet-website/category/linux/" >Linux</a> (2)
+</li>
+	<li class="cat-item cat-item-50"><a href="https://kubsoo.github.io/rsnet-website/category/na-szybko/" >Na szybko</a> (3)
+</li>
+	<li class="cat-item cat-item-5"><a href="https://kubsoo.github.io/rsnet-website/category/poradnik/" >Poradnik</a> (37)
+</li>
+	<li class="cat-item cat-item-59"><a href="https://kubsoo.github.io/rsnet-website/category/python/" >Python</a> (4)
+</li>
+		</ul>
+</div><div id="text-5" class="widget widget_text"><h3>LINKI</h3>			<div class="textwidget"><p><a href="http://firewall.cx/">firewall.cx</a></p>
+<p><a href="http://packetlife.net/">packetlife.net</a></p>
+<p><a href="http://ccie-or-null.net/">ccie-or-null.net</a></p>
+<p><a href="http://hackingcisco.blogspot.com/">hackingcisco.blogspot.<wbr />com</a></p>
+<p><a href="http://ccieblogger.com/">ccieblogger.com</a></p>
+</div>
+		</div><div id="archives-4" class="widget widget_archive"><h3>Archiwum</h3>		<ul>
+			<li><a href='https://kubsoo.github.io/rsnet-website/2018/08/'>Sierpień 2018</a>&nbsp;(1)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2018/07/'>Lipiec 2018</a>&nbsp;(2)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2018/03/'>Marzec 2018</a>&nbsp;(1)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2018/02/'>Luty 2018</a>&nbsp;(1)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2018/01/'>Styczeń 2018</a>&nbsp;(1)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/12/'>Grudzień 2017</a>&nbsp;(10)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/10/'>Październik 2017</a>&nbsp;(9)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/09/'>Wrzesień 2017</a>&nbsp;(7)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/08/'>Sierpień 2017</a>&nbsp;(2)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/05/'>Maj 2017</a>&nbsp;(2)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/03/'>Marzec 2017</a>&nbsp;(2)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/02/'>Luty 2017</a>&nbsp;(2)</li>
+	<li><a href='https://kubsoo.github.io/rsnet-website/2017/01/'>Styczeń 2017</a>&nbsp;(2)</li>
+		</ul>
+		</div><div id="tag_cloud-3" class="widget widget_tag_cloud"><h3>Tagi</h3><div class="tagcloud"><a href="https://kubsoo.github.io/rsnet-website/tag/2-isp/" class="tag-cloud-link tag-link-40 tag-link-position-1" style="font-size: 8pt;" aria-label="2 isp (1 element)">2 isp</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/bgp/" class="tag-cloud-link tag-link-49 tag-link-position-2" style="font-size: 11.620689655172pt;" aria-label="bgp (3 elementów)">bgp</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/ccna/" class="tag-cloud-link tag-link-22 tag-link-position-3" style="font-size: 8pt;" aria-label="ccna (1 element)">ccna</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/certyfikaty/" class="tag-cloud-link tag-link-43 tag-link-position-4" style="font-size: 8pt;" aria-label="certyfikaty (1 element)">certyfikaty</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/cisco/" class="tag-cloud-link tag-link-12 tag-link-position-5" style="font-size: 21.034482758621pt;" aria-label="cisco (23 elementów)">cisco</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/cli/" class="tag-cloud-link tag-link-19 tag-link-position-6" style="font-size: 8pt;" aria-label="cli (1 element)">cli</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/csr1000v/" class="tag-cloud-link tag-link-3 tag-link-position-7" style="font-size: 8pt;" aria-label="CSR1000V (1 element)">CSR1000V</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/dhcp/" class="tag-cloud-link tag-link-24 tag-link-position-8" style="font-size: 8pt;" aria-label="dhcp (1 element)">dhcp</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/dmvpn/" class="tag-cloud-link tag-link-62 tag-link-position-9" style="font-size: 10.172413793103pt;" aria-label="dmvpn (2 elementów)">dmvpn</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/dr/" class="tag-cloud-link tag-link-45 tag-link-position-10" style="font-size: 8pt;" aria-label="dr (1 element)">dr</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/faq/" class="tag-cloud-link tag-link-42 tag-link-position-11" style="font-size: 8pt;" aria-label="faq (1 element)">faq</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/faza-1/" class="tag-cloud-link tag-link-63 tag-link-position-12" style="font-size: 10.172413793103pt;" aria-label="faza 1 (2 elementów)">faza 1</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/gns3/" class="tag-cloud-link tag-link-2 tag-link-position-13" style="font-size: 13.793103448276pt;" aria-label="GNS3 (5 elementów)">GNS3</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/hsrp/" class="tag-cloud-link tag-link-23 tag-link-position-14" style="font-size: 8pt;" aria-label="hsrp (1 element)">hsrp</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/ikev1/" class="tag-cloud-link tag-link-27 tag-link-position-15" style="font-size: 8pt;" aria-label="ikev1 (1 element)">ikev1</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/ipsec/" class="tag-cloud-link tag-link-26 tag-link-position-16" style="font-size: 12.827586206897pt;" aria-label="ipsec (4 elementów)">ipsec</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/ise/" class="tag-cloud-link tag-link-30 tag-link-position-17" style="font-size: 8pt;" aria-label="ISE (1 element)">ISE</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/konfiguracja/" class="tag-cloud-link tag-link-65 tag-link-position-18" style="font-size: 10.172413793103pt;" aria-label="konfiguracja (2 elementów)">konfiguracja</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/linux/" class="tag-cloud-link tag-link-7 tag-link-position-19" style="font-size: 14.637931034483pt;" aria-label="linux (6 elementów)">linux</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/nat/" class="tag-cloud-link tag-link-14 tag-link-position-20" style="font-size: 10.172413793103pt;" aria-label="nat (2 elementów)">nat</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/netmiko/" class="tag-cloud-link tag-link-16 tag-link-position-21" style="font-size: 11.620689655172pt;" aria-label="netmiko (3 elementów)">netmiko</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/nhrp/" class="tag-cloud-link tag-link-64 tag-link-position-22" style="font-size: 10.172413793103pt;" aria-label="nhrp (2 elementów)">nhrp</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/nmap/" class="tag-cloud-link tag-link-20 tag-link-position-23" style="font-size: 8pt;" aria-label="nmap (1 element)">nmap</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/ntp/" class="tag-cloud-link tag-link-36 tag-link-position-24" style="font-size: 8pt;" aria-label="ntp (1 element)">ntp</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/ospf/" class="tag-cloud-link tag-link-37 tag-link-position-25" style="font-size: 10.172413793103pt;" aria-label="ospf (2 elementów)">ospf</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/palo-alto/" class="tag-cloud-link tag-link-53 tag-link-position-26" style="font-size: 11.620689655172pt;" aria-label="palo alto (3 elementów)">palo alto</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/paramiko/" class="tag-cloud-link tag-link-17 tag-link-position-27" style="font-size: 10.172413793103pt;" aria-label="paramiko (2 elementów)">paramiko</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/podstawy/" class="tag-cloud-link tag-link-44 tag-link-position-28" style="font-size: 11.620689655172pt;" aria-label="podstawy (3 elementów)">podstawy</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/poradnik/" class="tag-cloud-link tag-link-4 tag-link-position-29" style="font-size: 22pt;" aria-label="Poradnik (28 elementów)">Poradnik</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/python/" class="tag-cloud-link tag-link-15 tag-link-position-30" style="font-size: 16.931034482759pt;" aria-label="python (10 elementów)">python</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/rancid/" class="tag-cloud-link tag-link-13 tag-link-position-31" style="font-size: 10.172413793103pt;" aria-label="rancid (2 elementów)">rancid</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/rdp/" class="tag-cloud-link tag-link-11 tag-link-position-32" style="font-size: 8pt;" aria-label="rdp (1 element)">rdp</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/rest-api/" class="tag-cloud-link tag-link-29 tag-link-position-33" style="font-size: 8pt;" aria-label="rest api (1 element)">rest api</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/skrypt/" class="tag-cloud-link tag-link-66 tag-link-position-34" style="font-size: 10.172413793103pt;" aria-label="skrypt (2 elementów)">skrypt</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/ssh/" class="tag-cloud-link tag-link-10 tag-link-position-35" style="font-size: 13.793103448276pt;" aria-label="ssh (5 elementów)">ssh</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/tclsh/" class="tag-cloud-link tag-link-28 tag-link-position-36" style="font-size: 8pt;" aria-label="tclsh (1 element)">tclsh</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/textfsm/" class="tag-cloud-link tag-link-18 tag-link-position-37" style="font-size: 10.172413793103pt;" aria-label="textfsm (2 elementów)">textfsm</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/unnumbered/" class="tag-cloud-link tag-link-31 tag-link-position-38" style="font-size: 8pt;" aria-label="unnumbered (1 element)">unnumbered</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/urpf/" class="tag-cloud-link tag-link-39 tag-link-position-39" style="font-size: 8pt;" aria-label="urpf (1 element)">urpf</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/virtual-link/" class="tag-cloud-link tag-link-38 tag-link-position-40" style="font-size: 8pt;" aria-label="virtual link (1 element)">virtual link</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/vm/" class="tag-cloud-link tag-link-25 tag-link-position-41" style="font-size: 8pt;" aria-label="vm (1 element)">vm</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/vpn/" class="tag-cloud-link tag-link-8 tag-link-position-42" style="font-size: 12.827586206897pt;" aria-label="vpn (4 elementów)">vpn</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/vrf/" class="tag-cloud-link tag-link-35 tag-link-position-43" style="font-size: 8pt;" aria-label="vrf (1 element)">vrf</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/vyos/" class="tag-cloud-link tag-link-34 tag-link-position-44" style="font-size: 8pt;" aria-label="vyos (1 element)">vyos</a>
+<a href="https://kubsoo.github.io/rsnet-website/tag/windows/" class="tag-cloud-link tag-link-9 tag-link-position-45" style="font-size: 11.620689655172pt;" aria-label="windows (3 elementów)">windows</a></div>
+</div>			
+		</div><!--/.sidebar-content-->
+		
+	</div><!--/.sidebar-->
+
+		
+
+				</div><!--/.main-inner-->
+			</div><!--/.main-->			
+		</div><!--/.container-inner-->
+	</div><!--/.container-->
+
+	<footer id="footer">
+		
+				<div class="container" id="footer-ads">
+			<div class="container-inner">
+							</div><!--/.container-inner-->
+		</div><!--/.container-->
+				
+				
+		<div class="container dark" id="footer-widgets">
+			<div class="container-inner">
+				
+				<div class="pad group">
+																
+					<div class="footer-widget-1 grid one-full last">
+						<div id="email-subscribers-2" class="widget widget_text elp-widget"><h3>Newsletter</h3>        <div class="es_form_container">
+            <form class="es_widget_form" data-es_form_id="es_widget_form">
+				                    <div class="es_caption">Chcesz otrzymywać powiadomienia o nowych wpisach prosto na Twój e-mail?</div>
+								                    <div class="es_lablebox">
+                        <label class="es_widget_form_name">Nazwa</label>
+                    </div>
+                    <div class="es_textbox">
+                        <input type="text" id="es_txt_name" class="es_textbox_class" name="es_txt_name" value="" maxlength="60">
+                    </div>
+				                <div class="es_lablebox">
+                    <label class="es_widget_form_email">E-mail *</label>
+                </div>
+                <div class="es_textbox">
+                    <input type="email" id="es_txt_email" class="es_textbox_class" name="es_txt_email" value="" maxlength="60" required>
+                </div>
+				<p><label class="gdpr-label"><input type="checkbox" name="user_consents[polityka-prywatnoci]" id="polityka-prywatnoci-consent" value="1" required>Przeczytałem/am i zgadzam się z polityką prywatności. <a href="https://kubsoo.github.io/rsnet-website/polityka-prywatnosci/">LINK</a></label></p>                <div class="es_button">
+                    <input type="submit" id="es_txt_button" class="es_textbox_button es_submit_button" name="es_txt_button" value="Subskrypcja">
+                </div>
+                <div class="es_msg" id="es_widget_msg">
+                    <span id="es_msg"></span>
+                </div>
+								<div style="position:absolute; left: -5000px"><input type="text" name="es_required_field" class="es_required_field" tabindex="-1" autocomplete="es_test"/></div>
+                <input type="hidden" id="es_txt_group" name="es_txt_group" value="Public">
+				                <input type="hidden" name="es-subscribe" id="es-subscribe" value="7b4448552a"/>
+            </form>
+			        </div>
+        </div>					</div>
+					
+															</div><!--/.pad-->
+				
+			</div><!--/.container-inner-->
+		</div><!--/.container-->	
+				
+				
+		<div class="container" id="footer-bottom">
+			<div class="container-inner">
+				
+				<a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+				
+				<div class="pad group">
+					
+					<div class="grid one-half">
+						
+												
+						<div id="copyright">
+															<p>RSNET.PL &copy; 2020. All Rights Reserved.</p>
+								<p><a href="https://kubsoo.github.io/rsnet-website/polityka-prywatnosci/">Polityka prywatności</a></p>
+													</div><!--/#copyright-->
+						
+												
+					</div>
+					
+					<div class="grid one-half last">	
+											</div>
+				
+				</div><!--/.pad-->
+				
+			</div><!--/.container-inner-->
+		</div><!--/.container-->
+		
+	</footer><!--/#footer-->
+
+</div><!--/#wrapper-->
+
+
+<!-- BEGIN Clicky Analytics v1.5 Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->
+<script type="text/javascript">
+var clicky_site_ids = clicky_site_ids || [];
+clicky_site_ids.push(101086100);
+(function() {
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//static.getclicky.com/js';
+  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+})();
+</script>
+<noscript><p><img alt='Clicky' width='1' height='1' src='//in.getclicky.com/100746374ns.gif' /></p></noscript>
+<!-- END Clicky Analytics v1.5 Tracking - https://deconf.com/clicky-analytics-dashboard-wordpress/ -->
+<div class="gdpr gdpr-overlay"></div>
+<div class="gdpr gdpr-privacy-preferences">
+	<div class="gdpr-wrapper">
+		<form method="post" class="gdpr-privacy-preferences-frm">
+			<input type="hidden" name="action" value="gdpr_update_privacy_preferences">
+			<input type="hidden" id="update-privacy-preferences-nonce" name="update-privacy-preferences-nonce" value="ec0c495d2f" /><input type="hidden" name="_wp_http_referer" value="/ospf-virtual-link/" />			<header>
+				<div class="gdpr-box-title">
+					<h3>Privacy Preference Center</h3>
+					<span class="gdpr-close"></span>
+				</div>
+			</header>
+			<div class="gdpr-mobile-menu">
+				<button type="button">Options</button>
+			</div>
+			<div class="gdpr-content">
+				<div class="gdpr-tabs">
+					<ul class="">
+						<li><button type="button" class="gdpr-tab-button gdpr-active" data-target="gdpr-consent-management">Consent Management</button></li>
+																	</ul>
+					<ul class="gdpr-policies">
+																													<li><a href="https://kubsoo.github.io/rsnet-website/polityka-prywatnosci/" target="_blank">Polityka prywatności</a></li>
+																		</ul>
+				</div>
+				<div class="gdpr-tab-content">
+					<div class="gdpr-consent-management gdpr-active">
+						<header>
+							<h4>Consent Management</h4>
+						</header>
+						<div class="gdpr-info">
+							<p></p>
+																								<div class="gdpr-cookies-used">
+										<div class="gdpr-cookie-title">
+											<p>Polityka prywatności</p>
+																							<span class="gdpr-always-active">Required</span>
+												<input type="hidden" name="user_consents[]" value="polityka-prywatnoci" checked style="display:none;">
+																					</div>
+										<div class="gdpr-cookies">
+											<span>Przeczytałem/am i zgadzam się z polityką prywatności. <a href="https://kubsoo.github.io/rsnet-website/polityka-prywatnosci/">LINK</a></span>
+										</div>
+									</div>
+																					</div>
+					</div>
+														</div>
+				<input type="hidden" name="all_cookies" value="[]">
+			</div>
+			<footer>
+				<input type="submit" value="Save Preferences">
+			</footer>
+		</form>
+	</div>
+</div>
+
+<div class="gdpr gdpr-general-confirmation">
+	<div class="gdpr-wrapper">
+		<header>
+			<div class="gdpr-box-title">
+				<h3></h3>
+				<span class="gdpr-close"></span>
+			</div>
+		</header>
+		<div class="gdpr-content">
+			<p></p>
+		</div>
+		<footer>
+			<button class="gdpr-ok">OK</button>
+		</footer>
+	</div>
+</div>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/kubsoo.github.io\/rsnet-website\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Potwierd\u017a, \u017ce nie jeste\u015b robotem."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.0.4'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var es_widget_page_notices = {"es_email_notice":"Prosz\u0119 wprowad\u017a adres mailowy","es_success_message":"Zarejestrowano subskrypcj\u0119.","es_success_notice":"Twoja subskrypcja zako\u0144czy\u0142a si\u0119 sukcesem! Prosimy sprawdzi\u0107 swoj\u0105 skrzynk\u0119 pocztow\u0105 i potwierdzi\u0107 subskrypcj\u0119. Je\u015bli wiadomo\u015b\u0107 nie pojawi si\u0119 w ci\u0105gu kilku minut, sprawd\u017a folder spam\/kosz.","es_email_exists":"Adres email ju\u017c istnieje!","es_error":"Ups\u2026 Wyst\u0105pi\u0142 nieoczekiwany b\u0142\u0105d.","es_invalid_email":"Niepoprawny adres email","es_try_later":"Spr\u00f3buj po pewnym czasie","es_ajax_url":"https:\/\/kubsoo.github.io\/rsnet-website\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/email-subscribers/widget/es-widget-page.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/jquery.fitvids.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/scripts.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/jquery.sharrre.min.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
+<script async="async" type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/akismet/_inc/form.js?ver=4.0.8'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-includes/js/jquery/ui/position.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/lib/dialog/dialog.min.js?ver=4.5.0'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2'></script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/lib/swiper/swiper.jquery.min.js?ver=4.4.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var elementorFrontendConfig = {"isEditMode":"","is_rtl":"","breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"version":"2.2.5","urls":{"assets":"https:\/\/kubsoo.github.io\/rsnet-website\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"general":{"elementor_global_image_lightbox":"yes","elementor_enable_lightbox_in_editor":"yes"}},"post":{"id":618,"title":"OSPF Virtual Link","excerpt":""}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://kubsoo.github.io/rsnet-website/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=2.2.5'></script>
+<!--[if lt IE 9]>
+<script src="https://kubsoo.github.io/rsnet-website/wp-content/themes/typecore-master/js/ie/respond.js"></script>
+<![endif]-->
+</body>
+</html>

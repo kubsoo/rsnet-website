@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>bgp &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/bgp/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>BGP &#8211; wyrażenia regularne</title>
+		<link>https://kubsoo.github.io/rsnet-website/bgp-wyrazenia-regularne/</link>
+		<pubDate>Tue, 31 Jul 2018 17:32:43 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[bgp]]></category>
+		<category><![CDATA[regex]]></category>
+		<category><![CDATA[wyrażenia regularne]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=1088</guid>
+		<description><![CDATA[Wyrażenia regularne bardzo często przydają się w manipulacji trasami BGP, oraz przeszukiwaniu tablicy BGP po atrybucie AS-Path. Do sprawadzenia w praktyce wykorzystania wyrażeń regularnych skorzystamy z jednego z dostępnych serwerów&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;"><span style="color: #000000;">Wyrażenia regularne bardzo często przydają się w manipulacji trasami BGP, oraz przeszukiwaniu tablicy BGP po atrybucie AS-Path. Do sprawadzenia w praktyce wykorzystania wyrażeń regularnych skorzystamy z jednego z dostępnych serwerów Looking Glass. Ja wybrałem serwer Looking Glass: https://www.as13030.net/looking-glass.php</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Po wejściu na powyższy serwer możemy wybrać Router (domyślnie Router: RR Zurich (AS13030)), typ zapytania Request: <strong>show ip bgp regexp</strong>, oraz ustawić argumenty, w naszym przypadku będą to wyrażenia regularne.</span></p>
+<p><img class="size-full wp-image-1106 aligncenter" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/Screen-Shot-2018-07-31-at-09.45.55.png" alt="" width="902" height="338" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/Screen-Shot-2018-07-31-at-09.45.55.png 902w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/Screen-Shot-2018-07-31-at-09.45.55-300x112.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/Screen-Shot-2018-07-31-at-09.45.55-768x288.png 768w" sizes="(max-width: 902px) 100vw, 902px" /></p>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>1.</strong> </span>Wyświetlenie wszystkich podsieci pochodzących tylko z AS4788</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp ^4788$</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i1.32.0.0/19      213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i1.32.32.0/19     213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i23.6.120.0/24    213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i23.212.55.0/24   213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i103.4.140.0/22   213.144.128.221          2    150      0 <strong>4788</strong> i
+*&gt;i137.195.224.0/20 213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i210.195.0.0/19   213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i210.195.32.0/19  213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i210.195.64.0/19  213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i210.195.96.0/19  213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i210.195.128.0/19 213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i210.195.160.0/19 213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i210.195.192.0/19 213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i210.195.224.0/19 213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i218.208.160.0/19 213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i219.93.2.0       213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i219.95.64.0/20   213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i219.95.104.0/21  213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i219.95.136.0/21  213.144.128.173          2    150      0 <strong>4788</strong> i
+
+Total number of prefixes 19</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>2.</strong> </span>Wyświetlenie wszystkich podsieci pochodzących z AS4788, ale mogących przechodzić przez inne ASy</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp _4788$</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i1.9.0.0/16       213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i1.32.0.0/17      213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i1.32.0.0/19      213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i1.32.32.0/19     213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i1.32.64.0/18     213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i23.6.120.0/24    213.144.128.173          2    150      0 <strong>4788 </strong>i
+*&gt;i23.13.192.0/20   213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i23.15.16.0/20    213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i23.51.32.0/20    213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i23.51.48.0/20    213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i23.197.60.0/23   213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i23.200.82.0/23   213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i23.201.156.0/22  213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+...
+Total number of prefixes 402</span></pre>
+<p><span style="color: #000000;"><strong><span style="font-size: 14pt;">3.</span></strong> Wyświetlenie wszystkich podsieci przechodzących przez AS46887</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp _46887_</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i5.11.28.0/24     213.144.128.216          1    150      0 6939 <strong>46887</strong> 36614 42705 i
+*&gt;i5.61.116.0/23    213.144.128.216          1    150      0 6939 <strong>46887</strong> 199373 199373 199373 199373 199373 199373 199373 199373 199373 199373 i
+*&gt;i8.2.68.0/24      213.144.128.216          1    150      0 6939 <strong>46887</strong> 396835 i
+*&gt;i8.2.104.0/24     213.144.128.216          1    150      0 6939 <strong>46887</strong> 396487 396487 396487 396487 396487 i
+*&gt;i8.11.166.0/24    213.144.128.216          1    150      0 6939 <strong>46887</strong> i
+*&gt;i8.14.103.0/24    213.144.128.216          1    150      0 6939 <strong>46887</strong> 13817 i
+*&gt;i8.14.121.0/24    213.144.128.216          1    150      0 6939 <strong>46887</strong> 12169 i
+*&gt;i8.22.101.0/24    213.144.128.216          1    150      0 6939 <strong>46887</strong> 12220 i
+*&gt;i8.28.55.0/24     213.144.128.216          1    150      0 6939 <strong>46887</strong> 394830 i
+*&gt;i8.33.72.0/24     213.144.128.216          1    150      0 6939 <strong>46887</strong> 17158 17158 17158 17158 i
+*&gt;i8.37.99.0/24     213.144.128.216          1    150      0 6939 <strong>46887</strong> 16491 i
+*&gt;i8.44.200.0/24    213.144.128.216          1    150      0 6939 <strong>46887</strong> 25611 25611 25611 25611 25611 25611 i
+...
+Total number of prefixes 1537</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>4.</strong></span> Wyświetlenie wszystkich podsieci, które są lokalnymi podsieciami routera</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp ^$</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i14.0.0.0         213.144.128.214          1     10      0 i
+*&gt;i27.0.0.0         213.144.128.214          1     10      0 i
+*&gt;i37.17.232.0/22   213.144.128.208          1    100      0 i
+*&gt;i37.17.236.0/23   213.144.128.208          1    100      0 i
+*&gt;i37.17.238.0/23   213.144.128.208          1    100      0 i
+*&gt;i46.28.203.155/32 213.144.128.177          1    100      0 i
+*&gt;i46.28.204.142/32 213.144.128.177          1    100      0 i
+*&gt;i77.109.128.0/18  213.144.128.208          1    100      0 i
+*&gt;i77.109.128.0/19  213.144.128.208          1    100      0 i
+*&gt;i77.109.128.2/32  77.109.129.61            3    100      0 i
+...
+Total number of prefixes 127</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>5.</strong> </span>wyświetlenie wszystkich podsieci tylko z bezpośrednio połączonych ASów</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp ^[0-9]+$</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i1.0.0.0/24       213.144.128.173          1    150      0 13335 i
+*&gt;i1.1.1.0/24       213.144.128.173          1    150      0 13335 i
+*&gt;i1.6.4.0/22       213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.6.0/24       213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.8.0/22       213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.12.0/22      213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.16.0/22      213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.20.0/22      213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.24.0/22      213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.28.0/22      213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.32.0/22      213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.36.0/22      213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.40.0/22      213.144.128.179          2    150      0 9583 i
+...
+Total number of prefixes 41787</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>6.</strong></span> Wyświetlenie wszystkich podsieci osiągalnych przez AS6939</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp ^6939_</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i1.0.4.0/22       213.144.128.216          1    150      0 <strong>6939</strong> 4826 38803 56203 i
+*&gt;i1.0.4.0/24       213.144.128.216          1    150      0 <strong>6939</strong> 4826 38803 56203 i
+*&gt;i1.0.5.0/24       213.144.128.216          1    150      0 <strong>6939</strong> 4826 38803 56203 i
+*&gt;i1.0.6.0/24       213.144.128.216          1    150      0 <strong>6939</strong> 4826 38803 56203 i
+*&gt;i1.0.7.0/24       213.144.128.216          1    150      0 <strong>6939</strong> 4826 38803 56203 i
+*&gt;i1.255.30.0/24    213.144.128.216          1    150      0 <strong>6939</strong> 63199 i
+*&gt;i2.16.36.0/24     213.144.128.216          1    150      0 <strong>6939</strong> 7545 7545 7545 7545 2764 12222 12222 i
+*&gt;i2.17.218.0/24    213.144.128.216          1    150      0 <strong>6939</strong> 7545 7545 7545 7545 2764 32787 i
+*&gt;i2.18.52.0/24     213.144.128.216          1    150      0 <strong>6939</strong> 4826 20940 33905 i
+...
+Total number of prefixes 36028</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>7.</strong> </span>Wyświetlenie wszystkich podsieci</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp .*</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i1.0.0.0/24       213.144.128.173          1    150      0 13335 i
+*&gt;i1.0.4.0/22       213.144.128.216          1    150      0 6939 4826 38803 56203 i
+*&gt;i1.0.4.0/24       213.144.128.216          1    150      0 6939 4826 38803 56203 i
+*&gt;i1.0.5.0/24       213.144.128.216          1    150      0 6939 4826 38803 56203 i
+*&gt;i1.0.6.0/24       213.144.128.216          1    150      0 6939 4826 38803 56203 i
+*&gt;i1.0.7.0/24       213.144.128.216          1    150      0 6939 4826 38803 56203 i
+*&gt;i1.0.16.0/24      213.144.128.221          2    150      0 2497 2519 i
+*&gt;i1.0.64.0/18      213.144.128.221          2    150      0 2497 7670 18144 i
+*&gt;i1.0.128.0/17     213.144.128.203          1     60      0 1299 38040 23969 i
+*&gt;i1.0.128.0/18     213.144.128.203          1     60      0 1299 38040 23969 i
+*&gt;i1.0.128.0/19     213.144.128.203          1     60      0 1299 38040 23969 i
+*&gt;i1.0.128.0/24     213.144.128.203          1     60      0 1299 4809 38040 23969 ?
+...
+Total number of prefixes 695338</span></pre>
+<p><span style="color: #000000;"><strong><span style="font-size: 14pt;">8.</span></strong> Wyświetlenie wszystkich podsieci które pochodzą z AS56201 i przechodzą przez AS18101</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp 18101_56201$</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i220.225.183.0    213.144.128.173          2    150      0 15412 <strong>18101</strong> <strong>56201</strong> i
+
+Total number of prefixes 1</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>9.</strong> </span>Wyświetlenie wszystkich podsieci które pochodzą z AS46164 lub z AS46163</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp _46164$|_46163$</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i4.23.88.0/24     213.144.128.184          1     60      0 1299 7018 <strong>46164</strong> i
+*&gt;i4.23.89.0/24     213.144.128.184          1     60      0 1299 7018 <strong>46164</strong> i
+*&gt;i4.23.92.0/23     213.144.128.184          1     60      0 1299 7018 <strong>46164</strong> i
+*&gt;i107.117.80.0/20  213.144.128.184          1     60      0 1299 7018 <strong>46164</strong> i
+*&gt;i107.239.64.0/20  213.144.128.184          1     60      0 1299 7018 <strong>46164</strong> i
+*&gt;i107.250.192.0/19 213.144.128.184          1     60      0 1299 7018 <strong>46164</strong> i
+*&gt;i107.250.224.0/19 213.144.128.184          1     60      0 1299 7018 <strong>46164</strong> i
+*&gt;i141.160.4.0/22   213.144.128.203          1     60      0 1299 174 <strong>46163</strong> i
+*&gt;i141.160.12.0/22  213.144.128.173          2    150      0 6461 1294 <strong>46163</strong> i
+*&gt;i141.160.20.0/22  213.144.128.173          2    150      0 6461 1294 4616346163 46163 46163 <strong>46163</strong> i
+*&gt;i141.160.25.0/24  213.144.128.203          1     60      0 1299 174 <strong>46163</strong> i
+*&gt;i141.160.26.0/24  213.144.128.184          1     60      0 1299 7018 2687 <strong>46163</strong> i
+*&gt;i141.160.27.0/24  213.144.128.203          1     60      0 1299 174 <strong>46163</strong> i
+*&gt;i141.160.28.0/24  213.144.128.214          2    150      0 7473 3758 <strong>46163</strong> i
+*&gt;i141.160.29.0/24  213.144.128.203          1     60      0 1299 174 <strong>46163</strong> I
+...
+Total number of prefixes 47</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>10.</strong></span> Wyświetlenie wszystkich podsieci, których atrybut AS_Path posiada więcej niż raz AS396835, czyli gdzie została zastosowana technika AS Prepending</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp (396835_){2,}</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i140.102.0.0      213.144.128.216          1    150      0 6939 46887 <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> i
+*&gt;i140.102.2.0/23   213.144.128.216          1    150      0 6939 46887 <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> i
+*&gt;i192.80.85.0      213.144.128.216          1    150      0 6939 46887 <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> i
+*&gt;i192.80.95.0      213.144.128.216          1    150      0 6939 46887 <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> i
+*&gt;i192.138.225.0    213.144.128.216          1    150      0 6939 46887 <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> i
+
+Total number of prefixes 5</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>11.</strong> </span>Wyświetlenie wszystkich podsieci, które pochodzą z ASów trzy cyfrowych zaczynających się od 1,2 lub 3.</span><br />
+<span style="color: #000000;">np. 312 , 123, 223 itp</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp _[123].{2}$</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i5.157.72.0/21    213.144.128.203          1     60      0 1299 <strong>174</strong> i
+*&gt;i5.158.83.0/24    213.144.128.203          1     60      0 1299 <strong>174 </strong>i
+*&gt;i5.178.16.0/21    213.144.128.203          1     60      0 1299 3257 <strong>260</strong> i
+*&gt;i6.64.164.0/23    213.144.128.184          1     60      0 1299 209 721 27064 <strong>367</strong> i
+*&gt;i8.25.217.0/24    213.144.128.173          2    150      0 6461 54756 <strong>100</strong> i
+*&gt;i8.27.160.0/24    213.144.128.184          1     60      0 1299 <strong>209</strong> i
+*&gt;i8.27.167.0/24    213.144.128.184          1     60      0 1299 <strong>209</strong> i
+*&gt;i8.28.178.0/23    213.144.128.216          1    150      0 6939 2381 2381 <strong>103</strong> i
+*&gt;i8.30.248.0/22    213.144.128.216          1    150      0 6939 2381 2381 <strong>103</strong> i
+...
+Total number of prefixes 6168</span></pre>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>BGP &#8211; konfiguracja CISCO</title>
+		<link>https://kubsoo.github.io/rsnet-website/bgp-konfiguracja-cisco/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/bgp-konfiguracja-cisco/#comments</comments>
+		<pubDate>Wed, 06 Dec 2017 21:02:51 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[bgp]]></category>
+		<category><![CDATA[cisco]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=825</guid>
+		<description><![CDATA[We wpisie BGP &#8211; podstawy opisałem zasadę działania protokołu BGP. Teraz zobaczmy to na przykładzie prostej topologii i skonfigurujmy BGP na routerach CISCO. TOPOLOGIA KONFIGURACJA Wstępna konfiguracja adresów IP: hostname&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-825">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="0eebfe3" class="elementor-element elementor-element-0eebfe3 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="0a6b198" class="elementor-element elementor-element-0a6b198 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="83e3ff1" class="elementor-element elementor-element-83e3ff1 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">We wpisie <a href="https://kubsoo.github.io/rsnet-website/bgp-podstawy/" title="">BGP &#8211; podstawy</a> opisałem zasadę działania protokołu BGP. Teraz zobaczmy to na przykładzie prostej topologii i skonfigurujmy BGP na routerach CISCO.</span></p><h5><span style="color: #000000;">TOPOLOGIA</span></h5></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="5d6cb1c" class="elementor-element elementor-element-5d6cb1c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="d5e704c" class="elementor-element elementor-element-d5e704c elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="dc259cc" class="elementor-element elementor-element-dc259cc elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/bgp_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="566" height="347" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/bgp_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/bgp_1.png 566w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/bgp_1-300x184.png 300w" sizes="(max-width: 566px) 100vw, 566px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="d99f2d5" class="elementor-element elementor-element-d99f2d5 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="a3279c4" class="elementor-element elementor-element-a3279c4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="dc5e604" class="elementor-element elementor-element-dc5e604 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">KONFIGURACJA</span></h5><p><span style="color: #000000;">Wstępna konfiguracja adresów IP:</span></p><pre><span style="color: #000000;">hostname R1</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Loopback0</span><br /><span style="color: #000000;"> ip address 1.1.1.1 255.255.255.255</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.12.1 255.255.255.0</span><br /><span style="color: #000000;"> duplex full</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet1/0</span><br /><span style="color: #000000;"> ip address 192.168.13.1 255.255.255.0</span><br /><span style="color: #000000;"> duplex full</span><br /><span style="color: #000000;">!</span></pre><pre><span style="color: #000000;">hostname R2</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.12.2 255.255.255.0</span><br /><span style="color: #000000;"> duplex full</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet1/0</span><br /><span style="color: #000000;"> ip address 192.168.23.2 255.255.255.0</span><br /><span style="color: #000000;"> duplex full</span><br /><span style="color: #000000;">!</span></pre><pre><span style="color: #000000;">hostname R3</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.23.3 255.255.255.0</span><br /><span style="color: #000000;"> duplex full</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet1/0</span><br /><span style="color: #000000;"> ip address 192.168.13.3 255.255.255.0</span><br /><span style="color: #000000;"> duplex full</span><br /><span style="color: #000000;">!</span></pre><p style="text-align: justify;"><span style="color: #000000;">Teraz przystąpmy do konfiguracji BGP. W tym celu na routerze wydajemy w trybie konfiguracji komendę: router bgp ASN, gdzie ASN to numer AS. </span></p><pre style="text-align: justify;"><span style="color: #000000;"> </span><span style="background-color: initial;"><span style="color: #000000;">R1(config)#router bgp 65200</span></span></pre><div style="text-align: justify;"><span style="color: #000000; background-color: initial;">A następnie w konfiguracji bgp wpisujemy adresy sąsiadów i numery AS w których się znajdują: neighbor IP_sąsiada remote-as ASN_sąsiada.</span></div><pre><span style="color: #000000;">R1(config-router)#neighbor 192.168.12.2 remote-as 65100</span></pre><div style="text-align: justify;"><span style="color: #000000;">Konfiguracja sąsiadów BGP na każdym routerze wygląda następująco:</span></div><div><pre><span style="color: #000000;">R1(config)#router bgp 65200</span><br /><span style="color: #000000;">R1(config-router)#neighbor 192.168.12.2 remote-as 65100</span><br /><span style="color: #000000;">R1(config-router)#neighbor 192.168.13.3 remote-as 65200</span></pre></div><div><pre><span style="color: #000000;">R2(config)#router bgp 65100</span><br /><span style="color: #000000;">R2(config-router)#neighbor 192.168.12.1 remote-as 65200</span><br /><span style="color: #000000;">R2(config-router)#neighbor 192.168.23.3 remote-as 65200</span></pre></div><div><pre><span style="color: #000000;">R3(config)#router bgp 65200</span><br /><span style="color: #000000;">R3(config-router)#neighbor 192.168.13.1 remote-as 65200</span><br /><span style="color: #000000;">R3(config-router)#neighbor 192.168.23.2 remote-as 65100</span></pre></div><div style="text-align: justify;"><span style="color: #000000;">Po wydaniu powyższych komend powinny nam się utworzyć relacje sąsiedztwa BGP pomiędzy routerami. Sprawdźmy to komendą: <em>show ip bgp summary</em></span></div><div><pre><span style="color: #000000;">R1#show ip bgp sum</span><br /><span style="color: #000000;">BGP router identifier 192.168.13.1, local AS number 65200</span><br /><span style="color: #000000;">BGP table version is 1, main routing table version 1</span></pre><p> </p><p><span style="color: #000000;">Neighbor V AS MsgRcvd MsgSent TblVer InQ OutQ Up/Down State/PfxRcd</span><br /><span style="color: #000000;">192.168.12.2 4 65100 2 2 1 0 0 00:00:26 0</span><br /><span style="color: #000000;">192.168.13.3 4 65200 3 3 1 0 0 00:00:59 0</span></p><pre><span style="color: #000000;">R2#show ip bgp summary</span><br /><span style="color: #000000;">BGP router identifier 192.168.23.2, local AS number 65100</span><br /><span style="color: #000000;">BGP table version is 1, main routing table version 1</span></pre><p> </p><p><span style="color: #000000;">Neighbor V AS MsgRcvd MsgSent TblVer InQ OutQ Up/Down State/PfxRcd</span><br /><span style="color: #000000;">192.168.12.1 4 65200 2 2 1 0 0 00:00:30 0</span><br /><span style="color: #000000;">192.168.23.3 4 65200 2 2 1 0 0 00:00:10 0</span></p><pre><span style="color: #000000;">R3#show ip bgp summary</span><br /><span style="color: #000000;">BGP router identifier 192.168.23.3, local AS number 65200</span><br /><span style="color: #000000;">BGP table version is 1, main routing table version 1</span></pre><p> </p><p><span style="color: #000000;">Neighbor V AS MsgRcvd MsgSent TblVer InQ OutQ Up/Down State/PfxRcd</span><br /><span style="color: #000000;">192.168.13.1 4 65200 4 4 1 0 0 00:01:57 0</span><br /><span style="color: #000000;">192.168.23.2 4 65100 4 4 1 0 0 00:01:03 0</span></p></div><div style="text-align: justify;"><span style="color: #000000;">Jak widać relacje sąsiedzta się nawiązały, jednak żadnymi trasami się nie wymieniły (State/PrxRcd). Rozgłośmy więc na R1 trasę do interfejsu loopback:</span></div><div><pre><span style="color: #000000;">R1(config)#int loopback 0</span><br /><span style="color: #000000;">R1(config-if)#ip address 1.1.1.1 255.255.255.255</span></pre></div><pre><span style="color: #000000;">R1(config)#router bgp 65200</span><br /><span style="color: #000000;">R1(config-router)#network 1.1.1.1 mask 255.255.255.255</span></pre><div style="text-align: justify;"><span style="color: #000000;">Po kilkunastu sekundach powinniśmy na routerach R2 i R3 zobaczyć trasy do sieci 1.1.1.1. Możemy to sprawdzić komendą: <em>show ip bgp</em></span></div><div><pre><span style="color: #000000;">R1#show ip bgp</span><br /><span style="color: #000000;">BGP table version is 2, local router ID is 192.168.13.1</span><br /><span style="color: #000000;">Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,</span><br /><span style="color: #000000;">  r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter,</span><br /><span style="color: #000000;">  x best-external, a additional-path, c RIB-compressed,</span><br /><span style="color: #000000;">Origin codes: i - IGP, e - EGP, ? - incomplete</span><br /><span style="color: #000000;">RPKI validation codes: V valid, I invalid, N Not found</span><br /><span style="color: #000000;"><br />    Network    Next Hop  Metric LocPrf Weight Path</span><br /><span style="color: #000000;"> *&gt; 1.1.1.1/32 0.0.0.0 0               32768  i</span></pre></div><div><pre><span style="color: #000000;">R2#show ip bgp</span><br /><span style="color: #000000;">BGP table version is 2, local router ID is 192.168.23.2</span><br /><span style="color: #000000;">Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,</span><br /><span style="color: #000000;">  r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter,</span><br /><span style="color: #000000;">  x best-external, a additional-path, c RIB-compressed,</span><br /><span style="color: #000000;">Origin codes: i - IGP, e - EGP, ? - incomplete</span><br /><span style="color: #000000;">RPKI validation codes: V valid, I invalid, N Not found</span></pre><p> </p><p><span style="color: #000000;">  Network Next Hop Metric LocPrf Weight Path</span><br /><span style="color: #000000;"> * 1.1.1.1/32 192.168.23.3 0 65200 i</span><br /><span style="color: #000000;"> *&gt; 192.168.12.1 0 0 65200 i</span></p></div><div><pre><span style="color: #000000;">R3#show ip bgp</span><br /><span style="color: #000000;">BGP table version is 2, local router ID is 192.168.23.3</span><br /><span style="color: #000000;">Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,</span><br /><span style="color: #000000;">  r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter,</span><br /><span style="color: #000000;">  x best-external, a additional-path, c RIB-compressed,</span><br /><span style="color: #000000;">Origin codes: i - IGP, e - EGP, ? - incomplete</span><br /><span style="color: #000000;">RPKI validation codes: V valid, I invalid, N Not found</span></pre><p> </p><p><span style="color: #000000;"> Network Next Hop Metric LocPrf Weight Path</span><br /><span style="color: #000000;"> *&gt;i 1.1.1.1/32 192.168.13.1 0 100 0 i</span></p></div><div style="text-align: justify;"><span style="color: #000000;">Jak widać na wynikach powyższych komend, trasa do sieci 1.1.1.1 została poprawnie rozgłoszona. Możemy również odczytać atrybuty z jakie posiada ta trasa na każdym routerze. </span></div><div> </div><div style="text-align: justify;"><span style="color: #000000;">Na R1 trasa do sieci 1.1.1.1/32 ma następujące atrybuty:</span></div><pre><span style="color: #000000;">    Network    Next Hop   Metric LocPrf Weight Path</span><br /><span style="color: #000000;"> *&gt; 1.1.1.1/32 0.0.0.0         0         32768 i</span></pre><div style="text-align: justify;"><span style="color: #000000;">Next Hop = 0.0.0.0 &#8211; ponieważ trasa jest bezpośrednio połączona z routerem R1 (interfejs Loopback0)</span></div><div><span style="color: #000000;">AS Path = i  &#8211; czyli trasa jest w tym samym AS co router (internal)</span></div><div><span style="color: #000000;">Metric (MED) &#8211; 0 &#8211; domyślna metryka</span></div><div><span style="color: #000000;">Weight = 32768 (bo jest to trasa lokalna)</span></div><div> </div><div><span style="color: #000000;">Atrybuty dla tej samej sieci na R2 wyglądają następująco:</span></div><pre><span style="color: #000000;">    Network     Next Hop      Metric LocPrf Weight  Path</span><br /><span style="color: #000000;"> *  1.1.1.1/32  192.168.23.3                     0  65200 i</span><br /><span style="color: #000000;"> *&gt;             192.168.12.1       0             0  65200 i</span></pre><div style="text-align: justify;"><span style="color: #000000;">Jak widać są dwie trasy do sieci 1.1.1.1, jedna z nich jest trasą preferowaną wybraną na podstawie porównywania atrybutów w odpowiedniej kolejności. Sprawdźmy więc która trasa będzie trasą preferowaną. Dla przypomnienia kolejności porównywania atrybutów znajduje się pod tym <a href="https://kubsoo.github.io/rsnet-website/bgp-podstawy/">linkiem</a>.</span></div><div> </div><div style="text-align: justify;"><span style="color: #000000;">Wyświetlić więcej atrybutów możemy poleceniem show ip bgp ip_sieci:</span></div><pre><span style="color: #000000;">R2#show ip bgp 1.1.1.1</span><br /><span style="color: #000000;">BGP routing table entry for 1.1.1.1/32, version 2</span><br /><span style="color: #000000;">Paths: (2 available, best #2, table default)</span><br /><span style="color: #000000;"> Advertised to update-groups:</span><br /><span style="color: #000000;"> 1</span><br /><span style="color: #000000;"> Refresh Epoch 1</span><br /><span style="color: #000000;"> 65200</span><br /><span style="color: #000000;"> 192.168.23.3 from 192.168.23.3 (192.168.23.3)</span><br /><span style="color: #000000;"> Origin IGP, localpref 100, valid, external</span><br /><span style="color: #000000;"> rx pathid: 0, tx pathid: 0</span><br /><span style="color: #000000;"> Refresh Epoch 1</span><br /><span style="color: #000000;"> 65200</span><br /><span style="color: #000000;"> 192.168.12.1 from 192.168.12.1 (192.168.13.1)</span><br /><span style="color: #000000;"> Origin IGP, metric 0, localpref 100, valid, external, best</span><br /><span style="color: #000000;"> rx pathid: 0, tx pathid: 0x0</span></pre><div><span style="color: #000000;">Sprawdźmy teraz po kolei wybór najlepszej trasy:</span></div><div> </div><div><span style="color: #000000;">1. Weight &#8211; dla obu tras jest taka sama wartość 0.</span></div><div><span style="color: #000000;">2. Local Preference &#8211; nie ma wartości</span></div><div><span style="color: #000000;">3. Self-originated &#8211; wiemy, że trasy są rozgłaszane przez sąsiadów więc nie są self-originated</span></div><div><span style="color: #000000;">4. AS Path &#8211; obie trasy mają taki sam atrybut. 65200 i</span></div><div><span style="color: #000000;">5. Origin &#8211; IGP </span></div><div><span style="color: #000000;">6. Metric (MED) &#8211; dla obu tras jest taka sama wartość 0</span></div><div><span style="color: #000000;">7. External &#8211; obie trasy są eBGP</span></div><div><span style="color: #000000;"><span style="color: #000000;">8. IGP Cost &#8211; jest taki sam bo są to trasy statyczne</span></span></div><div style="text-align: justify;"><span style="color: #000000;">9. EBGP Peering &#8211; preferowana jest starsza ścieżka, w naszym przypadku starszą ścieżką jest ścieżka przez R1, ponieważ ta relacja sąsiedztwa została nawiązana wcześniej.</span></div><div> </div><div><span style="color: #000000;">Pokrywa się to z wynikiem komendy show ip bgp na R2:</span></div><pre><span style="color: #000000;">    Network     Next Hop      Metric LocPrf Weight  Path</span><br /><span style="color: #000000;"> *  1.1.1.1/32  192.168.23.3                     0  65200 i</span><br /><span style="color: #000000;"> *&gt;             192.168.12.1       0             0  65200 i</span></pre><div style="text-align: justify;"><span style="color: #000000;">Najlepsza trasa jest zaznaczona znakiem &gt; i jak widać kieruje na next-hop R1.</span></div><div> </div><div> </div><h5><span style="color: #000000;">PODSUMOWANIE</span></h5><p style="text-align: justify;"><span style="color: #000000;">Podstawowa konfiguracja BGP na routerach CISCO jest dosyć prosta, w następnych wpisać postaram się pokazać bardziej zaawansowanej konfiguracji BGP, oraz metody sterowania ruchem w BGP.1</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/bgp-konfiguracja-cisco/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>BGP &#8211; podstawy</title>
+		<link>https://kubsoo.github.io/rsnet-website/bgp-podstawy/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/bgp-podstawy/#comments</comments>
+		<pubDate>Tue, 05 Dec 2017 20:42:59 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[bgp]]></category>
+		<category><![CDATA[podstawy]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=772</guid>
+		<description><![CDATA[WSTĘP BGP (Border Gateway Protocol) to zewnętrzny protokół routingu, na którym opiera się działanie współczesnego internetu. W BGP informacje na temat routingu są przesyłane pomiędzy dostawcami internetu (ISP) tworzących przy&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-772">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="32ea5ba" class="elementor-element elementor-element-32ea5ba elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="f93ebc8" class="elementor-element elementor-element-f93ebc8 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="2f8bcc7" class="elementor-element elementor-element-2f8bcc7 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">WSTĘP</span></h5><p style="text-align: justify;"><span style="color: #000000;"><strong>BGP</strong> (Border Gateway Protocol) to zewnętrzny protokół routingu, na którym opiera się działanie współczesnego internetu. W BGP informacje na temat routingu są przesyłane pomiędzy dostawcami internetu (ISP) tworzących przy jego pomocy publiczny internet. BGP jest protokołem wektora ścieżki (Path Vector). BGP utrzymuje oddzielne tablice routingu bazując na najkrótszej długości ścieżki (AS Path) i innych licznych atrybutach w przeciwieństwie do innych protokołów routingu, które bazują na metryce: dystans (w RIP) lub koszt w (<a href="https://kubsoo.github.io/rsnet-website/ospf-podstawy/">OSPF</a>). Obecnie wykorzystywany jest BGP w wersji 4.</span></p><p style="text-align: justify;"><span style="color: #000000;">Podstawą funkcjonowania BGP są tzw. systemy autonomiczne (Autonomous System), które są połączone ze sobą i tworzą internet jaki znamy. Każdy AS ma przypisany numer (Autonomous System Number), którego przydzielaniem zajmuje się organizacja <a href="https://www.iana.org/">IANA</a>. IANA przydziela numery ASN dla tzw. RIR (Regional Internet Registry), a następnie RIR przydziela numery ASN dla operatorów internetowych. Obecnie mamy następujących RIRów:</span></p><table class="iana-table"><tbody><tr><td><a href="http://www.afrinic.net/">AFRINIC</a></td><td><span style="color: #000000;">Africa Region</span></td></tr><tr><td><a href="http://www.apnic.net/">APNIC</a></td><td><span style="color: #000000;">Asia/Pacific Region</span></td></tr><tr><td><a href="http://www.arin.net/">ARIN</a></td><td><span style="color: #000000;">Canada, USA, and some Caribbean Islands</span></td></tr><tr><td><a href="http://www.lacnic.net/">LACNIC</a></td><td><span style="color: #000000;">Latin America and some Caribbean Islands</span></td></tr><tr><td><a href="http://www.ripe.net/"><span class="avoid-break">RIPE NCC</span></a></td><td><span style="color: #000000;">Europe, the Middle East, and Central Asia</span></td></tr></tbody></table><p style="text-align: justify;"><span style="color: #000000;">Numer ASN można uzyskać kontaktując się z jednym z RIR odpowiednim dla danej lokalizacji. Nie będę opisywał jak to zrobić, zainteresowanych odsyłam do strony w języku angielskim <a href="https://www.ripe.net/manage-ips-and-asns/as-numbers/request-an-as-number">ripe.net</a> lub do wpisów na stronie w języku polskim <a href="http://lipowski.org/bgp-4/ipv4-lir-ripe-ncc/">lipowski.org</a>. Bardzo dobrze jest tam wszystko opisane, autor ponadto oferuje pomoc przy wdrożeniu BGP więc jak najbardziej zachęcam do odwiedzenia jego strony. </span></p><p style="text-align: justify;"><span style="color: #000000;">Są dwa rodzaje numerów ASN (16-bitowe i 32-bitowe). 32 bitowe numery ASN zostały wprowadzone przez IANA jako odpowiedź na wyczerpujące się 16 bitowy numery ASN. Nowe numery 32 bitowe są kompatybilne wstecznie. 16-bitowe ASN przyjmują wartość od <strong>1 do 65535</strong>. Numery ASN od <strong>64512 do 65535 </strong>są numerami prywatnymi, zarezerwowanymi dla użytku wewnętrzengo na potrzeby iBGP (internal BGP). </span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="492a936" class="elementor-element elementor-element-492a936 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="127657d" class="elementor-element elementor-element-127657d elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="ed294f3" class="elementor-element elementor-element-ed294f3 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Jak działa BGP ?</span></h5><p style="text-align: justify;"><span style="color: #000000;">BGP działa na protokole transportowym TCP na porcie 179 zestawiając ze sąsiadami sesje BGP. </span></p><p><span style="color: #000000;">Są dwa typy relacji sąsiedztwa między routerami BGP:</span></p><ul><li><span style="color: #000000;">iBGP &#8211; między sąsiadami w tym samym AS</span></li><li><span style="color: #000000;">eBGP &#8211; między sąsiadami w różnych AS</span></li></ul><p><span style="color: #000000;">BGP wykorzystuje 4 rodzaje wiadomości:</span></p><ul><li><strong><span style="color: #000000;">Open Message</span></strong></li></ul><p style="text-align: justify;"><span style="color: #000000;">Wiadomość OPEN jest wysyłana po nawiązaniu połączenia TCP i służy otwarciu sesji sąsiedztwa pomiędzy routerami.</span></p><ul><li><strong><span style="color: #000000;">Update Message</span></strong></li></ul><p style="text-align: justify;"><span style="color: #000000;">Wiadomość UPDATE jest wykorzystywana do wysyłania aktualizacji o trasach do sąsiadów.</span></p><ul><li><strong><span style="color: #000000;">Keepalive Message</span></strong></li></ul><p style="text-align: justify;"><span style="color: #000000;">Wiadomość KEEPALIVE jest przesyłana w celu podtrzymania sesji. Jak router nie otrzyma wiadomości keepalive od sąsiada w czasie (HOLD TIME &#8211; domyślnie 180 sekund) uznaje go za niedostępnego , zamykana jest sesja BGP i usuwane są wszystkie trasy otrzymane od niego z tablicy routingu.</span></p><ul><li><strong><span style="color: #000000;">Notification Message</span></strong></li></ul><p style="text-align: justify;"><span style="color: #000000;">Wiadomość NOTIFICATION jest wysyłana w sytuacji  jeśli połączenie napotka jakieś błędy. Kiedy wykryty jest błąd sesje BGP jest zamykana.</span></p><p style="text-align: justify;"><span style="color: #000000;"> </span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="201f161" class="elementor-element elementor-element-201f161 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="a757309" class="elementor-element elementor-element-a757309 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="b657247" class="elementor-element elementor-element-b657247 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;"><strong>Zestawienie sesji BGP</strong></span></p><p style="text-align: justify;"><span style="color: #000000;">Routery biorące udział w BGP mogą być w następujących stanach:</span></p><p style="text-align: justify;"><strong><span style="color: #000000;">1. IDLE</span></strong></p><div style="text-align: justify;"><span style="color: #000000;">Jest to pierwszy stan, w którym BGP czeka na &#8222;start event&#8221; (zdarzenie poczatkowe). <b>  </b>Zdarzenie poczatkowe występuje gdy ktoś skonfiguruje nowego sąsiada BGP lub gdy zostanie zresetowana istniejąca sesja BGP. Po zdarzeniu początkowym router inicjuje połączenie TCP do zdalnego sąsiada BGP oraz dodatkowo nasłuchuje na połączenia od zdalnego sąsiada na wypadek jeśli to sąsiad będzie chciał zainicjować połączenie. Jak połączenie zostanie poprawnie nawiązane BGP przechodzi do stanu Connect, w przypadku niepowodzenia pozostaje w stanie Idle.</span></div><div> </div><p><strong><span style="color: #000000;">2. CONNECT</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">BGP czeka na ukończenia połączenia TCP (<a href="https://pl.wikipedia.org/wiki/Protok%C3%B3%C5%82_sterowania_transmisj%C4%85">three-way handshake</a>). Kiedy się powiedzie router przechodzi w stan OpenState, jeśli się nie powiedzie router przechodzi w stan Active.</span></p><p style="text-align: justify;"><strong><span style="color: #000000;">3. ACTIVE</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">W tym trybie BGP próbuje ponownie dokończyć TCP three-way handshake. Jeśli się powiedzie to router przechodzi w stan OpenState, jeśli się nie powiedzie to router wraca do stanu Connect. Router ponadto nasłuchuje cały czas na przychodzące połączenia  na wypadek, gdyby zdalny sąsiad BGP próbował ustanowić połączenie.</span></p><p style="text-align: justify;"><strong><span style="color: #000000;">4. OPENSENT</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">BGP nawiązał połączenie TCP i wysłał wiadomość Open Message W tym stanie router nasłuchuje na wiadomość Open Message od zdalnego sąsiada BGP. Otrzymana wiadomość Open Message jest sprawdzana pod kątem błędów (niepoprawna wersja, błędny numer AS itp.) w przypadku błędu router wyśle wiadomość Notification do sąsiada BGP i wróci do stanu Idle. Jeśli wszystko jest w porzadku, BGP rozpoczyna wysyłanie wiadomości keepalive. Jeśli z jakiegoś powodu sesja TCP zostanie zerwana BGP wróci do stanu Active. Kiedy wystąpi błąd, BGP wyśle kod błędu i wróci do stanu Idle, tak samo się stanie w przypadku zresetowania procesu BGP. </span></p><p style="text-align: justify;"><strong><span style="color: #000000;">5. </span><span style="color: #000000;">OPENCONFIRM</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">BGP czeka na wiadomości keepalive od zdalnego sąsiada BGP, Router kiedy otrzyma wiadomość keepalive przechodzi w stan Established i relacja sąsiedztwa zostaje nawiązana. Jeśli zostanie otrzymana wiadomość notification od sąsiada, to router wraca do stanu Idle. </span></p><p><strong><span style="color: #000000;">6. ESTABLISHED</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">W tym stanie relacja sąsiedztwa pomiędzy sąsiadami BGP zostaje nawiązana, a routery wysyłają wiadomości Update w celu wymiany informacji o trasach. Jeśli zostanie w tym stanie otrzymana wiadomość Notification, to router wróci do stanu Idle.</span></p><p> </p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="bb335ea" class="elementor-element elementor-element-bb335ea elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="97e9319" class="elementor-element elementor-element-97e9319 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="fce5e28" class="elementor-element elementor-element-fce5e28 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Atrybuty ścieżki BGP</span></h5><div style="text-align: justify;"><span style="color: #000000;">Jak już wspomniałem na wstępie BGP wykorzystuje atrybuty do wyboru najlepszej trasy. W BGP dostępne sę następujące rodzaje atrybutów:</span></div><div> </div><ul><li><span style="color: #000000;">standardowe (well-known) &#8211; muszą być rozumiane przez wszystkie implementacje BGP,</span></li><li><span style="color: #000000;">niestandardowe &#8211; mogą nie być wspierane przez wszystkie implementacje BGP,</span></li><li><span style="color: #000000;">obowiązkowe &#8211; muszą występować w opisie trasy</span></li><li><span style="color: #000000;">opcjonalne &#8211; nie muszą występować w opisie trasy, wszystkie atrybuty niestandardowe są opcjonalne</span></li><li><span style="color: #000000;">przenośne (transitive) &#8211; są przesyłane do innych AS</span></li><li><span style="color: #000000;">nieprzenośne (non-transitive) &#8211; nie są przesyłane do innych AS</span></li></ul><div> </div><div style="text-align: justify;"><span style="color: #000000;">Najważniejsze atrybuty BGP to:</span></div><div> </div><div><span style="color: #000000;">
+<table id="tablepress-2" class="tablepress tablepress-id-2">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Nazwa atrybutu i kod</th><th class="column-2">Kategoria atrybutu</th><th class="column-3">Opis</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">1 Origin</td><td class="column-2">standardowy i obowiązkowy</td><td class="column-3">Atrybut określa źródło ścieżki (pochodzenie). Może przyjmować następujące wartości:<br />
+IGP  &#8211; trasa pochodząca z wewnętrz danego systemu autonomicznego<br />
+EGP &#8211; trasa otrzymana z EGP (External Gateway Protocol)<br />
+incomplete &#8211; trasa redystrybuowana</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">2 AS Path</td><td class="column-2">standardowy i obowiązkowy</td><td class="column-3">Atrybut opisujący sytemy autonomiczne, które są ścieżką do docelowej sieci.</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">3 Next Hop</td><td class="column-2">standardowy i obowiązkowy</td><td class="column-3">Atrybut wskazuje na adres IP następnego skoku (IP next hop) do docelowej sieci. Jest to adres IP sąsiada zdalnego BGP, przez którego dana trasa jest osiągalna.</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">4 Multiple Exit Discriminator (MED)</td><td class="column-2">niestandardowy i nieprzenośny</td><td class="column-3">Atrybut wskazujący metrykę dla zdalnych sąsiadów. Metryka wskazuje jaką ścieżkę dany sąsiad ma użyć dla dotarcia do lokalnego AS. Przy wyborze preferowana jest niższa metryka (domyślnie  MED ma wartość 0)</td>
+</tr>
+<tr class="row-6 even">
+	<td class="column-1">5 Local Preference</td><td class="column-2">standardowy i opcjonalny</td><td class="column-3">Atrybut wskazujący metrykę dla ruchu wychodzącego z lokalnego routera do sąsiadów zdalnych do zewnętrznych sieci (domyślnie Local Preference ma wartość 100). Wyższa wartość Local Preference jest preferowana przy wyborze trasy.</td>
+</tr>
+<tr class="row-7 odd">
+	<td class="column-1">6 Atomic Aggregate</td><td class="column-2">standardowy i opcjonalny</td><td class="column-3">Atrybut informujący o tym, że dokonana została agregacja tras. Zawiera ASy, które zostały porzucone w ramach agregacji.</td>
+</tr>
+<tr class="row-8 even">
+	<td class="column-1">7 Aggregator</td><td class="column-2">niestandardowy i przenośny</td><td class="column-3">Atrybut zawierający identyfikator routera odpowiedzialnego za agregację.</td>
+</tr>
+<tr class="row-9 odd">
+	<td class="column-1">8 Community</td><td class="column-2">niestandardowy i przenośny</td><td class="column-3">Atrybut pozwalający na znakowanie tras i użycie grup tras o takich samych cechach charakterystycznych.</td>
+</tr>
+<tr class="row-10 even">
+	<td class="column-1">9 Originator ID</td><td class="column-2">opcjonalny i nieprzenośny</td><td class="column-3">Atrybut identyfikujący router, od którego pochodzi dana trasa. Atrybut jest ustawiany przez router reflector i eliminuje szansę pojawienia się pętli.</td>
+</tr>
+<tr class="row-11 odd">
+	<td class="column-1">10 Cluster List</td><td class="column-2">opcjonalny i nieprzenośny</td><td class="column-3">Lista używana w środowisku route reflectorów. Używana do zapobiegania pętli.</td>
+</tr>
+<tr class="row-12 even">
+	<td class="column-1">&#8212; Weight</td><td class="column-2">własność CISCO</td><td class="column-3">Atrybut podobny do Local Preference, dostarcza wagę do wyznaczenia najlepszej trasy dla ruchu wychodzącego na urządzeniach CISCO</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-2 from cache --></span></div><h5><span style="color: #000000;">Wybór najlepszej ścieżki  w BGP</span></h5><p style="text-align: justify;"><span style="color: #000000;">W internecie istnieje wiele redundantnych połączeń do sieci docelowej. Gdy BGP ma do wyboru kilka ścieżek do trasy docelowej musi wybrać najlepszą ścieżkę. Najlepsza ścieżka w BGP jest wybierana na podstawie atrybutów. Atrybuty są sprawdzane zgodnie z poniżej podaną kolejnością w przypadku gdy atrybuty są takie same dla redundantnych ścieżek porównywany jest kolejny atrybut z listy, aż do znalezienia różnicy w atrybutach.</span></p><p style="text-align: justify;"><span style="color: #000000;">Atrybuty są porównywane w następującej kolejności:</span></p><div> <span style="color: #000000;">
+<table id="tablepress-3" class="tablepress tablepress-id-3">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Atrybut</th><th class="column-2">Opis</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">1 Weight</td><td class="column-2">Preferuj najwyższą wagę (dla routerów CISCO)</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">2 Local Preference</td><td class="column-2">Preferuj najwyższy Local Preference</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">3 Self-originated</td><td class="column-2">Preferuj trasy ogłoszone lokalnie przez komendę network lub redistribute</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">4 AS Path</td><td class="column-2">Preferuj ścieżkę z krótszym AS_PATH (mniejsza ilość AS)</td>
+</tr>
+<tr class="row-6 even">
+	<td class="column-1">5 Origin</td><td class="column-2">Preferuj trasy pochodzące z IGP nad trasami EGP, a EGP nad trasami unknown</td>
+</tr>
+<tr class="row-7 odd">
+	<td class="column-1">6 MED</td><td class="column-2">Preferuj niższą wartość MED</td>
+</tr>
+<tr class="row-8 even">
+	<td class="column-1">7 External</td><td class="column-2">Preferuj trasy z eBGP nad trasami z iBGP</td>
+</tr>
+<tr class="row-9 odd">
+	<td class="column-1">8 IGP Cost</td><td class="column-2">Preferuj ścieżkę, gdzie koszt IGP do next-hopa BGP jest niższy</td>
+</tr>
+<tr class="row-10 even">
+	<td class="column-1">9 EBGP Peering</td><td class="column-2">Preferuj starszą ścieżkę</td>
+</tr>
+<tr class="row-11 odd">
+	<td class="column-1">10 Router ID</td><td class="column-2">Preferuj ścieżkę, która ma niższy router-id</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-3 from cache --></span></div><div style="text-align: justify;"><span style="color: #000000;"> </span></div><div style="text-align: justify;"><span style="color: #000000;"> </span></div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="2553011" class="elementor-element elementor-element-2553011 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="8cce7f3" class="elementor-element elementor-element-8cce7f3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="885f270" class="elementor-element elementor-element-885f270 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">PODSUMOWANIE</span></h5><p style="text-align: justify;"><span style="color: #000000;">BGP w wersji 4 jest podstawą funkcjonowania obecnego internetu. BGP jest opisane w <a href="https://tools.ietf.org/html/rfc4271">RFC 4271</a>. Dystans administracyjny w eBGP wynosi 20, w iBGP 200. BGP do komunikacji wykorzystuje transmisję IP na porcie TCP/179. Wybór najlepszej trasy w protokole BGP odbywa się na podstawie porównywania atrybutów. BGP jest protokołem o długim czasie zbieżności (pobranie pełnej tabicy routingu Internetu może potrwać wiele godzin, tak samo jak propagacja nowego wpisu w całej sieci. </span></p><p> </p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/bgp-podstawy/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>rdp &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/rdp/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>MobaXterm &#8211; narzędzie do zdalnego dostępu ssh, rdp, telnet, sftp</title>
+		<link>https://kubsoo.github.io/rsnet-website/110/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/110/#respond</comments>
+		<pubDate>Wed, 24 May 2017 20:30:46 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[rdp]]></category>
+		<category><![CDATA[ssh]]></category>
+		<category><![CDATA[windows]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=110</guid>
+		<description><![CDATA[W pracy administratora konieczne jest łączenie się zdalne z urządzeniami przy użyciu różnych protokołów. Ja na co dzień korzystam z programów typu: Putty, WinSCP, połączeń pulpitu zdalnego Windows. W związku z&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">W pracy administratora konieczne jest łączenie się zdalne z urządzeniami przy użyciu różnych protokołów. Ja na co dzień korzystam z programów typu: <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/" title="">Putty</a>, <a href="http://winscp.net/eng/index.php" title="">WinSCP</a>, <a href="http://windows.microsoft.com/pl-pl/windows7/products/features/remote-desktop-connection" title="">połączeń pulpitu zdalnego Windows</a>. W związku z tym, że najwięcej urządzeń, którymi administruję to serwery z systemem operacyjnym linux oraz urządzenia sieciowe CISCO to najczęściej korzystam z programu Putty, który umożliwia połączenia przez ssh oraz telnet. Połączenie z kilkoma urządzeniami wymaga otwieranie nowych okien putty, co czasami może prowadzić do pomyłek. Parę razy zdarzyło mi się pomylić okienko i wykonywać polecenia nie na tym urządzeniu, na którym miałem to zrobić. Rozwiązać ten problem można instalując modyfikacje programu putty takie jak: <a href="http://ttyplus.com/multi-tabbed-putty/" title="">MTPutty</a> czy <a href="https://code.google.com/p/superputty/" title="">SuperPutty</a>, które umożliwiają otwieranie nowych okienek w zakładkach. Ja korzystałem z SuperPutty, jednak nie byłem do końca zadowolony, dlatego zacząłem poszukiwania innego rozwiązania. W ręce wpadło mi narzędzie <a href="http://www.mremoteng.org/" title="">mRemoteNG</a>, które oprócz połączeń ssh umożliwia również połączenia RDP (zdalny pulpit Windows) i wszystkie te połączenia można pogrupować w zakładkach. Na początku byłem bardzo zadowolony z mRemoteNG, jednak po jakimś czasie pojawiły się problemy ze stabilnością i zmuszony byłem szukać dalej. Poszukiwania nie trwały długo i zakończyły się sukcesem, ponieważ znalazłem oprogramowanie <strong>MobaXterm</strong>.</p>
+<p><span id="more-110"></span></p>
+<p><strong>MobaXterm</strong></p>
+<p style="text-align: justify;">Oprogramownie dostępne jest na platformę Windows i można je pobrać <a href="http://mobaxterm.mobatek.net/" title="">stąd</a>. MobaXTerm dostępne jest w dwóch wersjach: Personal Edition oraz Professional Edition. Wersja Personal Edition dostępna jest za darmo natomiast wersja Professional Edition kosztuje ok. 60 euro. Ja narazie korzystam z wersji bezpłatnej, bo do moich potrzeb nie jest mi potrzebna wersja Professional Editon. Różnice pomiędzy wersjami można znaleźć w zakładce <a href="http://mobaxterm.mobatek.net/download.html" title="">Download/Buy</a> na stronie MobaXterm.mobatek.pl. Do podstawowych różnic należy maksymalna liczba zapisanych sesji (w wersji darmowej 12, w wersji professional nielimitowana) oraz maksymalna liczba zapisanych tuneli SSH (w wersji darmowej 2, w wersji professional nielimitowana). W MobaXterm można tworzyć szereg sesji (SSH, Telnet, Rsh, Xdmcp, RDP, VNC, FTP, SFTP, Serial, File, Shell, Browser, Mosh):</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba1.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-114 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba1.png" alt="" width="854" height="771" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba1.png 854w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba1-300x271.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba1-768x693.png 768w" sizes="(max-width: 854px) 100vw, 854px" /></a></p>
+<p style="text-align: justify;">MobaXterm umożliwia jednoczesne otwarcie sesji m.in. SSH i RDP i łatwe i szybkie przenoszenie się między sesjami. Wystarczy kliknąć w odpowiednią zakładkę. Dzięki możliwości zapisywania haseł, nie musimy za każdym razem wpisywać loginu i hasła do połączenia się ze zdalną maszyną. W praktyce sesje w MobaXterm wyglądają następująco:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba2.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-115 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba2.png" alt="" width="601" height="328" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba2.png 601w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba2-300x164.png 300w" sizes="(max-width: 601px) 100vw, 601px" /></a></p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba3.png" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-116 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba3.png" alt="" width="601" height="331" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba3.png 601w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba3-300x165.png 300w" sizes="(max-width: 601px) 100vw, 601px" /></a></p>
+<p style="text-align: justify;">Na głównej stronie MobaXterm jest prezentacja pokazująca najciekawsze funkcje programu (<a href="http://mobaxterm.mobatek.net/" title="">link</a>).</p>
+<p style="text-align: justify;">Jedną z kluczowych funkcji MobaXterm jest możliwość pracy zdalnej na serwerach linux w trybie graficznym korzystając z Windowsa. W skrócie MobaXterm pozwala na uruchamianie aplikacji linux w trybie graficznym na Windowsie wykorzystując połączenie SSH (<strong>X11 Forwarding</strong>). Na uwagę zasługuje to, że nie musimy w tym celu instalować dodatkowego oprogramowania, ani konfigurować serwera linuksowego. Wystarczy połączyć się w MobaXterm z serwerem linuksowym wykorzystując połączenie ssh, a następnie w konsoli wydać polecenie, które odpali dowolny program w trybie graficznym. Screen z wykonania polecenia gns3 na linuxie poniżej:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba4.png" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-117 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba4.png" alt="" width="601" height="420" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba4.png 601w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba4-300x210.png 300w" sizes="(max-width: 601px) 100vw, 601px" /></a></p>
+<p style="text-align: justify;">Połączyłem się z moim serwerem, na którym zainstalowany jest debian (debian-lab) a następnie odpaliłem oprogramowanie gns3, wpisując w konsoli: <em>gns3</em>. Program gns3 odpalił m się pod Windowsem i mogę z niego korzystać w taki sam sposób, jakbym pracował na nim pod debianem. Dzięki wykorzystaniu tej funkcjonalności administrator, który będzie zmuszony skorzystać z okienek (np. przy instalacji Oracle&#8217;a), nie będzie musiał konfigurować oprogramowania typu <a href="http://www.tightvnc.com/">VNC</a> do podłączenia się do zdalnego pulpitu, ani tym bardziej pracować na serwerze lokalnie, korzystając z podłączonego do serwera monitora klawiatury i myszy, zwłaszcza że w większości przypadków serwery, na których pracuje są w lokalizacjach zdalnych, do których nie ma dostępu.</p>
+<p style="text-align: justify;">Na razie jestem na początku testowania możliwości MobaXterm, jednak już mogę polecić kilka rzeczy, które według mnie zasługują na uwagę. Poza X11 Forwarding, na uwagę zasługuje przeglądarka SFTP, która po podłączneniu z sesją ssh, umożliwia przeglądanie plików na maszynie zdalnej, ściąganie/wgrywanie plików do/z maszyny zdalnej oraz możliwość wykonania tych samych poleceń jednocześnie na wielu maszynach, służy do tego opcja (MultiExec). Ja wykorzystałem tą funkcjonalność gdy musiałem dodać konto użytkownika na kilkunastu serwerach. Zamiast pisać skrypt, który to wykona po prostu otworzyłem wszystkie sesje ssh z serwerami a następnie wpisałem polecenie, które zostało wykonane na każdym serwerze. Jeszcze jedna rzecz, którą zauważyłem po instalacji było, to że program automatycznie zaimportował sesje z programu Putty, więc nie musiałem ich dodawać.</p>
+<p style="text-align: justify;">Podsumowując uważam, że program MobaXterm to doskonałe narzędzie dla administratora, które usprawnia pracę z urządzeniami zdalnymi oraz integruje ze sobą wiele funkcjonalności, dzięki czemu nie trzeba korzystać w wielu programów naraz. Gorąco zachęcam do przetestowania tego oprogramowania, gdyż naprawdę jest godne polecenia.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/110/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

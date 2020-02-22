@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>rancid &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/rancid/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Rancid jako narzędzie do automatycznego zapisywania kopii zapasowych urządzeń sieciowych CISCO</title>
+		<link>https://kubsoo.github.io/rsnet-website/rancid-jako-narzedzie-do-automatycznego-zapisywania-kopii-zapasowych-urzadzen-sieciowych-cisco/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/rancid-jako-narzedzie-do-automatycznego-zapisywania-kopii-zapasowych-urzadzen-sieciowych-cisco/#respond</comments>
+		<pubDate>Tue, 24 Jan 2017 20:40:03 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[rancid]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=119</guid>
+		<description><![CDATA[W myśl zasady: &#8222;Zawsze pamiętaj o tworzeniu kopii zapasowych&#8221; zawsze staram się mieć kopie zapasowe konfiguracji urządzeń, którymi zarządzam. Na początku był to proces ręczny, kopie: running-config zapisywałem na swoim komputerze&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">W myśl zasady: <strong>&#8222;Zawsze pamiętaj o tworzeniu kopii zapasowych&#8221;</strong> zawsze staram się mieć kopie zapasowe konfiguracji urządzeń, którymi zarządzam. Na początku był to proces ręczny, kopie: running-config zapisywałem na swoim komputerze i robiłem notatki na temat wprowadzanych zmian. Jednym z głównych problemów w tym rozwiązaniu było to, że nie tylko ja miałem dostęp do urządzeń sieciowych i nie byłem w stanie śledzić każdej zmiany dokonywanej przez inne osoby. Musiałem poszukać narzędzia do zautomatyzowania tego procesu. Jest wiele rozwiązań pozwalających na automatyczne tworzenie kopii zapasowych konfiguracji switchy, routerów, firewalli itp. Dla firmy posiadającej budżet na zakup komercyjnego rozwiązania istnieją takie narzędzia jak <a href="http://www.solarwinds.com/kiwi-cattools.aspx">Kiwi CatTools</a> czy <a href="https://www.cisco.com/c/en/us/products/cloud-systems-management/prime-infrastructure/index.html">CISCO PRIME INFRASTRUCTURE</a>.  Ja musiałem poszukać czegoś darmowego i dlatego wybrałem oprogramowanie <a href="http://www.shrubbery.net/rancid"><strong>RANCID</strong></a><strong> (Really Awsome New Cisco config Differ)</strong>.</p>
+<p><span id="more-119"></span></p>
+<p style="text-align: justify;">RANCID jest doskonałym narzędziem przeznaczonym do automatycznego backupu konfiguracji urządzeń sieciowych. Oprócz tego RANCID zachowuje różne wersje konfiguracji i zapisuje je za pomocą CVS (Concurrent Version System).</p>
+<p>W skrócie RANCID działa następująco:</p>
+<ol>
+<li>Loguje sie do każdego skonfigurowanego urządzenia.</li>
+<li>Wykonuje różne polecenia do wydobycia informacji, które zostaną zapisane.</li>
+<li>Zapisuje konfigurację i zmiany do CVS.</li>
+</ol>
+<p>&nbsp;</p>
+<ol>
+<li><strong> INSTACJA RANCIDA</strong></li>
+</ol>
+<p style="text-align: justify;">Do instalacji rancida konieczny jest system operacyjny z rodziny linux, ja korzystam z Debiana (<strong>DEBIAN &#8222;squeeze&#8221; 6.0.9</strong>) i to dla tej dystrybucji opiszę proces instalacji i konfiguracji.</p>
+<p style="text-align: justify;">Rancid dostępny jest w repozytoriach debiana i jego instalacja sprowadza się do wydania polecenia:</p>
+<pre style="text-align: justify;">root@debian:~# apt-get install rancid</pre>
+<p style="text-align: justify;">W trakcie instalacji tworzone jest konto użytkownika “rancid” z katalogiem domowym: <em>/var/lib/rancid</em>.  Utworzenie konta można zweryfikować wydając polecenie:</p>
+<pre style="text-align: justify;">root@debian:~# cat /etc/passwd | grep rancid</pre>
+<p style="text-align: justify;">Wynik polecenia powinien być podobny do tego poniżej:</p>
+<pre>rancid:x:108:112::/var/lib/rancid:/bin/false</pre>
+<p>&nbsp;</p>
+<ol start="2">
+<li><strong> KONFIGURACJA GRUP RANCIDA</strong></li>
+</ol>
+<p style="text-align: justify;">Następnie konieczne jest stworzenie co najmniej jednej grupy urządzeń w pliku konfiguracyjnym rancid’a w celu logicznego pogrupowania urządzeń. Urządzenia można pogrupować według swojego uznania na podstawie lokalizacji,  rodzaju urządzeń, funkcji itp.. Ja pogrupowałem urządzenia w oparciu o rodzaj urządzeń: (routers, switches).</p>
+<p style="text-align: justify;">W celu stworzenia grupy urządzeń należy wyedytować plik konfiguracyjny: <em>/etc/rancid/rancid.conf:</em></p>
+<pre style="text-align: justify;">root@debian:~# nano /etc/rancid/rancid.conf</pre>
+<p style="text-align: justify;">i dopisać do niego linijkę z wybranymi grupami rozdzielonymi znakiem spacji:</p>
+<p><img class="size-full wp-image-124 aligncenter" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid1.png" alt="" width="584" height="269" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid1.png 584w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid1-300x138.png 300w" sizes="(max-width: 584px) 100vw, 584px" /></p>
+<p>&nbsp;</p>
+<ol start="3">
+<li style="text-align: justify;"><strong>STWORZENIE REPOZYTORIUM CVS</strong></li>
+</ol>
+<p style="text-align: justify;">Domyślnie RANCID używa Concurrent Versions System – CVS do przechowywania konfiguracji urządzeń. CVS daje możliwość do śledzenia zmian w konfiguracji, oraz porównywanie wersji. Jest to bardzo ważne w środowisku, gdzie współpracujemy z innymi administratorami, którzy również mogą dokonywać zmian w konfiguracji urządzeń sieciowych, dzięki czemu zachowujemy kontrolę nad konfiguracjami urządzeń.</p>
+<p style="text-align: justify;">RANCID  stworzy repozytorium CVS i strukturę katalogów bazując na grupach zdefiniowanych w punkcie 2. Komenda do stworzenia repozytorium CVS wygląda następująco:</p>
+<pre style="text-align: justify;">root@debian:~# su -c /var/lib/rancid/bin/rancid-cvs -s /bin/bash -l rancid</pre>
+<p style="text-align: justify;">Jeśli komenda nie zwróci błędów powinny się stworzyć nowe foldery w katalogu <em>/var/lib/rancid</em>:</p>
+<p><img class="size-full wp-image-125 aligncenter" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid2.png" alt="" width="649" height="203" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid2.png 649w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid2-300x94.png 300w" sizes="(max-width: 649px) 100vw, 649px" /></p>
+<p style="text-align: justify;">Wśród stworzonych katalogów zostały utworzone pliki konfiguracyjne <em>router.db</em>, które zawierają szczegóły dotyczące urządzeń, których chcemy śledzić zmiany. Pliki te znajdują się w utworzonych katalogach. W moim przypadku: <em>/var/lib/rancid/routers/router.db </em> i <em>/var/lib/rancid/switches/router.db</em>.</p>
+<p>&nbsp;</p>
+<ol style="text-align: justify;" start="4">
+<li><strong> DODANIE URZĄDZEŃ</strong></li>
+</ol>
+<p style="text-align: justify;">Pliki router.db zawierają informacje dotyczące urządzeń. Każde urządzenie zajmuje jedną linijkę w pliku i ma następujący format: &lt;nazwa_urządzenia&gt;:&lt;typ_urządzenia&gt;:&lt;status_urządzenia&gt;. Nazwa_urządzenia to nazwa hosta albo adres IP urządzenia. Typ_urządzenia to nazwa producenta sprzętu. Oprócz CISCO rancid obsługuje sprzęt innych producentów takich jak hp, juniper, czy mikrotik (<a href="http://www.shrubbery.net/rancid/man/router.db.5.html">pełna lista obsługiwanych urządzeń</a>). Status urządzenia może przyjmować dwie wartości up i down. Status up oznacza, że urządzenie będzie sprawdzane, natomiast status down, że będzie ignorowane.</p>
+<p style="text-align: justify;">W moim przypadku plik <em>router.db</em> dla grupy switches wygląda następująco:</p>
+<pre>c2960-pietro:cisco:up
+
+c2960-parter:cisco:up
+
+c3550-rdzen:cisco:up</pre>
+<p>analogicznie plik <em>router.db</em> dla grupy routers:</p>
+<pre>c7200:cisco:up
+
+c3725:cisco:up</pre>
+<p>(Pliki zostały zmienione dla celów tego poradnika, bo w mojej sieci posiadam więcej niż 3 switche i 2 routery)</p>
+<p style="text-align: justify;">Jak już wspomniałem wcześniej nazwa urządzenia może być nazwą hosta albo adresem IP. W celu korzystania z nazwy hosta (tak jak ja to zrobiłem) konieczne jest dodanie odpowiednich wpisów do pliku <em>/etc/hosts</em>:</p>
+<pre style="text-align: justify;">192.168.0.1   c2960-pietro
+
+192.168.0.2   c2960-parter
+
+192.168.0.254 c3550-rdzen
+
+1.1.1.1       c7200
+
+2.2.2.2       c3725</pre>
+<p style="text-align: justify;">należy dodać wszystkie urządzenia, które chcemy mieć skonfigurowane w plikach <em>router.db</em> we wszystkich grupach. Oczywiście wszystkie adresy IP urządzeń muszą być osiągalne z maszyny, na której zainstalowaliśmy rancid&#8217;a.</p>
+<p>&nbsp;</p>
+<ol style="text-align: justify;" start="5">
+<li style="text-align: justify;"><strong>KONFIGURACJA CLOGIN</strong></li>
+</ol>
+<p style="text-align: justify;">Rancid korzysta z cloginrc do połączenia się z urządzeniami skonfigurowanymi w plikach <em>router.db</em>. Do połączenia z urządzeniami konieczne jest stworzenie pliku .cloginrc w katalogu <em>/var/lib/rancid/ </em>:</p>
+<pre style="text-align: justify;">root@debian:~# nano /var/lib/rancid/.cloginrc</pre>
+<p style="text-align: justify;">a następnie jego konfiguracja w zależności od sposobu połączenia do urządzenia: SSH, telnet itd. Ja podłączam się do urządzeń za pomocą SSH zamiast telnetu ze względu na bezpieczeństwo (telnet przesyła hasła otwartym tekstem) i dlatego opiszę tylko tą metodę. Dla innego rodzaju połączeń odsyłam do dokumentacji <a href="http://www.shrubbery.net/rancid/man/cloginrc.5.html">cloginrc</a>.</p>
+<p style="text-align: justify;">Konfiguracja pliku .cloginrc dla ssh (nazwa użytkownika:admin, hasło:admin123):</p>
+<pre style="text-align: justify;">add method * ssh
+
+add user * admin
+
+add password * admin123
+
+add autoenable * 1</pre>
+<p style="text-align: justify;">Znak * w pliku <em>.cloginrc </em>oznacza zastosowanie danych do logowania dla każdego urządzenia z plików router.db. Opcja autoenable jest potrzebna w przypadku gdy użytkownik po uwierzytelnieniu jest w trybie uprzywilejowanym (privilege 15). Na każdym urządzeniu musi być włączone logowanie przez ssh oraz konto użytkownika admin:</p>
+<pre style="text-align: justify;">(config)# line vty 0 4
+
+(config-line)# transport input ssh
+
+(config-line)# login local
+
+(config)# username admin privilege 15 password admin123</pre>
+<p style="text-align: justify;">W przypadku, gdyby dane do logowania były różne na urządzeniach zamiast * wpisujemy adres IP/ hostname urządzenia i dla każdego urządzenia zmieniamy odpowiednio metodę logowania i dane do logowania. W przypadku korzystania z hostname, konieczne jest wpisywanie ich do pliku .cloginrc wyłącznie małymi literami, w przeciwnym wypadku wystąpi błąd.</p>
+<p style="text-align: justify;">Należy być bardzo ostrożnym z uprawnieniami pliku .cloginrc gdyż przechowuje on hasła w postaci tekstowej niezaszyfrowanej. Jedyną możliwością ochrony pliku jest ograniczenie praw dostępu do pliku wyłącznie dla właściciela. Zatem ustawiamy:</p>
+<pre style="text-align: justify;">root@debian:~# chmod 600 /var/lib/rancid/.cloginrc
+
+root@debian:~# chown rancid:rancid /var/lib/rancid/.cloginrc</pre>
+<p>&nbsp;</p>
+<ol start="6">
+<li><strong> TESTOWANIE CLOGIN</strong></li>
+</ol>
+<p style="text-align: justify;">Po skonfigurowaniu pliku <em>.cloginrc </em>można przetestować jego poprawność. W tym celu wybieram dowolne urządzenie (ja wybrałem router c7200) i wydajemy polecenie:</p>
+<pre style="text-align: justify;">root@debian:~# /usr/lib/rancid/bin/clogin -f /var/lib/rancid/.cloginrc c7200</pre>
+<p style="text-align: justify;">Jeśli plik <em>.cloginrc</em> jest poprawnie skonfigurowany po wydaniu powyższego polecenia powinniśmy się znaleźć w trybie uprzywilejowanym urządzenia (exec mode #).</p>
+<p>&nbsp;</p>
+<ol style="text-align: justify;" start="7">
+<li><strong> TESTOWANIE RANCIDA</strong></li>
+</ol>
+<p style="text-align: justify;">Jeśli testowanie cloginrc przebiegło pomyślnie pora na przetestowanie rancida. W tym celu wydajemy polecenie:</p>
+<pre style="text-align: justify;">root@debian:~# su -c /var/lib/rancid/bin/rancid-run -s /bin/bash -l rancid</pre>
+<p style="text-align: justify;">W zależności od ilości skonfigurowanych urządzeń w plikach router.db wykonanie się powyższego polecenia może chwilę potrwać, ze względu na to, że rancid próbuję łączyć się z każdym urządzeniem i ściąga z nich konfigurację. Po wykonaniu się polecenia warto przejrzeć logi: <em>/var/log/rancid/ </em>w celu sprawdzenia szczegółów.</p>
+<p>&nbsp;</p>
+<ol style="text-align: justify;" start="8">
+<li><strong> INSTALACJA VIEWVC I KONFIGURACJA APACHE&#8217;A</strong></li>
+</ol>
+<p style="text-align: justify;">Do przeglądania wyników pracy rancida możemy skorzystać z interfejsu webowego <a href="http://viewvc.org/">viewvc</a>. W celu zainstalowania pakietu viewvc wydajemy polecenie:</p>
+<pre style="text-align: justify;">root@debian:~# apt-get install viewvc</pre>
+<p style="text-align: justify;">Przy instalacji  viewvc automatycznie zainstaluje się serwer www &#8211; apache (jeśli wcześniej go nie instalowaliśmy). Domyślnie viewvc instaluje się w katalogu <em>/usr/lib/viewvc/</em>. Po instalacji viewvc konieczne jest skonfigurowanie Apache&#8217;a żeby z nim współpracował. Najpierw tworzymy skrót viewvc w katalogu <em>/var/www/</em> wskazujący na katalog /<em>usr/lib/viewvc:</em></p>
+<pre>root@debian:/var/www# ln -s /usr/lib/viewvc viewvc</pre>
+<p>Teraz konieczne jest wyedytowanie pliku: <em>/etc/apache2/sites-available/default</em> i dodanie następujących linijek na końcu pliku, tuż przed <em>&lt;/VirtualHost&gt;</em>:</p>
+<pre>&lt;Directory "/var/www/viewvc/cgi-bin"&gt;
+
+AllowOverride None
+
+Options +ExecCGI -Includes
+
+Order allow,deny
+
+Allow from all
+
+&lt;/Directory&gt;
+
+
+
+Alias /viewvc /var/www/viewvc/
+
+
+
+&lt;Directory /var/www/viewvc/&gt;
+
+Options +ExecCGI
+
+AddHandler cgi-script .cgi
+
+DirectoryIndex viewvc.cgi
+
+Order allow,deny
+
+Allow from all
+
+AuthType Basic
+
+AuthName "Restricted Files"
+
+AuthUserFile /etc/apache2/password/passwords
+
+Require user admin
+
+&lt;/Directory&gt;</pre>
+<p style="text-align: justify;">Dzięki linijkom 16:20 dostęp do <em>viewvc </em>będzie dostępny po podaniu prawidłowego użytkownika i hasła. W moim przypadku będzie to użytkownik admin, którego hasło będzie przechowywane w pliku <em>/etc/apache2/password/passwords</em>. W tym celu należy stworzyć folder <em>password  </em>w katalogu <em>/etc/apache2</em>:</p>
+<pre style="text-align: justify;">root@debian:/var/www# mkdir password</pre>
+<p style="text-align: justify;">a następnie wygenerować plik <em>passwords</em> używając komendy:</p>
+<pre style="text-align: justify;">root@debian:/etc/apache2/password# htpasswd -c passwords admin</pre>
+<p style="text-align: justify;">New password: [Wpisz hasło dla użytkownika admin]</p>
+<p style="text-align: justify;">Re-type new password: [Powtórz hasło dla użytkownika admin]</p>
+<p style="text-align: justify;">ViewVC musi wiedzieć gdzie znajduje się repozytorium CVS, żeby móc go przeglądać. W tym celu edytujemy plik: <em>/etc/viewvc/viewvc.conf </em>i zmieniamy linijkę zaczynającą się od: &#8222;<em>root_partents&#8221; </em>w następujący sposób:</p>
+<p><img class="size-full wp-image-126 aligncenter" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid3.png" alt="" width="599" height="308" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid3.png 599w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid3-300x154.png 300w" sizes="(max-width: 599px) 100vw, 599px" /></p>
+<p style="text-align: justify;">Teraz pozostaje zrestartowanie Apache&#8217;a:</p>
+<pre style="text-align: justify;">root@debian:~# service apache2 restart</pre>
+<p style="text-align: justify;">Po restarcie apache&#8217;a możemy przeglądać zawartość repozytorium Rancid&#8217;a otwierając przeglądarkę internetową i wpisując: <strong><em>http://[adres_IP/</em>_s<em>erwera]/viewvc/cgi-bin </em></strong>, oczywiście zostaniemy poproszeni o podanie nazwy użytkownika i hasła, które skonfigurowaliśmy wcześniej.</p>
+<p style="text-align: justify;">Jeśli wszystko się powiodło naszym oczom powinien ukazać się następujący widok:</p>
+<p><img class="size-full wp-image-127 aligncenter" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid4.png" alt="" width="666" height="286" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid4.png 666w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid4-300x129.png 300w" sizes="(max-width: 666px) 100vw, 666px" /></p>
+<p style="text-align: justify;">I to wszystko. Teraz możemy przeglądać konfiguracje naszych urządzeń:</p>
+<p><img class="size-full wp-image-128 aligncenter" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid5.png" alt="" width="650" height="370" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid5.png 650w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid5-300x171.png 300w" sizes="(max-width: 650px) 100vw, 650px" /></p>
+<p style="text-align: justify;">W celu zobaczenia konfiguracji jakiegoś urządzenia (np. switcha c2960-parter) należy kliknąć w numer obok nazwy (<strong>1.2</strong>: Numer ten oznacza numer wersji konfiguracji i przy każdej zmianie konfiguracji urządzenia jest on podwyższany o wartość 0.1). Po kliknięciu powinna się pojawić strona z podstawowymi informacjami o switchu a pod spodem konfiguracją (running-config). Będzie to wyglądać mniej więcej tak:</p>
+<p><img class="size-full wp-image-129 aligncenter" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid6.png" alt="" width="624" height="589" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid6.png 624w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid6-300x283.png 300w" sizes="(max-width: 624px) 100vw, 624px" /></p>
+<p style="text-align: justify;">Bardzo przydatną funkcją w VIEWVC jest porównywanie wersji. W tym celu na poprzedniej stronie zamiast w numer wersji klikamy w nazwę urządzenia i wybieramy wersję do porównania a następnie klikamy przycisk <em>Get Diffs</em>:</p>
+<p><img class="size-full wp-image-130 aligncenter" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid7.png" alt="" width="683" height="505" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid7.png 683w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid7-300x222.png 300w" sizes="(max-width: 683px) 100vw, 683px" /></p>
+<p style="text-align: justify;">Po tej operacji zobaczymy zaznaczone na kolorowo zmiany pomiędzy wersjami:</p>
+<p><img class="size-full wp-image-131 aligncenter" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid8.png" alt="" width="623" height="488" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid8.png 623w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid8-300x235.png 300w" sizes="(max-width: 623px) 100vw, 623px" /></p>
+<p style="text-align: justify;">Wprowadzona przeze mnie zmiana jest zaznaczona kolorem żółtym: &#8222;<em>service password-encryption</em>&#8222;, jednak nie jest zaznaczone kto wprowadził zmianę. W tym celu należy wyedytować plik rancid:</p>
+<pre>root@debian:~# nano /var/lib/rancid/bin/rancid</pre>
+<p>i poprzedzić linijkę: <em>/^! (Last configuration|NVRAM config last)/ &amp;&amp; next; </em>znakiem<strong><em> #</em> </strong>w taki sposób:</p>
+<p><img class="size-full wp-image-132 aligncenter" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid9.png" alt="" width="614" height="415" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid9.png 614w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/rancid9-300x203.png 300w" sizes="(max-width: 614px) 100vw, 614px" /></p>
+<p>Teraz w VIEWVC mamy informację kto wprowadził zmianę w konfiguracji urządzenia.</p>
+<p>&nbsp;</p>
+<ol start="9">
+<li><strong> AUTOMATYCZNE URUCHAMIANIE RANCIDA</strong></li>
+</ol>
+<p style="text-align: justify;">Najprostszą metodą automatycznego uruchamiana rancida jest wykorzystanie cyklicznych zadań cron&#8217;a. Najlepiej skonfigurować cron&#8217;a w taki sposób, żeby raz dziennie (np. w nocy) uruchamial rancida. Plik konfiguracyjny crontab edytujemy wydając polecenie:</p>
+<pre style="text-align: justify;">root@debian:~# crontab -e</pre>
+<p style="text-align: justify;">następnie dopisujemy linikję:</p>
+<pre style="text-align: justify;">0 1 * * * /home/rancid/rancid/bin/rancid-run</pre>
+<p style="text-align: justify;">Która oznacza, że codziennie o 1.00 w nocy będzie się wykonywał rancid i pobierał konfigurację z urządzeń.</p>
+<p style="text-align: justify;">Możemy dodatkowo wymusić czyszczenie logów rancida co miesiac o 1:15 w nocy dodając do cron&#8217;a linijkę:</p>
+<pre style="text-align: justify;">15 1 1 * * find /var/lib/rancid/logs/ -type f -mtime +30 -exec rm -r {} \;</pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/rancid-jako-narzedzie-do-automatycznego-zapisywania-kopii-zapasowych-urzadzen-sieciowych-cisco/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Skrypt do automatycznego wykonywania poleceń na wielu urządzeniach CISCO jednocześnie</title>
+		<link>https://kubsoo.github.io/rsnet-website/137/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/137/#respond</comments>
+		<pubDate>Sun, 22 Jan 2017 20:57:44 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[rancid]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=137</guid>
+		<description><![CDATA[RANCID to doskonałe narzędzie do tworzenia kopii zapasowych urządzeń CISCO, jednak oprócz tego umożliwia on również wykorzystując narzędzie clogin wykonywać automatycznie dowolne polecenia na wielu urządzeniach CISCO jednocześnie. Przed przeczytaniem&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">RANCID to doskonałe narzędzie do tworzenia kopii zapasowych urządzeń CISCO, jednak oprócz tego umożliwia on również wykorzystując narzędzie clogin wykonywać automatycznie dowolne polecenia na wielu urządzeniach CISCO jednocześnie.</p>
+<p style="text-align: justify;">Przed przeczytaniem tego konieczne jest zainstalowanie i skonfigurowanie RANCID&#8217;a. W tym celu polecam przeczytać poniższy poradnik: <a href="https://kubsoo.github.io/rsnet-website/?p=119">RANCID jako narzędzie do automatycznego zapisywanie kopii zapasowych urządzeń sieciowych CISCO.</a> (wystarczy postępować zgodnie z instrukcjami zawartymi w punktach 1, 4, 5, 6)</p>
+<p style="text-align: justify;"><strong>Automatyczne wykonywanie komend na sprzęcie CISCO</strong></p>
+<p><span id="more-137"></span></p>
+<p style="text-align: justify;">Wyobraźmy sobie sytuację, że mamy na 100 urządzeniach wykonać takie same polecenia (np. dodać nowe konto użytkownika). Możemy to zrobić ręcznie, czyli logując się na każde urządzenie po kolei, albo skorzystać z narzędzia CLOGIN. W tym celu wystarczy napisać poniższy prosty skrypt: <em>skrypt.sh</em> (pod systemem operacyjnym linux):</p>
+<pre>#!/bin/bash
+
+for line in $(cat iplist.txt)
+
+do
+
+su -s /bin/bash -l rancid -c “/var/lib/rancid/bin/clogin -x commands.txt $line”
+
+done</pre>
+<p>Skrypt ten działa następująco:</p>
+<p style="text-align: justify;">Czyta zawartość pliku tekstowego <em>iplist.txt </em>linijka po linijce. W pliku tym w każdym wierszu znajduje się adres IP urządzenia, który jest zapisywany do zmiennej <em>line</em>. Następnie dla każdego z tych adresów uruchamiany jest CLOGIN z parametrem -x. Po parametrze -x podana jest nazwa pliku z komendami (<em>commands.txt</em>), które będą wykonywane, a następnie adres IP  urządzenia, na którym te komendy będą wykonywane (określony przez zmienną <em>$line</em>).</p>
+<p style="text-align: justify;">Przykładowy plik z adresami IP (<em>iplist.txt</em>):</p>
+<pre>192.168.0.1
+
+192.168.0.2
+
+192.168.0.3</pre>
+<p style="text-align: justify;">Przykładowy plik z komendami (commands<em>.txt</em>):</p>
+<pre>conf term
+
+username admin privilege 15 password cisco123
+
+end
+
+write
+
+exit</pre>
+<p style="text-align: justify;">W powyższym przykładzie dla każdego z 3 urządzeń (192.168.0.1, 192.168.0.2, 192.168.0.3) zostanie dodany użytkownik admin z poziomem uprzywilejowania 15 i hasłem: <em>cisco123</em>.</p>
+<p style="text-align: justify;">Do prawidłowego wykonania się skryptu konieczne jest, aby pliki<em> iplist.txt</em> oraz <em>commands.txt</em> znajdowały się w tym samym katalogu co skrypt. Oczywiście plik ze skryptem musi mieć nadane prawo do wykonywania:</p>
+<pre>root@debian:~# chmod +x skrypt.sh</pre>
+<p style="text-align: justify;">Skrypt uruchamiamy poleceniem:</p>
+<pre>root@debian:~# ./skrypt.sh</pre>
+<p>&nbsp;</p>
+<p>Plik <em>commands.txt</em> możemy edytować i wpisywać dowolne komendy w zależności od potrzeb.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/137/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

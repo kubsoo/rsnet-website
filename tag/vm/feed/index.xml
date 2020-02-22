@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>vm &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/vm/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Podłączanie GNS3 VM do internetu</title>
+		<link>https://kubsoo.github.io/rsnet-website/podlaczanie-gns3-vm-do-internetu/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/podlaczanie-gns3-vm-do-internetu/#respond</comments>
+		<pubDate>Mon, 07 Aug 2017 19:41:25 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[GNS3]]></category>
+		<category><![CDATA[vm]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=400</guid>
+		<description><![CDATA[GNS3 jest  bardzo przydatne do symulowania, emulowania sieci komputerowych. Czasami zachodzi potrzeba podłączenia sieci stworzonej w GNS3 do internetu. W tym wpisie pokażę jak to zrobić na przykładzie GNS3 zainstalowanego jako&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;"><a href="https://www.gns3.com/software/download-vm" title="">GNS3</a> jest  bardzo przydatne do symulowania, emulowania sieci komputerowych. Czasami zachodzi potrzeba podłączenia sieci stworzonej w GNS3 do internetu. W tym wpisie pokażę jak to zrobić na przykładzie GNS3 zainstalowanego jako maszyna wirtualna na Vmware Workstation na komputerze lokalnym.  Ja używam GNS3 w wersji VM, ponieważ GNS3 nie działa zbyt stabilnie na Windowsie, a taki posiadam system operacyjny, aczkolwiek tam samo będzie wyglądać podłączanie do Internetu lokalnie zainstalowanego GNS3.</p>
+<h4>TOPOLOGIA</h4>
+<p style="text-align: justify;">Zbudujmy następującą topologię składającą się z routera oraz hosta. Jako host uruchomiłem kontener dockera z zainstalowanym systemem <a href="https://alpinelinux.org/" title="">Alpine Linux</a>, który zajmuje tylko 5MB, a sluży nam tylko w celu zasymulowania hosta w sieci z dostępem do narzędzia diagnostycznego ping. Natomiast jako router posluży obraz z routerem Cisco 7200. Topologia znajduje się na poniższym obrazku:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-405 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int.png" alt="" width="646" height="385" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int.png 646w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int-300x179.png 300w" sizes="(max-width: 646px) 100vw, 646px" /></a></p>
+<p>Konfiguracja routera R1:</p>
+<pre>interface FastEthernet0/0
+ ip address dhcp
+ ip nat outside
+ duplex full
+!
+interface FastEthernet1/0
+ ip address 10.0.0.1 255.255.255.0
+ ip nat inside
+ speed auto
+ duplex auto
+!
+ip nat inside source list 1 interface FastEthernet0/0 overload
+ip forward-protocol nd
+!
+access-list 1 permit 10.0.0.0 0.0.0.255</pre>
+<p><strong>Wyjaśnienie:</strong></p>
+<p style="text-align: justify;">Konfiguracja routera jest bardzo prosta, bo właściwie to tylko konfiguracja interfejsów i NATu. Interfejs wewnętrzny podłączony do hosta (Fa1/0) konfigurujemy z adresem IP 10.0.0.1/24 oraz jako ip nat inside, natomiast interfejs zewnętrzny podłączony do naszej chmury Cloud1 (Fa0/0) konfigurujemy jako ip nat outside z adresem branym z DHCP.  Jeśli sieć w której znajduje się fizyczny interfejs naszego komputera podłączony do internetu nie posiada serwera DHCP to musimy przypisać go na sztywno, a następnie wskazać bramę. Zakładam jednak, że większość osób korzysta w domu z standardowego routera z dostępem do internetu na którym uruchomiona jest usługa DHCP.</p>
+<p>&nbsp;</p>
+<p>Konfiguracja hosta:</p>
+<pre>/ # ifconfig eth0 10.0.0.2 netmask 255.255.255.0
+
+/ # route add default gw 10.0.0.1 eth0</pre>
+<p><strong>Wyjaśnienie:</strong></p>
+<p style="text-align: justify;">Hosta konfigurujemy wydając dwa polecenia. Pierwsze przypisuje adres IP, drugie przypisuje bramę domyślną, dzięki czemu host ma dostęp do internetu. Dodatkowo możemy edytować plik /etc/resolv.conf i wpisać adres serwera dns. Dzięki czemu możliwe będzie pingowanie po nazwach.</p>
+<p>Plik edytujemy edytorem vi:</p>
+<pre>/ # vi /etc/resolv.conf
+nameserver 8.8.8.8
+~
+~
+~
+~
+~
+- /etc/resolv.conf 1/1 100%</pre>
+<p>&nbsp;</p>
+<h4>PODŁĄCZENIE DO INTERNETU</h4>
+<p style="text-align: justify;">W celu podłączenia routera R1 do internetu, a tym samym udostępnieniu internetu na hoście alpine-1 konieczne jest wykonanie następujących kroków:</p>
+<p><strong>Krok 1:</strong> Stworzenie nowego urządzenia (chmury):</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int2.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-407 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int2.png" alt="" width="741" height="385" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int2.png 741w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int2-300x156.png 300w" sizes="(max-width: 741px) 100vw, 741px" /></a></p>
+<p><strong>Krok 2:</strong> Skonfigurowanie chmury poprzez przycisk Configure i dodanie interfejsu fizycznego naszego komputera, który podłączony jest do internetu:</p>
+<p style="text-align: justify;"><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int3.png" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-408 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int3.png" alt="" width="686" height="480" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int3.png 686w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int3-300x210.png 300w" sizes="(max-width: 686px) 100vw, 686px" /></a>W moim przypadku interfejs, którym karta sieciowa mojego komputera podłączona jest do internetu to Local Area Connection 2. Jeśli po otworzeniu zakładki Configure w polu Ethernet Interfaces są jakieś interfejsy to należy je usunąć, a następnie zaznaczyć opcję Show special Ethernet interfaces na spodzie. Po tej operacji będziemy mogli z listy wybrać odpowiedni interfejs i dodać go klikając przycisk Add.</p>
+<p><strong>Krok 3:</strong> Podłączenie chmury do interfejsu fa0/0 routera R1.</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int4.png" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-409 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int4.png" alt="" width="738" height="379" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int4.png 738w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int4-300x154.png 300w" sizes="(max-width: 738px) 100vw, 738px" /></a></p>
+<p style="text-align: justify;">Po wykonaniu kroku trzeciego interfejs fa0/0 na routerze powinien się podnieść, a po chwili dostać adres IP z DHCP:</p>
+<pre>R1#show ip int brief
+ Interface IP-Address OK? Method Status Protocol
+ FastEthernet0/0 192.168.0.24 YES DHCP up up
+ FastEthernet1/0 10.0.0.1 YES manual up up
+ FastEthernet1/1 unassigned YES unset administratively down down</pre>
+<h4>GOTOWE!</h4>
+<p style="text-align: justify;">Mamy teraz połączenie z internetem w naszej sieci pod GNS3. Sprawdźmy to wydając komendę ping na hoście:</p>
+<pre> / # ping 8.8.8.8
+ PING 8.8.8.8 (8.8.8.8): 56 data bytes
+ 64 bytes from 8.8.8.8: seq=0 ttl=58 time=31.886 ms
+ 64 bytes from 8.8.8.8: seq=1 ttl=58 time=28.761 ms
+ ^C
+ --- 8.8.8.8 ping statistics ---
+ 2 packets transmitted, 2 packets received, 0% packet loss
+ round-trip min/avg/max = 28.761/30.323/31.886 ms
+ / # ping onet.pl
+ PING onet.pl (213.180.141.140): 56 data bytes
+ 64 bytes from 213.180.141.140: seq=0 ttl=58 time=21.966 ms
+ 64 bytes from 213.180.141.140: seq=1 ttl=58 time=11.804 ms
+ ^C
+ --- onet.pl ping statistics ---
+ 2 packets transmitted, 2 packets received, 0% packet loss
+ round-trip min/avg/max = 11.804/16.885/21.966 ms
+ / #</pre>
+<p style="text-align: justify;">Jak widać zarówno ping adresu 8.8.8.8 jak i onet.pl zakończyły się sukcesem. Prędkość takiego połączenia internetowego nie jest zawrotna, ze względu na ograniczenia na wirtualnym routerze R1 oraz na samym GNS3, natomiast do celów diagnostycznych i testowych taka prędkość w zupełności wystarczy.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/podlaczanie-gns3-vm-do-internetu/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

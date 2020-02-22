@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>firewall &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/firewall/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>IPSec S2S VPN Palo Alto &#8211; Cisco</title>
+		<link>https://kubsoo.github.io/rsnet-website/ipsec-s2s-vpn-palo-alto-cisco/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/ipsec-s2s-vpn-palo-alto-cisco/#respond</comments>
+		<pubDate>Thu, 14 Dec 2017 20:08:07 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[firewall]]></category>
+		<category><![CDATA[ipsec]]></category>
+		<category><![CDATA[palo alto]]></category>
+		<category><![CDATA[vpn]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=851</guid>
+		<description><![CDATA[W poniższym wpisie pokażę konfigurację tunelu IPSEC VPN pomiędzy firewallem Palo Alto a routerem CISCO. Konfigurację wykonam w labie GNS3, w którym wykorzystam następujące obrazy: CISCO CSR1000v3.17 &#8211; obraz routera&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-851">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="31f508f" class="elementor-element elementor-element-31f508f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="2e28f4f" class="elementor-element elementor-element-2e28f4f elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="23af124" class="elementor-element elementor-element-23af124 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">W poniższym wpisie pokażę konfigurację tunelu IPSEC VPN pomiędzy firewallem Palo Alto a routerem CISCO. Konfigurację wykonam w labie <a href="https://kubsoo.github.io/rsnet-website/tag/gns3/" title="">GNS3</a>, w którym wykorzystam następujące obrazy:</span></p><ol><li><span style="color: #000000;">CISCO CSR1000v3.17 &#8211; obraz routera CISCO</span></li><li><span style="color: #000000;">PA-VM7.1.1.0-1 &#8211; obraz firewalla Palo Alto w wersji 7.1.1.0-1</span></li><li><span style="color: #000000;">gns3-webterm &#8211; kontener dockera do zarządzania firewallem</span></li></ol></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="cedeb58" class="elementor-element elementor-element-cedeb58 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="d030fcd" class="elementor-element elementor-element-d030fcd elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="a150116" class="elementor-element elementor-element-a150116 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">LAB</span></h5><p><span style="color: #000000;">Topologia laba GNS3 wygląda nastepująco:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="9757d5f" class="elementor-element elementor-element-9757d5f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="f704425" class="elementor-element elementor-element-f704425 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="19f6e29" class="elementor-element elementor-element-19f6e29 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="545" height="408" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology_1.png 545w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology_1-300x225.png 300w" sizes="(max-width: 545px) 100vw, 545px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="469fb17" class="elementor-element elementor-element-469fb17 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="34ab586" class="elementor-element elementor-element-34ab586 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c159dec" class="elementor-element elementor-element-c159dec elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Adresacja</span></h5><p><span style="color: #000000;"><strong>Cisco</strong> </span></p><p><span style="color: #000000;">Gi1 &#8211; 150.1.1.1/30</span></p><p><span style="color: #000000;">Tunnel1 &#8211; 10.0.0.1/24</span></p><p><span style="color: #000000;"><strong>Palo Alto</strong> </span></p><p><span style="color: #000000;">ethernet1/1 &#8211; 150.1.1.2/30</span></p><p><span style="color: #000000;">tunnel.1 &#8211; 10.0.0.2/24</span></p><h5> </h5><h5><span style="color: #000000;">Konfiguracja CISCO</span></h5><p><span style="color: #000000;">INTERFACES</span></p><pre><span style="color: #000000;">Router(config)#interface Gi1</span><br /><span style="color: #000000;">Router(config-if)#ip address 150.1.1.1 255.255.255.252</span><br /><span style="color: #000000;">Router(config)#interface Tunnel1</span><br /><span style="color: #000000;">Router(config-if)#ip address 10.0.0.1 255.255.255.0<br />Router(config-if)#tunnel source 150.1.1.1</span><br /><span style="color: #000000;">Router(config-if)#tunnel destination 150.1.1.2</span></pre><p><span style="color: #000000;">ISAKMP POLICY</span></p><pre><span style="color: #000000;">Router(config)#crypto isakmp policy 10</span><br /><span style="color: #000000;">Router(config-isakmp)#hash sha256</span><br /><span style="color: #000000;">Router(config-isakmp)#authentication pre-share</span><br /><span style="color: #000000;">Router(config-isakmp)#group 14</span><br /><span style="color: #000000;">Router(config-isakmp)#lifetime 86400</span><br /><span style="color: #000000;">Router(config-isakmp)#encryption aes 256</span></pre><p><span style="color: #000000;">KLUCZ SZYFRUJĄCY</span></p><pre><span style="color: #000000;">Router(config)#crypto isakmp key 0 palo_to_cisco! address 150.1.1.2</span></pre><p><span style="color: #000000;">IP TRANSFORM SET</span></p><pre><span style="color: #000000;">Router(config)#crypto ipsec transform-set TSET esp-sha512-hmac esp-aes 256</span></pre><p><span style="color: #000000;">IPSEC PROFILE</span></p><pre><span style="color: #000000;">Router(config)#crypto ipsec profile IPSEC-PROFILE</span><br /><span style="color: #000000;">Router(ipsec-profile)#set transform-set TSET</span><br /><span style="color: #000000;">Router(ipsec-profile)#set pfs group14</span><br /><span style="color: #000000;">Router(ipsec-profile)#set security-association lifetime seconds 3600</span></pre><p><span style="color: #000000;">IPSEC TUNNEL</span></p><pre><span style="color: #000000;">Router(config-if)#tunnel mode ipsec ipv4</span><br /><span style="color: #000000;">Router(config-if)#tunnel protection ipsec profile IPSEC-PROFILE</span></pre><h5> </h5><h5><span style="color: #000000;">Cała konfiguracja CISCO</span></h5><pre><span style="color: #000000;">crypto isakmp policy 10</span><br /><span style="color: #000000;"> hash sha256</span><br /><span style="color: #000000;"> authentication pre-share</span><br /><span style="color: #000000;"> group 14</span><br /><span style="color: #000000;"> lifetime 86400</span><br /><span style="color: #000000;"> encryption aes 256</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">crypto isakmp key 0 palo_to_cisco! address 150.1.1.2</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">crypto ipsec transform-set TSET esp-sha512-hmac esp-aes 256</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">crypto ipsec profile IPSEC-PROFILE</span><br /><span style="color: #000000;"> set transform-set TSET</span><br /><span style="color: #000000;"> set pfs group14</span><br /><span style="color: #000000;"> set security-association lifetime seconds 3600</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Gi1</span><br /><span style="color: #000000;"> ip address 150.1.1.1 255.255.255.252</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Tunnel1</span><br /><span style="color: #000000;"> ip address 10.0.0.1 255.255.255.0 <br /> tunnel source 150.1.1.1</span><br /><span style="color: #000000;"> tunnel destination 150.1.1.2</span><br /><span style="color: #000000;"> tunnel mode ipsec ipv4</span><br /><span style="color: #000000;"> tunnel protection ipsec profile IPSEC-PROFILE​</span><br /><span style="color: #000000;">!</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="6994149" class="elementor-element elementor-element-6994149 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="cf4ce67" class="elementor-element elementor-element-cf4ce67 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="2d60a4a" class="elementor-element elementor-element-2d60a4a elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Konfiguracja PALO ALTO</span></h5><p><span style="color: #000000;">INTERFACE MANAGEMENT PROFILE</span></p><p><span style="color: #000000;">Network -&gt; Network Profiles -&gt; Interface Mgmt</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="bb026d6" class="elementor-element elementor-element-bb026d6 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="dc6c89a" class="elementor-element elementor-element-dc6c89a elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="e561c9d" class="elementor-element elementor-element-e561c9d elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/mgmt_profile.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="486" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/mgmt_profile.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/mgmt_profile.png 809w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/mgmt_profile-300x202.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/mgmt_profile-768x518.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="16794cc" class="elementor-element elementor-element-16794cc elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="9bfc6dc" class="elementor-element elementor-element-9bfc6dc elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="3918199" class="elementor-element elementor-element-3918199 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><span style="color: #000000;">INTERFACES</span></p><p><span style="color: #000000;">Network -&gt; Interfaces -&gt; ethernet1/1</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="7d46ae9" class="elementor-element elementor-element-7d46ae9 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="45a03c4" class="elementor-element elementor-element-45a03c4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="d7dc5f2" class="elementor-element elementor-element-d7dc5f2 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="385" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1.png 874w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1-300x160.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1-768x410.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="ed2292a" class="elementor-element elementor-element-ed2292a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="b8e494e" class="elementor-element elementor-element-b8e494e elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="e4192e8" class="elementor-element elementor-element-e4192e8 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="466" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_2.png 863w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_2-300x194.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_2-768x497.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="8f5c2a2" class="elementor-element elementor-element-8f5c2a2 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="687bbe8" class="elementor-element elementor-element-687bbe8 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="2cc3644" class="elementor-element elementor-element-2cc3644 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_3.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-4" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="522" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_3.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_3.png 862w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_3-300x218.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_3-768x557.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="00af2be" class="elementor-element elementor-element-00af2be elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="b01077f" class="elementor-element elementor-element-b01077f elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="024cc1e" class="elementor-element elementor-element-024cc1e elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">Network -&gt; Interfaces -&gt; tunnel.1</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="340a9cc" class="elementor-element elementor-element-340a9cc elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="1da691d" class="elementor-element elementor-element-1da691d elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c94e1c6" class="elementor-element elementor-element-c94e1c6 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-5" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="419" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_1.png 806w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_1-300x175.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_1-768x447.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="dd5918a" class="elementor-element elementor-element-dd5918a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="2b2de55" class="elementor-element elementor-element-2b2de55 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="e9ae76a" class="elementor-element elementor-element-e9ae76a elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-6" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="478" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_2.png 811w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_2-300x199.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_2-768x509.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="91c4804" class="elementor-element elementor-element-91c4804 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="95253f8" class="elementor-element elementor-element-95253f8 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5c97a74" class="elementor-element elementor-element-5c97a74 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_3.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-7" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="416" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_3.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_3.png 809w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_3-300x173.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_3-768x443.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="950f3ec" class="elementor-element elementor-element-950f3ec elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="7aff087" class="elementor-element elementor-element-7aff087 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="84caea1" class="elementor-element elementor-element-84caea1 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><span style="color: #000000;">IKE CRYPTO PROFILE</span></p><p><span style="color: #000000;">Network -&gt; Network Profiles -&gt; IKE Crypto</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="085fd5f" class="elementor-element elementor-element-085fd5f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="92edec1" class="elementor-element elementor-element-92edec1 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="ababb15" class="elementor-element elementor-element-ababb15 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ike_policy.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-8" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="349" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ike_policy.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ike_policy.png 994w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ike_policy-300x145.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ike_policy-768x372.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="6d40d43" class="elementor-element elementor-element-6d40d43 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="595be58" class="elementor-element elementor-element-595be58 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="525ebba" class="elementor-element elementor-element-525ebba elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><span style="color: #000000;">IKE GATEWAY</span></p><p><span style="color: #000000;">Network -&gt; Network Profiles -&gt; IKE Gateways</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b483a47" class="elementor-element elementor-element-b483a47 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="9198792" class="elementor-element elementor-element-9198792 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="07e8413" class="elementor-element elementor-element-07e8413 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-9" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="501" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway.png 810w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway-300x209.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway-768x535.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="974078c" class="elementor-element elementor-element-974078c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="dc2f999" class="elementor-element elementor-element-dc2f999 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="90e3e5d" class="elementor-element elementor-element-90e3e5d elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway_2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-10" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="537" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway_2.png 815w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway_2-300x224.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway_2-768x573.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1e5889a" class="elementor-element elementor-element-1e5889a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="6ddafd6" class="elementor-element elementor-element-6ddafd6 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="a5068cc" class="elementor-element elementor-element-a5068cc elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><span style="color: #000000;">IPSEC CRYPTO</span></p><p><span style="color: #000000;">Network -&gt; Network Profiles -&gt; IPSec Crypto</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="ff2f8b5" class="elementor-element elementor-element-ff2f8b5 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="1ab1c29" class="elementor-element elementor-element-1ab1c29 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="55d91b5" class="elementor-element elementor-element-55d91b5 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_crypto.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-11" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="418" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_crypto.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_crypto.png 911w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_crypto-300x174.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_crypto-768x446.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="cde951f" class="elementor-element elementor-element-cde951f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="91856d8" class="elementor-element elementor-element-91856d8 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="a3f0923" class="elementor-element elementor-element-a3f0923 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><span style="color: #000000;">IPSEC TUNNEL</span></p><p><span style="color: #000000;">Network -&gt; IPSec Tunnels</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="9cb7948" class="elementor-element elementor-element-9cb7948 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="8f6fed0" class="elementor-element elementor-element-8f6fed0 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="37cd5b8" class="elementor-element elementor-element-37cd5b8 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_tunnel.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-12" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="344" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_tunnel.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_tunnel.png 862w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_tunnel-300x143.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_tunnel-768x367.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="838d817" class="elementor-element elementor-element-838d817 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="0f004ea" class="elementor-element elementor-element-0f004ea elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5802aa4" class="elementor-element elementor-element-5802aa4 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><span style="color: #000000;">COMMIT</span></p><p><span style="color: #000000;">Teraz wystarczy zrobić <strong>commit</strong>.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="ce46ae9" class="elementor-element elementor-element-ce46ae9 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e4cbf82" class="elementor-element elementor-element-e4cbf82 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="6756b5a" class="elementor-element elementor-element-6756b5a elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5> </h5><h5> </h5><h5><span style="color: #000000;">WERYFIKACJA</span></h5><p style="text-align: justify;"><span style="color: #000000;">Sprawdźmy czy tunel się zestawił. Spróbujmy na routerze CISCO spingować adres tunelu na Palo Alto:</span></p><pre style="text-align: justify;"><span style="color: #000000;">Router#ping 10.0.0.2<br />Type escape sequence to abort.<br />Sending 5, 100-byte ICMP Echos to 10.0.0.2, timeout is 2 seconds:<br />!!!!!<br />Success rate is 100 percent (5/5), round-trip min/avg/max = 2/8/29 ms<br /></span></pre><p style="text-align: justify;"><span style="color: #000000;">Udało się, teraz sprawdźmy teraz jak wyglądają wyniki następujących komend:</span></p><ol><li><span style="color: #000000;">show crypto isakmp sa   (faza 1 &#8211; IKE SA)</span></li><li><span style="color: #000000;">show crypto ipsec sa -(faza 2 &#8211; IPSEC SA)</span></li></ol><pre><span style="color: #000000;">Router#show crypto isakmp sa</span><br /><span style="color: #000000;">IPv4 Crypto ISAKMP SA</span><br /><span style="color: #000000;">dst src state conn-id status</span><br /><span style="color: #000000;">150.1.1.2 150.1.1.1 <strong>QM_IDLE</strong> 1001 ACTIVE</span></pre><pre><span style="color: #000000;">Router#show crypto ipsec sa</span><br /><span style="color: #000000;">interface: Tunnel1</span><br /><span style="color: #000000;"> Crypto map tag: Tunnel1-head-0, local addr 150.1.1.1</span><br /><br /><span style="color: #000000;">protected vrf: (none)</span><br /><span style="color: #000000;"> local ident (addr/mask/prot/port): (0.0.0.0/0.0.0.0/0/0)</span><br /><span style="color: #000000;"> remote ident (addr/mask/prot/port): (0.0.0.0/0.0.0.0/0/0)</span><br /><span style="color: #000000;"> current_peer 150.1.1.2 port 500</span><br /><span style="color: #000000;"> PERMIT, flags={origin_is_acl,}</span><br /><strong><span style="color: #000000;"> #pkts encaps: 5, #pkts encrypt: 5, #pkts digest: 5</span></strong><br /><strong><span style="color: #000000;"> #pkts decaps: 5, #pkts decrypt: 5, #pkts verify: 5</span></strong><br /><span style="color: #000000;"> #pkts compressed: 0, #pkts decompressed: 0</span><br /><span style="color: #000000;"> #pkts not compressed: 0, #pkts compr. failed: 0</span><br /><span style="color: #000000;"> #pkts not decompressed: 0, #pkts decompress failed: 0</span><br /><span style="color: #000000;"> #send errors 0, #recv errors 0</span><br /><br /><span style="color: #000000;">local crypto endpt.: 150.1.1.1, remote crypto endpt.: 150.1.1.2</span><br /><span style="color: #000000;"> plaintext mtu 1422, path mtu 1500, ip mtu 1500, ip mtu idb GigabitEthernet1</span><br /><span style="color: #000000;"> current outbound spi: 0xA402847E(2751628414)</span><br /><span style="color: #000000;"> PFS (Y/N): Y, DH group: group14</span><br /><br /><span style="color: #000000;">inbound esp sas:</span><br /><span style="color: #000000;"> spi: 0x1AB4F9C2(448068034)</span><br /><span style="color: #000000;"> transform: esp-256-aes esp-sha512-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Tunnel, }</span><br /><span style="color: #000000;"> conn id: 2003, flow_id: CSR:3, sibling_flags FFFFFFFF80004048, crypto map: Tunnel1-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4607999/3143)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">inbound ah sas:</span><br /><br /><span style="color: #000000;">inbound pcp sas:</span><br /><br /><span style="color: #000000;">outbound esp sas:</span><br /><span style="color: #000000;"> spi: 0xA402847E(2751628414)</span><br /><span style="color: #000000;"> transform: esp-256-aes esp-sha512-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Tunnel, }</span><br /><span style="color: #000000;"> conn id: 2004, flow_id: CSR:4, sibling_flags FFFFFFFF80004048, crypto map: Tunnel1-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4607999/3143)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">outbound ah sas:</span><br /><br /><span style="color: #000000;">outbound pcp sas:</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="bbf9abb" class="elementor-element elementor-element-bbf9abb elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="397ef8d" class="elementor-element elementor-element-397ef8d elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="6dd76e1" class="elementor-element elementor-element-6dd76e1 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Jak widać od strony CISCO wszystko działa, sprawdźmy teraz jak wygląda tunel IPSEC od strony firewalla Palo Alto. </span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="0cb58f0" class="elementor-element elementor-element-0cb58f0 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="f942b94" class="elementor-element elementor-element-f942b94 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5c0ff03" class="elementor-element elementor-element-5c0ff03 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">Najpierw spingujmy adres tunelu na CISCO:</span></p><pre><span style="color: #000000;">admin@PA-VM&gt; ping source 10.0.0.2 host 10.0.0.1</span><br /><span style="color: #000000;">PING 10.0.0.1 (10.0.0.1) from 10.0.0.2 : 56(84) bytes of data.</span><br /><span style="color: #000000;">64 bytes from 10.0.0.1: icmp_seq=1 ttl=255 time=1.91 ms</span><br /><span style="color: #000000;">64 bytes from 10.0.0.1: icmp_seq=2 ttl=255 time=1.81 ms</span><br /><span style="color: #000000;">64 bytes from 10.0.0.1: icmp_seq=3 ttl=255 time=2.16 ms</span><br /><span style="color: #000000;">64 bytes from 10.0.0.1: icmp_seq=4 ttl=255 time=2.50 ms</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="a3b72bc" class="elementor-element elementor-element-a3b72bc elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c7b3cd9" class="elementor-element elementor-element-c7b3cd9 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="825df01" class="elementor-element elementor-element-825df01 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Teraz sprawdźmy status intefejsu. Robimy to w interfejsie webowym w zakładce Network -&gt; IPSec Tunnels</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="340dc72" class="elementor-element elementor-element-340dc72 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="dd7e0c3" class="elementor-element elementor-element-dd7e0c3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="48faaf8" class="elementor-element elementor-element-48faaf8 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-13" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="171" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_1.png 1004w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_1-300x71.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_1-768x182.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="45a6cd9" class="elementor-element elementor-element-45a6cd9 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="f4d7a56" class="elementor-element elementor-element-f4d7a56 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="e4e6c01" class="elementor-element elementor-element-e4e6c01 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-14" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="374" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_2.png 977w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_2-300x156.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_2-768x399.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="2c8067a" class="elementor-element elementor-element-2c8067a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="3ba7df7" class="elementor-element elementor-element-3ba7df7 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="0d27c9e" class="elementor-element elementor-element-0d27c9e elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">Jeśli w polach Status widnieją zielone kropki to znaczy, że tunel zestawił się poprawnie.</span></p><p> </p><h5><span style="color: #000000;">PODSUMOWANIE</span></h5><p style="text-align: justify;"><span style="color: #000000;">Tunel IPSEC między urządzeniami CISCO i PALO ALTO jest bardzo łatwy w konfiguracji i mam nadzieję, że po przeczytaniu powyższego wpisu nie powinien sprawić nikomu kłopotu.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/ipsec-s2s-vpn-palo-alto-cisco/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

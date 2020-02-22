@@ -1,0 +1,1517 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>ipsec &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/ipsec/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>DMVPN faza 1 + IPSEC &#8211; konfiguracja</title>
+		<link>https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja-2/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja-2/#respond</comments>
+		<pubDate>Tue, 02 Jan 2018 19:36:21 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Na szybko]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[dmvpn]]></category>
+		<category><![CDATA[faza 1]]></category>
+		<category><![CDATA[ipsec]]></category>
+		<category><![CDATA[konfiguracja]]></category>
+		<category><![CDATA[nhrp]]></category>
+		<category><![CDATA[Poradnik]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=983</guid>
+		<description><![CDATA[We wpisie https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja/ pokazałem jak skonfigurować DMVPN w fazie 1 z dynamicznymi mapowaniami NHRP. W tym wpisie pokażę jak do tak przygotowanej konfiguracji dodać konfigurację IPSEC, tak żeby łączność pomiędzy urządzeniami była&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-983">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="1c79627" class="elementor-element elementor-element-1c79627 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="9c650a4" class="elementor-element elementor-element-9c650a4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="7aa1a3f" class="elementor-element elementor-element-7aa1a3f elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">We wpisie </span><span style="color: #ff0000;"><span style="background-color: initial;"><a href="https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja/" title="">https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja/</a> </span></span><span style="color: #000000;">pokazałem jak skonfigurować DMVPN w fazie 1 z dynamicznymi mapowaniami NHRP. W tym wpisie pokażę jak do tak przygotowanej konfiguracji dodać konfigurację IPSEC, tak żeby łączność pomiędzy urządzeniami była zabezpieczona przy wykorzystaniu IPSEC.</span></p><p><span style="color: #000000;">Przypomnijmy jeszcze raz topologię oraz konfigurację DMVPN w fazie 1 z dynamicznymi mapowaniami NHRP.</span></p><h5><span style="color: #000000;">Topologia</span></h5></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="918b75f" class="elementor-element elementor-element-918b75f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="a3ada10" class="elementor-element elementor-element-a3ada10 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="af0170c" class="elementor-element elementor-element-af0170c elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/dmvpn_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="521" height="410" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/dmvpn_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/dmvpn_1.png 521w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/dmvpn_1-300x236.png 300w" sizes="(max-width: 521px) 100vw, 521px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b91bbb2" class="elementor-element elementor-element-b91bbb2 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="24ea96d" class="elementor-element elementor-element-24ea96d elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="1cde9a9" class="elementor-element elementor-element-1cde9a9 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Konfiguracja DMVPN</span></h5><p><span style="color: #000000;">R1</span></p><pre><span style="color: #000000;">hostname HUB</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Tunnel0</span><br /><span style="color: #000000;"> ip address 172.22.10.1 255.255.255.0</span><br /><span style="color: #000000;"> ip nhrp network-id 123</span><br /><span style="color: #000000;"> tunnel source FastEthernet0/0</span><br /><span style="color: #000000;"> tunnel mode gre multipoint</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.10.1 255.255.255.0</span><br /><span style="color: #000000;">!</span></pre><p><span style="color: #000000;">R2</span></p><pre><span style="color: #000000;">hostname SPOKE1</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Tunnel0</span><br /><span style="color: #000000;"> ip address 172.22.10.2 255.255.255.0</span><br /><span style="color: #000000;"> ip nhrp map 172.22.10.1 192.168.10.1</span><br /><span style="color: #000000;"> ip nhrp network-id 123</span><br /><span style="color: #000000;"> ip nhrp nhs 172.22.10.1</span><br /><span style="color: #000000;"> tunnel source FastEthernet0/0</span><br /><span style="color: #000000;"> tunnel destination 192.168.10.1</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.10.2 255.255.255.0</span><br /><span style="color: #000000;">!<br /></span></pre><p><span style="color: #000000;">R3</span></p><pre><span style="color: #000000;">hostname SPOKE2</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Tunnel0</span><br /><span style="color: #000000;"> ip address 172.22.10.3 255.255.255.0</span><br /><span style="color: #000000;"> ip nhrp map 172.22.10.1 192.168.10.1</span><br /><span style="color: #000000;"> ip nhrp network-id 123</span><br /><span style="color: #000000;"> ip nhrp nhs 172.22.10.1</span><br /><span style="color: #000000;"> tunnel source FastEthernet0/0</span><br /><span style="color: #000000;"> tunnel destination 192.168.10.1</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.10.3 255.255.255.0</span><br /><span style="color: #000000;">!</span></pre><p><span style="color: #000000;">R4</span></p><pre><span style="color: #000000;">hostname SPOKE3</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Tunnel0</span><br /><span style="color: #000000;"> ip address 172.22.10.4 255.255.255.0</span><br /><span style="color: #000000;"> ip nhrp map 172.22.10.1 192.168.10.1</span><br /><span style="color: #000000;"> ip nhrp network-id 123</span><br /><span style="color: #000000;"> ip nhrp nhs 172.22.10.1</span><br /><span style="color: #000000;"> tunnel source FastEthernet0/0</span><br /><span style="color: #000000;"> tunnel destination 192.168.10.1</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface FastEthernet0/0</span><br /><span style="color: #000000;"> ip address 192.168.10.4 255.255.255.0</span><br /><span style="color: #000000;">!</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="3448fe7" class="elementor-element elementor-element-3448fe7 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e27c1b9" class="elementor-element elementor-element-e27c1b9 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5327d05" class="elementor-element elementor-element-5327d05 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">KONFIGURACJA IPSEC</span></h5><p style="text-align: justify;"><span style="color: #000000;">Przed przystąpieniem do konfigurowania IPSEC sprawdźmy jak wygląda ruch w DMVPN widziany na interfejsie fa0/0 routera R1. Posłużymy się do tego wiresharkiem:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="f0ff15a" class="elementor-element elementor-element-f0ff15a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="5140eb2" class="elementor-element elementor-element-5140eb2 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="7a3277c" class="elementor-element elementor-element-7a3277c elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/dmvpn_ipsec_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title="">
+							<img width="531" height="387" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/dmvpn_ipsec_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/dmvpn_ipsec_1.png 531w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/dmvpn_ipsec_1-300x219.png 300w" sizes="(max-width: 531px) 100vw, 531px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b17b5e7" class="elementor-element elementor-element-b17b5e7 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="589037f" class="elementor-element elementor-element-589037f elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c878c6c" class="elementor-element elementor-element-c878c6c elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"></div>
+				</div>
+				</div>
+				<div data-id="8fac96c" class="elementor-element elementor-element-8fac96c elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Po uruchomieniu wiresharka spingujmy router R3 (SPOKE-2) z routera R2 (SPOKE-1). W tym celu wydajmy polecene ping 172.22.10.3 na routerze R2 (SPOKE-1).</span></p><pre><span style="color: #000000;">SPOKE1#ping 172.22.10.3</span><br /><span style="color: #000000;">Type escape sequence to abort.</span><br /><span style="color: #000000;">Sending 5, 100-byte ICMP Echos to 172.22.10.3, timeout is 2 seconds:</span><br /><span style="color: #000000;">!!!!!</span><br /><span style="color: #000000;">Success rate is 100 percent (5/5), round-trip min/avg/max = 28/40/60 ms</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="0338328" class="elementor-element elementor-element-0338328 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="7a03318" class="elementor-element elementor-element-7a03318 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="65cc2c6" class="elementor-element elementor-element-65cc2c6 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">Sprawdźmy jak wygląda ten ruch w wiresharku:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="08f4f45" class="elementor-element elementor-element-08f4f45 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="ea272e5" class="elementor-element elementor-element-ea272e5 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="acc17e8" class="elementor-element elementor-element-acc17e8 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="360" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_1.png 927w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_1-300x150.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_1-768x384.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="be7f356" class="elementor-element elementor-element-be7f356 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="dcaf817" class="elementor-element elementor-element-dcaf817 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5f2cc63" class="elementor-element elementor-element-5f2cc63 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Widzimy, że ruch nie jest szyfrowany  i możemy go podsłuchać. Spróbujmy go teraz zabezpieczyć przy pomocy IPSECa.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="09909ea" class="elementor-element elementor-element-09909ea elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="df729e2" class="elementor-element elementor-element-df729e2 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="a197922" class="elementor-element elementor-element-a197922 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">Konfiguracja IPSEC na każdym routerze wygląda tak samo:</span></p><p><strong><span style="color: #000000;">R1 (HUB), R2 (SPOKE1), R3 (SPOKE2), R4 (SPOKE3)</span></strong></p><pre><span style="color: #000000;">crypto isakmp policy 10</span><br /><span style="color: #000000;"> encr aes</span><br /><span style="color: #000000;"> authentication pre-share</span><br /><span style="color: #000000;"> group 2</span><br /><span style="color: #000000;">crypto isakmp key cisco123 address 0.0.0.0</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">crypto ipsec transform-set TSET esp-aes esp-sha-hmac</span><br /><span style="color: #000000;"> mode transport</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">crypto ipsec profile IPSEC_PROFILE</span><br /><span style="color: #000000;"> set transform-set TSET</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">int tunnel 0</span><br /><span style="color: #000000;"> tunnel protection ipsec profile IPSEC_PROFILE</span></pre><p style="text-align: justify;"><span style="color: #000000;">Po skonfigurowaniu IPSEC sprawdźmy czy zestawił się on poprawnie (isakmp sa i ipsec sa). Wystarczy, że dokonamy sprawdzenia na routerze R1 (HUB), ponieważ routery R2, R3, R4 zestawiają tunele tylko z nim.</span></p><p><span style="color: #000000;"><strong>R1 (HUB)</strong></span></p><pre><span style="color: #000000;">HUB#show crypto isakmp sa</span><br /><span style="color: #000000;">IPv4 Crypto ISAKMP SA</span><br /><span style="color: #000000;">dst src state conn-id status</span><br /><span style="color: #000000;">192.168.10.4 192.168.10.1 QM_IDLE 1005 ACTIVE</span><br /><span style="color: #000000;">192.168.10.1 192.168.10.4 QM_IDLE 1004 ACTIVE</span><br /><span style="color: #000000;">192.168.10.1 192.168.10.3 QM_IDLE 1003 ACTIVE</span><br /><span style="color: #000000;">192.168.10.1 192.168.10.2 QM_IDLE 1001 ACTIVE</span><br /><span style="color: #000000;">192.168.10.2 192.168.10.1 QM_IDLE 1002 ACTIVE</span><br /><span style="color: #000000;">192.168.10.3 192.168.10.1 QM_IDLE 1006 ACTIVE</span></pre><pre><span style="color: #000000;">HUB#show crypto ipsec sa</span><br /><br /><span style="color: #000000;">interface: Tunnel0</span><br /><span style="color: #000000;"> Crypto map tag: Tunnel0-head-0, local addr 192.168.10.1</span><br /><br /><span style="color: #000000;">protected vrf: (none)</span><br /><span style="color: #000000;"> local ident (addr/mask/prot/port): (192.168.10.1/255.255.255.255/47/0)</span><br /><span style="color: #000000;"> remote ident (addr/mask/prot/port): (192.168.10.3/255.255.255.255/47/0)</span><br /><span style="color: #000000;"> current_peer 192.168.10.3 port 500</span><br /><span style="color: #000000;"> PERMIT, flags={origin_is_acl,}</span><br /><span style="color: #000000;"> #pkts encaps: 6, #pkts encrypt: 6, #pkts digest: 6</span><br /><span style="color: #000000;"> #pkts decaps: 7, #pkts decrypt: 7, #pkts verify: 7</span><br /><span style="color: #000000;"> #pkts compressed: 0, #pkts decompressed: 0</span><br /><span style="color: #000000;"> #pkts not compressed: 0, #pkts compr. failed: 0</span><br /><span style="color: #000000;"> #pkts not decompressed: 0, #pkts decompress failed: 0</span><br /><span style="color: #000000;"> #send errors 0, #recv errors 0</span><br /><br /><span style="color: #000000;">local crypto endpt.: 192.168.10.1, remote crypto endpt.: 192.168.10.3</span><br /><span style="color: #000000;"> path mtu 1500, ip mtu 1500, ip mtu idb (none)</span><br /><span style="color: #000000;"> current outbound spi: 0x4D074ABE(1292323518)</span><br /><span style="color: #000000;"> PFS (Y/N): N, DH group: none</span><br /><br /><span style="color: #000000;">inbound esp sas:</span><br /><span style="color: #000000;"> spi: 0xA8B99213(2830733843)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 7, flow_id: 7, sibling_flags 80000000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4329808/3210)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x81E2FE13(2179137043)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 9, flow_id: 9, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4282574/3210)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x7BDEB7FE(2078193662)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 17, flow_id: 17, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4298093/3218)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">inbound ah sas:</span><br /><br /><span style="color: #000000;">inbound pcp sas:</span><br /><br /><span style="color: #000000;">outbound esp sas:</span><br /><span style="color: #000000;"> spi: 0x2B6C154D(728503629)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 8, flow_id: 8, sibling_flags 80000000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4329808/3210)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x1A5D7249(442331721)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 10, flow_id: 10, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4282574/3210)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x4D074ABE(1292323518)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 18, flow_id: 18, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4298093/3218)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">outbound ah sas:</span><br /><br /><span style="color: #000000;">outbound pcp sas:</span><br /><br /><span style="color: #000000;">protected vrf: (none)</span><br /><span style="color: #000000;"> local ident (addr/mask/prot/port): (192.168.10.1/255.255.255.255/47/0)</span><br /><span style="color: #000000;"> remote ident (addr/mask/prot/port): (192.168.10.2/255.255.255.255/47/0)</span><br /><span style="color: #000000;"> current_peer 192.168.10.2 port 500</span><br /><span style="color: #000000;"> PERMIT, flags={origin_is_acl,}</span><br /><span style="color: #000000;"> #pkts encaps: 6, #pkts encrypt: 6, #pkts digest: 6</span><br /><span style="color: #000000;"> #pkts decaps: 7, #pkts decrypt: 7, #pkts verify: 7</span><br /><span style="color: #000000;"> #pkts compressed: 0, #pkts decompressed: 0</span><br /><span style="color: #000000;"> #pkts not compressed: 0, #pkts compr. failed: 0</span><br /><span style="color: #000000;"> #pkts not decompressed: 0, #pkts decompress failed: 0</span><br /><span style="color: #000000;"> #send errors 0, #recv errors 0</span><br /><br /><span style="color: #000000;">local crypto endpt.: 192.168.10.1, remote crypto endpt.: 192.168.10.2</span><br /><span style="color: #000000;"> path mtu 1500, ip mtu 1500, ip mtu idb (none)</span><br /><span style="color: #000000;"> current outbound spi: 0x72B18574(1924236660)</span><br /><span style="color: #000000;"> PFS (Y/N): N, DH group: none</span><br /><br /><span style="color: #000000;">inbound esp sas:</span><br /><span style="color: #000000;"> spi: 0x532102AC(1394672300)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 1, flow_id: 1, sibling_flags 80000000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4349860/3205)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0xA0B95616(2696500758)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 3, flow_id: 3, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4203743/3205)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x3D891B1C(1032395548)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 5, flow_id: 5, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4371005/3208)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">inbound ah sas:</span><br /><br /><span style="color: #000000;">inbound pcp sas:</span><br /><br /><span style="color: #000000;">outbound esp sas:</span><br /><span style="color: #000000;"> spi: 0x8888EE44(2290675268)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 2, flow_id: 2, sibling_flags 80000000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4349860/3205)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x85FE093(140501139)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 4, flow_id: 4, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4203743/3205)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x72B18574(1924236660)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 6, flow_id: 6, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4371005/3208)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">outbound ah sas:</span><br /><br /><span style="color: #000000;">outbound pcp sas:</span><br /><br /><span style="color: #000000;">protected vrf: (none)</span><br /><span style="color: #000000;"> local ident (addr/mask/prot/port): (192.168.10.1/255.255.255.255/47/0)</span><br /><span style="color: #000000;"> remote ident (addr/mask/prot/port): (192.168.10.4/255.255.255.255/47/0)</span><br /><span style="color: #000000;"> current_peer 192.168.10.4 port 500</span><br /><span style="color: #000000;"> PERMIT, flags={origin_is_acl,}</span><br /><span style="color: #000000;"> #pkts encaps: 1, #pkts encrypt: 1, #pkts digest: 1</span><br /><span style="color: #000000;"> #pkts decaps: 2, #pkts decrypt: 2, #pkts verify: 2</span><br /><span style="color: #000000;"> #pkts compressed: 0, #pkts decompressed: 0</span><br /><span style="color: #000000;"> #pkts not compressed: 0, #pkts compr. failed: 0</span><br /><span style="color: #000000;"> #pkts not decompressed: 0, #pkts decompress failed: 0</span><br /><span style="color: #000000;"> #send errors 0, #recv errors 0</span><br /><br /><span style="color: #000000;">local crypto endpt.: 192.168.10.1, remote crypto endpt.: 192.168.10.4</span><br /><span style="color: #000000;"> path mtu 1500, ip mtu 1500, ip mtu idb (none)</span><br /><span style="color: #000000;"> current outbound spi: 0xD87AECE3(3631934691)</span><br /><span style="color: #000000;"> PFS (Y/N): N, DH group: none</span><br /><br /><span style="color: #000000;">inbound esp sas:</span><br /><span style="color: #000000;"> spi: 0xFCF21C61(4243725409)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 11, flow_id: 11, sibling_flags 80000000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4192015/3216)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x8DACF8C3(2376923331)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 13, flow_id: 13, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4370183/3216)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0xF7D288AB(4157769899)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 15, flow_id: 15, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4608000/3218)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">inbound ah sas:</span><br /><br /><span style="color: #000000;">inbound pcp sas:</span><br /><br /><span style="color: #000000;">outbound esp sas:</span><br /><span style="color: #000000;"> spi: 0xE7B4AE5B(3887378011)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 12, flow_id: 12, sibling_flags 80000000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4192015/3216)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0x3D9E28E5(1033775333)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 14, flow_id: 14, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4370183/3216)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><span style="color: #000000;"> spi: 0xD87AECE3(3631934691)</span><br /><span style="color: #000000;"> transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Transport, }</span><br /><span style="color: #000000;"> conn id: 16, flow_id: 16, sibling_flags 80004000, crypto map: Tunnel0-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4608000/3218)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">outbound ah sas:</span><br /><br /><span style="color: #000000;">outbound pcp sas:</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="18bc1c6" class="elementor-element elementor-element-18bc1c6 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="cb65ff2" class="elementor-element elementor-element-cb65ff2 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="8e75408" class="elementor-element elementor-element-8e75408 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Jak widać z wyników powyższych komend wszystkie tunele zestawiły się poprawnie.</span></p><p> </p></div>
+				</div>
+				</div>
+				<div data-id="325aa58" class="elementor-element elementor-element-325aa58 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">WERYFIKACJA</span></h5><p style="text-align: justify;"><span style="color: #000000;">Sprawdźmy teraz co widać w wiresharku przy pingowaniu routera R3 (SPOKE-2) z routera R2 (SPOKE-1). </span></p><pre><span style="color: #000000;">SPOKE1#ping 172.22.10.3</span><br /><span style="color: #000000;">Type escape sequence to abort.</span><br /><span style="color: #000000;">Sending 5, 100-byte ICMP Echos to 172.22.10.3, timeout is 2 seconds:</span><br /><span style="color: #000000;">!!!!!</span><br /><span style="color: #000000;">Success rate is 100 percent (5/5), round-trip min/avg/max = 28/40/60 ms</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="2da996a" class="elementor-element elementor-element-2da996a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="272c8d5" class="elementor-element elementor-element-272c8d5 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="71ebfc5" class="elementor-element elementor-element-71ebfc5 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c3add74" class="elementor-element elementor-element-c3add74 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="1995834" class="elementor-element elementor-element-1995834 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="573" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_2.png 725w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/wireshark_2-300x239.png 300w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="f849e56" class="elementor-element elementor-element-f849e56 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="cc127c4" class="elementor-element elementor-element-cc127c4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="fd3de14" class="elementor-element elementor-element-fd3de14 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5> </h5><h5><span style="color: #000000;">PODSUMOWANIE</span></h5><p style="text-align: justify;"><span style="color: #000000;">Jak widać zgodnie z teorią <a style="color: #000000;" href="https://kubsoo.github.io/rsnet-website/ipsec-vpn-teoria/">IPSEC</a> w wiresharku przy pingowaniu widzimy adresy 192.168.10.X (ponieważ skonfigurowaliśmy IPSEC w trybie transportowym), ponadto nie widzimy jaki ruch jest przesyłany. Widzimy tylko pakiety ESP które składają się z ESP SPI oraz numeru sekwencyjnego. DMVPN w połączeniu z IPSEC jest bardzo dobrą kombinacją do budowania skalowanych sieci VPN między oddziałami firmy, ponieważ przy dodawaniu nowego oddziału (SPOKE) dzięki zastosowaniu DMVPN nie musimy nic konfigurować na naszym HUBie i taki nowy oddział po skonfigurowaniu będzie miał łączność pomiędzy innymi oddziałami a IPSEC pozwoli dodatkowo zabezpieczyć transmisję.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/dmvpn-faza-1-konfiguracja-2/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>IPSEC VPN &#8211; teoria</title>
+		<link>https://kubsoo.github.io/rsnet-website/ipsec-vpn-teoria/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/ipsec-vpn-teoria/#respond</comments>
+		<pubDate>Sun, 17 Dec 2017 20:41:10 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[ike]]></category>
+		<category><![CDATA[ipsec]]></category>
+		<category><![CDATA[teoria]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=925</guid>
+		<description><![CDATA[Czym jest IPSEC ? IPSEC jest zestawem protokołów, który pozwala na zestawianie bezpiecznego szyfrowanego tunelu pomiędzy dwoma urządzeniami sieciowymi za pośrednictwem internetu. IPSEC zapewnia uwierzytelnianie stron biorących udział w zestawieniu&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-925">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="f566fd3" class="elementor-element elementor-element-f566fd3 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="022622b" class="elementor-element elementor-element-022622b elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="78df4b8" class="elementor-element elementor-element-78df4b8 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><span style="color: #000000;">Czym jest IPSEC ?</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">IPSEC jest zestawem protokołów, który pozwala na zestawianie bezpiecznego szyfrowanego tunelu pomiędzy dwoma urządzeniami sieciowymi za pośrednictwem internetu. IPSEC zapewnia uwierzytelnianie stron biorących udział w zestawieniu tunelu oraz integralność,  poufność przesyłanych danych i ochronę przed atakimi powtórzeniowymi (replay protection). IPSEC służy do budowania sieci VPN w Internecie.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1fe0fbc" class="elementor-element elementor-element-1fe0fbc elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="490e628" class="elementor-element elementor-element-490e628 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="4f300be" class="elementor-element elementor-element-4f300be elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="619" height="304" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_1.png 619w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_1-300x147.png 300w" sizes="(max-width: 619px) 100vw, 619px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="6824db6" class="elementor-element elementor-element-6824db6 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c00cd1a" class="elementor-element elementor-element-c00cd1a elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="4fedc41" class="elementor-element elementor-element-4fedc41 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><span style="color: #000000;">Funkcje bezpieczeństwa IPSEC:</span></strong></p><p><span style="color: #000000;">1. Uwierzytelnianie</span></p><p style="text-align: justify;"><span style="color: #000000;">Obie strony biorące udział w zestawianiu tunelu muszą zostać uwierzytelnione, które potwierdzania tożsamości obu stron podczas komunikacji. W IPSEC istnieją 3 metody uwierzytelniania:</span></p><ul><li><span style="color: #000000;">wstępnie uzgodnione klucze (preshared keys)</span></li><li><span style="color: #000000;">klucze RSA (klucze prywatne i publiczne)</span></li><li><span style="color: #000000;">certyfikaty</span></li></ul><p><span style="color: #000000;">2. Integralność danych</span></p><p style="text-align: justify;"><span style="color: #000000;">Ta funkcja zapewnia, że dane nie zostały zmienione podczas stransmisji. Służą do tego algorytmy haszujące (SHA, MD5)</span></p><p style="text-align: justify;"><span style="color: #000000;">3. Poufność przesyłanych danych </span></p><p style="text-align: justify;"><span style="color: #000000;">Poufność przesyłanych danych w IPSEC otrzymuje się poprzez szyfrowanie danych. Rodzaje stosowanego szyfrowania (DES, 3DES, AES)</span></p><p style="text-align: justify;"><span style="color: #000000;">4. Ochrona odtwarzania</span></p><p style="text-align: justify;"><span style="color: #000000;">Zapewnia otrzymanie danego pakietu tylko raz. Jest to realizowane przez numer sekwencyjny. Każdemu pakietowi nadawany jest numer sekwencyjny. Numer sekwencyjny jest losowany i zwiększany o 1 z każdym wysłanym przez dany kanał pakietem i służy do rozpoznawania pakietów o kolejności przestawionej podczas wędrówki po sieci oraz chroni przed atakami powtórzeniowymi</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="db134b2" class="elementor-element elementor-element-db134b2 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="f6b4412" class="elementor-element elementor-element-f6b4412 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="f8be596" class="elementor-element elementor-element-f8be596 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;"><strong>Tryby IPSEC</strong></span></p><p style="text-align: justify;"><span style="color: #000000;">IPSEC VPN może być skonfigurowane w dwóch trybach:</span></p><ul><li style="text-align: justify;"><span style="color: #000000;">tryb tunelowy</span></li></ul><p style="text-align: justify;"><span style="color: #000000;">domyślny tryb, cały pakiet IP jest szyfrowany przez IPSEC, włącznie z nagłówkiem IP, dodawany jest nowy nagłówek IP. Mówiąc to w prostych słowach, w tym trybie nie widzimy kto ze sobą rozmawia ani o czym.</span></p><ul><li style="text-align: justify;"><span style="color: #000000;">tryb transportowy</span></li></ul><p style="text-align: justify;"><span style="color: #000000;">obejmuje szyfrowanie samych danych, pozostawiając oryginalny nagłówek IP, nowy nagłówek jest dodawany pomiędzy nagłówkiem IP a nagłówkiem transportowym (L4)</span></p><p style="text-align: justify;"><span style="color: #000000;">Tryb tunelowy stosuje się między routerami/gatewayami, natomiast tryb transportowy stosuje się do tworzenia sieci VPN pomiędzy komputerami.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="02b2106" class="elementor-element elementor-element-02b2106 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="2f5e15e" class="elementor-element elementor-element-2f5e15e elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="8ba7364" class="elementor-element elementor-element-8ba7364 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><span style="color: #000000;">Nagłówki IPSEC</span></strong></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="3cfc15f" class="elementor-element elementor-element-3cfc15f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="3e8efa3" class="elementor-element elementor-element-3e8efa3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="1ac6d12" class="elementor-element elementor-element-1ac6d12 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title="">
+							<img width="480" height="440" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_2.png 480w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_2-300x275.png 300w" sizes="(max-width: 480px) 100vw, 480px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="8e33f6a" class="elementor-element elementor-element-8e33f6a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="03be173" class="elementor-element elementor-element-03be173 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="9a15a1a" class="elementor-element elementor-element-9a15a1a elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><span style="color: #000000;">Protokoły wykorzystywane przez IPSEC</span></strong></p><p><span style="color: #000000;">IPSEC korzysta z trzech podstawowych protokołów:</span></p><ul><li><span style="color: #000000;">IKE (Internet Key Exchange)</span></li><li><span style="color: #000000;">ESP (Encapsulating Security Payload</span></li><li><span style="color: #000000;">AH (Authentication Header)</span></li></ul></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="889db17" class="elementor-element elementor-element-889db17 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="1c76d60" class="elementor-element elementor-element-1c76d60 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="0c5cd02" class="elementor-element elementor-element-0c5cd02 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><span style="color: #000000;">IKE (Internet Key Exchange)</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">Przed zestawieniem tunelu IPSec konieczne jest ustalenie związków bezpieczeństwa (Security Association). Może być to realizowane ręcznie albo przy użyciu protokołu IKE. IKE posiada dwie wersje (IKEv1 oraz IKEv2). W tym wpisie będę odwoływał się do wersji IKEv1. Wszystkie informacje o IKE można znaleźć w poniższych RFC:</span></p><p style="text-align: justify;"><span style="color: #ff0000;"><a style="color: #ff0000;" href="https://www.ietf.org/rfc/rfc5996.txt" title="">https://www.ietf.org/rfc/rfc5996.txt</a></span></p><p><span style="color: #ff0000;"><a style="color: #ff0000;" href="https://www.ietf.org/rfc/rfc2409.txt" title="">https://www.ietf.org/rfc/rfc2409.txt</a></span></p><p style="text-align: justify;"><span style="color: #000000;"> Protokół IKE bazuje na algorytmie Diffiego-Hellmana, który pozwala w bezpieczny sposób wyznaczyć bezpieczny klucz sesji.</span></p><p style="text-align: justify;"><span style="color: #000000;">Nawiązanie bezpiecznej sesji IKE składa się z z dwóch faz.</span></p><ul><li style="text-align: justify;"><span style="color: #000000;">faza 1 &#8211; ISAKMP phase 1 w trakcie której tworzy się IKE SA </span></li><li style="text-align: justify;"><span style="color: #000000;">faza 2 &#8211; w trakcie której tworzy się IPSEC SA</span></li></ul><p style="text-align: justify;"><span style="color: #000000;">W fazie 1 następuje uwierzytelnienie stron komunikujących się między sobą, wybór algorytmów uwierzytelniania, ochrony poufności, integralności, sposób wyboru klucza sesji, ustalenie klucza sesji itp. Wynikiem tej fazy jest ISAKMP SA &#8211; security association, które służy dalszej ochronie komunikacji odbywającej się w fazie 2. Utworzone w fazie pierwszej SA jest dwukierunkowe. Standardowo kanał wymiany kluczy działa na porcie UDP/500. Faza 1 może być przeprowadzana w jednym z dwóch trybów: </span></p><ul><li><span style="color: #000000;">main mode</span></li><li><span style="color: #000000;">aggressive mode</span></li></ul><p style="text-align: justify;"><span style="color: #000000;">W trybie main  mode przy preshared keys wymienianych jest 6 wiadomości pomiędzy stronami do utworzenia IKE SA. W trybie aggressive mode IKE SA jest tworzone po 3 wiadomościach.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="4cd6464" class="elementor-element elementor-element-4cd6464 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="9d5b236" class="elementor-element elementor-element-9d5b236 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="f88ffbf" class="elementor-element elementor-element-f88ffbf elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_3.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title="">
+							<img width="480" height="440" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_3.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_3.png 480w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_3-300x275.png 300w" sizes="(max-width: 480px) 100vw, 480px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="d076e61" class="elementor-element elementor-element-d076e61 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e0bc782" class="elementor-element elementor-element-e0bc782 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="29f5fec" class="elementor-element elementor-element-29f5fec elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_4.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title="">
+							<img width="480" height="340" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_4.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_4.png 480w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_4-300x213.png 300w" sizes="(max-width: 480px) 100vw, 480px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="094d661" class="elementor-element elementor-element-094d661 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="bc659e8" class="elementor-element elementor-element-bc659e8 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="f1aae17" class="elementor-element elementor-element-f1aae17 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">LEGENDA:</span></p><p style="text-align: justify;"><span style="color: #000000;"><strong>SA (Security Association) </strong>&#8211; propozycje algorytmów szyfrowania, funkcji skrótu, metod uwierzytelniania, grupy DH&#8230;</span></p><p style="text-align: justify;"><span style="color: #000000;"><strong>klucz</strong> &#8211; służy do wygenerowania algorytmem Diffie Hellman współdzielonego klucza do szyfrowania transmisji</span></p><p style="text-align: justify;"><strong><span style="color: #000000;">Ni, Nr</span></strong><span style="color: #000000;"> &#8211; losowy numer, który jest użyty tylko raz i zapobiega atakom powtórzeniowym </span></p><p style="text-align: justify;"><span style="color: #000000;"><strong>IDii, IDir</strong> &#8211; tożsamość stron  biorących udział w negocjacji IKE SA, mogą to być adresy IP lub FQDN</span></p><p style="text-align: justify;"><span style="color: #000000;"><strong>Hash_I, Hash_R</strong> &#8211; hash który powstaje na podstawie klucza, IDii/IDir i danych.</span></p><p style="text-align: justify;"><span style="color: #000000;"><strong>Nagłówek ISAKMP*</strong> &#8211; oznacza że jest to nagłówek zaszyfrowany  </span></p><p> </p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="8a7fa3c" class="elementor-element elementor-element-8a7fa3c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="10b7308" class="elementor-element elementor-element-10b7308 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="42573e7" class="elementor-element elementor-element-42573e7 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">W fazie 2 zostanie utworzone IPSEC SA, które będzie służyć do ochrony ruchu między komunikującymi się stronami, wykorzystując protokoły ESP i AH. SA w fazie drugiej jest jednokierunkowe, więc tworzone są 2 SA dla komunikacji w obie strony.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="150edda" class="elementor-element elementor-element-150edda elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="5214725" class="elementor-element elementor-element-5214725 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="a524200" class="elementor-element elementor-element-a524200 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><span style="color: #000000;">ESP i AH</span></strong></p><div><span style="color: #000000;">ESP (Encapsulating Security Payload):</span></div><ul><li style="text-align: justify;"><span style="color: #000000;">ESP zapewnia szyfrowanie, uwierzytelnianie i integralność danych</span></li><li><span style="color: #000000;">protokół IP numer 50</span></li><li><span style="color: #000000;">większy narzut niż w AH</span></li></ul><div> </div><div><span style="color: #000000;">AH (Authentication Header):</span></div><ul><li style="text-align: justify;"><span style="color: #000000;">AH zapewnia uwierzytelnianie, integralność danych, ale nie zapewnia poufności jak ESP.</span></li><li><span style="color: #000000;">protokół IP numer 51</span></li><li><span style="color: #000000;">mniejszy narzut niż w ESP</span></li></ul><p> </p><p><span style="color: #000000;">Nagłówki ESP i AH w trybie transportowym:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="4ca1479" class="elementor-element elementor-element-4ca1479 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="a38a638" class="elementor-element elementor-element-a38a638 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="10c120e" class="elementor-element elementor-element-10c120e elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_5.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-4" data-rl_title="" data-rl_caption="" title="">
+							<img width="290" height="300" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_5.png" class="attachment-large size-large" alt="" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="ec96192" class="elementor-element elementor-element-ec96192 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="1f21aa2" class="elementor-element elementor-element-1f21aa2 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="2fc7501" class="elementor-element elementor-element-2fc7501 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><strong><span style="color: #000000;">Konfiguracja tunelu IPSEC VPN</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">W moich poprzednich wpisach pokazałem jak skonfigurować tunel IPSEC pomiędzy dwoma routerami CISCO <a href="https://kubsoo.github.io/rsnet-website/cisco-ipsec-vpn-konfiguracja/">link</a>, oraz pomiędzy routerem CISCO a firewallem Palo Alto <a href="https://kubsoo.github.io/rsnet-website/ipsec-s2s-vpn-palo-alto-cisco/">link</a></span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/ipsec-vpn-teoria/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>IPSec S2S VPN Palo Alto &#8211; Cisco</title>
+		<link>https://kubsoo.github.io/rsnet-website/ipsec-s2s-vpn-palo-alto-cisco/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/ipsec-s2s-vpn-palo-alto-cisco/#respond</comments>
+		<pubDate>Thu, 14 Dec 2017 20:08:07 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[firewall]]></category>
+		<category><![CDATA[ipsec]]></category>
+		<category><![CDATA[palo alto]]></category>
+		<category><![CDATA[vpn]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=851</guid>
+		<description><![CDATA[W poniższym wpisie pokażę konfigurację tunelu IPSEC VPN pomiędzy firewallem Palo Alto a routerem CISCO. Konfigurację wykonam w labie GNS3, w którym wykorzystam następujące obrazy: CISCO CSR1000v3.17 &#8211; obraz routera&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-851">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="31f508f" class="elementor-element elementor-element-31f508f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="2e28f4f" class="elementor-element elementor-element-2e28f4f elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="23af124" class="elementor-element elementor-element-23af124 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">W poniższym wpisie pokażę konfigurację tunelu IPSEC VPN pomiędzy firewallem Palo Alto a routerem CISCO. Konfigurację wykonam w labie <a href="https://kubsoo.github.io/rsnet-website/tag/gns3/" title="">GNS3</a>, w którym wykorzystam następujące obrazy:</span></p><ol><li><span style="color: #000000;">CISCO CSR1000v3.17 &#8211; obraz routera CISCO</span></li><li><span style="color: #000000;">PA-VM7.1.1.0-1 &#8211; obraz firewalla Palo Alto w wersji 7.1.1.0-1</span></li><li><span style="color: #000000;">gns3-webterm &#8211; kontener dockera do zarządzania firewallem</span></li></ol></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="cedeb58" class="elementor-element elementor-element-cedeb58 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="d030fcd" class="elementor-element elementor-element-d030fcd elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="a150116" class="elementor-element elementor-element-a150116 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">LAB</span></h5><p><span style="color: #000000;">Topologia laba GNS3 wygląda nastepująco:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="9757d5f" class="elementor-element elementor-element-9757d5f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="f704425" class="elementor-element elementor-element-f704425 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="19f6e29" class="elementor-element elementor-element-19f6e29 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="545" height="408" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology_1.png 545w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology_1-300x225.png 300w" sizes="(max-width: 545px) 100vw, 545px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="469fb17" class="elementor-element elementor-element-469fb17 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="34ab586" class="elementor-element elementor-element-34ab586 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c159dec" class="elementor-element elementor-element-c159dec elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Adresacja</span></h5><p><span style="color: #000000;"><strong>Cisco</strong> </span></p><p><span style="color: #000000;">Gi1 &#8211; 150.1.1.1/30</span></p><p><span style="color: #000000;">Tunnel1 &#8211; 10.0.0.1/24</span></p><p><span style="color: #000000;"><strong>Palo Alto</strong> </span></p><p><span style="color: #000000;">ethernet1/1 &#8211; 150.1.1.2/30</span></p><p><span style="color: #000000;">tunnel.1 &#8211; 10.0.0.2/24</span></p><h5> </h5><h5><span style="color: #000000;">Konfiguracja CISCO</span></h5><p><span style="color: #000000;">INTERFACES</span></p><pre><span style="color: #000000;">Router(config)#interface Gi1</span><br /><span style="color: #000000;">Router(config-if)#ip address 150.1.1.1 255.255.255.252</span><br /><span style="color: #000000;">Router(config)#interface Tunnel1</span><br /><span style="color: #000000;">Router(config-if)#ip address 10.0.0.1 255.255.255.0<br />Router(config-if)#tunnel source 150.1.1.1</span><br /><span style="color: #000000;">Router(config-if)#tunnel destination 150.1.1.2</span></pre><p><span style="color: #000000;">ISAKMP POLICY</span></p><pre><span style="color: #000000;">Router(config)#crypto isakmp policy 10</span><br /><span style="color: #000000;">Router(config-isakmp)#hash sha256</span><br /><span style="color: #000000;">Router(config-isakmp)#authentication pre-share</span><br /><span style="color: #000000;">Router(config-isakmp)#group 14</span><br /><span style="color: #000000;">Router(config-isakmp)#lifetime 86400</span><br /><span style="color: #000000;">Router(config-isakmp)#encryption aes 256</span></pre><p><span style="color: #000000;">KLUCZ SZYFRUJĄCY</span></p><pre><span style="color: #000000;">Router(config)#crypto isakmp key 0 palo_to_cisco! address 150.1.1.2</span></pre><p><span style="color: #000000;">IP TRANSFORM SET</span></p><pre><span style="color: #000000;">Router(config)#crypto ipsec transform-set TSET esp-sha512-hmac esp-aes 256</span></pre><p><span style="color: #000000;">IPSEC PROFILE</span></p><pre><span style="color: #000000;">Router(config)#crypto ipsec profile IPSEC-PROFILE</span><br /><span style="color: #000000;">Router(ipsec-profile)#set transform-set TSET</span><br /><span style="color: #000000;">Router(ipsec-profile)#set pfs group14</span><br /><span style="color: #000000;">Router(ipsec-profile)#set security-association lifetime seconds 3600</span></pre><p><span style="color: #000000;">IPSEC TUNNEL</span></p><pre><span style="color: #000000;">Router(config-if)#tunnel mode ipsec ipv4</span><br /><span style="color: #000000;">Router(config-if)#tunnel protection ipsec profile IPSEC-PROFILE</span></pre><h5> </h5><h5><span style="color: #000000;">Cała konfiguracja CISCO</span></h5><pre><span style="color: #000000;">crypto isakmp policy 10</span><br /><span style="color: #000000;"> hash sha256</span><br /><span style="color: #000000;"> authentication pre-share</span><br /><span style="color: #000000;"> group 14</span><br /><span style="color: #000000;"> lifetime 86400</span><br /><span style="color: #000000;"> encryption aes 256</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">crypto isakmp key 0 palo_to_cisco! address 150.1.1.2</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">crypto ipsec transform-set TSET esp-sha512-hmac esp-aes 256</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">crypto ipsec profile IPSEC-PROFILE</span><br /><span style="color: #000000;"> set transform-set TSET</span><br /><span style="color: #000000;"> set pfs group14</span><br /><span style="color: #000000;"> set security-association lifetime seconds 3600</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Gi1</span><br /><span style="color: #000000;"> ip address 150.1.1.1 255.255.255.252</span><br /><span style="color: #000000;">!</span><br /><span style="color: #000000;">interface Tunnel1</span><br /><span style="color: #000000;"> ip address 10.0.0.1 255.255.255.0 <br /> tunnel source 150.1.1.1</span><br /><span style="color: #000000;"> tunnel destination 150.1.1.2</span><br /><span style="color: #000000;"> tunnel mode ipsec ipv4</span><br /><span style="color: #000000;"> tunnel protection ipsec profile IPSEC-PROFILE​</span><br /><span style="color: #000000;">!</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="6994149" class="elementor-element elementor-element-6994149 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="cf4ce67" class="elementor-element elementor-element-cf4ce67 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="2d60a4a" class="elementor-element elementor-element-2d60a4a elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Konfiguracja PALO ALTO</span></h5><p><span style="color: #000000;">INTERFACE MANAGEMENT PROFILE</span></p><p><span style="color: #000000;">Network -&gt; Network Profiles -&gt; Interface Mgmt</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="bb026d6" class="elementor-element elementor-element-bb026d6 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="dc6c89a" class="elementor-element elementor-element-dc6c89a elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="e561c9d" class="elementor-element elementor-element-e561c9d elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/mgmt_profile.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="486" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/mgmt_profile.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/mgmt_profile.png 809w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/mgmt_profile-300x202.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/mgmt_profile-768x518.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="16794cc" class="elementor-element elementor-element-16794cc elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="9bfc6dc" class="elementor-element elementor-element-9bfc6dc elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="3918199" class="elementor-element elementor-element-3918199 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><span style="color: #000000;">INTERFACES</span></p><p><span style="color: #000000;">Network -&gt; Interfaces -&gt; ethernet1/1</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="7d46ae9" class="elementor-element elementor-element-7d46ae9 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="45a03c4" class="elementor-element elementor-element-45a03c4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="d7dc5f2" class="elementor-element elementor-element-d7dc5f2 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="385" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1.png 874w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1-300x160.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1-768x410.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="ed2292a" class="elementor-element elementor-element-ed2292a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="b8e494e" class="elementor-element elementor-element-b8e494e elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="e4192e8" class="elementor-element elementor-element-e4192e8 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="466" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_2.png 863w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_2-300x194.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_2-768x497.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="8f5c2a2" class="elementor-element elementor-element-8f5c2a2 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="687bbe8" class="elementor-element elementor-element-687bbe8 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="2cc3644" class="elementor-element elementor-element-2cc3644 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_3.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-4" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="522" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_3.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_3.png 862w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_3-300x218.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/int_eth1_3-768x557.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="00af2be" class="elementor-element elementor-element-00af2be elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="b01077f" class="elementor-element elementor-element-b01077f elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="024cc1e" class="elementor-element elementor-element-024cc1e elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">Network -&gt; Interfaces -&gt; tunnel.1</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="340a9cc" class="elementor-element elementor-element-340a9cc elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="1da691d" class="elementor-element elementor-element-1da691d elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c94e1c6" class="elementor-element elementor-element-c94e1c6 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-5" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="419" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_1.png 806w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_1-300x175.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_1-768x447.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="dd5918a" class="elementor-element elementor-element-dd5918a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="2b2de55" class="elementor-element elementor-element-2b2de55 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="e9ae76a" class="elementor-element elementor-element-e9ae76a elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-6" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="478" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_2.png 811w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_2-300x199.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_2-768x509.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="91c4804" class="elementor-element elementor-element-91c4804 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="95253f8" class="elementor-element elementor-element-95253f8 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5c97a74" class="elementor-element elementor-element-5c97a74 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_3.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-7" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="416" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_3.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_3.png 809w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_3-300x173.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/tunnel_3-768x443.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="950f3ec" class="elementor-element elementor-element-950f3ec elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="7aff087" class="elementor-element elementor-element-7aff087 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="84caea1" class="elementor-element elementor-element-84caea1 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><span style="color: #000000;">IKE CRYPTO PROFILE</span></p><p><span style="color: #000000;">Network -&gt; Network Profiles -&gt; IKE Crypto</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="085fd5f" class="elementor-element elementor-element-085fd5f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="92edec1" class="elementor-element elementor-element-92edec1 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="ababb15" class="elementor-element elementor-element-ababb15 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ike_policy.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-8" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="349" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ike_policy.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ike_policy.png 994w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ike_policy-300x145.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ike_policy-768x372.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="6d40d43" class="elementor-element elementor-element-6d40d43 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="595be58" class="elementor-element elementor-element-595be58 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="525ebba" class="elementor-element elementor-element-525ebba elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><span style="color: #000000;">IKE GATEWAY</span></p><p><span style="color: #000000;">Network -&gt; Network Profiles -&gt; IKE Gateways</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b483a47" class="elementor-element elementor-element-b483a47 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="9198792" class="elementor-element elementor-element-9198792 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="07e8413" class="elementor-element elementor-element-07e8413 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-9" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="501" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway.png 810w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway-300x209.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway-768x535.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="974078c" class="elementor-element elementor-element-974078c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="dc2f999" class="elementor-element elementor-element-dc2f999 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="90e3e5d" class="elementor-element elementor-element-90e3e5d elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway_2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-10" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="537" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway_2.png 815w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway_2-300x224.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/isakmp_gateway_2-768x573.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1e5889a" class="elementor-element elementor-element-1e5889a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="6ddafd6" class="elementor-element elementor-element-6ddafd6 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="a5068cc" class="elementor-element elementor-element-a5068cc elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><span style="color: #000000;">IPSEC CRYPTO</span></p><p><span style="color: #000000;">Network -&gt; Network Profiles -&gt; IPSec Crypto</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="ff2f8b5" class="elementor-element elementor-element-ff2f8b5 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="1ab1c29" class="elementor-element elementor-element-1ab1c29 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="55d91b5" class="elementor-element elementor-element-55d91b5 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_crypto.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-11" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="418" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_crypto.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_crypto.png 911w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_crypto-300x174.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_crypto-768x446.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="cde951f" class="elementor-element elementor-element-cde951f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="91856d8" class="elementor-element elementor-element-91856d8 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="a3f0923" class="elementor-element elementor-element-a3f0923 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><span style="color: #000000;">IPSEC TUNNEL</span></p><p><span style="color: #000000;">Network -&gt; IPSec Tunnels</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="9cb7948" class="elementor-element elementor-element-9cb7948 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="8f6fed0" class="elementor-element elementor-element-8f6fed0 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="37cd5b8" class="elementor-element elementor-element-37cd5b8 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_tunnel.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-12" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="344" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_tunnel.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_tunnel.png 862w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_tunnel-300x143.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_tunnel-768x367.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="838d817" class="elementor-element elementor-element-838d817 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="0f004ea" class="elementor-element elementor-element-0f004ea elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5802aa4" class="elementor-element elementor-element-5802aa4 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><span style="color: #000000;">COMMIT</span></p><p><span style="color: #000000;">Teraz wystarczy zrobić <strong>commit</strong>.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="ce46ae9" class="elementor-element elementor-element-ce46ae9 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e4cbf82" class="elementor-element elementor-element-e4cbf82 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="6756b5a" class="elementor-element elementor-element-6756b5a elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5> </h5><h5> </h5><h5><span style="color: #000000;">WERYFIKACJA</span></h5><p style="text-align: justify;"><span style="color: #000000;">Sprawdźmy czy tunel się zestawił. Spróbujmy na routerze CISCO spingować adres tunelu na Palo Alto:</span></p><pre style="text-align: justify;"><span style="color: #000000;">Router#ping 10.0.0.2<br />Type escape sequence to abort.<br />Sending 5, 100-byte ICMP Echos to 10.0.0.2, timeout is 2 seconds:<br />!!!!!<br />Success rate is 100 percent (5/5), round-trip min/avg/max = 2/8/29 ms<br /></span></pre><p style="text-align: justify;"><span style="color: #000000;">Udało się, teraz sprawdźmy teraz jak wyglądają wyniki następujących komend:</span></p><ol><li><span style="color: #000000;">show crypto isakmp sa   (faza 1 &#8211; IKE SA)</span></li><li><span style="color: #000000;">show crypto ipsec sa -(faza 2 &#8211; IPSEC SA)</span></li></ol><pre><span style="color: #000000;">Router#show crypto isakmp sa</span><br /><span style="color: #000000;">IPv4 Crypto ISAKMP SA</span><br /><span style="color: #000000;">dst src state conn-id status</span><br /><span style="color: #000000;">150.1.1.2 150.1.1.1 <strong>QM_IDLE</strong> 1001 ACTIVE</span></pre><pre><span style="color: #000000;">Router#show crypto ipsec sa</span><br /><span style="color: #000000;">interface: Tunnel1</span><br /><span style="color: #000000;"> Crypto map tag: Tunnel1-head-0, local addr 150.1.1.1</span><br /><br /><span style="color: #000000;">protected vrf: (none)</span><br /><span style="color: #000000;"> local ident (addr/mask/prot/port): (0.0.0.0/0.0.0.0/0/0)</span><br /><span style="color: #000000;"> remote ident (addr/mask/prot/port): (0.0.0.0/0.0.0.0/0/0)</span><br /><span style="color: #000000;"> current_peer 150.1.1.2 port 500</span><br /><span style="color: #000000;"> PERMIT, flags={origin_is_acl,}</span><br /><strong><span style="color: #000000;"> #pkts encaps: 5, #pkts encrypt: 5, #pkts digest: 5</span></strong><br /><strong><span style="color: #000000;"> #pkts decaps: 5, #pkts decrypt: 5, #pkts verify: 5</span></strong><br /><span style="color: #000000;"> #pkts compressed: 0, #pkts decompressed: 0</span><br /><span style="color: #000000;"> #pkts not compressed: 0, #pkts compr. failed: 0</span><br /><span style="color: #000000;"> #pkts not decompressed: 0, #pkts decompress failed: 0</span><br /><span style="color: #000000;"> #send errors 0, #recv errors 0</span><br /><br /><span style="color: #000000;">local crypto endpt.: 150.1.1.1, remote crypto endpt.: 150.1.1.2</span><br /><span style="color: #000000;"> plaintext mtu 1422, path mtu 1500, ip mtu 1500, ip mtu idb GigabitEthernet1</span><br /><span style="color: #000000;"> current outbound spi: 0xA402847E(2751628414)</span><br /><span style="color: #000000;"> PFS (Y/N): Y, DH group: group14</span><br /><br /><span style="color: #000000;">inbound esp sas:</span><br /><span style="color: #000000;"> spi: 0x1AB4F9C2(448068034)</span><br /><span style="color: #000000;"> transform: esp-256-aes esp-sha512-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Tunnel, }</span><br /><span style="color: #000000;"> conn id: 2003, flow_id: CSR:3, sibling_flags FFFFFFFF80004048, crypto map: Tunnel1-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4607999/3143)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">inbound ah sas:</span><br /><br /><span style="color: #000000;">inbound pcp sas:</span><br /><br /><span style="color: #000000;">outbound esp sas:</span><br /><span style="color: #000000;"> spi: 0xA402847E(2751628414)</span><br /><span style="color: #000000;"> transform: esp-256-aes esp-sha512-hmac ,</span><br /><span style="color: #000000;"> in use settings ={Tunnel, }</span><br /><span style="color: #000000;"> conn id: 2004, flow_id: CSR:4, sibling_flags FFFFFFFF80004048, crypto map: Tunnel1-head-0</span><br /><span style="color: #000000;"> sa timing: remaining key lifetime (k/sec): (4607999/3143)</span><br /><span style="color: #000000;"> IV size: 16 bytes</span><br /><span style="color: #000000;"> replay detection support: Y</span><br /><span style="color: #000000;"> Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #000000;">outbound ah sas:</span><br /><br /><span style="color: #000000;">outbound pcp sas:</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="bbf9abb" class="elementor-element elementor-element-bbf9abb elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="397ef8d" class="elementor-element elementor-element-397ef8d elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="6dd76e1" class="elementor-element elementor-element-6dd76e1 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Jak widać od strony CISCO wszystko działa, sprawdźmy teraz jak wygląda tunel IPSEC od strony firewalla Palo Alto. </span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="0cb58f0" class="elementor-element elementor-element-0cb58f0 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="f942b94" class="elementor-element elementor-element-f942b94 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5c0ff03" class="elementor-element elementor-element-5c0ff03 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">Najpierw spingujmy adres tunelu na CISCO:</span></p><pre><span style="color: #000000;">admin@PA-VM&gt; ping source 10.0.0.2 host 10.0.0.1</span><br /><span style="color: #000000;">PING 10.0.0.1 (10.0.0.1) from 10.0.0.2 : 56(84) bytes of data.</span><br /><span style="color: #000000;">64 bytes from 10.0.0.1: icmp_seq=1 ttl=255 time=1.91 ms</span><br /><span style="color: #000000;">64 bytes from 10.0.0.1: icmp_seq=2 ttl=255 time=1.81 ms</span><br /><span style="color: #000000;">64 bytes from 10.0.0.1: icmp_seq=3 ttl=255 time=2.16 ms</span><br /><span style="color: #000000;">64 bytes from 10.0.0.1: icmp_seq=4 ttl=255 time=2.50 ms</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="a3b72bc" class="elementor-element elementor-element-a3b72bc elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c7b3cd9" class="elementor-element elementor-element-c7b3cd9 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="825df01" class="elementor-element elementor-element-825df01 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Teraz sprawdźmy status intefejsu. Robimy to w interfejsie webowym w zakładce Network -&gt; IPSec Tunnels</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="340dc72" class="elementor-element elementor-element-340dc72 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="dd7e0c3" class="elementor-element elementor-element-dd7e0c3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="48faaf8" class="elementor-element elementor-element-48faaf8 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-13" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="171" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_1.png 1004w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_1-300x71.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_1-768x182.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="45a6cd9" class="elementor-element elementor-element-45a6cd9 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="f4d7a56" class="elementor-element elementor-element-f4d7a56 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="e4e6c01" class="elementor-element elementor-element-e4e6c01 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-14" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="374" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_2.png 977w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_2-300x156.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_info_2-768x399.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="2c8067a" class="elementor-element elementor-element-2c8067a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="3ba7df7" class="elementor-element elementor-element-3ba7df7 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="0d27c9e" class="elementor-element elementor-element-0d27c9e elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">Jeśli w polach Status widnieją zielone kropki to znaczy, że tunel zestawił się poprawnie.</span></p><p> </p><h5><span style="color: #000000;">PODSUMOWANIE</span></h5><p style="text-align: justify;"><span style="color: #000000;">Tunel IPSEC między urządzeniami CISCO i PALO ALTO jest bardzo łatwy w konfiguracji i mam nadzieję, że po przeczytaniu powyższego wpisu nie powinien sprawić nikomu kłopotu.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/ipsec-s2s-vpn-palo-alto-cisco/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>CISCO IPSEC VPN &#8211; konfiguracja</title>
+		<link>https://kubsoo.github.io/rsnet-website/cisco-ipsec-vpn-konfiguracja/</link>
+		<pubDate>Sat, 02 Dec 2017 13:20:57 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[ikev1]]></category>
+		<category><![CDATA[ipsec]]></category>
+		<category><![CDATA[vpn]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=422</guid>
+		<description><![CDATA[Jak skonfigurować tunel IPSEC VPN pomiędzy dwoma routerami CISCO? Tunel IPSEC VPN pomiędzy dwoma routerami CISCO konfigurujemy w następujących krokach: Globalne uruchomienie usługi Konfiguracja ISAKMP Policy Konfiguracja kluczy szyfrujących Konfiguracja&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-422">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="b1b02fb" class="elementor-element elementor-element-b1b02fb elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="28e54cb" class="elementor-element elementor-element-28e54cb elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="efb69eb" class="elementor-element elementor-element-efb69eb elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #333333;">Jak skonfigurować tunel IPSEC VPN pomiędzy dwoma routerami CISCO?</span></p><p style="text-align: justify;"><span style="color: #333333;">Tunel IPSEC VPN pomiędzy dwoma routerami CISCO konfigurujemy w następujących krokach:</span></p><ol><li style="text-align: justify;"><span style="color: #333333;">Globalne uruchomienie usługi</span></li><li style="text-align: justify;"><span style="color: #333333;">Konfiguracja ISAKMP Policy</span></li><li style="text-align: justify;"><span style="color: #333333;">Konfiguracja kluczy szyfrujących</span></li><li style="text-align: justify;"><span style="color: #333333;">Konfiguracja IP transform set</span></li><li style="text-align: justify;"><span style="color: #333333;">Stworzenie ACL wskazującej na ruch, który chcemy szyfrować</span></li><li style="text-align: justify;"><span style="color: #333333;">Stworzenie crypto-mapy i wskazanie IP transform set</span></li><li style="text-align: justify;"><span style="color: #333333;">Podpięcie crypto-mapy do interfejsu podpiętego do internetu.</span></li></ol></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="d1e3db9" class="elementor-element elementor-element-d1e3db9 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="daf9c3c" class="elementor-element elementor-element-daf9c3c elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="51b6f86" class="elementor-element elementor-element-51b6f86 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5>PRZYKŁAD</h5><div style="text-align: justify;"><span style="color: #333333;">Tunel IPSEC VPN zestawimy pomiędzy routerami R1 i R3 z poniższej topologii:</span></div></div>
+				</div>
+				</div>
+				<div data-id="f8aeda3" class="elementor-element elementor-element-f8aeda3 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="478" height="218" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec1.png 478w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec1-300x137.png 300w" sizes="(max-width: 478px) 100vw, 478px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="3fa8a58" class="elementor-element elementor-element-3fa8a58 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="462f9d3" class="elementor-element elementor-element-462f9d3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="50a5876" class="elementor-element elementor-element-50a5876 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">Konfiguracja podstawowa: </span></h5><pre><span style="color: #333333;">hostname R1</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface Loopback0</span><br /><span style="color: #333333;">ip address 1.1.1.1 255.255.255.255</span><br /><span style="color: #333333;">ip nat inside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;">ip address 192.168.12.1 255.255.255.0</span><br /><span style="color: #333333;">ip nat outside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip nat inside source list 100 interface FastEthernet0/0 overload</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip route 0.0.0.0 0.0.0.0 192.168.12.2</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">access-list 100 deny ip host 1.1.1.1 host 3.3.3.3</span><br /><span style="color: #333333;">access-list 100 permit ip host 1.1.1.1 any</span></pre><div><pre><span style="color: #333333;">hostname R3</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface Loopback0</span><br /><span style="color: #333333;">ip address 3.3.3.3 255.255.255.255</span><br /><span style="color: #333333;">ip nat inside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;">ip address 192.168.23.3 255.255.255.0</span><br /><span style="color: #333333;">ip nat outside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip nat inside source list 100 interface FastEthernet0/0 overload</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip route 0.0.0.0 0.0.0.0 192.168.23.2</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">access-list 100 deny ip host 3.3.3.3 host 1.1.1.1</span><br /><span style="color: #333333;">access-list 100 permit ip host 3.3.3.3 any</span></pre></div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="07fb301" class="elementor-element elementor-element-07fb301 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c7196f9" class="elementor-element elementor-element-c7196f9 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5b0766e" class="elementor-element elementor-element-5b0766e elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h4><strong>KONFIGURACJA IPSEC VPN</strong></h4><p> </p><h5><span style="color: #333333;">1. Globalne uruchomienie usługi</span></h5><pre><span style="color: #333333;">R1(config)#crypto isakmp enable</span><br /><br /><span style="color: #333333;">R3(config)#crypto isakmp enable</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="8fffee0" class="elementor-element elementor-element-8fffee0 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="0f71aa4" class="elementor-element elementor-element-0f71aa4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="fdc4270" class="elementor-element elementor-element-fdc4270 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">2. Konfiguracja ISAKMP Policy</span></h5><pre><span style="color: #333333;">R1(config)#crypto isakmp </span><br /><span style="color: #333333;">R1(config)#policy 10</span><br /><span style="color: #333333;">R1(config)#encr 3des</span><br /><span style="color: #333333;">R1(config)#hash md5</span><br /><span style="color: #333333;">R1(config)#authentication </span><br /><span style="color: #333333;">R1(config)#pre-share</span><br /><span style="color: #333333;">R1(config)#group 15</span><br /><br /><span style="color: #333333;">R3(config)#crypto isakmp </span><br /><span style="color: #333333;">R3(config)#policy 10</span><br /><span style="color: #333333;">R3(config)#encr 3des</span><br /><span style="color: #333333;">R3(config)#hash md5</span><br /><span style="color: #333333;">R3(config)#authentication </span><br /><span style="color: #333333;">R3(config)#pre-share</span><br /><span style="color: #333333;">R3(config)#group 15</span></pre><p style="text-align: justify;"><span style="color: #333333;">Na obu routerach ISAKMP policy musi być taka sama  w celu zestwienia fazy 1 ISAKMP.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b785cc4" class="elementor-element elementor-element-b785cc4 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="eb21dfc" class="elementor-element elementor-element-eb21dfc elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="7527744" class="elementor-element elementor-element-7527744 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">3. Konfiguracja kluczy szyfrujących</span></h5><pre><span style="color: #333333;">R1(config)#crypto isakmp key cisco123 address 192.168.23.3</span><br /><br /><span style="color: #333333;">R3(config)#crypto isakmp key cisco123 address 192.168.12.1</span></pre><p style="text-align: justify;"><span style="color: #333333;">W kluczach szyfrujących podajemy adres IP peer&#8217;a, z którym chcemy nawiązać tunel IPSEC VPN.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="47889a1" class="elementor-element elementor-element-47889a1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="68ff672" class="elementor-element elementor-element-68ff672 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="3e76343" class="elementor-element elementor-element-3e76343 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">4. Konfiguracja IP transform set</span></h5><pre><span style="color: #333333;">R1(config)#crypto ipsec transform-set TSET esp-aes esp-sha-hmac</span><br /><span style="color: #333333;">R1(cfg-crypto-trans)#mode tunnel</span><br /><br /><span style="color: #333333;">R3(config)#crypto ipsec transform-set TSET esp-aes esp-sha-hmac</span><br /><span style="color: #333333;">R3(cfg-crypto-trans)#mode tunnel</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b32108d" class="elementor-element elementor-element-b32108d elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="0f6cd58" class="elementor-element elementor-element-0f6cd58 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="23df267" class="elementor-element elementor-element-23df267 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">5. Stworzenie ACL wskazującej na ruch, który chcemy szyfrować</span></h5><pre><span style="color: #333333;">R1(config)#access-list 101 permit ip host 3.3.3.3 host 1.1.1.1</span><br /><br /><span style="color: #333333;">R3(config)#access-list 101 permit ip host 3.3.3.3 host 1.1.1.1</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="cf1966a" class="elementor-element elementor-element-cf1966a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="81b3f44" class="elementor-element elementor-element-81b3f44 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="ddb2665" class="elementor-element elementor-element-ddb2665 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5 style="text-align: justify;"><span style="color: #333333;">6. Stworzenie crypto-mapy i wskazanie IP transform set</span></h5><pre><span style="color: #333333;">R1(config)#crypto map CMAP 10 ipsec-isakmp</span><br /><span style="color: #333333;">% NOTE: This new crypto map will remain disabled until a peer</span><br /><span style="color: #333333;"> and a valid access list have been configured.</span><br /><span style="color: #333333;">R1(config-crypto-map)#set peer 192.168.23.3</span><br /><span style="color: #333333;">R1(config-crypto-map)#set transform-set TSET</span><br /><span style="color: #333333;">R1(config-crypto-map)#match address 101</span><br /><br /><span style="color: #333333;">R3(config)#crypto map CMAP 10 ipsec-isakmp</span><br /><span style="color: #333333;">% NOTE: This new crypto map will remain disabled until a peer</span><br /><span style="color: #333333;"> and a valid access list have been configured.</span><br /><span style="color: #333333;">R3(config-crypto-map)#set peer 192.168.12.1</span><br /><span style="color: #333333;">R3(config-crypto-map)#set transform-set TSET</span><br /><span style="color: #333333;">R3(config-crypto-map)#match address 101</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="0fdc430" class="elementor-element elementor-element-0fdc430 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c98401c" class="elementor-element elementor-element-c98401c elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="6dc4059" class="elementor-element elementor-element-6dc4059 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5 style="text-align: justify;"><span style="color: #333333;">7. Podpięcie crypto-mapy do interfejsu podpiętego do internetu.</span></h5><pre><span style="color: #333333;">R1(config)#int fastEthernet 0/0</span><br /><span style="color: #333333;">R1(config-if)#crypto map CMAP</span><br /><br /><span style="color: #333333;">R3(config)#int fastEthernet 0/0</span><br /><span style="color: #333333;">R3(config-if)#crypto map CMAP</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="abe1600" class="elementor-element elementor-element-abe1600 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="4ce8b5e" class="elementor-element elementor-element-4ce8b5e elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="3932a93" class="elementor-element elementor-element-3932a93 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h4><span style="color: #333333;"><strong>PODSUMOWANIE</strong></span></h4><p><span style="color: #333333;">Cała konfiguracja wygląda następująco:</span></p><p><span style="color: #333333;"><strong>R1</strong></span></p><pre><span style="color: #333333;">R1#show run</span><br />!<br /><span style="color: #333333;">hostname R1</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">crypto isakmp policy 10</span><br /><span style="color: #333333;"> encr 3des</span><br /><span style="color: #333333;"> hash md5</span><br /><span style="color: #333333;"> authentication pre-share</span><br /><span style="color: #333333;"> group 15</span><br /><span style="color: #333333;">crypto isakmp key cisco123 address 192.168.23.3</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">crypto ipsec transform-set TSET esp-aes esp-sha-hmac</span><br /><span style="color: #333333;"> mode tunnel</span><br />!<br /><span style="color: #333333;">crypto map CMAP 10 ipsec-isakmp</span><br /><span style="color: #333333;"> set peer 192.168.23.3</span><br /><span style="color: #333333;"> set transform-set TSET</span><br /><span style="color: #333333;"> match address 101</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface Loopback0</span><br /><span style="color: #333333;"> ip address 1.1.1.1 255.255.255.255</span><br /><span style="color: #333333;"> ip nat inside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;"> ip address 192.168.12.1 255.255.255.0</span><br /><span style="color: #333333;"> ip nat outside</span><br /><span style="color: #333333;"> duplex full</span><br /><span style="color: #333333;"> crypto map CMAP</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip nat inside source list 100 interface FastEthernet0/0 overload</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip route 0.0.0.0 0.0.0.0 192.168.12.2</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">access-list 100 deny ip host 1.1.1.1 host 3.3.3.3</span><br /><span style="color: #333333;">access-list 100 permit ip host 1.1.1.1 any</span><br /><span style="color: #333333;">access-list 101 permit ip host 1.1.1.1 host 3.3.3.3</span><br /><span style="color: #333333;">!</span></pre><p><span style="color: #333333;"><strong>R3</strong></span></p><pre><span style="color: #333333;">R3#show run</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">hostname R3</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">crypto isakmp policy 10</span><br /><span style="color: #333333;"> encr 3des</span><br /><span style="color: #333333;"> hash md5</span><br /><span style="color: #333333;"> authentication pre-share</span><br /><span style="color: #333333;"> group 15</span><br /><span style="color: #333333;">crypto isakmp key cisco123 address 192.168.12.1</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">crypto ipsec transform-set TSET esp-aes esp-sha-hmac</span><br /><span style="color: #333333;"> mode tunnel</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">crypto map CMAP 10 ipsec-isakmp</span><br /><span style="color: #333333;"> set peer 192.168.12.1</span><br /><span style="color: #333333;"> set transform-set TSET</span><br /><span style="color: #333333;"> match address 101</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface Loopback0</span><br /><span style="color: #333333;"> ip address 3.3.3.3 255.255.255.255</span><br /><span style="color: #333333;"> ip nat inside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;"> ip address 192.168.23.3 255.255.255.0</span><br /><span style="color: #333333;"> ip nat outside</span><br /><span style="color: #333333;"> duplex full</span><br /><span style="color: #333333;"> crypto map CMAP</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip nat inside source list 100 interface FastEthernet0/0 overload</span><br />!<br /><span style="color: #333333;">ip route 0.0.0.0 0.0.0.0 192.168.23.2</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">access-list 100 deny ip host 3.3.3.3 host 1.1.1.1</span><br /><span style="color: #333333;">access-list 100 permit ip host 3.3.3.3 any</span><br /><span style="color: #333333;">access-list 101 permit ip host 3.3.3.3 host 1.1.1.1</span><br /><span style="color: #333333;">!</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1069507" class="elementor-element elementor-element-1069507 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="5e2c9b5" class="elementor-element elementor-element-5e2c9b5 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="eeedc85" class="elementor-element elementor-element-eeedc85 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #333333;">Tunel IPSEC VPN zestawi się tylko wtedy kiedy router zobaczy na ruch który pasuje do ACL 101 w crypto-mapie. Spróbujmy więc wydać komendę ping ip 3.3.3.3 source 1.1.1.1 na routerze R1:</span></p><pre><span style="color: #333333;">R1#ping ip 3.3.3.3 source 1.1.1.1</span><br /><span style="color: #333333;">Type escape sequence to abort.</span><br /><span style="color: #333333;">Sending 5, 100-byte ICMP Echos to 3.3.3.3, timeout is 2 seconds:</span><br /><span style="color: #333333;">Packet sent with a source address of 1.1.1.1</span><br /><span style="color: #333333;">.!!!!</span><br /><span style="color: #333333;">Success rate is 80 percent (4/5), round-trip min/avg/max = 28/32/44 ms</span></pre><p style="text-align: justify;"><span style="color: #333333;">Łączność jest, czyli tunel się zestawił. Sprawdźmy to wydając nastepujące komendy:</span></p><ul><li><span style="color: #333333;">show crypto isakmp sa</span></li><li><span style="color: #333333;">show crypto ipsec sa</span></li></ul><pre><span style="color: #333333;">R1#show crypto isakmp sa</span><br /><span style="color: #333333;">IPv4 Crypto ISAKMP SA</span><br /><span style="color: #333333;">dst src state conn-id status</span><br /><strong><span style="color: #333333;">192.168.23.3 192.168.12.1 QM_IDLE 1001 ACTIVE</span></strong></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="375682a" class="elementor-element elementor-element-375682a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="dbcea67" class="elementor-element elementor-element-dbcea67 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5b02e97" class="elementor-element elementor-element-5b02e97 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><pre><span style="color: #333333;">R1#show crypto ipsec sa</span><br /><span style="color: #333333;">interface: FastEthernet0/0</span><br /><span style="color: #333333;">    Crypto map tag: CMAP, local addr 192.168.12.1</span><br /><span style="color: #333333;">   <br />protected vrf: (none)</span><br /><span style="color: #333333;">   local  ident (addr/mask/prot/port): (1.1.1.1/255.255.255.255/0/0)</span><br /><span style="color: #333333;">   remote ident (addr/mask/prot/port): (3.3.3.3/255.255.255.255/0/0)</span><br /><span style="color: #333333;">   current_peer 192.168.23.3 port 500</span><br /><span style="color: #333333;">     PERMIT, flags={origin_is_acl,}</span><br /><span style="color: #333333;">    <strong>#pkts encaps: 3, #pkts encrypt: 3, #pkts digest: 3</strong></span><br /><strong><span style="color: #333333;">    #pkts decaps: 3, #pkts decrypt: 3, #pkts verify: 3</span></strong><br /><span style="color: #333333;">    #pkts compressed: 0, #pkts decompressed: 0</span><br /><span style="color: #333333;">    #pkts not compressed: 0, #pkts compr. failed: 0</span><br /><span style="color: #333333;">    #pkts not decompressed: 0, #pkts decompress failed: 0</span><br /><span style="color: #333333;">    #send errors 0, #recv errors 0</span><br /><span style="color: #333333;"><br />     local crypto endpt.: 192.168.12.1, remote crypto endpt.: 192.168.23.3</span><br /><span style="color: #333333;">     path mtu 1500, ip mtu 1500, ip mtu idb FastEthernet0/0</span><br /><span style="color: #333333;">     current outbound spi: 0x34978E4A(882347594)</span><br /><span style="color: #333333;">     PFS (Y/N): N, DH group: none</span><br /><br /><span style="color: #333333;">     inbound esp sas:</span><br /><span style="color: #333333;">      spi: 0x6DB519C5(1840585157)</span><br /><span style="color: #333333;">        transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #333333;">        in use settings ={Tunnel, }</span><br /><span style="color: #333333;">        conn id: 1, flow_id: 1, sibling_flags 80004040, crypto map: CMAP</span><br /><span style="color: #333333;">        sa timing: remaining key lifetime (k/sec): (4253546/3593)</span><br /><span style="color: #333333;">        IV size: 16 bytes</span><br /><span style="color: #333333;">        replay detection support: Y</span><br /><span style="color: #333333;">        Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #333333;">     inbound ah sas:</span><br /><br /><span style="color: #333333;">     inbound pcp sas:</span><br /><span style="color: #333333;"><br />     outbound esp sas:</span><br /><span style="color: #333333;">      spi: 0x34978E4A(882347594)</span><br /><span style="color: #333333;">        transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #333333;">        in use settings ={Tunnel, }</span><br /><span style="color: #333333;">        conn id: 2, flow_id: 2, sibling_flags 80004040, crypto map: CMAP</span><br /><span style="color: #333333;">        sa timing: remaining key lifetime (k/sec): (4253546/3593)</span><br /><span style="color: #333333;">        IV size: 16 bytes</span><br /><span style="color: #333333;">        replay detection support: Y</span><br /><span style="color: #333333;">        Status: ACTIVE(ACTIVE)</span><br /><span style="color: #333333;"><br />     outbound ah sas:</span><br /><span style="color: #333333;"><br />     outbound pcp sas:</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="191664c" class="elementor-element elementor-element-191664c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="61cd9e4" class="elementor-element elementor-element-61cd9e4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="eb77ae5" class="elementor-element elementor-element-eb77ae5 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #333333;">Zobaczmy teraz co widać na interfejsie FastEthernet 0/0 routera R3 w trakcie pingu:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="6198c71" class="elementor-element elementor-element-6198c71 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="b654f80" class="elementor-element elementor-element-b654f80 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c9d0423" class="elementor-element elementor-element-c9d0423 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="252" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec.png 725w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec-300x105.png 300w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="50499e5" class="elementor-element elementor-element-50499e5 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="da64596" class="elementor-element elementor-element-da64596 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="d57bcc9" class="elementor-element elementor-element-d57bcc9 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_3.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="416" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_3.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_3.png 871w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_3-300x173.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_3-768x444.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1af1d90" class="elementor-element elementor-element-1af1d90 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="39e2855" class="elementor-element elementor-element-39e2855 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="0b641f3" class="elementor-element elementor-element-0b641f3 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #333333;">Jak widać na powyższych zrzutach ekranu z programu Wireshark widzimy tylko pakiety protokołu ESP, które zawierają tylko ESP SPI i ESP Sequence. Czyli ruch jest zaszyfrowany zgodnie z założeniami i z konfiguracją.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			</item>
+	</channel>
+</rss>

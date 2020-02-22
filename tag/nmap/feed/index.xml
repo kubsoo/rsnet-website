@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nmap &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/nmap/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Nmap w Pythonie</title>
+		<link>https://kubsoo.github.io/rsnet-website/nmap-w-pythonie/</link>
+		<pubDate>Fri, 29 Sep 2017 21:38:48 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[nmap]]></category>
+		<category><![CDATA[python]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=237</guid>
+		<description><![CDATA[Nmap to potężne narzędzie do skanowania hostów, przydatne miedzy innymi przy wykonywaniu testów penetracyjnych. W poniższym wpisie pokażę jak możemy zautomatyzować pracę z nmapem wykorzystując pythona i bibliotekę python-nmap. Zacznijmy&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;"><a href="https://nmap.org/">Nmap</a> to potężne narzędzie do skanowania hostów, przydatne miedzy innymi przy wykonywaniu testów penetracyjnych. W poniższym wpisie pokażę jak możemy zautomatyzować pracę z nmapem wykorzystując pythona i bibliotekę <a href="https://bitbucket.org/xael/python-nmap">python-nmap</a>.</p>
+<p><span id="more-237"></span></p>
+<p>Zacznijmy od instalacji biblioteki python-nmap. W tym celu wykonujemy polecenie:</p>
+<pre>pip install python-nmap
+
+Collecting python-nmap
+ Downloading python-nmap-0.6.1.tar.gz (41kB)
+ 100% |################################| 51kB 353kB/s
+Installing collected packages: python-nmap
+ Running setup.py install for python-nmap ... done
+Successfully installed python-nmap-0.6.1</pre>
+<p>Teraz możemy zaimportować bibliotekę do naszego skryptu:</p>
+<pre>Python 2.7.14 (v2.7.14:84471935ed, Sep 16 2017, 20:25:58) [MSC v.1500 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import nmap</pre>
+<p>Przykładowe użycie modułu nmap.py wygląda następująco:</p>
+<pre>nm = nmap.PortScanner() # stworzenie obiektu nmap.PortScanner
+nm.scan('127.0.0.1', '22-443') # skanowanie portów od 22 do 443 hosta o adresie IP 127.0.0.1
+nm.command_line() # wyświetlenie komendy użytej do skanowania : nmap -oX - -p 22-443 127.0.0.1
+nm.scaninfo() # wyświetlenie informacji dotyczących skanowania {'tcp': {'services': '22-443', 'method': 'connect'}}
+nm.all_hosts() # wyświetlenie listy wszystkich przeskanowanych hostów
+nm['127.0.0.1'].hostname() # wyświetlenie nazwy hosta dla adresu 127.0.0.1
+nm['127.0.0.1'].state() # wyświetlenie statusu hosta o adresie 127.0.0.1 (up|down|unknown|skipped)
+nm['127.0.0.1'].has_tcp(135) # sprawdzenie czy są jakieś informacje o porcie tcp/135 hosta 127.0.0.1
+nm['127.0.0.1'].all_tcp() # wyświetlenie wszystkich portów TCP (posortowanych)
+nm['127.0.0.1'].all_udp() # wyświetlenie wszystkich portów UDP (posortowanych)
+nm['127.0.0.1']['tcp'][135]['state'] # wyświetlenie stanu portu 135/tcp hosta 127.0.0.1 (open, closed, filtered)</pre>
+<p>Sprawdźmy teraz jak to wygląda w praktyce:</p>
+<pre>Python 2.7.14 (v2.7.14:84471935ed, Sep 16 2017, 20:25:58) [MSC v.1500 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import nmap
+&gt;&gt;&gt; nm = nmap.PortScanner()
+&gt;&gt;&gt; nm.scan('127.0.0.1', '22-443')
+{'nmap': {'scanstats': {'uphosts': '1', 'timestr': 'Fri Sep 29 21:11:16 2017', 'downhosts': '0', 'totalhosts': '1', 'elapsed': '21.87'}, 'scaninfo': {'tcp': {'services': '22-443', 'method': 'syn'}}, 'command_line': 'nmap -oX - -p 22-443 -sV 127.0.0.1'}, 'scan': {'127.0.0.1': {'status': {'state': 'up', 'reason': 'localhost-response'}, 'hostnames': [{'type': '', 'name': ''}], 'vendor': {}, 'addresses': {'ipv4': '127.0.0.1'}, 'tcp': {137: {'product': '', 'state': 'filtered', 'version': '', 'name': 'netbios-ns', 'conf': '3', 'extrainfo': '', 'reason': 'no-response', 'cpe': ''}, 135: {'product': 'Microsoft Windows RPC', 'state': 'open', 'version': '', 'name': 'msrpc', 'conf': '10', 'extrainfo': '', 'reason': 'syn-ack', 'cpe': 'cpe:/o:microsoft:windows'}}}}}
+&gt;&gt;&gt; nm.command_line()
+'nmap -oX - -p 22-443 -sV 127.0.0.1'
+&gt;&gt;&gt; nm.scaninfo()
+{'tcp': {'services': '22-443', 'method': 'syn'}}
+&gt;&gt;&gt; nm.all_hosts()
+['127.0.0.1']
+&gt;&gt;&gt; nm['127.0.0.1'].hostname()
+''
+&gt;&gt;&gt; nm['127.0.0.1'].state()
+'up'
+&gt;&gt;&gt; nm['127.0.0.1'].has_tcp(22)
+False
+&gt;&gt;&gt; nm['127.0.0.1'].all_tcp()
+[135, 137]
+&gt;&gt;&gt; nm['127.0.0.1'].all_udp()
+[]
+&gt;&gt;&gt; nm['127.0.0.1']['tcp'][135]['state']
+'open'
+</pre>
+<p>Wynik skanowania możemy również w łatwy sposób przedstawić w postaci CSV. W tym celu wykonujemy komendę:</p>
+<pre>&gt;&gt;&gt; nm.csv()
+'host;hostname;hostname_type;protocol;port;name;state;product;extrainfo;reason;version;conf;cpe\r\n127.0.0.1;;;tcp;135;msrpc;open;Microsoft Windows RPC;;syn-ack;;10;cpe:/o:microsoft:windows\r\n127.0.0.1;;;tcp;137;netbios-ns;filtered;;;no-response;;3;\r\n'</pre>
+<p style="text-align: justify;">Napiszmy teraz skrypt, który dla każdego przeskanowanego hosta (w moim przypadku był to tylko jeden host 127.0.0.1) wypisze na ekranie IP, hostname (w moim przypadku hostname jest pusty) oraz status hosta (up/down). Dodatkowo dla każdego z zaskanowanych portów (22-443) skrypt wypisze status portu, oraz protokół tcp/udp.</p>
+<pre>&gt;&gt; for host in nm.all_hosts():
+...         print('----------------------------------------------------')
+...         print('Host : %s (%s)' % (host, nm[host].hostname()))
+...         print('State : %s' % nm[host].state())
+...        for proto in nm[host].all_protocols():
+...              print('----------')
+...              print('Protocol : %s' % proto)
+...
+...              lport = nm[host][proto].keys()
+...              lport.sort()
+...              for port in lport:
+...                     print ('port : %s\tstate : %s' % (port, nm[host][proto][port]['state']))</pre>
+<pre>----------------------------------------------------
+Host : 127.0.0.1 ()
+State : up
+----------
+Protocol : tcp
+port : 135 state : open
+port : 137 state : filtered</pre>
+<p>&nbsp;</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>ikev1 &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/ikev1/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>CISCO IPSEC VPN &#8211; konfiguracja</title>
+		<link>https://kubsoo.github.io/rsnet-website/cisco-ipsec-vpn-konfiguracja/</link>
+		<pubDate>Sat, 02 Dec 2017 13:20:57 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[ikev1]]></category>
+		<category><![CDATA[ipsec]]></category>
+		<category><![CDATA[vpn]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=422</guid>
+		<description><![CDATA[Jak skonfigurować tunel IPSEC VPN pomiędzy dwoma routerami CISCO? Tunel IPSEC VPN pomiędzy dwoma routerami CISCO konfigurujemy w następujących krokach: Globalne uruchomienie usługi Konfiguracja ISAKMP Policy Konfiguracja kluczy szyfrujących Konfiguracja&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-422">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="b1b02fb" class="elementor-element elementor-element-b1b02fb elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="28e54cb" class="elementor-element elementor-element-28e54cb elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="efb69eb" class="elementor-element elementor-element-efb69eb elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #333333;">Jak skonfigurować tunel IPSEC VPN pomiędzy dwoma routerami CISCO?</span></p><p style="text-align: justify;"><span style="color: #333333;">Tunel IPSEC VPN pomiędzy dwoma routerami CISCO konfigurujemy w następujących krokach:</span></p><ol><li style="text-align: justify;"><span style="color: #333333;">Globalne uruchomienie usługi</span></li><li style="text-align: justify;"><span style="color: #333333;">Konfiguracja ISAKMP Policy</span></li><li style="text-align: justify;"><span style="color: #333333;">Konfiguracja kluczy szyfrujących</span></li><li style="text-align: justify;"><span style="color: #333333;">Konfiguracja IP transform set</span></li><li style="text-align: justify;"><span style="color: #333333;">Stworzenie ACL wskazującej na ruch, który chcemy szyfrować</span></li><li style="text-align: justify;"><span style="color: #333333;">Stworzenie crypto-mapy i wskazanie IP transform set</span></li><li style="text-align: justify;"><span style="color: #333333;">Podpięcie crypto-mapy do interfejsu podpiętego do internetu.</span></li></ol></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="d1e3db9" class="elementor-element elementor-element-d1e3db9 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="daf9c3c" class="elementor-element elementor-element-daf9c3c elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="51b6f86" class="elementor-element elementor-element-51b6f86 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5>PRZYKŁAD</h5><div style="text-align: justify;"><span style="color: #333333;">Tunel IPSEC VPN zestawimy pomiędzy routerami R1 i R3 z poniższej topologii:</span></div></div>
+				</div>
+				</div>
+				<div data-id="f8aeda3" class="elementor-element elementor-element-f8aeda3 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="478" height="218" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec1.png 478w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec1-300x137.png 300w" sizes="(max-width: 478px) 100vw, 478px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="3fa8a58" class="elementor-element elementor-element-3fa8a58 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="462f9d3" class="elementor-element elementor-element-462f9d3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="50a5876" class="elementor-element elementor-element-50a5876 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">Konfiguracja podstawowa: </span></h5><pre><span style="color: #333333;">hostname R1</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface Loopback0</span><br /><span style="color: #333333;">ip address 1.1.1.1 255.255.255.255</span><br /><span style="color: #333333;">ip nat inside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;">ip address 192.168.12.1 255.255.255.0</span><br /><span style="color: #333333;">ip nat outside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip nat inside source list 100 interface FastEthernet0/0 overload</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip route 0.0.0.0 0.0.0.0 192.168.12.2</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">access-list 100 deny ip host 1.1.1.1 host 3.3.3.3</span><br /><span style="color: #333333;">access-list 100 permit ip host 1.1.1.1 any</span></pre><div><pre><span style="color: #333333;">hostname R3</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface Loopback0</span><br /><span style="color: #333333;">ip address 3.3.3.3 255.255.255.255</span><br /><span style="color: #333333;">ip nat inside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;">ip address 192.168.23.3 255.255.255.0</span><br /><span style="color: #333333;">ip nat outside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip nat inside source list 100 interface FastEthernet0/0 overload</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip route 0.0.0.0 0.0.0.0 192.168.23.2</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">access-list 100 deny ip host 3.3.3.3 host 1.1.1.1</span><br /><span style="color: #333333;">access-list 100 permit ip host 3.3.3.3 any</span></pre></div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="07fb301" class="elementor-element elementor-element-07fb301 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c7196f9" class="elementor-element elementor-element-c7196f9 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5b0766e" class="elementor-element elementor-element-5b0766e elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h4><strong>KONFIGURACJA IPSEC VPN</strong></h4><p> </p><h5><span style="color: #333333;">1. Globalne uruchomienie usługi</span></h5><pre><span style="color: #333333;">R1(config)#crypto isakmp enable</span><br /><br /><span style="color: #333333;">R3(config)#crypto isakmp enable</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="8fffee0" class="elementor-element elementor-element-8fffee0 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="0f71aa4" class="elementor-element elementor-element-0f71aa4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="fdc4270" class="elementor-element elementor-element-fdc4270 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">2. Konfiguracja ISAKMP Policy</span></h5><pre><span style="color: #333333;">R1(config)#crypto isakmp </span><br /><span style="color: #333333;">R1(config)#policy 10</span><br /><span style="color: #333333;">R1(config)#encr 3des</span><br /><span style="color: #333333;">R1(config)#hash md5</span><br /><span style="color: #333333;">R1(config)#authentication </span><br /><span style="color: #333333;">R1(config)#pre-share</span><br /><span style="color: #333333;">R1(config)#group 15</span><br /><br /><span style="color: #333333;">R3(config)#crypto isakmp </span><br /><span style="color: #333333;">R3(config)#policy 10</span><br /><span style="color: #333333;">R3(config)#encr 3des</span><br /><span style="color: #333333;">R3(config)#hash md5</span><br /><span style="color: #333333;">R3(config)#authentication </span><br /><span style="color: #333333;">R3(config)#pre-share</span><br /><span style="color: #333333;">R3(config)#group 15</span></pre><p style="text-align: justify;"><span style="color: #333333;">Na obu routerach ISAKMP policy musi być taka sama  w celu zestwienia fazy 1 ISAKMP.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b785cc4" class="elementor-element elementor-element-b785cc4 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="eb21dfc" class="elementor-element elementor-element-eb21dfc elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="7527744" class="elementor-element elementor-element-7527744 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">3. Konfiguracja kluczy szyfrujących</span></h5><pre><span style="color: #333333;">R1(config)#crypto isakmp key cisco123 address 192.168.23.3</span><br /><br /><span style="color: #333333;">R3(config)#crypto isakmp key cisco123 address 192.168.12.1</span></pre><p style="text-align: justify;"><span style="color: #333333;">W kluczach szyfrujących podajemy adres IP peer&#8217;a, z którym chcemy nawiązać tunel IPSEC VPN.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="47889a1" class="elementor-element elementor-element-47889a1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="68ff672" class="elementor-element elementor-element-68ff672 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="3e76343" class="elementor-element elementor-element-3e76343 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">4. Konfiguracja IP transform set</span></h5><pre><span style="color: #333333;">R1(config)#crypto ipsec transform-set TSET esp-aes esp-sha-hmac</span><br /><span style="color: #333333;">R1(cfg-crypto-trans)#mode tunnel</span><br /><br /><span style="color: #333333;">R3(config)#crypto ipsec transform-set TSET esp-aes esp-sha-hmac</span><br /><span style="color: #333333;">R3(cfg-crypto-trans)#mode tunnel</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b32108d" class="elementor-element elementor-element-b32108d elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="0f6cd58" class="elementor-element elementor-element-0f6cd58 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="23df267" class="elementor-element elementor-element-23df267 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">5. Stworzenie ACL wskazującej na ruch, który chcemy szyfrować</span></h5><pre><span style="color: #333333;">R1(config)#access-list 101 permit ip host 3.3.3.3 host 1.1.1.1</span><br /><br /><span style="color: #333333;">R3(config)#access-list 101 permit ip host 3.3.3.3 host 1.1.1.1</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="cf1966a" class="elementor-element elementor-element-cf1966a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="81b3f44" class="elementor-element elementor-element-81b3f44 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="ddb2665" class="elementor-element elementor-element-ddb2665 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5 style="text-align: justify;"><span style="color: #333333;">6. Stworzenie crypto-mapy i wskazanie IP transform set</span></h5><pre><span style="color: #333333;">R1(config)#crypto map CMAP 10 ipsec-isakmp</span><br /><span style="color: #333333;">% NOTE: This new crypto map will remain disabled until a peer</span><br /><span style="color: #333333;"> and a valid access list have been configured.</span><br /><span style="color: #333333;">R1(config-crypto-map)#set peer 192.168.23.3</span><br /><span style="color: #333333;">R1(config-crypto-map)#set transform-set TSET</span><br /><span style="color: #333333;">R1(config-crypto-map)#match address 101</span><br /><br /><span style="color: #333333;">R3(config)#crypto map CMAP 10 ipsec-isakmp</span><br /><span style="color: #333333;">% NOTE: This new crypto map will remain disabled until a peer</span><br /><span style="color: #333333;"> and a valid access list have been configured.</span><br /><span style="color: #333333;">R3(config-crypto-map)#set peer 192.168.12.1</span><br /><span style="color: #333333;">R3(config-crypto-map)#set transform-set TSET</span><br /><span style="color: #333333;">R3(config-crypto-map)#match address 101</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="0fdc430" class="elementor-element elementor-element-0fdc430 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c98401c" class="elementor-element elementor-element-c98401c elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="6dc4059" class="elementor-element elementor-element-6dc4059 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5 style="text-align: justify;"><span style="color: #333333;">7. Podpięcie crypto-mapy do interfejsu podpiętego do internetu.</span></h5><pre><span style="color: #333333;">R1(config)#int fastEthernet 0/0</span><br /><span style="color: #333333;">R1(config-if)#crypto map CMAP</span><br /><br /><span style="color: #333333;">R3(config)#int fastEthernet 0/0</span><br /><span style="color: #333333;">R3(config-if)#crypto map CMAP</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="abe1600" class="elementor-element elementor-element-abe1600 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="4ce8b5e" class="elementor-element elementor-element-4ce8b5e elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="3932a93" class="elementor-element elementor-element-3932a93 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h4><span style="color: #333333;"><strong>PODSUMOWANIE</strong></span></h4><p><span style="color: #333333;">Cała konfiguracja wygląda następująco:</span></p><p><span style="color: #333333;"><strong>R1</strong></span></p><pre><span style="color: #333333;">R1#show run</span><br />!<br /><span style="color: #333333;">hostname R1</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">crypto isakmp policy 10</span><br /><span style="color: #333333;"> encr 3des</span><br /><span style="color: #333333;"> hash md5</span><br /><span style="color: #333333;"> authentication pre-share</span><br /><span style="color: #333333;"> group 15</span><br /><span style="color: #333333;">crypto isakmp key cisco123 address 192.168.23.3</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">crypto ipsec transform-set TSET esp-aes esp-sha-hmac</span><br /><span style="color: #333333;"> mode tunnel</span><br />!<br /><span style="color: #333333;">crypto map CMAP 10 ipsec-isakmp</span><br /><span style="color: #333333;"> set peer 192.168.23.3</span><br /><span style="color: #333333;"> set transform-set TSET</span><br /><span style="color: #333333;"> match address 101</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface Loopback0</span><br /><span style="color: #333333;"> ip address 1.1.1.1 255.255.255.255</span><br /><span style="color: #333333;"> ip nat inside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;"> ip address 192.168.12.1 255.255.255.0</span><br /><span style="color: #333333;"> ip nat outside</span><br /><span style="color: #333333;"> duplex full</span><br /><span style="color: #333333;"> crypto map CMAP</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip nat inside source list 100 interface FastEthernet0/0 overload</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip route 0.0.0.0 0.0.0.0 192.168.12.2</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">access-list 100 deny ip host 1.1.1.1 host 3.3.3.3</span><br /><span style="color: #333333;">access-list 100 permit ip host 1.1.1.1 any</span><br /><span style="color: #333333;">access-list 101 permit ip host 1.1.1.1 host 3.3.3.3</span><br /><span style="color: #333333;">!</span></pre><p><span style="color: #333333;"><strong>R3</strong></span></p><pre><span style="color: #333333;">R3#show run</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">hostname R3</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">crypto isakmp policy 10</span><br /><span style="color: #333333;"> encr 3des</span><br /><span style="color: #333333;"> hash md5</span><br /><span style="color: #333333;"> authentication pre-share</span><br /><span style="color: #333333;"> group 15</span><br /><span style="color: #333333;">crypto isakmp key cisco123 address 192.168.12.1</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">crypto ipsec transform-set TSET esp-aes esp-sha-hmac</span><br /><span style="color: #333333;"> mode tunnel</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">crypto map CMAP 10 ipsec-isakmp</span><br /><span style="color: #333333;"> set peer 192.168.12.1</span><br /><span style="color: #333333;"> set transform-set TSET</span><br /><span style="color: #333333;"> match address 101</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface Loopback0</span><br /><span style="color: #333333;"> ip address 3.3.3.3 255.255.255.255</span><br /><span style="color: #333333;"> ip nat inside</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet0/0</span><br /><span style="color: #333333;"> ip address 192.168.23.3 255.255.255.0</span><br /><span style="color: #333333;"> ip nat outside</span><br /><span style="color: #333333;"> duplex full</span><br /><span style="color: #333333;"> crypto map CMAP</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">ip nat inside source list 100 interface FastEthernet0/0 overload</span><br />!<br /><span style="color: #333333;">ip route 0.0.0.0 0.0.0.0 192.168.23.2</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">access-list 100 deny ip host 3.3.3.3 host 1.1.1.1</span><br /><span style="color: #333333;">access-list 100 permit ip host 3.3.3.3 any</span><br /><span style="color: #333333;">access-list 101 permit ip host 3.3.3.3 host 1.1.1.1</span><br /><span style="color: #333333;">!</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1069507" class="elementor-element elementor-element-1069507 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="5e2c9b5" class="elementor-element elementor-element-5e2c9b5 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="eeedc85" class="elementor-element elementor-element-eeedc85 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #333333;">Tunel IPSEC VPN zestawi się tylko wtedy kiedy router zobaczy na ruch który pasuje do ACL 101 w crypto-mapie. Spróbujmy więc wydać komendę ping ip 3.3.3.3 source 1.1.1.1 na routerze R1:</span></p><pre><span style="color: #333333;">R1#ping ip 3.3.3.3 source 1.1.1.1</span><br /><span style="color: #333333;">Type escape sequence to abort.</span><br /><span style="color: #333333;">Sending 5, 100-byte ICMP Echos to 3.3.3.3, timeout is 2 seconds:</span><br /><span style="color: #333333;">Packet sent with a source address of 1.1.1.1</span><br /><span style="color: #333333;">.!!!!</span><br /><span style="color: #333333;">Success rate is 80 percent (4/5), round-trip min/avg/max = 28/32/44 ms</span></pre><p style="text-align: justify;"><span style="color: #333333;">Łączność jest, czyli tunel się zestawił. Sprawdźmy to wydając nastepujące komendy:</span></p><ul><li><span style="color: #333333;">show crypto isakmp sa</span></li><li><span style="color: #333333;">show crypto ipsec sa</span></li></ul><pre><span style="color: #333333;">R1#show crypto isakmp sa</span><br /><span style="color: #333333;">IPv4 Crypto ISAKMP SA</span><br /><span style="color: #333333;">dst src state conn-id status</span><br /><strong><span style="color: #333333;">192.168.23.3 192.168.12.1 QM_IDLE 1001 ACTIVE</span></strong></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="375682a" class="elementor-element elementor-element-375682a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="dbcea67" class="elementor-element elementor-element-dbcea67 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5b02e97" class="elementor-element elementor-element-5b02e97 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><pre><span style="color: #333333;">R1#show crypto ipsec sa</span><br /><span style="color: #333333;">interface: FastEthernet0/0</span><br /><span style="color: #333333;">    Crypto map tag: CMAP, local addr 192.168.12.1</span><br /><span style="color: #333333;">   <br />protected vrf: (none)</span><br /><span style="color: #333333;">   local  ident (addr/mask/prot/port): (1.1.1.1/255.255.255.255/0/0)</span><br /><span style="color: #333333;">   remote ident (addr/mask/prot/port): (3.3.3.3/255.255.255.255/0/0)</span><br /><span style="color: #333333;">   current_peer 192.168.23.3 port 500</span><br /><span style="color: #333333;">     PERMIT, flags={origin_is_acl,}</span><br /><span style="color: #333333;">    <strong>#pkts encaps: 3, #pkts encrypt: 3, #pkts digest: 3</strong></span><br /><strong><span style="color: #333333;">    #pkts decaps: 3, #pkts decrypt: 3, #pkts verify: 3</span></strong><br /><span style="color: #333333;">    #pkts compressed: 0, #pkts decompressed: 0</span><br /><span style="color: #333333;">    #pkts not compressed: 0, #pkts compr. failed: 0</span><br /><span style="color: #333333;">    #pkts not decompressed: 0, #pkts decompress failed: 0</span><br /><span style="color: #333333;">    #send errors 0, #recv errors 0</span><br /><span style="color: #333333;"><br />     local crypto endpt.: 192.168.12.1, remote crypto endpt.: 192.168.23.3</span><br /><span style="color: #333333;">     path mtu 1500, ip mtu 1500, ip mtu idb FastEthernet0/0</span><br /><span style="color: #333333;">     current outbound spi: 0x34978E4A(882347594)</span><br /><span style="color: #333333;">     PFS (Y/N): N, DH group: none</span><br /><br /><span style="color: #333333;">     inbound esp sas:</span><br /><span style="color: #333333;">      spi: 0x6DB519C5(1840585157)</span><br /><span style="color: #333333;">        transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #333333;">        in use settings ={Tunnel, }</span><br /><span style="color: #333333;">        conn id: 1, flow_id: 1, sibling_flags 80004040, crypto map: CMAP</span><br /><span style="color: #333333;">        sa timing: remaining key lifetime (k/sec): (4253546/3593)</span><br /><span style="color: #333333;">        IV size: 16 bytes</span><br /><span style="color: #333333;">        replay detection support: Y</span><br /><span style="color: #333333;">        Status: ACTIVE(ACTIVE)</span><br /><br /><span style="color: #333333;">     inbound ah sas:</span><br /><br /><span style="color: #333333;">     inbound pcp sas:</span><br /><span style="color: #333333;"><br />     outbound esp sas:</span><br /><span style="color: #333333;">      spi: 0x34978E4A(882347594)</span><br /><span style="color: #333333;">        transform: esp-aes esp-sha-hmac ,</span><br /><span style="color: #333333;">        in use settings ={Tunnel, }</span><br /><span style="color: #333333;">        conn id: 2, flow_id: 2, sibling_flags 80004040, crypto map: CMAP</span><br /><span style="color: #333333;">        sa timing: remaining key lifetime (k/sec): (4253546/3593)</span><br /><span style="color: #333333;">        IV size: 16 bytes</span><br /><span style="color: #333333;">        replay detection support: Y</span><br /><span style="color: #333333;">        Status: ACTIVE(ACTIVE)</span><br /><span style="color: #333333;"><br />     outbound ah sas:</span><br /><span style="color: #333333;"><br />     outbound pcp sas:</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="191664c" class="elementor-element elementor-element-191664c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="61cd9e4" class="elementor-element elementor-element-61cd9e4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="eb77ae5" class="elementor-element elementor-element-eb77ae5 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #333333;">Zobaczmy teraz co widać na interfejsie FastEthernet 0/0 routera R3 w trakcie pingu:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="6198c71" class="elementor-element elementor-element-6198c71 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="b654f80" class="elementor-element elementor-element-b654f80 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c9d0423" class="elementor-element elementor-element-c9d0423 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="252" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec.png 725w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ipsec-300x105.png 300w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="50499e5" class="elementor-element elementor-element-50499e5 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="da64596" class="elementor-element elementor-element-da64596 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="d57bcc9" class="elementor-element elementor-element-d57bcc9 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_3.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="416" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_3.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_3.png 871w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_3-300x173.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_3-768x444.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1af1d90" class="elementor-element elementor-element-1af1d90 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="39e2855" class="elementor-element elementor-element-39e2855 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="0b641f3" class="elementor-element elementor-element-0b641f3 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #333333;">Jak widać na powyższych zrzutach ekranu z programu Wireshark widzimy tylko pakiety protokołu ESP, które zawierają tylko ESP SPI i ESP Sequence. Czyli ruch jest zaszyfrowany zgodnie z założeniami i z konfiguracją.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			</item>
+	</channel>
+</rss>

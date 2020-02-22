@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>backup &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/backup/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Palo Alto API backup konfiguracji &#8211; Python skrypt</title>
+		<link>https://kubsoo.github.io/rsnet-website/palo-alto-api-backup-konfiguracji-python-skrypt/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/palo-alto-api-backup-konfiguracji-python-skrypt/#respond</comments>
+		<pubDate>Thu, 28 Dec 2017 19:45:32 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[backup]]></category>
+		<category><![CDATA[palo alto]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[skrypt]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=998</guid>
+		<description><![CDATA[Korzystając z API możemy na firewallach Palo Alto wykonywać komendy przez przeglądarkę jednym zapytaniem bez konieczności otwierania interfejsu do zarządzania i klikania po menu.     PRZYKŁAD Do celów demonstracji&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-998">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="b4f5b76" class="elementor-element elementor-element-b4f5b76 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e876d39" class="elementor-element elementor-element-e876d39 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="93d42a5" class="elementor-element elementor-element-93d42a5 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Korzystając z API możemy na firewallach Palo Alto wykonywać komendy przez przeglądarkę jednym zapytaniem bez konieczności otwierania interfejsu do zarządzania i klikania po menu.</span></p><p style="text-align: justify;"><span style="color: #000000;"> </span></p><p> </p><h5><span style="color: #000000;">PRZYKŁAD</span></h5><p style="text-align: justify;"><span style="color: #000000;">Do celów demonstracji możliwości API na Palo Alto posłużyłem się topologią zbudowaną z GNS3 składającą się z 3 firewalli, switcha oraz dwóch maszyn wirtualnych (gns3-webterm &#8211; do dostepu do API przez przeglądarkę, oraz NetworkAutomation &#8211; maszyna z pythonem na której będziemy pisać skrypt).</span></p><p><strong><span style="color: #000000;">TOPOLOGIA</span></strong></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="c4f19c4" class="elementor-element elementor-element-c4f19c4 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="d5954f2" class="elementor-element elementor-element-d5954f2 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="fbbda61" class="elementor-element elementor-element-fbbda61 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/topology_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="605" height="452" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/topology_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/topology_1.png 605w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/01/topology_1-300x224.png 300w" sizes="(max-width: 605px) 100vw, 605px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b322071" class="elementor-element elementor-element-b322071 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e50c5f5" class="elementor-element elementor-element-e50c5f5 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="a0120da" class="elementor-element elementor-element-a0120da elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">API</span></h5><p style="text-align: justify;"><span style="color: #000000;">W celu dostępu do API musimy wygenerować klucz API, który będzie wykorzystywany do zapytań do API. Klucz jest generowany z użytkownika i hasła, więc jeśli posiadamy kilka firewalli i na każdym z nich mamy tego samego usera i hasło to klucz będzie taki sam dla każdego urządzenia.</span></p><p><span style="color: #000000;">Do generacji klucza służy następujące zapytanie:</span></p><pre><strong><span style="color: #000000;">https://firewall_ip/api/?type=keygen&amp;user=username&amp;password=password</span></strong></pre><p style="text-align: justify;"><span style="color: #000000;">Sprawdźmy jak to wygląda na żywo. W tym celu wchodzimy do gns3-webterm i wpisujemy w przeglądarce podany URL zamieniając firewall_ip na jeden z adresów IP firewalli oraz wpisując poprawny login i hasło:</span></p><pre><strong><span style="color: #000000;">https://192.168.0.201/api/?type=keygen&amp;user=admin&amp;password=admin</span></strong></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="ef99376" class="elementor-element elementor-element-ef99376 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="46d5900" class="elementor-element elementor-element-46d5900 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="0334c79" class="elementor-element elementor-element-0334c79 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/key.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="272" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/key.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/key.png 925w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/key-300x113.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/key-768x290.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="8423225" class="elementor-element elementor-element-8423225 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="d7567a9" class="elementor-element elementor-element-d7567a9 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="1c80ac7" class="elementor-element elementor-element-1c80ac7 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Jak widać z powyższego screena dostaliśmy w odpowiedzi plik XML, który zawiera klucz postaci:</span></p><pre><strong><em><span style="color: #000000;">LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09</span></em></strong></pre><p style="text-align: justify;"><span style="color: #000000;">To samo możemy uzyskać na maszynie NetworkAutomation korzystając z programu curl i komendy:</span></p><pre><strong><span style="color: #000000;">root@NetworkAutomation-1:~# curl -X GET 'https://192.168.0.201/api/?type=keygen&amp;user=admin&amp;password=admin' --insecure</span></strong><br /><br /><span style="color: #000000;">&lt;response status = 'success'&gt;&lt;result&gt;&lt;key&gt;<strong>LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09</strong>&lt;/key&gt;&lt;/result&gt;&lt;/response&gt;</span></pre><p style="text-align: justify;"><span style="color: #000000;">Po otrzymaniu klucza możemy wykonać jakąś komendę przez API. Listę komend i składnię zapytań możemy znaleźć wpisując w przeglądarce https://firewall_ip/api</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="da390d6" class="elementor-element elementor-element-da390d6 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="6b697e5" class="elementor-element elementor-element-6b697e5 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="bd09749" class="elementor-element elementor-element-bd09749 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title="">
+							<img width="420" height="406" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api.png 420w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api-300x290.png 300w" sizes="(max-width: 420px) 100vw, 420px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="477fe4a" class="elementor-element elementor-element-477fe4a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="26f5cf7" class="elementor-element elementor-element-26f5cf7 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="74d6cd6" class="elementor-element elementor-element-74d6cd6 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">Do eksportu konfiguracji służy zapytanie postaci:</span></p><pre><span style="color: #000000;"><strong>https://firewall_ip/api/?type=export&amp;category=configuration&amp;key=&lt;key&gt;</strong></span></pre><p style="text-align: justify;"><span style="color: #000000;">gdzie &lt;key&gt; to klucz otrzymany z wcześniejszej komendy. Całe zapytanie wygląda więc następująco:</span></p><pre><strong><span style="color: #000000;">https://192.168.0.201/api/?type=export&amp;category=configuration&amp;key=LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09</span></strong></pre><div><span style="color: #000000;">W odpowiedzi dostaniemy plik xml z konfiguracją:</span></div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="bddc825" class="elementor-element elementor-element-bddc825 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="22b08fb" class="elementor-element elementor-element-22b08fb elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="71a647a" class="elementor-element elementor-element-71a647a elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title="">
+							<img width="592" height="564" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api_1.png 592w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/api_1-300x286.png 300w" sizes="(max-width: 592px) 100vw, 592px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1266fa3" class="elementor-element elementor-element-1266fa3 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="99e7162" class="elementor-element elementor-element-99e7162 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="d49c11c" class="elementor-element elementor-element-d49c11c elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Spróbujmy teraz to samo uzyskać korzystając z curl&#8217;a:</span></p><pre><strong><span style="color: #000000;">root@NetworkAutomation-1:~# curl -X GET 'https://192.168.0.201/api/?type=export&amp;category=configuration&amp;key=LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09' --insecure</span></strong></pre><pre><span style="color: #000000;">&lt;config version="7.1.0" urldb="paloaltonetworks"&gt;&lt;mgt-config&gt;&lt;users&gt;&lt;entry name="admin"&gt;&lt;phash&gt;fnRL/G5lXVMug&lt;/phash&gt;&lt;permissions&gt;&lt;role-based&gt;&lt;superuser&gt;yes&lt;/superuser&gt;&lt;/role-based&gt;&lt;/permissions&gt;&lt;/entry&gt;&lt;/users&gt;&lt;/mgt-config&gt;&lt;shared&gt;&lt;application/&gt;&lt;application-group/&gt;&lt;service/&gt;&lt;service-group/&gt;&lt;botnet&gt;&lt;configuration&gt;&lt;http&gt;&lt;dynamic-dns&gt;&lt;enabled&gt;yes&lt;/enabled&gt;&lt;threshold&gt;5&lt;/threshold&gt;&lt;/dynamic-dns&gt;&lt;malware-sites&gt;&lt;enabled&gt;yes&lt;/enabled&gt;&lt;threshold&gt;5&lt;/threshold&gt;&lt;/malware-sites&gt;&lt;recent-domains&gt;&lt;enabled&gt;yes&lt;/enabled&gt;&lt;threshold&gt;5&lt;/threshold&gt;&lt;/recent-domains&gt;&lt;ip-domains&gt;&lt;enabled&gt;yes&lt;/enabled&gt;&lt;threshold&gt;10&lt;/threshold&gt;&lt;/ip-domains&gt;&lt;executables-from-unknown-sites&gt;&lt;enabled&gt;yes&lt;/enabled&gt;&lt;threshold&gt;5&lt;/threshold&gt;&lt;/executables-from-unknown-sites&gt;&lt;/http&gt;&lt;other-applications&gt;&lt;irc&gt;yes&lt;/irc&gt;&lt;/other-applications&gt;&lt;unknown-applications&gt;&lt;unknown-tcp&gt;&lt;destinations-per-hour&gt;10&lt;/destinations-per-hour&gt;&lt;sessions-per-hour&gt;10&lt;/sessions-per-hour&gt;&lt;session-length&gt;&lt;maximum-bytes&gt;100&lt;/maximum-bytes&gt;&lt;minimum-bytes&gt;50&lt;/minimum-bytes&gt;&lt;/session-length&gt;&lt;/unknown-tcp&gt;&lt;unknown-udp&gt;&lt;destinations-per-hour&gt;10&lt;/destinations-per-hour&gt;&lt;sessions-per-hour&gt;10&lt;/sessions-per-hour&gt;&lt;session-length&gt;&lt;maximum-bytes&gt;100&lt;/maximum-bytes&gt;&lt;minimum-bytes&gt;50&lt;/minimum-bytes&gt;&lt;/session-length&gt;&lt;/unknown-udp&gt;&lt;/unknown-applications&gt;&lt;/configuration&gt; ........</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="5fc70e6" class="elementor-element elementor-element-5fc70e6 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="d958656" class="elementor-element elementor-element-d958656 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="aa607b2" class="elementor-element elementor-element-aa607b2 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Widzimy, że otrzymaliśmy ten sam plik xml. Teraz możemy spróbować napisać skrypt, który wykona tą operację za nas i zapisze taki plik na dysk, dla każdego z firewalli.</span></p><h5> </h5><h5><span style="color: #000000;">SKRYPT</span></h5></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="fed1942" class="elementor-element elementor-element-fed1942 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="296c5ed" class="elementor-element elementor-element-296c5ed elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="6e95d2c" class="elementor-element elementor-element-6e95d2c elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Skrypt jest bardzo prosty i wygląda nastepująco:</span></p><p><strong><span style="color: #000000;">backup_config.py</span></strong></p><pre><span style="color: #000000;">#!/usr/bin/python</span><br /><br /><span style="color: #000000;">import requests, datetime</span><br /><span style="color: #000000;">from lxml import etree</span><br /><br /><span style="color: #000000;">firewalls_ip = [</span><br /><span style="color: #000000;"> '192.168.0.201',</span><br /><span style="color: #000000;"> '192.168.0.202',</span><br /><span style="color: #000000;"> '192.168.0.203'</span><br /><span style="color: #000000;">]</span><br /><br /><span style="color: #000000;">date_1 = datetime.datetime.now().strftime("%Y-%m-%d_%H:%M")</span><br /><span style="color: #000000;">key = 'LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09'</span><br /><br /><span style="color: #000000;">params = (</span><br /><span style="color: #000000;"> ('type', 'export'),</span><br /><span style="color: #000000;"> ('category', 'configuration'),</span><br /><span style="color: #000000;"> ('key', key),</span><br /><span style="color: #000000;">)</span><br /><br /><span style="color: #000000;">for hostname in firewalls_ip:</span><br /><span style="color: #000000;"> print "Saving config for : %s" %hostname</span><br /><span style="color: #000000;"> url = "https://"+hostname+"/api/"</span><br /><span style="color: #000000;"> response = requests.get(url, params=params, verify=False)</span><br /><span style="color: #000000;"> xml_str = response.text</span><br /><span style="color: #000000;"> root = etree.fromstring(xml_str)</span><br /><br /><span style="color: #000000;"> filename = "running-config-"+hostname+"-"+date_1+".xml"</span><br /><span style="color: #000000;"> file = open(filename,"w")</span><br /><span style="color: #000000;"> file.write("""<!--?xml version="1.0"?-->\n""")</span><br /><span style="color: #000000;"> file.write(etree.tostring(root, pretty_print=True))</span><br /><span style="color: #000000;"> file.close()</span></pre><p style="text-align: justify;"><span style="color: #000000;">Sprawdźmy jego działanie w praktyce:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="e7c6fc3" class="elementor-element elementor-element-e7c6fc3 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="1beea1b" class="elementor-element elementor-element-1beea1b elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="b0baaf8" class="elementor-element elementor-element-b0baaf8 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><pre><strong><span style="color: #000000;">root@NetworkAutomation-1:~# ./backup_config.py</span></strong><br /><span style="color: #000000;">Saving config for : 192.168.0.201</span><br /><span style="color: #000000;">/usr/local/lib/python2.7/dist-packages/urllib3/connectionpool.py:858: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings</span><br /><span style="color: #000000;"> InsecureRequestWarning)</span><br /><span style="color: #000000;">Saving config for : 192.168.0.202</span><br /><span style="color: #000000;">/usr/local/lib/python2.7/dist-packages/urllib3/connectionpool.py:858: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings</span><br /><span style="color: #000000;"> InsecureRequestWarning)</span><br /><span style="color: #000000;">Saving config for : 192.168.0.203</span><br /><span style="color: #000000;">/usr/local/lib/python2.7/dist-packages/urllib3/connectionpool.py:858: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings</span><br /><span style="color: #000000;"> InsecureRequestWarning)</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="e5b9742" class="elementor-element elementor-element-e5b9742 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="d779413" class="elementor-element elementor-element-d779413 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c630b88" class="elementor-element elementor-element-c630b88 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Skrypt wykonał się z ostrzeżeniami, ale możemy je zignorować. Pojawiły się one, ponieważ wszystkie urządzenia posiadają domyślne certyfikaty, które nie są zaufane.</span></p><p style="text-align: justify;"><span style="color: #000000;">Sprawdźmy teraz jak wygląda katalog w którym jest skrypt:</span></p><pre><span style="color: #000000;">-rwxr-xr-x 1 root root 809 Dec 28 19:36 <strong>backup_config.py</strong></span><br /><span style="color: #000000;">-rw-r--r-- 1 root root 9161 Dec 28 19:36 running-config-192.168.0.201-2017-12-28_19:36.xml</span><br /><span style="color: #000000;">-rw-r--r-- 1 root root 9161 Dec 28 19:36 running-config-192.168.0.202-2018-12-28_19:36.xml</span><br /><span style="color: #000000;">-rw-r--r-- 1 root root 9161 Dec 28 19:36 running-config-192.168.0.203-2018-12-28_19:36.xml</span></pre><p style="text-align: justify;"><span style="color: #000000;">Widać, że stworzone zostały trzy pliki zgodnie z oczekiwaniami dla każdego z firewalli. Otwórzmy teraz jeden z nich i zobaczmy jak wygląda:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="de8fae7" class="elementor-element elementor-element-de8fae7 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="963807b" class="elementor-element elementor-element-963807b elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="110b5a6" class="elementor-element elementor-element-110b5a6 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><pre><strong><span style="color: #000000;">root@NetworkAutomation-1:~# cat running-config-192.168.0.201-2017-12-28_19:36.xml</span></strong><br /><br /><span style="color: #000000;">&lt;?xml version="1.0"?&gt;</span><br /><span style="color: #000000;">&lt;config version="7.1.0" urldb="paloaltonetworks"&gt;</span><br /><span style="color: #000000;">  &lt;mgt-config&gt;</span><br /><span style="color: #000000;">    &lt;users&gt;</span><br /><span style="color: #000000;">      &lt;entry name="admin"&gt;</span><br /><span style="color: #000000;">         &lt;phash&gt;fnRL/G5lXVMug&lt;/phash&gt;</span><br /><span style="color: #000000;">         &lt;permissions&gt;</span><br /><span style="color: #000000;">           &lt;role-based&gt;</span><br /><span style="color: #000000;">             &lt;superuser&gt;yes&lt;/superuser&gt;</span><br /><span style="color: #000000;">           &lt;/role-based&gt;</span><br /><span style="color: #000000;">         &lt;/permissions&gt;</span><br /><span style="color: #000000;">      &lt;/entry&gt;</span><br /><span style="color: #000000;">    &lt;/users&gt;</span><br /><span style="color: #000000;">  &lt;/mgt-config&gt;</span><br /><span style="color: #000000;">  &lt;shared&gt;</span><br /><span style="color: #000000;">    &lt;application/&gt;</span><br /><span style="color: #000000;">    &lt;application-group/&gt;</span><br /><span style="color: #000000;">    &lt;service/&gt;</span><br /><span style="color: #000000;">    &lt;service-group/&gt;</span><br /><span style="color: #000000;">    &lt;botnet&gt;</span><br /><span style="color: #000000;">       &lt;configuration&gt;</span><br /><span style="color: #000000;">         &lt;http&gt;</span><br /><span style="color: #000000;">           &lt;dynamic-dns&gt;</span><br /><span style="color: #000000;">             &lt;enabled&gt;yes&lt;/enabled&gt;</span><br /><span style="color: #000000;">             &lt;threshold&gt;5&lt;/threshold&gt;</span><br /><span style="color: #000000;">           &lt;/dynamic-dns&gt;<br />     ...</span></pre><p> </p><h5><span style="color: #000000;">PODSUMOWANIE</span></h5></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="f6d1c33" class="elementor-element elementor-element-f6d1c33 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="a3ba6ef" class="elementor-element elementor-element-a3ba6ef elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="61cf95e" class="elementor-element elementor-element-61cf95e elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Jak widać API na urządzeniach Palo Alto umożliwia w łatwy sposób eksportować konfigurację, dzięki czemu w przypadku awarii urządzenia mamy kopię konfiguracji. Jest to bardzo przydatne zwłaszcza w sytuacji gdy mamy wiele firewalli do administracji. W kolejnych wpisach pokaże więcej możliwości wykorzystania API na urządzeniach Palo Alto.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/palo-alto-api-backup-konfiguracji-python-skrypt/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

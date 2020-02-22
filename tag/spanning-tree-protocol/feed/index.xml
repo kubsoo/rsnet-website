@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>spanning tree protocol &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/spanning-tree-protocol/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Spanning Tree Protocol &#8211; podstawy</title>
+		<link>https://kubsoo.github.io/rsnet-website/bgp-wyrazenia-regularne-2/</link>
+		<pubDate>Wed, 15 Aug 2018 22:13:46 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[podstawy]]></category>
+		<category><![CDATA[spanning tree protocol]]></category>
+		<category><![CDATA[stp]]></category>
+		<category><![CDATA[switching]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=1114</guid>
+		<description><![CDATA[Protokół drzewa rozpinającego (STP) został przedstawiony jako mechanizm przeciwdziałania pętlą w warstwie drugiej modelu ISO/OSI. STP używa mechanizmu, który polega na wyłączaniu redundantnych linków w celu uniknięcia pętli w sieci&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;"><span style="color: #000000;">Protokół drzewa rozpinającego (STP) został przedstawiony jako mechanizm przeciwdziałania pętlą w warstwie drugiej modelu ISO/OSI. STP używa mechanizmu, który polega na wyłączaniu redundantnych linków w celu uniknięcia pętli w sieci LAN. Gdyby nie STP pakiety rozgłoszeniowe (Broadcast) krążyły by w sieci w nieskończoność.</span></p>
+<p><span style="color: #000000;">Załóżmy, że mamy poniższą topologię sieci przedstawioną na rysunku poniżej.</span></p>
+<p>&nbsp;</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_1.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-1115 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_1.png" alt="" width="580" height="440" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_1.png 580w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_1-300x228.png 300w" sizes="(max-width: 580px) 100vw, 580px" /></a></p>
+<p style="text-align: justify;"><span style="color: #000000;">PC-1 chcę się skomunikować z PC-2, załóżmy że na PC-1 wydamy komendę ping 192.168.0.2. Host PC-1 nie zna adresu MAC hosta PC-2, więc musi wysłać zapytanie</span> <a href="https://pl.wikipedia.org/wiki/Address_Resolution_Protocol" title="">ARP</a> <span style="color: #000000;">na adres rozgłoszeniowy. Ramka z tym zapytaniem trafia najpierw do switcha SW3, który przesyła ją do wszystkich swoich interfejsów (Gi0/0, Gi0/1), z wyjątkiem interfejsu z którego ta ramka przyszła (Gi0/2). Następnie ramka dociera do SW1 oraz do SW2. Oba te switche również przesyłają tą ramkę w taki sam sposób jak zrobił to SW3, czyli SW1 przesyła ramkę przez Gi0/1 w kierunku SW2, oraz przez Gi0/2 do PC-2, natomiast SW2 przesyła ramkę przez Gi0/0 w kierunku SW1. Host PC-2 otrzymał zapytanie ARP i może na nie odpowiedzieć, jednak ramka z zapytaniem dalej krąży pomiędzy SW1, SW2 i SW3 i będzie tak krążyć w nieskończoność. Jedynym sposobem na przerwanie tej pętli jest wyłączenie jednego z interfejsów pomiędzy switchami, w taki sposób żeby istniała tylko jedna ścieżka pomiędzy PC-1 a PC-2 i do tego właśnie celu służy protokół drzewa rozpinającego (Spanning Tree Protocol).</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Domyślnie przełączniki Cisco mają uruchomiony protokół STP, natomiast dla celów zobrazowania co się stanie jak w sieci LAN powstanie pętla i ramki będą krążyć w nieskończoność wyłączymy STP na switchach w topologii przedstawionej powyżej.  Sprawdźmy co się stanie z przełącznikami jak wyłaczymy STP i wykonamy ping z PC-1 na PC-2.</span></p>
+<p><span style="color: #000000;">Do wyłączenia STP służy komenda:</span></p>
+<pre><span style="color: #000000;">SW(config)# no spanning-tree vlan 1</span></pre>
+<p style="text-align: justify;"><span style="color: #000000;">Wykonajmy ją na wszystkich trzech switchach:</span></p>
+<pre><span style="color: #000000;">SW1(config)# no spanning-tree vlan 1
+SW2(config)# no spanning-tree vlan 1
+SW3(config)# no spanning-tree vlan 1</span></pre>
+<p style="text-align: justify;"><span style="color: #000000;">Teraz wykonajmy ping z PC-1 i PC-2 i obserwujmy co się stanie. Switche SW1 i SW2 przestały odpowiadać na komendy, utylizacja procesora jest na bardzo wysokim poziomie, dlatego nie odpowiada konsola, dodatkowo jak uruchomimy wiresharka na jednym z interfejsów pomiędzy switchami to zobaczymy, że cały czas krążą w sieci pakiety broadcast:</span></p>
+<p><span style="color: #000000;"><a style="color: #000000;" href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_2.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-1118 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_2.png" alt="" width="974" height="438" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_2.png 974w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_2-300x135.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_2-768x345.png 768w" sizes="(max-width: 974px) 100vw, 974px" /></a></span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Dodatkowo ping pomiędzy PC-1 a PC-2 nie działa, dostajemy timeout i jest to spowodowane pętlą w sieci. Wyłączmy teraz jeden z interfejsów switcha SW3 (Gi0/1) i zobaczmy jak będzie wyglądała sytuacja. Od razu po wyłączeniu interfejsu Gi0/1 możemy zaobserwować, że konsole na switchach zaczęły odpowiadać, oraz ping z PC-1 na PC-2 działa.</span></p>
+<pre><span style="color: #000000;">VPCS&gt; ping 192.168.0.2
+84 bytes from 192.168.0.2 icmp_seq=1 ttl=64 time=9.095 ms
+84 bytes from 192.168.0.2 icmp_seq=2 ttl=64 time=15.457 ms
+84 bytes from 192.168.0.2 icmp_seq=3 ttl=64 time=27.437 ms
+84 bytes from 192.168.0.2 icmp_seq=4 ttl=64 time=12.474 ms
+84 bytes from 192.168.0.2 icmp_seq=5 ttl=64 time=11.474 ms</span></pre>
+<p>&nbsp;</p>
+<p><span style="color: #000000;"><strong>Jak działa STP ?</strong></span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Włączmy teraz spowrotem na switchach spanning-tree protocol oraz interfejs który wyłączyliśmy.  W celu weryfikacji czy STP jest uruchomione możemy posłużyć się następującą komendą:</span></p>
+<pre><span style="color: #000000;">SW1#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID    Priority 32769
+           Address 00ca.0d3f.0c00
+           Cost 4
+           Port 1 (GigabitEthernet0/0)
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID  Priority 32769 (priority 32768 sys-id-ext 1)
+           Address 00ca.0dc1.2f00
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+           Aging Time 300 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0     Root FWD 4    128.1    P2p
+Gi0/1     Altn BLK 4    128.2    P2p</span></pre>
+<pre><span style="color: #000000;">SW2#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID    Priority 32769
+           Address 00ca.0d3f.0c00
+           Cost 4
+           Port 2 (GigabitEthernet0/1)
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID  Priority 32769 (priority 32768 sys-id-ext 1)
+           Address 00ca.0d8e.9c00
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+           Aging Time 300 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0     Desg FWD 4    128.1    P2p
+Gi0/1     Root FWD 4    128.2    P2p
+Gi0/2     Desg FWD 4    128.3    P2p</span></pre>
+<pre><span style="color: #000000;">SW3#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID    Priority 32769
+           Address 00ca.0d3f.0c00
+           This bridge is the root
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID  Priority 32769 (priority 32768 sys-id-ext 1)
+           Address 00ca.0d3f.0c00
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+           Aging Time 300 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0     Desg FWD 4    128.1    P2p
+Gi0/1     Desg FWD 4    128.2    P2p
+Gi0/2     Desg FWD 4    128.3    P2p</span></pre>
+<p style="text-align: justify;"><span style="color: #000000;">Protokół STP działa w oparciu o ramki BPDU (bridge protocol data unit). Switche wymieniają się tymi ramkami i na ich podstawie ustalają które nadmiarowe połączenia zablokować. Ramka BPDU wygląda następująco:</span></p>
+<p><span style="color: #000000;"><a style="color: #000000;" href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_3.png" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-1124 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_3.png" alt="" width="542" height="470" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_3.png 542w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_3-300x260.png 300w" sizes="(max-width: 542px) 100vw, 542px" /></a></span></p>
+<p><span style="color: #000000;">Najpierw na podstawie ramek BPDU wybierany jest korzeń drzewa (root bridge). Korzeń drzewa zostaje wybrany na podstawie Bridge Identifier, które składa się następujących pól:</span></p>
+<p style="padding-left: 30px;"><span style="color: #000000;">Bridge Priority &#8211; priorytet przełacznika</span></p>
+<p style="padding-left: 30px;"><span style="color: #000000;">Bridge System ID Extension &#8211; vlan dla którego działa STP</span></p>
+<p style="padding-left: 30px;"><span style="color: #000000;">Bridge System ID &#8211; MAC adres przełącznika</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Root Bridge zostaje switch który posiada najmniejszy priorytet, w przypadku gdy priorytety są takie same to korzeniem zostaje przełącznik o najniższym adresie MAC. W naszym przykładzie Root Bridge został wybrany switch SW3, ponieważ posiada najniższy MAC adres (priorytety na wszystkich switchach są takie same)</span></p>
+<pre><span style="color: #000000;">SW1 Bridge ID 
+Priority <strong>32769</strong> (priority 32768 sys-id-ext 1) 
+Address <strong>00ca.0dc1.2f00</strong></span></pre>
+<pre><span style="color: #000000;">SW2 Bridge ID 
+Priority <strong>32769</strong> (priority 32768 sys-id-ext 1)
+Address <strong>00ca.0d8e.9c00</strong>
+
+SW3 Bridge ID
+Priority <strong>32769</strong> (priority 32768 sys-id-ext 1)
+Address <strong>00ca.0d3f.0c00</strong></span></pre>
+<p><span style="color: #000000;">Zweryfikujmy to wydając komendę show spanning-tree na SW3:</span></p>
+<pre><span style="color: #000000;">SW3#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID Priority 32769
+        Address 00ca.0d3f.0c00
+<strong>        This bridge is the root</strong>
+        Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID Priority 32769 (priority 32768 sys-id-ext 1)
+          Address 00ca.0d3f.0c00
+          Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+          Aging Time 300 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0     Desg FWD 4    128.1    P2p
+Gi0/1     Desg FWD 4    128.2    P2p
+Gi0/2     Desg FWD 4    128.3    P2p</span></pre>
+<p>&nbsp;</p>
+<p style="text-align: justify;"><span style="color: #000000;">Następny krok po wybraniu root bridge to ustawienie portów przełączników w odpowiedniej roli. Role portów w STP są trzy: Designated, Root, Alternate. Porty Designated i Root przesyłają ruch, natomiast porty Alternate są zablokowane tak aby nie powstała pętla. Porty Root są to porty które prowadzą do Root Bridge&#8217;a, natomiast porty Designated to porty które prowadzą do innych przełączników. Wszystkie porty root bridge są portami Designated:</span></p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_4-1.png" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-1132 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_4-1.png" alt="" width="334" height="261" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_4-1.png 334w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_4-1-300x234.png 300w" sizes="(max-width: 334px) 100vw, 334px" /></a></p>
+<p>&nbsp;</p>
+<p style="text-align: justify;"><span style="color: #000000;">Następnie pozostałe przełączniki wybierają porty Root i Designated, które wybierane są zgodnie z poniższym algorytmem:</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">1. Najniższy root bridge ID</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">2. Najniższy koszt ścieżki do root bridge</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">3. Najniższy bridge ID</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">4. Najniższy port ID (nadawcy). </span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Port ID składa się z priorytetu i numeru interfejsu. W wyniku polecenia show spanning-tree jest to pole Prio.Nbr. </span></p>
+<p>&nbsp;</p>
+<p style="text-align: justify;"><span style="color: #000000;">Pierwszy punkt możemy ominąć, ponieważ ma on zastosowanie tylko dla portów Root Bridge&#8217;a. Kolejny punkt to najniższy koszt ścieżki do root bridge. Domyślnie koszty portów wyglądają następująco:</span></p>
+<table style="border-collapse: collapse; width: 52.0086%; height: 120px;" border="1">
+<tbody>
+<tr style="height: 24px;">
+<td style="width: 38.9212%; height: 24px;"><span style="color: #000000;"><strong>Pasmo</strong></span></td>
+<td style="width: 24.3023%; height: 24px;"><span style="color: #000000;"><strong>Koszt</strong></span></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 38.9212%; height: 24px;"><span style="color: #000000;">10 Mbps</span></td>
+<td style="width: 24.3023%; height: 24px;"><span style="color: #000000;">100</span></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 38.9212%; height: 24px;"><span style="color: #000000;">100 Mbps</span></td>
+<td style="width: 24.3023%; height: 24px;"><span style="color: #000000;">19</span></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 38.9212%; height: 24px;"><span style="color: #000000;">1-Gigabit Ethernet</span></td>
+<td style="width: 24.3023%; height: 24px;"><span style="color: #000000;">4</span></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 38.9212%; height: 24px;"><span style="color: #000000;">10-Gigabit Ethernet</span></td>
+<td style="width: 24.3023%; height: 24px;"><span style="color: #000000;">2</span></td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: justify;"><span style="color: #000000;">W naszej topologii mamy interfejsy Gigabitowe więc koszty poszczególnych linków wynoszą 4:</span></p>
+<p><span style="color: #000000;"><a style="color: #000000;" href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_6.png" data-rel="lightbox-image-4" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-1138 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_6.png" alt="" width="334" height="261" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_6.png 334w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_6-300x234.png 300w" sizes="(max-width: 334px) 100vw, 334px" /></a></span></p>
+<p><span style="color: #000000;">Dla SW1 koszt ścieżki do Root Bridge przez Gi0/0 wynosi 4, natomiast przez Gi0/1 wynosi 4+4 czyli 8. W związku z tym Gi0/0 zostanie Root Port. </span></p>
+<p><span style="color: #000000;">Dla SW2 koszt ścieżki do Root Bridge przez Gi0/0 wynosi 4 +4 czyli 8, natomiast przez Gi0/1 wynosi 4. W związku z tym Gi0/1 zostanie Root Port.</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #000000;"><a style="color: #000000;" href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_7.png" data-rel="lightbox-image-5" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-1139 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_7.png" alt="" width="334" height="261" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_7.png 334w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_7-300x234.png 300w" sizes="(max-width: 334px) 100vw, 334px" /></a></span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Ostatni krok to wybór portu Designated i portu Alternate. W obu przypadkach zarówno port Gi0/1 na SW1 oraz Gi0/0 na SW2 mają ten sam koszt ścieżki do Root Bridge, dlatego musimy wziąć następny punkt algorytmu wyboru, czyli punkt 3. Najniższy bridge ID. Dla przypomnienia Bridge ID SW1 = 32769 + 00ca.0d<strong>c</strong>1.2f00, a Bridge ID SW2 = 32769 + 00ca.0d<strong>8</strong>e.9c00. Priorytet w obu przypadkach jest taki sam, czyli niższy Bridge ID jest ustalany a podstawie niższego adresu MAC, w tym przypadku SW2 ma niższy Bridge ID, czyli port Gi0/0 na SW2 zostanie portem Designated, a port Gi0/1 na switchu SW1 zostanie zablokowany, czyli będzie pełnił rolę Alternate.</span></p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_5.png" data-rel="lightbox-image-6" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-1141 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_5.png" alt="" width="334" height="261" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_5.png 334w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_5-300x234.png 300w" sizes="(max-width: 334px) 100vw, 334px" /></a><span style="color: #000000;">Zweryfikujmy stan portów korzystając z komendy show spanning-tree.</span></p>
+<pre><span style="color: #000000;">SW1#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID    Priority 32769
+           Address 00ca.0d3f.0c00
+           Cost 4
+           Port 1 (GigabitEthernet0/0)
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID  Priority 32769 (priority 32768 sys-id-ext 1)
+           Address 00ca.0dc1.2f00
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+           Aging Time 300 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+<strong>Gi0/0     Root</strong> FWD 4    128.1    P2p
+<strong>Gi0/1     Altn</strong> BLK 4    128.2    P2p</span></pre>
+<pre><span style="color: #000000;">SW2#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID    Priority 32769
+           Address 00ca.0d3f.0c00
+           Cost 4
+           Port 2 (GigabitEthernet0/1)
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID  Priority 32769 (priority 32768 sys-id-ext 1)
+           Address 00ca.0d8e.9c00
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+           Aging Time 300 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+<strong>Gi0/0     Desg</strong> FWD 4    128.1    P2p
+<strong>Gi0/1     Root</strong> FWD 4    128.2    P2p
+</span></pre>
+<pre><span style="color: #000000;">SW3#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID    Priority 32769
+           Address 00ca.0d3f.0c00
+           This bridge is the root
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID  Priority 32769 (priority 32768 sys-id-ext 1)
+           Address 00ca.0d3f.0c00
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+           Aging Time 300 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+<strong>Gi0/0     Desg</strong> FWD 4    128.1    P2p
+<strong>Gi0/1     Desg</strong> FWD 4    128.2    P2p
+
+</span></pre>
+<p style="text-align: justify;"><span style="color: #000000;">Każdy z portów w STP może być w jednym z poniższych stanów:</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Disabled &#8211; port jest wyłączony administracyjnie (shutdown) i nie bierze udziału w procesie STP </span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Blocking &#8211; jest to początkowy stan portu, który trwa przez 20 sekund, po tym czasie port przechodzi do stanu Listening. Jeśli port nie jest portem Designated ani Root, czyli jest portem Alternate to również będzie w stanie blocking i w nim pozostanie dopóki nie zostanie zmieniona topologia sieci. Port w stanie blocking nie uczestniczy w procesie przesyłania ramek.</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Listening &#8211; tylko designated i root port może przejść w stan nasłuchiwania. W tym stanie switch próbuje dowiedzieć się jak wygląda topologia. Port w stanie listening przesyła tylko ramki BPDU, ramki z danymi nie są przesyłane, po 15 sekundach w stanie listening port przechodzi w stan learning. </span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Learning &#8211; w tym stanie port uczy się adresów MAC poprzez analizowanie adresów źródłowych ramek ethernetowych otrzymanych na porcie. Port uczy się adresów przez 15 sekund, a następnie przechodzi w stan przesyłania ramek (Forwarding)</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Forwarding &#8211; jest to finalny stan portu, w którym następuje przesyłanie ramek z danymi.</span></p>
+<p>&nbsp;</p>
+<p><strong><span style="color: #000000;">STP przydatne komendy:</span></strong></p>
+<ul>
+<li><span style="color: #000000;">Zmiana Root Bridge</span></li>
+</ul>
+<p style="text-align: justify;"><span style="color: #000000;">Zmianę root bridge&#8217;a możemy wykonać na dwa sposoby. Automatycznie i ręcznie.</span></p>
+<pre><span style="color: #000000;">SW1(config)#spanning-tree vlan 1 root primary</span></pre>
+<p style="text-align: justify;"><span style="color: #000000;">Powyższa komenda zmieni priorytet przełącznika (bridge priority) na wartość niższą niż priorytet obecnego root bridge&#8217;a.</span></p>
+<pre><span style="color: #000000;">SW1#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID     Priority 24577
+            Address  00ca.0dc1.2f00
+            This bridge is the root
+            Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID   <strong>Priority 24577 (priority 24576 sys-id-ext 1)</strong>
+            Address  00ca.0dc1.2f00
+            Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+            Aging Time 15 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0     Desg FWD 4    128.1    P2p
+Gi0/1     Desg FWD 4    128.2    P2p</span></pre>
+<p><span style="color: #000000;">Ręczną zmianę priorytetu możem wykonać następująca komendą:</span></p>
+<pre><span style="color: #000000;">SW1(config)#spanning-tree vlan 1 priority 4096</span></pre>
+<pre><span style="color: #000000;">SW1#show spanning-tree</span>
+
+<span style="color: #000000;">VLAN0001</span>
+<span style="color: #000000;">Spanning tree enabled protocol ieee</span>
+<span style="color: #000000;">Root ID       <strong>Priority  4097</strong></span>
+<span style="color: #000000;">              Address   00ca.0dc1.2f00</span>
+<span style="color: #000000;">              This bridge is the root</span>
+<span style="color: #000000;">              Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec</span>
+
+<span style="color: #000000;">Bridge ID     <strong>Priority  4097 (priority 4096 sys-id-ext 1)</strong></span>
+<span style="color: #000000;">              Address   00ca.0dc1.2f00</span>
+<span style="color: #000000;">              Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec</span>
+<span style="color: #000000;">              Aging Time 300 sec</span>
+
+<span style="color: #000000;">Interface Role Sts  Cost  Prio.Nbr Type</span>
+<span style="color: #000000;">------------------- ---- --- --------- -------- --------------------------------</span>
+<span style="color: #000000;">Gi0/0     Desg FWD  4     128.1    P2p</span>
+<span style="color: #000000;">Gi0/1     Desg FWD  4     128.2    P2p</span>
+
+</pre>
+<ul>
+<li><span style="color: #000000;">Zmiana kosztu intefejsu:</span></li>
+</ul>
+<pre><span style="color: #000000;">SW1(config-if)#spanning-tree cost 100
+
+SW1#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID       Priority  4097
+              Address   00ca.0dc1.2f00
+              This bridge is the root
+              Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID    Priority   4097 (priority 4096 sys-id-ext 1)
+             Address    00ca.0dc1.2f00
+             Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+             Aging Time 300 sec
+
+Interface Role Sts  Cost  Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0     Desg FWD  <strong> 100</strong>  128.1    P2p
+Gi0/1     Desg FWD   4    128.2    P2p</span></pre>
+<p>&nbsp;</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

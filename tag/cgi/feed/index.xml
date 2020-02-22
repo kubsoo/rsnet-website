@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>cgi &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/cgi/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Programowanie CGI Pythona</title>
+		<link>https://kubsoo.github.io/rsnet-website/cgi_python/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/cgi_python/#respond</comments>
+		<pubDate>Sat, 03 Feb 2018 19:05:56 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[cgi]]></category>
+		<category><![CDATA[python]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=965</guid>
+		<description><![CDATA[Czym jest CGI ? (ang. Common Gateway Interface) &#8211; jest standardowym sposobem przekazywania przez serwer www żądania użytkownika do aplikacji i odbierania danych od aplikacji i przekazywanie ich użytkownikowi. Gdy&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-965">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="1a2a34e" class="elementor-element elementor-element-1a2a34e elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="11fe55e" class="elementor-element elementor-element-11fe55e elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="7fe0ec1" class="elementor-element elementor-element-7fe0ec1 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Czym jest CGI ?</span></h5><p style="text-align: justify;"><span style="color: #000000;">(ang. Common Gateway Interface) &#8211; jest standardowym sposobem przekazywania przez serwer www żądania użytkownika do aplikacji i odbierania danych od aplikacji i przekazywanie ich użytkownikowi. Gdy użytkownik odwiedza stronę internetową (np. wprowadzając adres strony internetowej), serwer odsyła żądaną stronę. Takie działanie ma miejsce w przypadku stron statycznych, jednakże obecnie mamy w internecie przewagę stron dynamicznych, w przypadku których prezentowana strona jest generowana dynamicznie przez aplikację. Dzieje się tak na przykład w przypadku formularza na stronie internetowej. Użytkownik wypełnia dane w formularzu, przesyła je do serwera, następnie serwer otrzymane dane przesyła do aplikacji, która następnie przetwarza otrzymanie dane i zwraca wynik działania do użytkownika. Ta metoda, lub konwencja przekazywania danych tam i z powrotem między serwerem a aplikacją nazywa się CGI. </span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="bf52341" class="elementor-element elementor-element-bf52341 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="7f6ed40" class="elementor-element elementor-element-7f6ed40 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="0f95634" class="elementor-element elementor-element-0f95634 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Konfiguracja serwera WWW</span></h5><p style="text-align: justify;"><span style="color: #000000;">W celu poprawnego działania skryptów CGI konieczne jest odpowiednie skonfigurowanie serwera www. W moim przypadku serwerem www jest Apache i pokażę jak go skonfigurować do pracy z CGI. Konfigurację apache możemy wykonać w następujących krokach:</span></p><p><span style="color: #000000;"><strong>Krok 1.</strong></span></p><p style="text-align: justify;"><span style="color: #000000;">Edytujemy zawartość pliku z naszą stroną (/sites-available/000-default.conf) odkomentowując linijkę:  </span><strong><span style="color: #000000;">Include conf-available/serve-cgi-bin.conf</span></strong></p><pre><span style="color: #000000;">root@ubuntu-2:/usr/lib/cgi-bin# nano /etc/apache2/sites-available/000-default.conf</span></pre><pre><span style="color: #000000;">&lt;VirtualHost *:80&gt;</span><br /><span style="color: #000000;">        # The ServerName directive sets the request scheme, hostname and port </span><br /><span style="color: #000000;">        # the server uses to identify itself. This is used when creating</span><br /><span style="color: #000000;">        # redirection URLs. In the context of virtual hosts, the ServerName</span><br /><span style="color: #000000;">        # specifies what hostname must appear in the request's Host: header to</span><br /><span style="color: #000000;">        # match this virtual host. For the default virtual host (this file) this</span><br /><span style="color: #000000;">        # value is not decisive as it is used as a last resort host regardless.</span><br /><span style="color: #000000;">        # However, you must set it for any further virtual host explicitly.</span><br /><span style="color: #000000;">        #ServerName www.example.com</span><br /><br /><span style="color: #000000;">        ServerAdmin webmaster@localhost</span><br /><span style="color: #000000;">        DocumentRoot /var/www/html</span><br /><br /><span style="color: #000000;">        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,</span><br /><span style="color: #000000;">        # error, crit, alert, emerg.</span><br /><span style="color: #000000;">        # It is also possible to configure the loglevel for particular</span><br /><span style="color: #000000;">        # modules, e.g.</span><br /><br /><span style="color: #000000;">        #LogLevel info ssl:warn</span><br /><br /><span style="color: #000000;">        ErrorLog ${APACHE_LOG_DIR}/error.log</span><br /><span style="color: #000000;">        CustomLog ${APACHE_LOG_DIR}/access.log combined</span><br /><br /><span style="color: #000000;">        # For most configuration files from conf-available/, which are</span><br /><span style="color: #000000;">        # enabled or disabled at a global level, it is possible to</span><br /><span style="color: #000000;">        # include a line for only one particular virtual host. For example the</span><br /><span style="color: #000000;">        # following line enables the CGI configuration for this host only</span><br /><span style="color: #000000;">        # after it has been globally disabled with "a2disconf".</span><br /><br /><span style="color: #000000;">      <b>  Include conf-available/serve-cgi-bin.conf</b></span><br /><span style="color: #000000;">&lt;/VirtualHost&gt;</span></pre><div><strong><span style="color: #000000;">Krok 2.</span></strong></div><div> </div><div><span style="color: #000000;">Edytujemy plik<strong> conf-available/serve-cgi-bin.conf</strong></span></div><div><pre>         <span style="color: #000000;">&lt;IfDefine ENABLE_USR_LIB_CGI_BIN&gt;</span><br /><span style="color: #000000;">                ScriptAlias <b>/cgi-bin/ /home/kuba/scripts/</b></span><br /><span style="color: #000000;">                &lt;Directory "<b>/home/kuba/scripts/</b>"&gt;</span><br /><span style="color: #000000;">                        AllowOverride None</span><br /><span style="color: #000000;">                        Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch</span><br /><span style="color: #000000;">                        Require all granted</span><br /><span style="color: #000000;">                      <b>  AddHandler cgi-script .py</b></span><br /><span style="color: #000000;">                &lt;/Directory&gt;</span><br /><span style="color: #000000;">        &lt;/IfDefine&gt;</span></pre></div><div style="text-align: justify;"><span style="color: #000000;">ScriptAlias wskazuje gdzie będą przetrzymywane nasze skrypty, domyślnie jest to katalog /var/www/cgi-bin, natomiast możemy tu ustawić dowolny inny katalog. Ja ustawiłem katalog /home/kuba/scripts.</span></div><div> </div><div style="text-align: justify;"><span style="color: #000000;">AddHandler wskazuje jakie rozszerzenia skryptów będziemy obsługiwać (w moim przypadku będą to skrypty python więc dodałem rozszerzenie .py)</span></div><p> </p><p><span style="color: #000000;"><strong>Krok 3.</strong></span></p><p><span style="color: #000000;">Aktywujemy moduł cgi w apache i restartujemy apache&#8217;a.</span></p><pre><span style="color: #000000;">root@ubuntu-2:/usr/lib/cgi-bin# a2enmod cgi</span><br /><span style="color: #000000;">root@ubuntu-2:/usr/lib/cgi-bin# systemctl restart apache2</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="cb12231" class="elementor-element elementor-element-cb12231 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="95aa223" class="elementor-element elementor-element-95aa223 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="52e7236" class="elementor-element elementor-element-52e7236 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Pierwszy skrypt</span></h5><p style="text-align: justify;"><span style="color: #000000;">Stwórzmy sobie pierwszy skrypt python, który wygeneruje nam stronę www z treścią Hello World !!!.</span></p><p><span style="color: #000000;">Skrypt ten wygląda następująco:</span></p><pre><span style="color: #000000;">#!/usr/bin/python</span><br /><br /><span style="color: #000000;">print("Content-Type: text/html\n\n")</span><br /><span style="color: #000000;">print('''</span><br /><span style="color: #000000;">&lt;html&gt;</span><br /><span style="color: #000000;">&lt;head&gt;</span><br /><span style="color: #000000;">&lt;title&gt;Hello World - script&lt;/title&gt;</span><br /><span style="color: #000000;">&lt;/head&gt;</span><br /><span style="color: #000000;">&lt;body&gt;</span><br /><span style="color: #000000;">&lt;p&gt;Hello Word !!!&lt;/p&gt;</span><br /><span style="color: #000000;">&lt;/body&gt;</span><br /><span style="color: #000000;">&lt;/html&gt;</span><br /><span style="color: #000000;">''')</span></pre><p style="text-align: justify;"><span style="color: #000000;">Następnie skrypt musimy umieścić w naszym katalogu ze skryptami (/home/kuba/scripts) i nadać mu atrybuty wykonywalności (chmod +x). </span></p><p style="text-align: justify;"><span style="color: #000000;">Teraz pozostaje tylko otwarcie odpowiedniego linku w przeglądarce:</span></p><p style="text-align: justify;"><span style="color: #000000;"><strong>http://192.168.48.142/cgi-bin/hello.py   </strong></span></p><p style="text-align: justify;"><span style="color: #000000;">gdzie:</span></p><p style="text-align: justify;"><span style="color: #000000;">192.168.48.142 to adres naszego serwera,</span></p><p style="text-align: justify;"><span style="color: #000000;">hello.py to nazwa naszego skryptu.</span></p><p> </p><p><span style="color: #000000;">Jeśli wszystko przebiegło pomyślnie naszym oczom powinna ukazać strona z zawartościa Hello World !!!.</span></p><p> </p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b555971" class="elementor-element elementor-element-b555971 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="b7e6911" class="elementor-element elementor-element-b7e6911 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="8b8314c" class="elementor-element elementor-element-8b8314c elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/cgi_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="454" height="139" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/cgi_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/cgi_1.png 454w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/cgi_1-300x92.png 300w" sizes="(max-width: 454px) 100vw, 454px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="f44b6ba" class="elementor-element elementor-element-f44b6ba elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="72362a9" class="elementor-element elementor-element-72362a9 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="9b8d37c" class="elementor-element elementor-element-9b8d37c elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5> </h5><h5><span style="color: #000000;">KALKULATOR IP W PYTHON</span></h5><p style="text-align: justify;">Teraz spróbujmy napisać coś bardziej zaawansowanego w python, a mianowicie kalkulator IP. Do tego celu posłuży nam wbudowana Pythona biblioteka ipaddress, która umożliwia pracę z adresami IP.</p><p>Cała aplikacja będzie składać się z 3 plików:</p><ol><li>/var/www/html/index.html</li><li>/home/kuba/scripts/script.py</li><li>/home/kuba/scripts/calc.py</li></ol><p>Zawartość plików jest następująca:</p><ol><li>/var/www/html/index.html</li></ol><pre>&lt;html&gt;<br />&lt;head&gt;<br />&lt;title&gt;IP Calculator&lt;/title&gt;<br />&lt;/head&gt;<br />&lt;body&gt;<br />&lt;p&gt;Python IP Calculator&lt;/p&gt;<br />&lt;iframe src="./cgi-bin/script.py" width="400" height="350"&gt;&lt;/iframe&gt;<br />&lt;/body&gt;<br />&lt;/html&gt;</pre><p>2. /home/kuba/scripts/script.py</p><pre>#!/usr/bin/python<br /><br />print("Content-Type: text/html\n\n")<br />print('''<br />&lt;html&gt;<br />&lt;head&gt;<br />&lt;title&gt;IP Calculator&lt;/title&gt;<br />&lt;/head&gt;<br />&lt;body&gt;<br />&lt;p&gt;INSERT IP AND SUBNET&lt;/p&gt;<br />&lt;form action = "calc.py" method = "get"&gt;<br />&lt;input type = "text" value = "192.168.0.0" name = "ip"&gt; IP Address (eg. 192.168.0.0)&lt;br /&gt;<br />&lt;input type = "text" value = "24" name = "subnet" /&gt; Subnet Mask (eg. 24)&lt;br /&gt;<br />&lt;input type = "submit" value = "Calc" /&gt;<br />&lt;/form&gt;<br />&lt;/body&gt;<br />&lt;/html&gt;<br />''')</pre><p>3. /home/kuba/scripts/calc.py</p><pre>#!/usr/bin/python<br /><br />import cgi, cgitb, ipaddress<br /><br />form = cgi.FieldStorage()<br />ip = form.getvalue('ip')<br />subnet = form.getvalue('subnet')<br />ips = unicode(ip+"/"+subnet)<br />intf = ipaddress.ip_interface(ips)<br />netmask = intf.with_netmask.split("/")[1]<br /><br />print("Content-Type: text/html\n\n")<br />print('''<br />&lt;html&gt;<br />&lt;head&gt;<br />&lt;title&gt;IP Calculator&lt;/title&gt;<br />&lt;/head&gt;<br />&lt;body&gt;<br />&lt;p&gt;RESULTS&lt;/p&gt;<br />''')<br /><br />print"&lt;p&gt;IP Address &lt;font color='blue'&gt;%s&lt;/font&gt;&lt;/p&gt;" % (ip)<br />print"&lt;p&gt;Subnet Mask &lt;font color='blue'&gt;%s = %s&lt;/font&gt;&lt;/p&gt;" % (netmask,subnet)<br />print"&lt;p&gt;Wildcard Mask &lt;font color='blue'&gt;%s&lt;/font&gt;&lt;/p&gt;" % (intf.network.with_hostmask.split('/')[1])<br />print"&lt;p&gt;Network &lt;font color='blue'&gt;%s&lt;/font&gt;&lt;/p&gt;" % (intf.network.with_prefixlen)<br />print"&lt;p&gt;Broadcast &lt;font color='blue'&gt;%s&lt;/font&gt;&lt;/p&gt;" % (intf.network.broadcast_address)<br />print"&lt;p&gt;Host Min &lt;font color='blue'&gt;%s&lt;/font&gt;&lt;/p&gt;" % (intf.network[1])<br />print"&lt;p&gt;Host Max &lt;font color='blue'&gt;%s&lt;/font&gt;&lt;/p&gt;" % (intf.network[-2])<br />print"&lt;p&gt;Hosts/Net &lt;font color='blue'&gt;%s&lt;/font&gt;&lt;/p&gt;" % (intf.network.num_addresses-2)<br /><br />print('''<br />&lt;/form&gt;<br />&lt;/body&gt;<br />&lt;/html&gt;<br />''')</pre><p>Zasada działania kalkulatora jest następująca:</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="7f1f4a8" class="elementor-element elementor-element-7f1f4a8 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c37290f" class="elementor-element elementor-element-c37290f elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="2bf1c84" class="elementor-element elementor-element-2bf1c84 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">Klient wchodzi na stronę http://192.168.48.142/index.html (plik /var/www/html/index.html). Strona składa się z ramki, w której wyświetlany jest wynik skryptu script.py.  Wynikiem działania skryptu script.py jest formularz, składający się z pól tekstowych ip i subnet, oraz przycisku Calc, który uruchamia skrypt calc.py. Skrypt calc.py wykonuje operacje  na podanych w formularzu polach ip i subnet i prezentuje na ich podstawie następujące wyniki:</p><p>IP Address &#8211; adres IP podany w formularzu,</p><p>Subnet Mask &#8211; maska podsieci podana w formularzu,</p><p>Wildcard Mask &#8211; maska w formacie wildard&#8217;owym,</p><p>Network &#8211; adres sieci,</p><p>Broadcast &#8211; adres rozgłoszeniowy,</p><p>Host Min &#8211; najmniejszy adres dostępny dla hosta,</p><p>Host Max &#8211; największy adres dostępny dla hosta,</p><p>Hosts/Net &#8211; ilość adresów dostępna dla hostów.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="43f30d7" class="elementor-element elementor-element-43f30d7 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="cff0454" class="elementor-element elementor-element-cff0454 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="e65fc46" class="elementor-element elementor-element-e65fc46 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ip_calc.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title="">
+							<img width="580" height="240" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ip_calc.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ip_calc.png 580w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ip_calc-300x124.png 300w" sizes="(max-width: 580px) 100vw, 580px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="89f72e4" class="elementor-element elementor-element-89f72e4 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c70b071" class="elementor-element elementor-element-c70b071 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="0a0b9b5" class="elementor-element elementor-element-0a0b9b5 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;"><strong>WYNIK</strong></span></h5><p>Sprawdźmy teraz jak wygląda aplikacja kalkulatora IP z punku widzenia klienta i jego przeglądarki. Otwórzmy w tym celu stronę index.html:</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="c5d72ec" class="elementor-element elementor-element-c5d72ec elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="542731b" class="elementor-element elementor-element-542731b elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="fde1d1f" class="elementor-element elementor-element-fde1d1f elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ip_calc_3.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title="">
+							<img width="468" height="499" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ip_calc_3.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ip_calc_3.png 468w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ip_calc_3-281x300.png 281w" sizes="(max-width: 468px) 100vw, 468px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="e7308cc" class="elementor-element elementor-element-e7308cc elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="de5f315" class="elementor-element elementor-element-de5f315 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="1139494" class="elementor-element elementor-element-1139494 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ip_calc_4.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title="">
+							<img width="440" height="498" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ip_calc_4.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ip_calc_4.png 440w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ip_calc_4-265x300.png 265w" sizes="(max-width: 440px) 100vw, 440px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="382e653" class="elementor-element elementor-element-382e653 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="4f7d80a" class="elementor-element elementor-element-4f7d80a elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="197ced6" class="elementor-element elementor-element-197ced6 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;"><strong>PODSUMOWANIE</strong></span></h5><p style="text-align: justify;">Na powyższym przykładzie aplikacji www kalkulatora IP, widać, że Python z CGI dają olbrzymie możliwości tworzenia aplikacji internetowych przy wykorzystaniu skryptów. Oczywiście powyższe zastosowanie nie jest najlepszą i najwydajniejsza metodą tworzenia stron internetowych, ale pokazuję, że właściwie bez zaawansowanej znajomości kodowania stron www, możemy tworzyć łatwe formularze czy aplikacje wykorzystując skrypty Pythona. Do bardziej zaawansowanych aplikacji można skorzystać z nowoczesnego frameworka opartego na Pythonie a mianowicie <a href="https://www.djangoproject.com/">Django</a>.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/cgi_python/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

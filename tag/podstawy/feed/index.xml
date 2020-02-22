@@ -1,0 +1,810 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>podstawy &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/podstawy/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Spanning Tree Protocol &#8211; podstawy</title>
+		<link>https://kubsoo.github.io/rsnet-website/bgp-wyrazenia-regularne-2/</link>
+		<pubDate>Wed, 15 Aug 2018 22:13:46 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[podstawy]]></category>
+		<category><![CDATA[spanning tree protocol]]></category>
+		<category><![CDATA[stp]]></category>
+		<category><![CDATA[switching]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=1114</guid>
+		<description><![CDATA[Protokół drzewa rozpinającego (STP) został przedstawiony jako mechanizm przeciwdziałania pętlą w warstwie drugiej modelu ISO/OSI. STP używa mechanizmu, który polega na wyłączaniu redundantnych linków w celu uniknięcia pętli w sieci&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;"><span style="color: #000000;">Protokół drzewa rozpinającego (STP) został przedstawiony jako mechanizm przeciwdziałania pętlą w warstwie drugiej modelu ISO/OSI. STP używa mechanizmu, który polega na wyłączaniu redundantnych linków w celu uniknięcia pętli w sieci LAN. Gdyby nie STP pakiety rozgłoszeniowe (Broadcast) krążyły by w sieci w nieskończoność.</span></p>
+<p><span style="color: #000000;">Załóżmy, że mamy poniższą topologię sieci przedstawioną na rysunku poniżej.</span></p>
+<p>&nbsp;</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_1.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-1115 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_1.png" alt="" width="580" height="440" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_1.png 580w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_1-300x228.png 300w" sizes="(max-width: 580px) 100vw, 580px" /></a></p>
+<p style="text-align: justify;"><span style="color: #000000;">PC-1 chcę się skomunikować z PC-2, załóżmy że na PC-1 wydamy komendę ping 192.168.0.2. Host PC-1 nie zna adresu MAC hosta PC-2, więc musi wysłać zapytanie</span> <a href="https://pl.wikipedia.org/wiki/Address_Resolution_Protocol" title="">ARP</a> <span style="color: #000000;">na adres rozgłoszeniowy. Ramka z tym zapytaniem trafia najpierw do switcha SW3, który przesyła ją do wszystkich swoich interfejsów (Gi0/0, Gi0/1), z wyjątkiem interfejsu z którego ta ramka przyszła (Gi0/2). Następnie ramka dociera do SW1 oraz do SW2. Oba te switche również przesyłają tą ramkę w taki sam sposób jak zrobił to SW3, czyli SW1 przesyła ramkę przez Gi0/1 w kierunku SW2, oraz przez Gi0/2 do PC-2, natomiast SW2 przesyła ramkę przez Gi0/0 w kierunku SW1. Host PC-2 otrzymał zapytanie ARP i może na nie odpowiedzieć, jednak ramka z zapytaniem dalej krąży pomiędzy SW1, SW2 i SW3 i będzie tak krążyć w nieskończoność. Jedynym sposobem na przerwanie tej pętli jest wyłączenie jednego z interfejsów pomiędzy switchami, w taki sposób żeby istniała tylko jedna ścieżka pomiędzy PC-1 a PC-2 i do tego właśnie celu służy protokół drzewa rozpinającego (Spanning Tree Protocol).</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Domyślnie przełączniki Cisco mają uruchomiony protokół STP, natomiast dla celów zobrazowania co się stanie jak w sieci LAN powstanie pętla i ramki będą krążyć w nieskończoność wyłączymy STP na switchach w topologii przedstawionej powyżej.  Sprawdźmy co się stanie z przełącznikami jak wyłaczymy STP i wykonamy ping z PC-1 na PC-2.</span></p>
+<p><span style="color: #000000;">Do wyłączenia STP służy komenda:</span></p>
+<pre><span style="color: #000000;">SW(config)# no spanning-tree vlan 1</span></pre>
+<p style="text-align: justify;"><span style="color: #000000;">Wykonajmy ją na wszystkich trzech switchach:</span></p>
+<pre><span style="color: #000000;">SW1(config)# no spanning-tree vlan 1
+SW2(config)# no spanning-tree vlan 1
+SW3(config)# no spanning-tree vlan 1</span></pre>
+<p style="text-align: justify;"><span style="color: #000000;">Teraz wykonajmy ping z PC-1 i PC-2 i obserwujmy co się stanie. Switche SW1 i SW2 przestały odpowiadać na komendy, utylizacja procesora jest na bardzo wysokim poziomie, dlatego nie odpowiada konsola, dodatkowo jak uruchomimy wiresharka na jednym z interfejsów pomiędzy switchami to zobaczymy, że cały czas krążą w sieci pakiety broadcast:</span></p>
+<p><span style="color: #000000;"><a style="color: #000000;" href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_2.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-1118 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_2.png" alt="" width="974" height="438" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_2.png 974w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_2-300x135.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_2-768x345.png 768w" sizes="(max-width: 974px) 100vw, 974px" /></a></span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Dodatkowo ping pomiędzy PC-1 a PC-2 nie działa, dostajemy timeout i jest to spowodowane pętlą w sieci. Wyłączmy teraz jeden z interfejsów switcha SW3 (Gi0/1) i zobaczmy jak będzie wyglądała sytuacja. Od razu po wyłączeniu interfejsu Gi0/1 możemy zaobserwować, że konsole na switchach zaczęły odpowiadać, oraz ping z PC-1 na PC-2 działa.</span></p>
+<pre><span style="color: #000000;">VPCS&gt; ping 192.168.0.2
+84 bytes from 192.168.0.2 icmp_seq=1 ttl=64 time=9.095 ms
+84 bytes from 192.168.0.2 icmp_seq=2 ttl=64 time=15.457 ms
+84 bytes from 192.168.0.2 icmp_seq=3 ttl=64 time=27.437 ms
+84 bytes from 192.168.0.2 icmp_seq=4 ttl=64 time=12.474 ms
+84 bytes from 192.168.0.2 icmp_seq=5 ttl=64 time=11.474 ms</span></pre>
+<p>&nbsp;</p>
+<p><span style="color: #000000;"><strong>Jak działa STP ?</strong></span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Włączmy teraz spowrotem na switchach spanning-tree protocol oraz interfejs który wyłączyliśmy.  W celu weryfikacji czy STP jest uruchomione możemy posłużyć się następującą komendą:</span></p>
+<pre><span style="color: #000000;">SW1#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID    Priority 32769
+           Address 00ca.0d3f.0c00
+           Cost 4
+           Port 1 (GigabitEthernet0/0)
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID  Priority 32769 (priority 32768 sys-id-ext 1)
+           Address 00ca.0dc1.2f00
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+           Aging Time 300 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0     Root FWD 4    128.1    P2p
+Gi0/1     Altn BLK 4    128.2    P2p</span></pre>
+<pre><span style="color: #000000;">SW2#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID    Priority 32769
+           Address 00ca.0d3f.0c00
+           Cost 4
+           Port 2 (GigabitEthernet0/1)
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID  Priority 32769 (priority 32768 sys-id-ext 1)
+           Address 00ca.0d8e.9c00
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+           Aging Time 300 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0     Desg FWD 4    128.1    P2p
+Gi0/1     Root FWD 4    128.2    P2p
+Gi0/2     Desg FWD 4    128.3    P2p</span></pre>
+<pre><span style="color: #000000;">SW3#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID    Priority 32769
+           Address 00ca.0d3f.0c00
+           This bridge is the root
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID  Priority 32769 (priority 32768 sys-id-ext 1)
+           Address 00ca.0d3f.0c00
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+           Aging Time 300 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0     Desg FWD 4    128.1    P2p
+Gi0/1     Desg FWD 4    128.2    P2p
+Gi0/2     Desg FWD 4    128.3    P2p</span></pre>
+<p style="text-align: justify;"><span style="color: #000000;">Protokół STP działa w oparciu o ramki BPDU (bridge protocol data unit). Switche wymieniają się tymi ramkami i na ich podstawie ustalają które nadmiarowe połączenia zablokować. Ramka BPDU wygląda następująco:</span></p>
+<p><span style="color: #000000;"><a style="color: #000000;" href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_3.png" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-1124 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_3.png" alt="" width="542" height="470" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_3.png 542w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_3-300x260.png 300w" sizes="(max-width: 542px) 100vw, 542px" /></a></span></p>
+<p><span style="color: #000000;">Najpierw na podstawie ramek BPDU wybierany jest korzeń drzewa (root bridge). Korzeń drzewa zostaje wybrany na podstawie Bridge Identifier, które składa się następujących pól:</span></p>
+<p style="padding-left: 30px;"><span style="color: #000000;">Bridge Priority &#8211; priorytet przełacznika</span></p>
+<p style="padding-left: 30px;"><span style="color: #000000;">Bridge System ID Extension &#8211; vlan dla którego działa STP</span></p>
+<p style="padding-left: 30px;"><span style="color: #000000;">Bridge System ID &#8211; MAC adres przełącznika</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Root Bridge zostaje switch który posiada najmniejszy priorytet, w przypadku gdy priorytety są takie same to korzeniem zostaje przełącznik o najniższym adresie MAC. W naszym przykładzie Root Bridge został wybrany switch SW3, ponieważ posiada najniższy MAC adres (priorytety na wszystkich switchach są takie same)</span></p>
+<pre><span style="color: #000000;">SW1 Bridge ID 
+Priority <strong>32769</strong> (priority 32768 sys-id-ext 1) 
+Address <strong>00ca.0dc1.2f00</strong></span></pre>
+<pre><span style="color: #000000;">SW2 Bridge ID 
+Priority <strong>32769</strong> (priority 32768 sys-id-ext 1)
+Address <strong>00ca.0d8e.9c00</strong>
+
+SW3 Bridge ID
+Priority <strong>32769</strong> (priority 32768 sys-id-ext 1)
+Address <strong>00ca.0d3f.0c00</strong></span></pre>
+<p><span style="color: #000000;">Zweryfikujmy to wydając komendę show spanning-tree na SW3:</span></p>
+<pre><span style="color: #000000;">SW3#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID Priority 32769
+        Address 00ca.0d3f.0c00
+<strong>        This bridge is the root</strong>
+        Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID Priority 32769 (priority 32768 sys-id-ext 1)
+          Address 00ca.0d3f.0c00
+          Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+          Aging Time 300 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0     Desg FWD 4    128.1    P2p
+Gi0/1     Desg FWD 4    128.2    P2p
+Gi0/2     Desg FWD 4    128.3    P2p</span></pre>
+<p>&nbsp;</p>
+<p style="text-align: justify;"><span style="color: #000000;">Następny krok po wybraniu root bridge to ustawienie portów przełączników w odpowiedniej roli. Role portów w STP są trzy: Designated, Root, Alternate. Porty Designated i Root przesyłają ruch, natomiast porty Alternate są zablokowane tak aby nie powstała pętla. Porty Root są to porty które prowadzą do Root Bridge&#8217;a, natomiast porty Designated to porty które prowadzą do innych przełączników. Wszystkie porty root bridge są portami Designated:</span></p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_4-1.png" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-1132 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_4-1.png" alt="" width="334" height="261" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_4-1.png 334w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_4-1-300x234.png 300w" sizes="(max-width: 334px) 100vw, 334px" /></a></p>
+<p>&nbsp;</p>
+<p style="text-align: justify;"><span style="color: #000000;">Następnie pozostałe przełączniki wybierają porty Root i Designated, które wybierane są zgodnie z poniższym algorytmem:</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">1. Najniższy root bridge ID</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">2. Najniższy koszt ścieżki do root bridge</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">3. Najniższy bridge ID</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">4. Najniższy port ID (nadawcy). </span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Port ID składa się z priorytetu i numeru interfejsu. W wyniku polecenia show spanning-tree jest to pole Prio.Nbr. </span></p>
+<p>&nbsp;</p>
+<p style="text-align: justify;"><span style="color: #000000;">Pierwszy punkt możemy ominąć, ponieważ ma on zastosowanie tylko dla portów Root Bridge&#8217;a. Kolejny punkt to najniższy koszt ścieżki do root bridge. Domyślnie koszty portów wyglądają następująco:</span></p>
+<table style="border-collapse: collapse; width: 52.0086%; height: 120px;" border="1">
+<tbody>
+<tr style="height: 24px;">
+<td style="width: 38.9212%; height: 24px;"><span style="color: #000000;"><strong>Pasmo</strong></span></td>
+<td style="width: 24.3023%; height: 24px;"><span style="color: #000000;"><strong>Koszt</strong></span></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 38.9212%; height: 24px;"><span style="color: #000000;">10 Mbps</span></td>
+<td style="width: 24.3023%; height: 24px;"><span style="color: #000000;">100</span></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 38.9212%; height: 24px;"><span style="color: #000000;">100 Mbps</span></td>
+<td style="width: 24.3023%; height: 24px;"><span style="color: #000000;">19</span></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 38.9212%; height: 24px;"><span style="color: #000000;">1-Gigabit Ethernet</span></td>
+<td style="width: 24.3023%; height: 24px;"><span style="color: #000000;">4</span></td>
+</tr>
+<tr style="height: 24px;">
+<td style="width: 38.9212%; height: 24px;"><span style="color: #000000;">10-Gigabit Ethernet</span></td>
+<td style="width: 24.3023%; height: 24px;"><span style="color: #000000;">2</span></td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: justify;"><span style="color: #000000;">W naszej topologii mamy interfejsy Gigabitowe więc koszty poszczególnych linków wynoszą 4:</span></p>
+<p><span style="color: #000000;"><a style="color: #000000;" href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_6.png" data-rel="lightbox-image-4" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-1138 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_6.png" alt="" width="334" height="261" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_6.png 334w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_6-300x234.png 300w" sizes="(max-width: 334px) 100vw, 334px" /></a></span></p>
+<p><span style="color: #000000;">Dla SW1 koszt ścieżki do Root Bridge przez Gi0/0 wynosi 4, natomiast przez Gi0/1 wynosi 4+4 czyli 8. W związku z tym Gi0/0 zostanie Root Port. </span></p>
+<p><span style="color: #000000;">Dla SW2 koszt ścieżki do Root Bridge przez Gi0/0 wynosi 4 +4 czyli 8, natomiast przez Gi0/1 wynosi 4. W związku z tym Gi0/1 zostanie Root Port.</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #000000;"><a style="color: #000000;" href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_7.png" data-rel="lightbox-image-5" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-1139 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_7.png" alt="" width="334" height="261" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_7.png 334w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_7-300x234.png 300w" sizes="(max-width: 334px) 100vw, 334px" /></a></span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Ostatni krok to wybór portu Designated i portu Alternate. W obu przypadkach zarówno port Gi0/1 na SW1 oraz Gi0/0 na SW2 mają ten sam koszt ścieżki do Root Bridge, dlatego musimy wziąć następny punkt algorytmu wyboru, czyli punkt 3. Najniższy bridge ID. Dla przypomnienia Bridge ID SW1 = 32769 + 00ca.0d<strong>c</strong>1.2f00, a Bridge ID SW2 = 32769 + 00ca.0d<strong>8</strong>e.9c00. Priorytet w obu przypadkach jest taki sam, czyli niższy Bridge ID jest ustalany a podstawie niższego adresu MAC, w tym przypadku SW2 ma niższy Bridge ID, czyli port Gi0/0 na SW2 zostanie portem Designated, a port Gi0/1 na switchu SW1 zostanie zablokowany, czyli będzie pełnił rolę Alternate.</span></p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_5.png" data-rel="lightbox-image-6" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-1141 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_5.png" alt="" width="334" height="261" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_5.png 334w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/08/stp_5-300x234.png 300w" sizes="(max-width: 334px) 100vw, 334px" /></a><span style="color: #000000;">Zweryfikujmy stan portów korzystając z komendy show spanning-tree.</span></p>
+<pre><span style="color: #000000;">SW1#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID    Priority 32769
+           Address 00ca.0d3f.0c00
+           Cost 4
+           Port 1 (GigabitEthernet0/0)
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID  Priority 32769 (priority 32768 sys-id-ext 1)
+           Address 00ca.0dc1.2f00
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+           Aging Time 300 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+<strong>Gi0/0     Root</strong> FWD 4    128.1    P2p
+<strong>Gi0/1     Altn</strong> BLK 4    128.2    P2p</span></pre>
+<pre><span style="color: #000000;">SW2#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID    Priority 32769
+           Address 00ca.0d3f.0c00
+           Cost 4
+           Port 2 (GigabitEthernet0/1)
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID  Priority 32769 (priority 32768 sys-id-ext 1)
+           Address 00ca.0d8e.9c00
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+           Aging Time 300 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+<strong>Gi0/0     Desg</strong> FWD 4    128.1    P2p
+<strong>Gi0/1     Root</strong> FWD 4    128.2    P2p
+</span></pre>
+<pre><span style="color: #000000;">SW3#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID    Priority 32769
+           Address 00ca.0d3f.0c00
+           This bridge is the root
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID  Priority 32769 (priority 32768 sys-id-ext 1)
+           Address 00ca.0d3f.0c00
+           Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+           Aging Time 300 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+<strong>Gi0/0     Desg</strong> FWD 4    128.1    P2p
+<strong>Gi0/1     Desg</strong> FWD 4    128.2    P2p
+
+</span></pre>
+<p style="text-align: justify;"><span style="color: #000000;">Każdy z portów w STP może być w jednym z poniższych stanów:</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Disabled &#8211; port jest wyłączony administracyjnie (shutdown) i nie bierze udziału w procesie STP </span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Blocking &#8211; jest to początkowy stan portu, który trwa przez 20 sekund, po tym czasie port przechodzi do stanu Listening. Jeśli port nie jest portem Designated ani Root, czyli jest portem Alternate to również będzie w stanie blocking i w nim pozostanie dopóki nie zostanie zmieniona topologia sieci. Port w stanie blocking nie uczestniczy w procesie przesyłania ramek.</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Listening &#8211; tylko designated i root port może przejść w stan nasłuchiwania. W tym stanie switch próbuje dowiedzieć się jak wygląda topologia. Port w stanie listening przesyła tylko ramki BPDU, ramki z danymi nie są przesyłane, po 15 sekundach w stanie listening port przechodzi w stan learning. </span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Learning &#8211; w tym stanie port uczy się adresów MAC poprzez analizowanie adresów źródłowych ramek ethernetowych otrzymanych na porcie. Port uczy się adresów przez 15 sekund, a następnie przechodzi w stan przesyłania ramek (Forwarding)</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Forwarding &#8211; jest to finalny stan portu, w którym następuje przesyłanie ramek z danymi.</span></p>
+<p>&nbsp;</p>
+<p><strong><span style="color: #000000;">STP przydatne komendy:</span></strong></p>
+<ul>
+<li><span style="color: #000000;">Zmiana Root Bridge</span></li>
+</ul>
+<p style="text-align: justify;"><span style="color: #000000;">Zmianę root bridge&#8217;a możemy wykonać na dwa sposoby. Automatycznie i ręcznie.</span></p>
+<pre><span style="color: #000000;">SW1(config)#spanning-tree vlan 1 root primary</span></pre>
+<p style="text-align: justify;"><span style="color: #000000;">Powyższa komenda zmieni priorytet przełącznika (bridge priority) na wartość niższą niż priorytet obecnego root bridge&#8217;a.</span></p>
+<pre><span style="color: #000000;">SW1#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID     Priority 24577
+            Address  00ca.0dc1.2f00
+            This bridge is the root
+            Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID   <strong>Priority 24577 (priority 24576 sys-id-ext 1)</strong>
+            Address  00ca.0dc1.2f00
+            Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+            Aging Time 15 sec
+
+Interface Role Sts Cost Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0     Desg FWD 4    128.1    P2p
+Gi0/1     Desg FWD 4    128.2    P2p</span></pre>
+<p><span style="color: #000000;">Ręczną zmianę priorytetu możem wykonać następująca komendą:</span></p>
+<pre><span style="color: #000000;">SW1(config)#spanning-tree vlan 1 priority 4096</span></pre>
+<pre><span style="color: #000000;">SW1#show spanning-tree</span>
+
+<span style="color: #000000;">VLAN0001</span>
+<span style="color: #000000;">Spanning tree enabled protocol ieee</span>
+<span style="color: #000000;">Root ID       <strong>Priority  4097</strong></span>
+<span style="color: #000000;">              Address   00ca.0dc1.2f00</span>
+<span style="color: #000000;">              This bridge is the root</span>
+<span style="color: #000000;">              Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec</span>
+
+<span style="color: #000000;">Bridge ID     <strong>Priority  4097 (priority 4096 sys-id-ext 1)</strong></span>
+<span style="color: #000000;">              Address   00ca.0dc1.2f00</span>
+<span style="color: #000000;">              Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec</span>
+<span style="color: #000000;">              Aging Time 300 sec</span>
+
+<span style="color: #000000;">Interface Role Sts  Cost  Prio.Nbr Type</span>
+<span style="color: #000000;">------------------- ---- --- --------- -------- --------------------------------</span>
+<span style="color: #000000;">Gi0/0     Desg FWD  4     128.1    P2p</span>
+<span style="color: #000000;">Gi0/1     Desg FWD  4     128.2    P2p</span>
+
+</pre>
+<ul>
+<li><span style="color: #000000;">Zmiana kosztu intefejsu:</span></li>
+</ul>
+<pre><span style="color: #000000;">SW1(config-if)#spanning-tree cost 100
+
+SW1#show spanning-tree
+
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID       Priority  4097
+              Address   00ca.0dc1.2f00
+              This bridge is the root
+              Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID    Priority   4097 (priority 4096 sys-id-ext 1)
+             Address    00ca.0dc1.2f00
+             Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+             Aging Time 300 sec
+
+Interface Role Sts  Cost  Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0     Desg FWD  <strong> 100</strong>  128.1    P2p
+Gi0/1     Desg FWD   4    128.2    P2p</span></pre>
+<p>&nbsp;</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>BGP &#8211; podstawy</title>
+		<link>https://kubsoo.github.io/rsnet-website/bgp-podstawy/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/bgp-podstawy/#comments</comments>
+		<pubDate>Tue, 05 Dec 2017 20:42:59 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[bgp]]></category>
+		<category><![CDATA[podstawy]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=772</guid>
+		<description><![CDATA[WSTĘP BGP (Border Gateway Protocol) to zewnętrzny protokół routingu, na którym opiera się działanie współczesnego internetu. W BGP informacje na temat routingu są przesyłane pomiędzy dostawcami internetu (ISP) tworzących przy&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-772">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="32ea5ba" class="elementor-element elementor-element-32ea5ba elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="f93ebc8" class="elementor-element elementor-element-f93ebc8 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="2f8bcc7" class="elementor-element elementor-element-2f8bcc7 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">WSTĘP</span></h5><p style="text-align: justify;"><span style="color: #000000;"><strong>BGP</strong> (Border Gateway Protocol) to zewnętrzny protokół routingu, na którym opiera się działanie współczesnego internetu. W BGP informacje na temat routingu są przesyłane pomiędzy dostawcami internetu (ISP) tworzących przy jego pomocy publiczny internet. BGP jest protokołem wektora ścieżki (Path Vector). BGP utrzymuje oddzielne tablice routingu bazując na najkrótszej długości ścieżki (AS Path) i innych licznych atrybutach w przeciwieństwie do innych protokołów routingu, które bazują na metryce: dystans (w RIP) lub koszt w (<a href="https://kubsoo.github.io/rsnet-website/ospf-podstawy/">OSPF</a>). Obecnie wykorzystywany jest BGP w wersji 4.</span></p><p style="text-align: justify;"><span style="color: #000000;">Podstawą funkcjonowania BGP są tzw. systemy autonomiczne (Autonomous System), które są połączone ze sobą i tworzą internet jaki znamy. Każdy AS ma przypisany numer (Autonomous System Number), którego przydzielaniem zajmuje się organizacja <a href="https://www.iana.org/">IANA</a>. IANA przydziela numery ASN dla tzw. RIR (Regional Internet Registry), a następnie RIR przydziela numery ASN dla operatorów internetowych. Obecnie mamy następujących RIRów:</span></p><table class="iana-table"><tbody><tr><td><a href="http://www.afrinic.net/">AFRINIC</a></td><td><span style="color: #000000;">Africa Region</span></td></tr><tr><td><a href="http://www.apnic.net/">APNIC</a></td><td><span style="color: #000000;">Asia/Pacific Region</span></td></tr><tr><td><a href="http://www.arin.net/">ARIN</a></td><td><span style="color: #000000;">Canada, USA, and some Caribbean Islands</span></td></tr><tr><td><a href="http://www.lacnic.net/">LACNIC</a></td><td><span style="color: #000000;">Latin America and some Caribbean Islands</span></td></tr><tr><td><a href="http://www.ripe.net/"><span class="avoid-break">RIPE NCC</span></a></td><td><span style="color: #000000;">Europe, the Middle East, and Central Asia</span></td></tr></tbody></table><p style="text-align: justify;"><span style="color: #000000;">Numer ASN można uzyskać kontaktując się z jednym z RIR odpowiednim dla danej lokalizacji. Nie będę opisywał jak to zrobić, zainteresowanych odsyłam do strony w języku angielskim <a href="https://www.ripe.net/manage-ips-and-asns/as-numbers/request-an-as-number">ripe.net</a> lub do wpisów na stronie w języku polskim <a href="http://lipowski.org/bgp-4/ipv4-lir-ripe-ncc/">lipowski.org</a>. Bardzo dobrze jest tam wszystko opisane, autor ponadto oferuje pomoc przy wdrożeniu BGP więc jak najbardziej zachęcam do odwiedzenia jego strony. </span></p><p style="text-align: justify;"><span style="color: #000000;">Są dwa rodzaje numerów ASN (16-bitowe i 32-bitowe). 32 bitowe numery ASN zostały wprowadzone przez IANA jako odpowiedź na wyczerpujące się 16 bitowy numery ASN. Nowe numery 32 bitowe są kompatybilne wstecznie. 16-bitowe ASN przyjmują wartość od <strong>1 do 65535</strong>. Numery ASN od <strong>64512 do 65535 </strong>są numerami prywatnymi, zarezerwowanymi dla użytku wewnętrzengo na potrzeby iBGP (internal BGP). </span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="492a936" class="elementor-element elementor-element-492a936 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="127657d" class="elementor-element elementor-element-127657d elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="ed294f3" class="elementor-element elementor-element-ed294f3 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Jak działa BGP ?</span></h5><p style="text-align: justify;"><span style="color: #000000;">BGP działa na protokole transportowym TCP na porcie 179 zestawiając ze sąsiadami sesje BGP. </span></p><p><span style="color: #000000;">Są dwa typy relacji sąsiedztwa między routerami BGP:</span></p><ul><li><span style="color: #000000;">iBGP &#8211; między sąsiadami w tym samym AS</span></li><li><span style="color: #000000;">eBGP &#8211; między sąsiadami w różnych AS</span></li></ul><p><span style="color: #000000;">BGP wykorzystuje 4 rodzaje wiadomości:</span></p><ul><li><strong><span style="color: #000000;">Open Message</span></strong></li></ul><p style="text-align: justify;"><span style="color: #000000;">Wiadomość OPEN jest wysyłana po nawiązaniu połączenia TCP i służy otwarciu sesji sąsiedztwa pomiędzy routerami.</span></p><ul><li><strong><span style="color: #000000;">Update Message</span></strong></li></ul><p style="text-align: justify;"><span style="color: #000000;">Wiadomość UPDATE jest wykorzystywana do wysyłania aktualizacji o trasach do sąsiadów.</span></p><ul><li><strong><span style="color: #000000;">Keepalive Message</span></strong></li></ul><p style="text-align: justify;"><span style="color: #000000;">Wiadomość KEEPALIVE jest przesyłana w celu podtrzymania sesji. Jak router nie otrzyma wiadomości keepalive od sąsiada w czasie (HOLD TIME &#8211; domyślnie 180 sekund) uznaje go za niedostępnego , zamykana jest sesja BGP i usuwane są wszystkie trasy otrzymane od niego z tablicy routingu.</span></p><ul><li><strong><span style="color: #000000;">Notification Message</span></strong></li></ul><p style="text-align: justify;"><span style="color: #000000;">Wiadomość NOTIFICATION jest wysyłana w sytuacji  jeśli połączenie napotka jakieś błędy. Kiedy wykryty jest błąd sesje BGP jest zamykana.</span></p><p style="text-align: justify;"><span style="color: #000000;"> </span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="201f161" class="elementor-element elementor-element-201f161 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="a757309" class="elementor-element elementor-element-a757309 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="b657247" class="elementor-element elementor-element-b657247 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;"><strong>Zestawienie sesji BGP</strong></span></p><p style="text-align: justify;"><span style="color: #000000;">Routery biorące udział w BGP mogą być w następujących stanach:</span></p><p style="text-align: justify;"><strong><span style="color: #000000;">1. IDLE</span></strong></p><div style="text-align: justify;"><span style="color: #000000;">Jest to pierwszy stan, w którym BGP czeka na &#8222;start event&#8221; (zdarzenie poczatkowe). <b>  </b>Zdarzenie poczatkowe występuje gdy ktoś skonfiguruje nowego sąsiada BGP lub gdy zostanie zresetowana istniejąca sesja BGP. Po zdarzeniu początkowym router inicjuje połączenie TCP do zdalnego sąsiada BGP oraz dodatkowo nasłuchuje na połączenia od zdalnego sąsiada na wypadek jeśli to sąsiad będzie chciał zainicjować połączenie. Jak połączenie zostanie poprawnie nawiązane BGP przechodzi do stanu Connect, w przypadku niepowodzenia pozostaje w stanie Idle.</span></div><div> </div><p><strong><span style="color: #000000;">2. CONNECT</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">BGP czeka na ukończenia połączenia TCP (<a href="https://pl.wikipedia.org/wiki/Protok%C3%B3%C5%82_sterowania_transmisj%C4%85">three-way handshake</a>). Kiedy się powiedzie router przechodzi w stan OpenState, jeśli się nie powiedzie router przechodzi w stan Active.</span></p><p style="text-align: justify;"><strong><span style="color: #000000;">3. ACTIVE</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">W tym trybie BGP próbuje ponownie dokończyć TCP three-way handshake. Jeśli się powiedzie to router przechodzi w stan OpenState, jeśli się nie powiedzie to router wraca do stanu Connect. Router ponadto nasłuchuje cały czas na przychodzące połączenia  na wypadek, gdyby zdalny sąsiad BGP próbował ustanowić połączenie.</span></p><p style="text-align: justify;"><strong><span style="color: #000000;">4. OPENSENT</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">BGP nawiązał połączenie TCP i wysłał wiadomość Open Message W tym stanie router nasłuchuje na wiadomość Open Message od zdalnego sąsiada BGP. Otrzymana wiadomość Open Message jest sprawdzana pod kątem błędów (niepoprawna wersja, błędny numer AS itp.) w przypadku błędu router wyśle wiadomość Notification do sąsiada BGP i wróci do stanu Idle. Jeśli wszystko jest w porzadku, BGP rozpoczyna wysyłanie wiadomości keepalive. Jeśli z jakiegoś powodu sesja TCP zostanie zerwana BGP wróci do stanu Active. Kiedy wystąpi błąd, BGP wyśle kod błędu i wróci do stanu Idle, tak samo się stanie w przypadku zresetowania procesu BGP. </span></p><p style="text-align: justify;"><strong><span style="color: #000000;">5. </span><span style="color: #000000;">OPENCONFIRM</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">BGP czeka na wiadomości keepalive od zdalnego sąsiada BGP, Router kiedy otrzyma wiadomość keepalive przechodzi w stan Established i relacja sąsiedztwa zostaje nawiązana. Jeśli zostanie otrzymana wiadomość notification od sąsiada, to router wraca do stanu Idle. </span></p><p><strong><span style="color: #000000;">6. ESTABLISHED</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">W tym stanie relacja sąsiedztwa pomiędzy sąsiadami BGP zostaje nawiązana, a routery wysyłają wiadomości Update w celu wymiany informacji o trasach. Jeśli zostanie w tym stanie otrzymana wiadomość Notification, to router wróci do stanu Idle.</span></p><p> </p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="bb335ea" class="elementor-element elementor-element-bb335ea elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="97e9319" class="elementor-element elementor-element-97e9319 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="fce5e28" class="elementor-element elementor-element-fce5e28 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Atrybuty ścieżki BGP</span></h5><div style="text-align: justify;"><span style="color: #000000;">Jak już wspomniałem na wstępie BGP wykorzystuje atrybuty do wyboru najlepszej trasy. W BGP dostępne sę następujące rodzaje atrybutów:</span></div><div> </div><ul><li><span style="color: #000000;">standardowe (well-known) &#8211; muszą być rozumiane przez wszystkie implementacje BGP,</span></li><li><span style="color: #000000;">niestandardowe &#8211; mogą nie być wspierane przez wszystkie implementacje BGP,</span></li><li><span style="color: #000000;">obowiązkowe &#8211; muszą występować w opisie trasy</span></li><li><span style="color: #000000;">opcjonalne &#8211; nie muszą występować w opisie trasy, wszystkie atrybuty niestandardowe są opcjonalne</span></li><li><span style="color: #000000;">przenośne (transitive) &#8211; są przesyłane do innych AS</span></li><li><span style="color: #000000;">nieprzenośne (non-transitive) &#8211; nie są przesyłane do innych AS</span></li></ul><div> </div><div style="text-align: justify;"><span style="color: #000000;">Najważniejsze atrybuty BGP to:</span></div><div> </div><div><span style="color: #000000;">
+<table id="tablepress-2" class="tablepress tablepress-id-2">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Nazwa atrybutu i kod</th><th class="column-2">Kategoria atrybutu</th><th class="column-3">Opis</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">1 Origin</td><td class="column-2">standardowy i obowiązkowy</td><td class="column-3">Atrybut określa źródło ścieżki (pochodzenie). Może przyjmować następujące wartości:<br />
+IGP  &#8211; trasa pochodząca z wewnętrz danego systemu autonomicznego<br />
+EGP &#8211; trasa otrzymana z EGP (External Gateway Protocol)<br />
+incomplete &#8211; trasa redystrybuowana</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">2 AS Path</td><td class="column-2">standardowy i obowiązkowy</td><td class="column-3">Atrybut opisujący sytemy autonomiczne, które są ścieżką do docelowej sieci.</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">3 Next Hop</td><td class="column-2">standardowy i obowiązkowy</td><td class="column-3">Atrybut wskazuje na adres IP następnego skoku (IP next hop) do docelowej sieci. Jest to adres IP sąsiada zdalnego BGP, przez którego dana trasa jest osiągalna.</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">4 Multiple Exit Discriminator (MED)</td><td class="column-2">niestandardowy i nieprzenośny</td><td class="column-3">Atrybut wskazujący metrykę dla zdalnych sąsiadów. Metryka wskazuje jaką ścieżkę dany sąsiad ma użyć dla dotarcia do lokalnego AS. Przy wyborze preferowana jest niższa metryka (domyślnie  MED ma wartość 0)</td>
+</tr>
+<tr class="row-6 even">
+	<td class="column-1">5 Local Preference</td><td class="column-2">standardowy i opcjonalny</td><td class="column-3">Atrybut wskazujący metrykę dla ruchu wychodzącego z lokalnego routera do sąsiadów zdalnych do zewnętrznych sieci (domyślnie Local Preference ma wartość 100). Wyższa wartość Local Preference jest preferowana przy wyborze trasy.</td>
+</tr>
+<tr class="row-7 odd">
+	<td class="column-1">6 Atomic Aggregate</td><td class="column-2">standardowy i opcjonalny</td><td class="column-3">Atrybut informujący o tym, że dokonana została agregacja tras. Zawiera ASy, które zostały porzucone w ramach agregacji.</td>
+</tr>
+<tr class="row-8 even">
+	<td class="column-1">7 Aggregator</td><td class="column-2">niestandardowy i przenośny</td><td class="column-3">Atrybut zawierający identyfikator routera odpowiedzialnego za agregację.</td>
+</tr>
+<tr class="row-9 odd">
+	<td class="column-1">8 Community</td><td class="column-2">niestandardowy i przenośny</td><td class="column-3">Atrybut pozwalający na znakowanie tras i użycie grup tras o takich samych cechach charakterystycznych.</td>
+</tr>
+<tr class="row-10 even">
+	<td class="column-1">9 Originator ID</td><td class="column-2">opcjonalny i nieprzenośny</td><td class="column-3">Atrybut identyfikujący router, od którego pochodzi dana trasa. Atrybut jest ustawiany przez router reflector i eliminuje szansę pojawienia się pętli.</td>
+</tr>
+<tr class="row-11 odd">
+	<td class="column-1">10 Cluster List</td><td class="column-2">opcjonalny i nieprzenośny</td><td class="column-3">Lista używana w środowisku route reflectorów. Używana do zapobiegania pętli.</td>
+</tr>
+<tr class="row-12 even">
+	<td class="column-1">&#8212; Weight</td><td class="column-2">własność CISCO</td><td class="column-3">Atrybut podobny do Local Preference, dostarcza wagę do wyznaczenia najlepszej trasy dla ruchu wychodzącego na urządzeniach CISCO</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-2 from cache --></span></div><h5><span style="color: #000000;">Wybór najlepszej ścieżki  w BGP</span></h5><p style="text-align: justify;"><span style="color: #000000;">W internecie istnieje wiele redundantnych połączeń do sieci docelowej. Gdy BGP ma do wyboru kilka ścieżek do trasy docelowej musi wybrać najlepszą ścieżkę. Najlepsza ścieżka w BGP jest wybierana na podstawie atrybutów. Atrybuty są sprawdzane zgodnie z poniżej podaną kolejnością w przypadku gdy atrybuty są takie same dla redundantnych ścieżek porównywany jest kolejny atrybut z listy, aż do znalezienia różnicy w atrybutach.</span></p><p style="text-align: justify;"><span style="color: #000000;">Atrybuty są porównywane w następującej kolejności:</span></p><div> <span style="color: #000000;">
+<table id="tablepress-3" class="tablepress tablepress-id-3">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Atrybut</th><th class="column-2">Opis</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">1 Weight</td><td class="column-2">Preferuj najwyższą wagę (dla routerów CISCO)</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">2 Local Preference</td><td class="column-2">Preferuj najwyższy Local Preference</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">3 Self-originated</td><td class="column-2">Preferuj trasy ogłoszone lokalnie przez komendę network lub redistribute</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">4 AS Path</td><td class="column-2">Preferuj ścieżkę z krótszym AS_PATH (mniejsza ilość AS)</td>
+</tr>
+<tr class="row-6 even">
+	<td class="column-1">5 Origin</td><td class="column-2">Preferuj trasy pochodzące z IGP nad trasami EGP, a EGP nad trasami unknown</td>
+</tr>
+<tr class="row-7 odd">
+	<td class="column-1">6 MED</td><td class="column-2">Preferuj niższą wartość MED</td>
+</tr>
+<tr class="row-8 even">
+	<td class="column-1">7 External</td><td class="column-2">Preferuj trasy z eBGP nad trasami z iBGP</td>
+</tr>
+<tr class="row-9 odd">
+	<td class="column-1">8 IGP Cost</td><td class="column-2">Preferuj ścieżkę, gdzie koszt IGP do next-hopa BGP jest niższy</td>
+</tr>
+<tr class="row-10 even">
+	<td class="column-1">9 EBGP Peering</td><td class="column-2">Preferuj starszą ścieżkę</td>
+</tr>
+<tr class="row-11 odd">
+	<td class="column-1">10 Router ID</td><td class="column-2">Preferuj ścieżkę, która ma niższy router-id</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-3 from cache --></span></div><div style="text-align: justify;"><span style="color: #000000;"> </span></div><div style="text-align: justify;"><span style="color: #000000;"> </span></div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="2553011" class="elementor-element elementor-element-2553011 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="8cce7f3" class="elementor-element elementor-element-8cce7f3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="885f270" class="elementor-element elementor-element-885f270 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">PODSUMOWANIE</span></h5><p style="text-align: justify;"><span style="color: #000000;">BGP w wersji 4 jest podstawą funkcjonowania obecnego internetu. BGP jest opisane w <a href="https://tools.ietf.org/html/rfc4271">RFC 4271</a>. Dystans administracyjny w eBGP wynosi 20, w iBGP 200. BGP do komunikacji wykorzystuje transmisję IP na porcie TCP/179. Wybór najlepszej trasy w protokole BGP odbywa się na podstawie porównywania atrybutów. BGP jest protokołem o długim czasie zbieżności (pobranie pełnej tabicy routingu Internetu może potrwać wiele godzin, tak samo jak propagacja nowego wpisu w całej sieci. </span></p><p> </p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/bgp-podstawy/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>OSPF podstawy</title>
+		<link>https://kubsoo.github.io/rsnet-website/ospf-podstawy/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/ospf-podstawy/#respond</comments>
+		<pubDate>Tue, 21 Feb 2017 20:43:32 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[bdr]]></category>
+		<category><![CDATA[dr]]></category>
+		<category><![CDATA[ospf]]></category>
+		<category><![CDATA[podstawy]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=671</guid>
+		<description><![CDATA[OSPF podstawowe informacje OSPF (Open Shortest Path First) &#8211; wolnym tłumaczeniu &#8222;pierwszeństwo ma najkrótsza ścieżka&#8221; jest protokołem routingu typu IGP (Interior Gateway Protocol). OSPF został przedstawiony w 1998 jako protokół&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-671">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="0041a22" class="elementor-element elementor-element-0041a22 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="84d3a84" class="elementor-element elementor-element-84d3a84 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="0b782b0" class="elementor-element elementor-element-0b782b0 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">OSPF podstawowe informacje</span></h5><p style="text-align: justify;"><span style="color: #333333;">OSPF (Open Shortest Path First) &#8211; wolnym tłumaczeniu &#8222;pierwszeństwo ma najkrótsza ścieżka&#8221; jest protokołem routingu typu IGP (Interior Gateway Protocol). OSPF został przedstawiony w 1998 jako protokół otwarty i takim jest do dnia dzisiejszego. Dla IPv4 korzystamy obecnie z OSPFv2, natomiast dla IPv6 z OSPFv3. OSPF jest dobrze skalowalny w większych sieciach, ponieważ umożliwia budowę struktury hierarchicznej opartej o obszary.  OSPF jest protokołem typu link-state w ramach jednego obszaru, natomiast pomiędzy obszarami zachowuje się jak protokół typu distance-vector. OSPF wspiera <a href="http://www.tech-faq.com/vlsm.html">VLSM</a> (Variable Length Subnet Mask). Dystans administracyjny protokołu OSPF wynosi 110. W obrębie jednego obszaru wszystkie routery wymieniają się między sobą informacją o stanie łączy i każdy z nich przelicza trasy  samodzielnie. OSPF korzysta z kosztu do wyznaczenia najlepszej trasy. Domyślnie koszt wynosi 10^8 / bandwidth w bits/s (dla 100Mbit łącza koszt wynosi 1). Poniżej znajduje się tabelka z domyślnymi kosztami dla poszczególnych pasm: </span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="a745315" class="elementor-element elementor-element-a745315 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="6aa1961" class="elementor-element elementor-element-6aa1961 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c8fe181" class="elementor-element elementor-element-c8fe181 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #333333;">
+<table id="tablepress-1" class="tablepress tablepress-id-1">
+<thead>
+<tr class="row-1 odd">
+	<th class="column-1">Bandwidth</th><th class="column-2">Koszt OSPF</th>
+</tr>
+</thead>
+<tbody class="row-hover">
+<tr class="row-2 even">
+	<td class="column-1">100Gbps</td><td class="column-2">1</td>
+</tr>
+<tr class="row-3 odd">
+	<td class="column-1">40Gbps</td><td class="column-2">1</td>
+</tr>
+<tr class="row-4 even">
+	<td class="column-1">10Gbps</td><td class="column-2">1</td>
+</tr>
+<tr class="row-5 odd">
+	<td class="column-1">1Gbps</td><td class="column-2">1</td>
+</tr>
+<tr class="row-6 even">
+	<td class="column-1">100Mbps</td><td class="column-2">1</td>
+</tr>
+<tr class="row-7 odd">
+	<td class="column-1">10Mbps</td><td class="column-2">10</td>
+</tr>
+<tr class="row-8 even">
+	<td class="column-1">1.544Mbps</td><td class="column-2">64</td>
+</tr>
+<tr class="row-9 odd">
+	<td class="column-1">768Kbps</td><td class="column-2">133</td>
+</tr>
+<tr class="row-10 even">
+	<td class="column-1">128Kbps</td><td class="column-2">781</td>
+</tr>
+</tbody>
+</table>
+<!-- #tablepress-1 from cache --></span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="f97c216" class="elementor-element elementor-element-f97c216 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c1dbb9a" class="elementor-element elementor-element-c1dbb9a elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="84d8c16" class="elementor-element elementor-element-84d8c16 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><div class="elementor-background-overlay"><span style="color: #333333;"> </span></div><div class="elementor-widget-wrap ui-sortable"><div id="" class="elementor-element elementor-element-edit-mode elementor-element-c0d3a35 elementor-widget ui-sortable-handle elementor-widget-text-editor elementor-widget-can-edit" data-id="c0d3a35" data-element_type="text-editor.default" data-model-cid="c47"><div class="elementor-element-overlay"><span style="color: #333333;"> </span></div><div class="elementor-widget-container"><div class="elementor-text-editor elementor-clearfix elementor-inline-editing" data-elementor-setting-key="editor" data-elementor-inline-editing-toolbar="advanced"><p><span style="color: #333333;">W skrócie</span></p><ul><li><span style="color: #333333;">protokół routingu typu stan-łącza (link-state)</span></li><li><span style="color: #333333;">protokół otwarty (IETF)</span></li><li><span style="color: #333333;">korzysta z algorytmu <a style="color: #333333;" href="https://pl.wikipedia.org/wiki/Algorytm_Dijkstry">Djikstry</a> </span></li><li><span style="color: #333333;">bezklasowy</span></li><li><span style="color: #333333;">wspiera VLSM (variable length subnet mask)</span></li><li><span style="color: #333333;">Aktualizacje są wysyłane na adresy multicast (224.0.0.5 i 224.0.0.6)</span></li><li><span style="color: #333333;">metryka = koszt (koszt = 10^8/pasmo w bitach na sekundę)</span></li><li><span style="color: #333333;">Dystans administracyjny = 110</span></li><li><span style="color: #333333;">Umożliwia równoważenie obciążenia przez 4 ścieżki z takimi samymi kosztami</span></li></ul></div></div></div></div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="16f01f9" class="elementor-element elementor-element-16f01f9 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="2f055a2" class="elementor-element elementor-element-2f055a2 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="0e16e49" class="elementor-element elementor-element-0e16e49 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">Nagłówek pakietu OSPF</span></h5><pre><span style="color: #333333;">        0                   1                   2                   3
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |   Version #   |     Type      |         Packet length         |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |                          Router ID                            |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |                           Area ID                             |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |           Checksum            |             AuType            |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |                       Authentication                          |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |                       Authentication                          |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="7dda601" class="elementor-element elementor-element-7dda601 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e6e45e3" class="elementor-element elementor-element-e6e45e3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="ff5023d" class="elementor-element elementor-element-ff5023d elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #333333;">Każdy pakiet OSPF zaczyna się standardowym 24 bajtowym nagłówkiem w skład którego wchodzą następujące pola:</span></p><p><span style="color: #333333;"><strong>Version</strong> (8 bitów) &#8211; numer wersji OSPF. Są 3 wersje OSPFv1, OSPFv2 (IPv4) i OSPFv3 (IPv6)</span></p><p><span style="color: #333333;"><strong>Type</strong> (8 bitów) &#8211; typ pakietu:</span></p><p style="padding-left: 30px;"><span style="color: #333333;">1- Hello packet</span><br /><span style="color: #333333;">2- Database Descriptor packet</span><br /><span style="color: #333333;">3- Link State Request packet</span><br /><span style="color: #333333;">4- Link State Update packet</span><br /><span style="color: #333333;">5- Link State Acknowledgment packet</span></p><p><span style="color: #333333;"><strong>Packet length</strong> (16 bitów) &#8211; długość pakietu OSPF</span></p><p><span style="color: #333333;"><strong>Router ID</strong> (32 bity) &#8211; identyfikator routera</span></p><p><span style="color: #333333;"><strong>Area ID</strong> (32 bity) &#8211; numer obszaru OSPF</span></p><p><span style="color: #333333;"><strong>Checksum</strong> (16 bitów) &#8211; suma kontrolna pakietu OSPF, bez pola Authentication</span></p><p><span style="color: #333333;"><strong>AuType</strong> (16 bitów) &#8211; typ uwierzytelniania</span></p><p style="padding-left: 30px;"><span style="color: #333333;">0- brak hasła</span><br /><span style="color: #333333;">1- hasło w otwartym tekście</span><br /><span style="color: #333333;">2- uwierzytelnianie MD5</span></p><p style="text-align: justify;"><span style="color: #333333;"><strong>Authentication</strong> (64 bity) &#8211; dane uwierzytelniające do weryfikacji integralności pakietu</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="7afcba1" class="elementor-element elementor-element-7afcba1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="81bc5f3" class="elementor-element elementor-element-81bc5f3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="9ec86d8" class="elementor-element elementor-element-9ec86d8 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">Typy pakietów OSPF</span></h5><ol><li><span style="color: #333333;"><strong>Hello</strong> &#8211; pakiety hello służą do utrzymywania i zestawiania relacji sąsiedztwa między routerami OSPF</span></li><li style="text-align: justify;"><span style="color: #333333;"><strong>Database Description</strong> &#8211; pakiet zawierający bazę danych z trasami</span></li><li style="text-align: justify;"><span style="color: #333333;"><strong>Link State Request</strong> &#8211; żądanie aktualnej informacji o stanie łączy od sąsiada</span></li><li style="text-align: justify;"><span style="color: #333333;"><strong>Link State Update</strong> &#8211; aktualizacja informacji o stanie łączy danego routera</span></li><li><span style="color: #333333;"><strong>Link State ACK</strong> &#8211; potwierdzenie otrzymania pakietu OSPF</span></li></ol></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="56fb147" class="elementor-element elementor-element-56fb147 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="92a5128" class="elementor-element elementor-element-92a5128 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="b6b4c02" class="elementor-element elementor-element-b6b4c02 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;"><strong>Stany procesu OSPF</strong></span></h5><div><ol><li><span style="color: #333333;">Down</span></li><li><span style="color: #333333;">Init</span></li><li><span style="color: #333333;">2 way</span></li><li><span style="color: #333333;">Exstart</span></li><li><span style="color: #333333;">Exchange</span></li><li><span style="color: #333333;">Loading</span></li><li><span style="color: #333333;">Full</span></li></ol><p style="text-align: justify;"><span style="color: #333333;">Router z uruchomionym procesem OSPF może być w jednym z 7 stanów. Dokładny opis poszczególnych stanów wraz ze szczegółowymi informacjami można znaleźć pod tym</span> <a href="http://www.firewall.cx/networking-topics/routing/ospf-routing-protocol/1142-ospf-adjacency-neighbor-states-forming-process.html">linkiem</a>.</p></div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="c53b1ff" class="elementor-element elementor-element-c53b1ff elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="ba823bd" class="elementor-element elementor-element-ba823bd elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c0d3a35" class="elementor-element elementor-element-c0d3a35 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333; background-color: initial;">Router ID</span></h5><div style="text-align: justify;"><span style="color: #333333;">Wykorzystywany do identyfikacji każdego routera. Router-id jest wybierany następująco:</span></div><ol><li><span style="color: #333333;">Ustawiany ręcznie (polecenie router-id X.X.X.X)</span></li><li><span style="color: #333333;">Najwyższy adres IP interfejsu logicznego</span></li><li><span style="color: #333333;">Najwyższy adres IP aktywnego interfejsu fizycznego</span></li></ol><pre><span style="color: #333333;">Router(config)#router ospf 1</span><br /><br /><span style="color: #333333;">Router(config)#router-id 1.1.1.1</span></pre><h5><span style="color: #333333;">Designated Router i Backup Designated Router</span></h5><p style="text-align: justify;"><span style="color: #333333;">W sieciach wielodostępowych (typu broadcast i non broadcast multiaccess) gdzie mamy dużo urządzeń na których uruchomiony jest protokół routingu OSPF pojawia się problem z dużą ilością relacji sąsiedztwa a co za tym idzie z duża ilością ruchu generowanego przez OSPF. Rozwiązaniem tego stanu jest router desygnowany oraz zapasowy. Dzięki routerowi desygnowanego routery w sieci nie wymieniają się informacjami o sieciach z wszystkimi pozostałymi routerami, a wymieniają się tylko z routerami DR i BDR.</span></p><p><strong><span style="color: #333333;">Wybór DR i BDR</span></strong></p><ol><li><span style="color: #333333;">Router z najwyższym priorytetem jest DR</span></li><li><span style="color: #333333;">Router z drugim najwyższym priorytetem jest BDR</span></li><li style="text-align: justify;"><span style="color: #333333;">Domyślny priorytet to 1</span></li><li style="text-align: justify;"><span style="color: #333333;">Jeśli priorytet jest taki sam przy wyborze DR i BDR, DR zostaje router z wyższym router-id, a BDR router z drugim najwyższym router-id</span></li><li style="text-align: justify;"><span style="color: #333333;">Router z priorytetem 0 nie może zostać DR ani BDR</span></li><li style="text-align: justify;"><span style="color: #333333;">Router który nie jest DR ani BDR pełni rolę DROTHER</span></li><li><span style="color: #333333;">Wybór DR i BDR nie działa w sposób preemptive </span></li></ol><div> </div><div><span style="color: #333333;">Pomiędzy routerami DR, BDR i DROTHER występując następujące stany:</span></div><div> </div><div><span style="color: #333333;">DR/BDR -&gt; DROTHER -&gt; FULL</span></div><div><span style="color: #333333;">DROTHER -&gt; DR/BDR -&gt; FULL</span></div><div><span style="color: #333333;">DROTHER -&gt; DROTHER -&gt; 2 Way</span></div><div> </div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="483678e" class="elementor-element elementor-element-483678e elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="f5f4b54" class="elementor-element elementor-element-f5f4b54 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c266761" class="elementor-element elementor-element-c266761 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><strong><span style="color: #333333;">Konfiguracja OSPF w pojedynczym obszarze</span></strong></h5><p style="text-align: justify;"><span style="color: #333333;">Konfiguracja OSPF na routerach CISCO jest bardzo prosta. Wystaczy wydać komendę router ospf &lt;numer_procesu&gt; a następnie wpisać listę sieci, które chcemy rozgłaszać i na których chcemy uruchomić proces. Zbudujmy sobię prostą topologię złożoną z dwóch routerów i skonfigurujmy na nich OSPF.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="122715b" class="elementor-element elementor-element-122715b elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="5e0c468" class="elementor-element elementor-element-5e0c468 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="e02b562" class="elementor-element elementor-element-e02b562 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="623" height="217" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ospf_adj_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ospf_adj_2.png 623w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/ospf_adj_2-300x104.png 300w" sizes="(max-width: 623px) 100vw, 623px" />											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="8c029b1" class="elementor-element elementor-element-8c029b1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="02e9552" class="elementor-element elementor-element-02e9552 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="7a1014f" class="elementor-element elementor-element-7a1014f elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><div><span style="color: #333333;">R1 </span></div><pre><span style="color: #333333;">hostname R1</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet 0/0</span><br /><span style="color: #333333;">  ip address 192.168.0.1 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface Loopback0</span><br /><span style="color: #333333;">  ip address 1.1.1.1 255.255.255.255</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;">   network 192.168.0.0 0.0.0.255 area 0</span><br /><span style="color: #333333;">   network 1.1.1.1 0.0.0.0 area 0</span></pre><div><span style="color: #333333;">R2</span></div><pre><span style="color: #333333;">hostname R2</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface FastEthernet 0/0</span><br /><span style="color: #333333;">  ip address 192.168.0.2 255.255.255.0</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">interface Loopback0</span><br /><span style="color: #333333;"> ip address 2.2.2.2 255.255.255.255</span><br /><span style="color: #333333;">!</span><br /><span style="color: #333333;">router ospf 1</span><br /><span style="color: #333333;">   network 192.168.0.0 0.0.0.255 area 0</span><br /><span style="color: #333333;">   network 2.2.2.2 0.0.0.0 area 0</span></pre><div style="text-align: justify;"><span style="color: #333333;">Prześledźmy proces formowania się relacji sąsiedztwa między routerami R1 i R2. Możemy to zrobić wydając komendę debug ip ospf adj na jednym z routerów i zresetujmy proces ospf.</span></div><pre><span style="color: #333333;">R2#debug ip ospf adj</span><br /><span style="color: #333333;">OSPF adjacency debugging is on</span><br /><span style="color: #333333;">R2#clear ip ospf process</span><br /><span style="color: #333333;">Reset ALL OSPF processes? [no]: yes</span><br /><span style="color: #333333;">R2#<br /></span><span style="color: #333333;">*Feb 21 10:30:50.395: OSPF-1 ADJ Lo0: Interface going Down</span><br /><span style="color: #333333;">*Feb 21 10:30:50.395: OSPF-1 ADJ Lo0: 2.2.2.2 address 2.2.2.2 is dead, state DOWN</span><br /><span style="color: #333333;">*Feb 21 10:30:50.395: OSPF-1 ADJ Fa0/0: Interface going Down</span><br /><span style="color: #333333;">*Feb 21 10:30:50.395: OSPF-1 ADJ Fa0/0: 1.1.1.1 address 192.168.0.1 is dead, state DOWN</span><br /><span style="color: #333333;">*Feb 21 10:30:50.395: %OSPF-5-ADJCHG: Process 1, Nbr 1.1.1.1 on FastEthernet0/0 from FULL to DOWN, Neighbor Down: Interface down or detached</span><br /><span style="color: #333333;">*Feb 21 10:30:50.395: OSPF-1 ADJ Fa0/0: Neighbor change event</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: DR/BDR election</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect BDR 2.2.2.2</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect DR 2.2.2.2</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect BDR 0.0.0.0</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect DR 2.2.2.2</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: DR: 2.2.2.2 (Id) BDR: none</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Remember old DR 1.1.1.1 (id)</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0:</span><br /><strong><span style="color: #333333;">R2#2.2.2.2 address 192.168.0.2 is dead, state DOWN</span></strong><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Neighbor change event</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: DR/BDR election</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect BDR 0.0.0.0</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect DR 0.0.0.0</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect BDR 0.0.0.0</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Elect DR 0.0.0.0</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: DR: none BDR: none</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Flush network LSA immediately</span><br /><span style="color: #333333;">*Feb 21 10:30:50.399: OSPF-1 ADJ Fa0/0: Remember old DR 2.2.2.2 (id)</span><br /><span style="color: #333333;">*Feb 21 10:30:50.403: OSPF-1 ADJ Lo0: Interface going Up</span><br /><span style="color: #333333;">*Feb 21 10:30:50.403: OSPF-1 ADJ Fa0/0: Interface going Up</span><br /><strong><span style="color: #333333;">*Feb 21 10:30:50.427: OSPF-1 ADJ Fa0/0: 2 Way Communication to 1.1.1.1, state 2WAY</span></strong><br /><span style="color: #333333;">*Feb 21 10:30:50.427: OSPF-1 ADJ Fa0/0: Backup seen event before WAIT timer</span><br /><span style="color: #333333;">*Feb 21 10:30:50.431: OSPF-1 ADJ Fa0/0: DR/BDR election</span><br /><span style="color: #333333;">*Feb 21 10:30:50.431: OSPF-</span><br /><span style="color: #333333;">R2#1 ADJ Fa0/0: Elect BDR 2.2.2.2</span><br /><span style="color: #333333;">*Feb 21 10:30:50.431: OSPF-1 ADJ Fa0/0: Elect DR 1.1.1.1</span><br /><span style="color: #333333;">*Feb 21 10:30:50.435: OSPF-1 ADJ Fa0/0: Elect BDR 2.2.2.2</span><br /><span style="color: #333333;">*Feb 21 10:30:50.435: OSPF-1 ADJ Fa0/0: Elect DR 1.1.1.1</span><br /><span style="color: #333333;">*Feb 21 10:30:50.439: OSPF-1 ADJ Fa0/0: DR: 1.1.1.1 (Id) BDR: 2.2.2.2 (Id)</span><br /><span style="color: #333333;">*Feb 21 10:30:50.439: OSPF-1 ADJ Fa0/0: Nbr 1.1.1.1: Prepare dbase exchange</span><br /><span style="color: #333333;">*Feb 21 10:30:50.443: OSPF-1 ADJ Fa0/0: Send DBD to 1.1.1.1 seq 0x962 opt 0x52 flag 0x7 len 32</span><br /><strong><span style="color: #333333;">*Feb 21 10:30:50.483: OSPF-1 ADJ Fa0/0: Rcv DBD from 1.1.1.1 seq 0x55A opt 0x52 flag 0x7 len 32 mtu 1500 state EXSTART</span></strong><br /><span style="color: #333333;">*Feb 21 10:30:50.483: OSPF-1 ADJ Fa0/0: First DBD and we are not SLAVE</span><br /><strong><span style="color: #333333;">*Feb 21 10:30:50.483: OSPF-1 ADJ Fa0/0: Rcv DBD from 1.1.1.1 seq 0x962 opt 0x52 flag 0x2 len 72 mtu 1500 state EXSTART</span></strong><br /><span style="color: #333333;">*Feb 21 10:30:50.483: OSPF-1 ADJ Fa0/0: NBR Negotiation Done. We are the MASTER</span><br /><span style="color: #333333;">*Feb 21 10:30:50.483: OSPF-1 ADJ Fa0/0: Nbr 1.1.1.1: Summary list built, size 0</span><br /><span style="color: #333333;">*Feb 21 10:30:50.483: OSPF-1 ADJ Fa0/0:</span><br /><span style="color: #333333;">R2# Send DBD to 1.1.1.1 seq 0x963 opt 0x52 flag 0x1 len 32</span><br /><strong><span style="color: #333333;">*Feb 21 10:30:50.491: OSPF-1 ADJ Fa0/0: Rcv DBD from 1.1.1.1 seq 0x963 opt 0x52 flag 0x0 len 32 mtu 1500 state EXCHANGE</span></strong><br /><span style="color: #333333;">*Feb 21 10:30:50.491: OSPF-1 ADJ Fa0/0: Exchange Done with 1.1.1.1</span><br /><span style="color: #333333;">*Feb 21 10:30:50.491: OSPF-1 ADJ Fa0/0: Send LS REQ to 1.1.1.1 length 48 LSA count 2</span><br /><span style="color: #333333;">*Feb 21 10:30:50.503: OSPF-1 ADJ Fa0/0: Rcv LS UPD from 1.1.1.1 length 108 LSA count 2</span><br /><span style="color: #333333;">*Feb 21 10:30:50.503: OSPF-1 ADJ Fa0/0: Synchronized with 1.1.1.1, state FULL</span><br /><strong><span style="color: #333333;">*Feb 21 10:30:50.503: %OSPF-5-ADJCHG: Process 1, Nbr 1.1.1.1 on FastEthernet0/0 from LOADING to FULL, Loading Done</span></strong><br /><span style="color: #333333;">*Feb 21 10:30:50.507: OSPF-1 ADJ Fa0/0: Nbr 1.1.1.1: Clean-up dbase exchange</span><br /><span style="color: #333333;">*Feb 21 10:30:52.283: OSPF-1 ADJ Fa0/0: Neighbor change event</span><br /><span style="color: #333333;">*Feb 21 10:30:52.283: OSPF-1 ADJ Fa0/0: DR/BDR election</span><br /><strong><span style="color: #333333;">*Feb 21 10:30:52.283: OSPF-1 ADJ Fa0/0: Elect BDR 2.2.2.2</span></strong><br /><strong><span style="color: #333333;">*Feb 21 10:30:52.283: OSPF-1 ADJ Fa0/0: Elect DR 1.1.1.1</span></strong><br /><span style="color: #333333;">*Feb 21 10:30:52.283: OSPF-1 ADJ Fa0/0: DR: 1.</span><br /><span style="color: #333333;">R2#1.1.1 (Id) BDR: 2.2.2.2 (Id)</span></pre><div style="text-align: justify;"><span style="color: #333333;">Z wyniku powyższej komendy możemy zauważyć, że w naszym przypadku DR został router o ID 1.1.1.1, czyli R1 a BDR router o ID 2.2.2.2, czyli R2. Możemy to zweryfikować wydając komendę:</span></div><pre><span style="color: #333333;">R1#show ip ospf interface fastEthernet 0/0</span><br /><span style="color: #333333;">FastEthernet0/0 is up, line protocol is up</span><br /><span style="color: #333333;">  Internet Address 192.168.0.1/24, Area 0, Attached via Network Statement</span><br /><span style="color: #333333;">  Process ID 1, Router ID 1.1.1.1, Network Type BROADCAST, Cost: 1</span><br /><span style="color: #333333;">  Topology-MTID Cost Disabled Shutdown Topology Name</span><br /><span style="color: #333333;">  0 1 no no Base</span><br /><span style="color: #333333;">  Transmit Delay is 1 sec, State DR, Priority 1</span><br /><span style="color: #333333;">  <strong>Designated Router (ID) 1.1.1.1</strong>, Interface address 192.168.0.1</span><br /><span style="color: #333333;">  <strong>Backup Designated router (ID) 2.2.2.2</strong>, Interface address 192.168.0.2</span><br /><span style="color: #333333;">  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5</span><br /><span style="color: #333333;">  oob-resync timeout 40</span><br /><span style="color: #333333;">  Hello due in 00:00:03</span><br /><span style="color: #333333;">  Supports Link-local Signaling (LLS)</span><br /><span style="color: #333333;">  Cisco NSF helper support enabled</span><br /><span style="color: #333333;">  IETF NSF helper support enabled</span><br /><span style="color: #333333;">  Index 1/1, flood queue length 0</span><br /><span style="color: #333333;">  Next 0x0(0)/0x0(0)</span><br /><span style="color: #333333;">  Last flood scan length is 0, maximum is 1</span><br /><span style="color: #333333;">  Last flood scan time is 0 msec, maximum is 0 msec</span><br /><span style="color: #333333;">  Neighbor Count is 1, Adjacent neighbor count is 1</span><br /><span style="color: #333333;">  Adjacent with neighbor 2.2.2.2 (Backup Designated Router)</span><br /><span style="color: #333333;">  Suppress hello for 0 neighbor(s)</span></pre><pre><span style="color: #333333;">R2#show ip ospf interface fastEthernet 0/0</span><br /><span style="color: #333333;">FastEthernet0/0 is up, line protocol is up</span><br /><span style="color: #333333;">  Internet Address 192.168.0.2/24, Area 0, Attached via Network Statement</span><br /><span style="color: #333333;">  Process ID 1, Router ID 2.2.2.2, Network Type BROADCAST, Cost: 1</span><br /><span style="color: #333333;">  Topology-MTID Cost Disabled Shutdown Topology Name</span><br /><span style="color: #333333;">  0 1 no no Base</span><br /><span style="color: #333333;">  Transmit Delay is 1 sec, State BDR, Priority 1</span><br /><span style="color: #333333;">  <strong>Designated Router (ID) 1.1.1.1</strong>, Interface address 192.168.0.1</span><br /><span style="color: #333333;">  <strong>Backup Designated router (ID) 2.2.2.2</strong>, Interface address 192.168.0.2</span><br /><span style="color: #333333;">  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5</span><br /><span style="color: #333333;">  oob-resync timeout 40</span><br /><span style="color: #333333;">  Hello due in 00:00:05</span><br /><span style="color: #333333;">  Supports Link-local Signaling (LLS)</span><br /><span style="color: #333333;">  Cisco NSF helper support enabled</span><br /><span style="color: #333333;">  IETF NSF helper support enabled</span><br /><span style="color: #333333;">  Index 1/1, flood queue length 0</span><br /><span style="color: #333333;">  Next 0x0(0)/0x0(0)</span><br /><span style="color: #333333;">  Last flood scan length is 1, maximum is 1</span><br /><span style="color: #333333;">  Last flood scan time is 0 msec, maximum is 0 msec</span><br /><span style="color: #333333;">  Neighbor Count is 1, Adjacent neighbor count is 1</span><br /><span style="color: #333333;">  Adjacent with neighbor 1.1.1.1 (Designated Router)</span><br /><span style="color: #333333;">  Suppress hello for 0 neighbor(s)</span><span style="color: #333333;"> </span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="dd270a1" class="elementor-element elementor-element-dd270a1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="729fd50" class="elementor-element elementor-element-729fd50 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="bd9bee8" class="elementor-element elementor-element-bd9bee8 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #333333;">Przydatne komendy</span></h5><p style="text-align: justify;"><span style="color: #333333;"><strong>show ip ospf neighbor</strong> &#8211; wyświetlenie listy sąsiadów OSPF</span></p><p style="text-align: justify;"><span style="color: #333333;"><strong>show ip protocols</strong> &#8211; wyświetlenie podstawowych informacji o skonfigurowanym protokole routingu</span></p><p><span style="color: #333333;"><strong>show ip route ospf</strong> &#8211; wyświetlenie tablicy routingu OSPF</span></p><p style="text-align: justify;"><span style="color: #333333;"><strong>show ip ospf interface brief</strong> &#8211; wyświetlenie interfejsów z kosztami OSPF</span></p><p style="text-align: justify;"><span style="color: #333333;"><strong>show ip ospf database</strong> &#8211; wyświetlenie pełnej bazy danych OSPF</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/ospf-podstawy/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>ccna &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/ccna/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>HSRP podstawowa konfiguracja</title>
+		<link>https://kubsoo.github.io/rsnet-website/hsrp-podstawowa-konfiguracja/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/hsrp-podstawowa-konfiguracja/#respond</comments>
+		<pubDate>Mon, 02 Oct 2017 16:36:12 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[ccna]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[hsrp]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=318</guid>
+		<description><![CDATA[W dzisiejszym wpisie pokażę jak skonfigurować i wyjaśnię jak używać HSRP (Hot Standby Routing Protocol). HSRP jest protokołem opracowanym przez firmę CISCO w celu zapewnia redundancji w sieciach IP. HSRP&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">W dzisiejszym wpisie pokażę jak skonfigurować i wyjaśnię jak używać HSRP (Hot Standby Routing Protocol). HSRP jest protokołem opracowanym przez firmę CISCO w celu zapewnia redundancji w sieciach IP. HSRP umożliwia wielu routerom w jednym segmencie sieci LAN współdzielić wirtualny adres IP, który jest konfigurowany jako brama domyślna na urządzeniach końcowych.</p>
+<p style="text-align: justify;">Załóżmy, że mamy w sieci dwa routery z dostępem do internetu w celu zapewnienia redundancji. Urządzenia końcowe w celu komunikacji z internetem muszą mieć wskazaną bramę domyślną. W przypadku awarii tej bramy domyślnej host traci możliwość komunikacji z internetem. Przypadek ten obrazuje poniższy rysunek:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/hsrp-1.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-327 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/hsrp-1.png" alt="" width="400" height="447" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/hsrp-1.png 400w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/hsrp-1-268x300.png 268w" sizes="(max-width: 400px) 100vw, 400px" /></a></p>
+<p style="text-align: justify;">Mamy dwa rozwiązania takiego problemu. Pierwszym z nich jest przekonfigurowanie hosta, w taki sposób żeby brama domyślna wskazywała na drugi router, albo użycie protokołu HSRP. Dwa routery o adresach 192.168.0.2 oraz 192.168.0.3 mogą być osiągalne pod jednym wspólnym wirtualnym adresem IP 192.168.0.1. Dzięki temu, w przypadku awarii dowolnego routera host będzie miał dostęp do internetu, ponieważ ma skonfigurowaną bramę domyślna na adres wirtualny 192.168.0.1. W HSRP jeden z routerów pełni rolę routera aktywnego, natomiast drugi router pełni rolę routera rezerwowego. Oba mają ten sam wirtualny adres IP oraz adres MAC, natomiast tylko jeden w danej chwili przepuszcza ruch.</p>
+<p style="text-align: justify;"><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/hsrp1.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-328 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/hsrp1.png" alt="" width="401" height="447" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/hsrp1.png 401w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/hsrp1-269x300.png 269w" sizes="(max-width: 401px) 100vw, 401px" /></a></p>
+<p style="text-align: justify;">W przypadku awarii aktywnego routera, router rezerwowy przejmuje rolę routera aktywnego, a ponieważ używa on tego samego wirtualnego adresu IP i adresu MAC co router który uległ awarii host nie zauważy tej awarii i będzie mógł korzystać z internetu bez konieczności przekonfigurowania bramy sieciowej. Dodatkowo, jeśli routerów skonfigurowanych w HSRP jest więcej niż dwa, to kolejny router zostaje routerem rezerwowym na wypadek kolejnej awarii.</p>
+<p style="text-align: justify;">Wszystkie routery w tej samej HSRP wysyłają między sobą pakiety hello (dla HSRP w wersji 1 pakiety hello są wysyłane na adres multicast 224.0.0.2, natomiast HSRP w wersji 2 pakiety hello są wysyłane na adres multicast 224.0.0.102). Na urządzeniach CISCO domyślnie uruchamiane jest HSRP w wersji 1.</p>
+<p style="text-align: justify;">Wirtualny adres MAC HSRP w wersji 1 to 0000.0C07.AC<strong>xx</strong>, gdzie <strong>xx</strong> to numer grupy HSRP w zapisie szesnastkowym (hex). Np. HSRP grupa 10 używa wirtualnego adresu MAC 0000.0C07.AC0A. HSRP w wersji 2 używa wirtualnego adresu MAC 0000.0C9F.F<strong>XXX</strong> (gdzie <strong>XXX</strong> to numer grupy HSRP w zapisie szesnastkowym (hex).</p>
+<p>HSRP konfigurujemy na interfejsie wydając komendę:</p>
+<pre>Router(config-if)#standby group ip virtual-ip-address</pre>
+<p>przykład:</p>
+<p>ustawmy wirtualny adres IP na 192.168.1.1 dla grupy 10</p>
+<pre>Router(config-if)#standby 10 ip 192.168.1.1</pre>
+<p style="text-align: justify;">W momencie skonfigurowania HSRP na interfejsie, router przechodzi przez szereg stanów, zanim stanie się aktywny. Wymusza to routerze sprawdzanie, czy są już jakieś routery w grupie HSRP i czy router ma zostać routerem aktywnym, czy routerem rezerwowym.</p>
+<p style="text-align: justify;">Proces wyboru routera aktywnego w HSRP bazuje na priotytecie (od 0 do 255). Priorytet ten konfiguruje się dla każdego routera w grupie. Domyślnie priorytet wynosi 100. Router z najwyższym priorytetem zostaje routerem aktywnym w grupie. Jeśli wszystkie routery w grupie mają takie same priorytety wówczas router z najwyższym adresem IP na interfejsie na którym skonfigurowany jest HSRP zostaje routerem aktywnym. Router z drugim najwyższym priorytetem zostaje routerem zapasowym. Kolejne routery z niższymi priorytetami nie pełnią żadnej funkcji. Do ustawienie priorytetu służy następująca komenda:</p>
+<pre>Router(config-if)#standby group priority priority</pre>
+<p>przykład:</p>
+<p>ustawmy priorytet 200 dla HSRP group 10</p>
+<pre>Router(config-if)#standby 10 priority 200</pre>
+<p>Routery uczestniczące w HSRP muszą przejść przez następujące 6 stanów:</p>
+<table border="1">
+<tbody>
+<tr>
+<td>Stan</td>
+<td>Opis</td>
+</tr>
+<tr>
+<td>Initial</td>
+<td>
+<p style="text-align: justify;">Stan początkowy. Wskazuje na to, że HSRP nie działa. Router przechodzi przez ten stan w przypadku zmian w konfiguracji HSRP, albo w przypadku włączenia interfejsu.</p>
+</td>
+</tr>
+<tr>
+<td>Learn</td>
+<td style="text-align: justify;">Router nie ustalił jeszcze wirtualnego adresu IP i nie otrzymał wiadomości hello od routera aktywnego. W tym stanie router czeka na wiadomość od routera aktywnego.</td>
+</tr>
+<tr>
+<td>Listen</td>
+<td>
+<p style="text-align: justify;">Router zna zarówno IP jak i adres MAC wirtualnego routera, ale nie jest ani routerem aktywnym ani rezerwowym. Np. Jeśli mamy 3 routery w grupie HSRP, to jeden z routerów jest routerem aktywny, drugi jest routerem rezerwowym, a trzeci router jest routerem w trybie słuchania (Listen).</p>
+</td>
+</tr>
+<tr>
+<td>Speak</td>
+<td style="text-align: left;">Router wysyła pakiety hello i uczestniczy w wyborze aktywnego lub rezerwowego routera.</td>
+</tr>
+<tr>
+<td>Standby</td>
+<td>
+<p style="text-align: justify;">Stan rezerwowy. W tym stanie router monitoruje pakiety hello od aktywnego routera i przejmuje rolę aktywnego routera w przypadku awarii (czyli w przypadku braku otrzymywania pakietów hello od routera aktywnego).</p>
+</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>
+<p style="text-align: justify;">Stan aktywny. Router przepuszcza ruch kierowany do wirtualnego adresu IP.  Wysyła również pakiety hello na adres multicast do innych routerów w grupie HSRP.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: justify;">Prześledźmy proces wyboru routera aktywnego na przykładzie. Załóżmy że mamy dwa routery A i B. Na routerze A zostaje skonfigurowane HSRP. W tym momencie router wchodzi w stan<strong> initial</strong>. Następnie przechodzi do <strong>listen</strong>. W tym stanie router nasłuchuje, czy jest już jakiś aktywny lub pasywny router w grupie HSRP. Nie ma innego routera w grupie HSRP więc router przechodzi do wyboru routera aktywnego poprzez przejście do stanu <strong>speak</strong>. Teraz router zaczyna wysyłać pakiety hello ze swoim priorytetem na adres multicast 224.0.0.2. Jeśli router nie otrzyma wiadomości hello z priorytetem wyższym od innego routera, wówczas uznaje że jest routerem aktywnym i przechodzi do stanu <strong>active</strong>. W tym stanie router w dalszym ciągu wysyła pakiety hello.</p>
+<p style="text-align: justify;">W tym momencie uruchamiamy usługę HSRP na routerze B. Router B również przechodzi w stan <strong>initial </strong>a następnie<strong> </strong><strong>listen</strong>.  W stanie listen, router B dowiaduje się, że router A jest routerem aktywnym i żaden inny router nie jest routerem rezerwowym. Router przechodzi więc w stan <strong>speak </strong>i zaczyna sprawdzać czy może zostać routerem zapasowym, jeśli tak to zostaje to przechodzi do stanu <strong>standby </strong>i zostaje routerem rezerwowym.</p>
+<p>&nbsp;</p>
+<h3><strong>KONFIGURACJA</strong></h3>
+<p>Skonfigurujmy wstępnie sieć zgodnie ze schematem poniżej:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/hsrp2.png" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-337 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/hsrp2.png" alt="" width="291" height="585" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/hsrp2.png 291w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/hsrp2-149x300.png 149w" sizes="(max-width: 291px) 100vw, 291px" /></a></p>
+<pre>R1: 
+fa0/0        -      192.168.1.2/24 
+fa1/0        -      13.13.13.2/24 
+
+R2:  
+fa0/0        -      192.168.1.3/24 
+fa1/0        -      14.14.14.2/24
+
+R3:
+fa1/0        -      13.13.13.1/24
+fa1/1        -      14.14.14.1/24
+loopback0    -      5.5.5.5/32
+
+host
+eth0         -      192.168.1.100/24
+gw           -      192.168.1.1</pre>
+<p style="text-align: justify;">Router R3 będzie naszym internetem, a dokładnie jego interfejs loopback0 o adresie 5.5.5.5. Pomiędzy wszystkimi routerami jest łączność przy użyciu protkołu routingu EIGRP (nie będę się skupiał w tym wpisie na konfiguracji EIGRP, bo nie wchodzi to w skład podstawowej konfiguracji HSRP).</p>
+<p style="text-align: justify;">Po skonfigurowaniu interfejsów nadszedł czas na skonfigurowanie HSRP. W tym celu na routerach R1 i R2 na interefejsach fa0/0 wydajemy komendy:</p>
+<pre>R1(config-if)#standby 1 ip 192.168.1.1
+
+R2(config-if)#standby 1 ip 192.168.1.1</pre>
+<p class="blueandbold" style="text-align: justify;">Nie konfigurujemy priorytetów, więc oba routery mają priorytet 100, a routerem aktywnym zostanie R2 ze względu na wyższy adres IP interfejsu fa0/0 (192.168.1.3). Możemy to zweryfikować wydając na routerach R1 i R2 komendy:</p>
+<pre class="blueandbold">R1#show standby
+FastEthernet0/0 - Group 1
+ State is Standby
+ 4 state changes, last state change 00:00:02
+ Virtual IP address is 192.168.1.1
+ Active virtual MAC address is 0000.0c07.ac01 (MAC Not In Use)
+ Local virtual MAC address is 0000.0c07.ac01 (v1 default)
+ Hello time 3 sec, hold time 10 sec
+ Next hello sent in 0.880 secs
+ Preemption disabled
+ Active router is 192.168.1.3, priority 100 (expires in 9.040 sec)
+ Standby router is local
+ Priority 100 (default 100)
+
+R2#show standby
+FastEthernet0/0 - Group 1
+ State is Active
+ 5 state changes, last state change 00:00:05
+ Virtual IP address is 192.168.1.1
+ Active virtual MAC address is 0000.0c07.ac01 (MAC In Use)
+ Local virtual MAC address is 0000.0c07.ac01 (v1 default)
+ Hello time 3 sec, hold time 10 sec
+ Next hello sent in 0.176 secs
+ Preemption disabled
+ Active router is local
+ Standby router is unknown
+ Priority 100 (default 100)
+ Group name is "hsrp-Fa0/0-1" (default)
+
+</pre>
+<p style="text-align: justify;">Jak widać wynik powyższych komend pokrywa się z teorią. R2 został routerem aktywny (State is Active), router R1 został routerem rezerwowym (State is Standby). Wirtualny adres MAC to: 0000.0c07.ac01, bo grupa 1 (Local virtual MAC address is 0000.0c07.ac01 (v1 default)). Wirtualny adres IP 192.168.1.1 (Virtual IP address is 192.168.1.1). Priorytet na obu routerach wynosi 100 (Priority 100 (default 100)).</p>
+<p>Teraz sprawdźmy czy nasz host ma łączność do internetu (5.5.5.5):</p>
+<pre>/ # ping 5.5.5.5
+PING 5.5.5.5 (5.5.5.5): 56 data bytes
+64 bytes from 5.5.5.5: seq=0 ttl=254 time=11.426 ms
+64 bytes from 5.5.5.5: seq=1 ttl=254 time=18.358 ms
+64 bytes from 5.5.5.5: seq=2 ttl=254 time=23.191 ms
+64 bytes from 5.5.5.5: seq=3 ttl=254 time=21.787 ms
+64 bytes from 5.5.5.5: seq=4 ttl=254 time=17.295 ms
+64 bytes from 5.5.5.5: seq=5 ttl=254 time=22.494 ms
+^C
+--- 5.5.5.5 ping statistics ---
+6 packets transmitted, 6 packets received, 0% packet loss
+round-trip min/avg/max = 11.426/19.091/23.191 ms</pre>
+<p style="text-align: justify;">Łączność jest, to teraz zasymulujmy awarie routera aktywnego czyli R2, w tym celu wyłączam R2 nie przestając pingować adresu 5.5.5.5:</p>
+<pre>64 bytes from 5.5.5.5: seq=18 ttl=254 time=16.005 ms
+64 bytes from 5.5.5.5: seq=19 ttl=254 time=16.396 ms
+64 bytes from 5.5.5.5: seq=20 ttl=254 time=28.483 ms
+64 bytes from 5.5.5.5: seq=21 ttl=254 time=20.496 ms
+64 bytes from 5.5.5.5: seq=22 ttl=254 time=26.915 ms
+64 bytes from 5.5.5.5: seq=23 ttl=254 time=27.626 ms
+64 bytes from 5.5.5.5: seq=24 ttl=254 time=29.313 ms
+64 bytes from 5.5.5.5: seq=25 ttl=254 time=31.445 ms
+64 bytes from 5.5.5.5: seq=26 ttl=254 time=23.414 ms
+64 bytes from 5.5.5.5: seq=37 ttl=254 time=22.797 ms
+64 bytes from 5.5.5.5: seq=38 ttl=254 time=12.426 ms
+64 bytes from 5.5.5.5: seq=39 ttl=254 time=13.076 ms
+64 bytes from 5.5.5.5: seq=40 ttl=254 time=20.369 ms
+64 bytes from 5.5.5.5: seq=41 ttl=254 time=14.207 ms</pre>
+<p>Na routerze R1 otrzymaliśmy następującą informację:</p>
+<pre>R1#
+*Nov 5 22:24:21.875: %HSRP-5-STATECHANGE: FastEthernet0/0 Grp 1 state Standby -&gt; Active</pre>
+<p style="text-align: justify;">Czyli router R1 został routerem aktywnym a łączność została zachowana, bo cały czas dostajemy odpowiedzi od adresu 5.5.5.5, natomiast jeśli przyjrzymy się bliżej numerom sekwencyjnym, to pomiędzy 26, a 37 nie ma żadnych odpowiedzi. Czym to jest spowodowane?</p>
+<p><strong> Hello time 3 sec, hold time 10 sec</strong></p>
+<p style="text-align: justify;">Szybkość wyboru routera aktywnego zależy od tych dwóch parametrów. Hello time jest to czas co jaki wysyłane są pakiety hello pomiędzy routerami, natomiast hold time to czas po jakim router rezerwowy jeśli nie otrzyma pakietów hello uznaje, że router aktywny jest niedostępny i przejmuję role routera aktywnego.</p>
+<p>&nbsp;</p>
+<h3><strong>PODSUMOWANIE</strong></h3>
+<ul>
+<li style="text-align: justify;">HSRP jest protokołem firmy CISCO, który umożliwia grupie routerów albo switchy warstwy trzeciej do prezentowanie się tym samym adresem IP.</li>
+<li style="text-align: justify;">HSRP ma 5 stanów: Initial, listen, speak, standby i active.</li>
+<li style="text-align: justify;">HSRP umożliwia grupie routerów współdzielenie wirualnego adresu IP oraz adresu MAC, dzięki czemu awaria routera nie wpływa na użytkownika końcowego.</li>
+<li style="text-align: justify;">Router aktywny używa wirtualnego adresu IP i adresu MAC.</li>
+<li style="text-align: justify;">Router rezerwowy nasłuchuje na pakiety hello od routera aktywnego. Pakiet hello jest wysyłany domyslnie co 3 sekundy. Hold time (czyli czas po jakim router standby uznaje router aktywny za niedostępny) wynosi domyślnie 10 sekund.</li>
+<li style="text-align: justify;">Wirtualny adres MAC to 0000.0C07.ACxx , gdzie xx to numer grupy HSRP w zapisie szesnastkowym (hex).</li>
+<li style="text-align: justify;">HSRP w wersji 1 może mieć 256 grup (od 0 do 255). Grupa 0 jest grupą domyślną (w przypadku gdy w konfiguracji nie wpisze się numeru grupy to właśnie ta grupa zostaje przypisana). HSRP w wersji 2 wspiera aż do 4096 grup.</li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/hsrp-podstawowa-konfiguracja/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>GNS3 &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/gns3/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>URPF &#8211; Unicast Reverse Path Forwarding</title>
+		<link>https://kubsoo.github.io/rsnet-website/urpf-unicast-reverse-path-forwarding/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/urpf-unicast-reverse-path-forwarding/#respond</comments>
+		<pubDate>Sun, 29 Jul 2018 10:59:47 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[GNS3]]></category>
+		<category><![CDATA[urpf]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=1070</guid>
+		<description><![CDATA[Unicast Reverse Path Forwarding (uRPF) &#8211; jest to technika stosowana w routerach Cisco (oraz u innych producentów), która umożliwia sprawdzenie czy źródło pakietu IP jest osiągalne przez tablice routingu. Zapobiega to&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-1070">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="23e21db" class="elementor-element elementor-element-23e21db elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="3f2c616" class="elementor-element elementor-element-3f2c616 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="87211c9" class="elementor-element elementor-element-87211c9 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><div style="text-align: justify;"><strong>Unicast Reverse Path Forwarding (uRPF)</strong> &#8211; jest to technika stosowana w routerach Cisco (oraz u innych producentów), która umożliwia sprawdzenie czy źródło pakietu IP jest osiągalne przez tablice routingu. Zapobiega to fałszowaniu adresów IP (<a href="https://pl.wikipedia.org/wiki/IP_spoofing" target="_blank" rel="noopener" title="">IP spoofing</a>). uRFP może działać w dwóch trybach: &#8222;ścisłym&#8221; i &#8222;luźnym&#8221; </div><div>&#8211; strict mode</div><div>&#8211; loose mode</div><div> </div><div><b>STRICT MODE</b></div><div style="text-align: justify;"><span style="background-color: initial;">W trybie ścisłym router sprawdza czy źródłowy adres ip  pakietu otrzymanego na danym interfejsie, jest osiągalny przez router na postawie tablicy CEF FIB przez interfejs z którego przyszedł pakiet, jeśli nie to pakiet jest odrzucany.</span></div><div><span style="background-color: initial;"> </span></div><div><strong>LOOSE MODE</strong></div><div><div style="text-align: justify;">W trybie luźnym w przeciwieństwie do trybu ścisłego router sprawdza czy źródłowy adres ip pakietu otrzymanego na danym interfejsie jest osiągalny przez router na podstawie tablicy CEF FIB przez jakikolwiek z jego interfejsów.</div><div style="text-align: justify;"> </div></div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="9dc0e5c" class="elementor-element elementor-element-9dc0e5c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="871a84f" class="elementor-element elementor-element-871a84f elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="7302ba2" class="elementor-element elementor-element-7302ba2 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><b>PRZYKŁAD:</b></p><p style="text-align: justify;">W celu zademonstrowania działania mechanizmu uRPF w routerach CISCO posłużę się następując topologią zbudowaną w GNS3</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="954de52" class="elementor-element elementor-element-954de52 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="b502cc9" class="elementor-element elementor-element-b502cc9 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="f62ad97" class="elementor-element elementor-element-f62ad97 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/urpf_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="496" height="373" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/urpf_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/urpf_1.png 496w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/urpf_1-300x226.png 300w" sizes="(max-width: 496px) 100vw, 496px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1d92074" class="elementor-element elementor-element-1d92074 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="b410b8c" class="elementor-element elementor-element-b410b8c elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="b8c3b9b" class="elementor-element elementor-element-b8c3b9b elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Konfiguracja wygląda następująco:</p><p>R1</p><pre style="-en-clipboard: true;"><span style="background-color: initial;">interface FastEthernet0/0</span><br />  ip address 192.168.12.1 255.255.255.0<br />  ip verify unicast source reachable-via rx<br />  duplex full<br />!<br />interface FastEthernet1/0<br />  ip address 192.168.13.1 255.255.255.0<br />  duplex full<br />!<br />router ospf 1<br />  network 192.168.0.0 0.0.255.255 area 0</pre><div><p>R2</p><pre>interface Loopback0<br />  ip address 3.3.3.3 255.255.255.255<br />!<br />interface FastEthernet0/0<br />  ip address 192.168.12.2 255.255.255.0<br />  duplex full<br />!<br />interface FastEthernet1/0<br />  ip address 192.168.23.2 255.255.255.0<br />  duplex full<br />!<br />router ospf 1<br />  network 192.168.0.0 0.0.255.255 area 0</pre></div><p>R3</p><pre style="-en-clipboard: true;">interface Loopback0<br />  ip address 3.3.3.3 255.255.255.255<br />!<br />interface FastEthernet0/0<br />  ip address 192.168.13.3 255.255.255.0<br />  duplex full<br />!<br />interface FastEthernet1/0<br />  ip address 192.168.23.3 255.255.255.0<br />  duplex full<br />!<br />router ospf 1<br />  network 3.3.3.3 0.0.0.0 area 0<br />  network 192.168.0.0 0.0.255.255 area 0</pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="2f65248" class="elementor-element elementor-element-2f65248 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="17a51af" class="elementor-element elementor-element-17a51af elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="720b4ae" class="elementor-element elementor-element-720b4ae elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">Sprawdźmy teraz jak wygląda tablica routingu na routerze R1.</p><pre>R1# show ip route<br /><br />      3.0.0.0/32 is subnetted, 1 subnets<br />O        3.3.3.3 [110/2] via 192.168.13.3, 00:06:01, FastEthernet1/0<br />      192.168.12.0/24 is variably subnetted, 2 subnets, 2 masks<br />C        192.168.12.0/24 is directly connected, FastEthernet0/0<br />L        192.168.12.1/32 is directly connected, FastEthernet0/0<br />      192.168.13.0/24 is variably subnetted, 2 subnets, 2 masks<br />C        192.168.13.0/24 is directly connected, FastEthernet1/0<br />L        192.168.13.1/32 is directly connected, FastEthernet1/0<br />O     192.168.23.0/24 [110/2] via 192.168.13.3, 00:14:33, FastEthernet1/0<br />                      [110/2] via 192.168.12.2, 00:14:33, FastEthernet0/0</pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="109ac1d" class="elementor-element elementor-element-109ac1d elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e88f338" class="elementor-element elementor-element-e88f338 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="b6f5be7" class="elementor-element elementor-element-b6f5be7 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">Jak widać na powyższym wyniku prefix 3.3.3.3 jest osiągalny przez interfejs FastEthernet1/0, czyli interfejsu podłączonego do routera R3. Teraz ustawmy uRPF w trybie strict na interfejsach routera R1.</p><pre>interface FastEthernet0/0<br />  ip verify unicast source reachable-via rx<br />!<br />interface FastEthernet1/0<br />  ip verify unicast source reachable-via rx</pre><p style="text-align: justify;">Przetestujmy działanie tego mechanizmu. Z routera R3 spingujmy router R1 i zobaczmy co się stanie.</p><pre>R3#ping 192.168.13.1 source 3.3.3.3<br />Type escape sequence to abort.<br />Sending 5, 100-byte ICMP Echos to 192.168.13.1, timeout is 2 seconds:<br />Packet sent with a source address of 3.3.3.3<br />!!!!!<br />Success rate is 100 percent (5/5), round-trip min/avg/max = 36/46/56 ms</pre><p style="text-align: justify;">Jak widać wszystko przebiegło bez zarzutów, ponieważ pakiet przyszedł przez interfejs FastEthernet1/0, czyli zgodnie z tablicą CEF FIB:</p><pre>R1#show ip cef 3.3.3.3<br />3.3.3.3/32<br />nexthop 192.168.13.3 FastEthernet1/0</pre><p>Sprawdzić działanie uRPF możemy wykonując polecenie:</p><pre>R1#show ip int fa0/0 | in verif<br />IP verify source reachable-via RX<br />0 verification drops<br />0 suppressed verification drops<br />0 verification drop-rate</pre><p style="text-align: justify;">Jak widać mechanizm nie odrzucił pakietów, ponieważ założenia trybu ścisłego zostały spełnione.</p><p style="text-align: justify;">Teraz spróbujmy wysłać pakiet z adresem źródłowym 3.3.3.3 przez interfejs FastEthernet0/0. Najprościej jest to zrobić z routera R2, w tym celu dodajmy interfejs Loopback0 z adresem 3.3.3.3/32 i wykonajmy polecenie ping:</p><pre>R2(config)#int Loopback 0<br />R2(config-if)#ip address 3.3.3.3 255.255.255.255<br />R2(config-if)#do ping 192.168.12.1 source 3.3.3.3<br />Type escape sequence to abort.<br />Sending 5, 100-byte ICMP Echos to 192.168.12.1, timeout is 2 seconds:<br />Packet sent with a source address of 3.3.3.3<br />.....<br />Success rate is 0 percent (0/5)
+</pre><p style="text-align: justify;">Nie otrzymaliśmy odpowiedzi, sprawdźmy więc czy rzeczywiście mechanizm zadziałał:</p><pre>R1#show ip int fa0/0 | in verif<br />IP verify source reachable-via RX<br /><strong>5 verification drops</strong><br />0 suppressed verification drops<br />0 verification drop-rate</pre><p>Teraz sprawdźmy jak działa tryb luźy (loose mode). Zmieńmy konfiguracje intefejsów na R1:</p><pre>interface FastEthernet0/0<br />  ip verify unicast source reachable-via any<br />!<br />interface FastEthernet1/0<br />  ip verify unicast source reachable-via any</pre><p style="text-align: justify;">i spróbujmy wykonać jeszcze raz polecenie ping na routerze R2:</p><pre>R2#ping 192.168.12.1 source 3.3.3.3<br />Type escape sequence to abort.<br />Sending 5, 100-byte ICMP Echos to 192.168.12.1, timeout is 2 seconds:<br />Packet sent with a source address of 3.3.3.3<br />.....<br />Success rate is 0 percent (0/5)</pre><p style="text-align: justify;">Hmm, nie otrzymaliśmy odpowiedzi, czyli wynik jest taki sam jak w przypadku trybu strict, sprawdźmy to dla pewności:</p><pre>R1#show ip int fa0/0 | in verif<br />IP verify source reachable-via ANY<br />5 verification drops<br /><strong>5 suppressed verification drops</strong><br />0 verification drop-rate</pre><p style="text-align: justify;">Wynik powyższej komendy jest jednak inny niż w przypadku trybu strict. Sugeruje to, że pakiety nie zostały odrzucone i powinniśmy dostać odpowiedzi, dlaczego więc się tak nie stało ?</p><p style="text-align: justify;">Odpowiedź jest bardzo prosta (IP spoofing), ponieważ na R2 sfałszowaliśmy adres źródłowy (3.3.3.3), router R1 odesłał odpowiedzi do tego adresu, zgodnie ze swoją tablicą routingu, czyli do R3. Wykonajmy jeszcze raz to samo polecenie ping, ale włączmy tym razem debugowanie pakietów icmp na routerze R3:</p><pre>R3#debug ip icmp<br />R3#<br />*Jul 29 10:38:02.111: ICMP: echo reply rcvd, src 192.168.12.1, dst 3.3.3.3, topology BASE, dscp 0 topoid 0<br />R3#<br />*Jul 29 10:38:04.131: ICMP: echo reply rcvd, src 192.168.12.1, dst 3.3.3.3, topology BASE, dscp 0 topoid 0<br />R3#<br />*Jul 29 10:38:06.079: ICMP: echo reply rcvd, src 192.168.12.1, dst 3.3.3.3, topology BASE, dscp 0 topoid 0<br />R3#<br />*Jul 29 10:38:07.967: ICMP: echo reply rcvd, src 192.168.12.1, dst 3.3.3.3, topology BASE, dscp 0 topoid 0
+</pre><p style="text-align: justify;">Czyli wszystko działa tak jak należy <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b09d994" class="elementor-element elementor-element-b09d994 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="d2f45b6" class="elementor-element elementor-element-d2f45b6 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="4fde260" class="elementor-element elementor-element-4fde260 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong>PODSUMOWANIE</strong></p><p>uRFP jest jednym z mechanizmów ochrony przed fałszowaniem źródłowego adresu IP i powinno być wykorzystywane jeśli tylko jest taka możlwość. Dodatkowe komendy przydatne przy diagnozowani problemów z uRPF to:</p><pre><strong>R1#show ip traffic</strong><br />IP statistics:<br />  Rcvd:  298 total, 296 local destination<br />         0 format errors, 0 checksum errors, 0 bad hop count<br />         0 unknown protocol, 0 not a gateway<br />         0 security failures, 0 bad options, 0 with options<br />  Opts:  0 end, 0 nop, 0 basic security, 0 loose source route<br />         0 timestamp, 0 extended security, 0 record route<br />         0 stream ID, 0 strict source route, 0 alert, 0 cipso, 0 ump<br />         0 other<br />  Frags: 0 reassembled, 0 timeouts, 0 couldn't reassemble<br />         0 fragmented, 0 fragments, 0 couldn't fragment<br />  Bcast: 0 received, 0 sent<br />  Mcast: 255 received, 285 sent<br />  Sent:  332 generated, 0 forwarded<br />  Drop:  0 encapsulation failed, 0 unresolved, 0 no adjacency<br />         0 no route, 7 unicast RPF, 0 forced drop, 0 unsupported-addr<br />         0 options denied, 0 source IP address zero</pre><pre><strong>R1#show cef interface f0/0</strong><br />FastEthernet0/0 is up (if_number 2)<br />  Corresponding hwidb fast_if_number 2<br />  Corresponding hwidb firstsw-&gt;if_number 2<br />  Internet address is 192.168.12.1/24<br />  ICMP redirects are always sent<br />  Per packet load-sharing is disabled<br />  IP unicast RPF check is enabled<br />  Input features: uRPF<br />  IP policy routing is disabled<br />  BGP based policy accounting on input is disabled<br />  BGP based policy accounting on output is disabled<br />  Hardware idb is FastEthernet0/0<br />  Fast switching type 1, interface type 18<br />  IP CEF switching enabled<br />  IP CEF switching turbo vector<br />  IP CEF turbo switching turbo vector<br />  IP prefix lookup IPv4 mtrie 8-8-8-8 optimized<br />  Input fast flags 0x4000, Output fast flags 0x0<br />  ifindex 2(2)<br />  Slot  Slot unit 0 VC -1<br />  IP MTU 1500<br /><br /></pre><pre><strong>R1#show cef interface f1/0</strong><br />FastEthernet1/0 is up (if_number 3)<br />  Corresponding hwidb fast_if_number 3<br />  Corresponding hwidb firstsw-&gt;if_number 3<br />  Internet address is 192.168.13.1/24<br />  ICMP redirects are always sent<br />  Per packet load-sharing is disabled<br />  IP unicast RPF check is enabled<br />  Input features: uRPF<br />  IP policy routing is disabled<br />  BGP based policy accounting on input is disabled<br />  BGP based policy accounting on output is disabled<br />  Hardware idb is FastEthernet1/0<br />  Fast switching type 1, interface type 18<br />  IP CEF switching enabled<br />  IP CEF switching turbo vector<br />  IP CEF turbo switching turbo vector<br />  IP prefix lookup IPv4 mtrie 8-8-8-8 optimized<br />  Input fast flags 0x4000, Output fast flags 0x0<br />  ifindex 3(3)<br />  Slot  Slot unit 0 VC -1<br />  IP MTU 1500</pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/urpf-unicast-reverse-path-forwarding/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Windows w GNS3</title>
+		<link>https://kubsoo.github.io/rsnet-website/windows-w-gns3/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/windows-w-gns3/#respond</comments>
+		<pubDate>Wed, 11 Oct 2017 22:02:26 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[GNS3]]></category>
+		<category><![CDATA[windows]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=526</guid>
+		<description><![CDATA[Windows w GNS3 można szybko uruchomić korzystająć z import appliance. Pokażę jak uruchomić Windows 7 w GNS3 w wersji 2.1.0 pod VMWare Workstation. W tym celu wchodzimy na stronę www.gns3.com/marketplace/appliances wybieramy&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-526">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="4e05d02" class="elementor-element elementor-element-4e05d02 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="7c758cf" class="elementor-element elementor-element-7c758cf elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="3d12a1e" class="elementor-element elementor-element-3d12a1e elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><div style="text-align: justify;">Windows w GNS3 można szybko uruchomić korzystająć z import appliance. Pokażę jak uruchomić Windows 7 w GNS3 w wersji 2.1.0 pod VMWare Workstation. W tym celu wchodzimy na stronę <a href="https://www.gns3.com/marketplace/appliances" title="">www.gns3.com/marketplace/appliances</a> wybieramy Windows <a href="https://www.gns3.com/marketplace/appliance/windows" title="">https://www.gns3.com/marketplace/appliance/windows</a> i ściągamy plik <a href="https://www.gns3.com/external/download?url=https%3A%2F%2Fraw.githubusercontent.com%2FGNS3%2Fgns3-registry%2Fmaster%2Fappliances%2Fwindows.gns3a" title="">windows.gns3a</a>. Następnie otwieramy GNS3 i wybieramy File -&gt; Import appliance</div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="6d850c6" class="elementor-element elementor-element-6d850c6 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="35fde5c" class="elementor-element elementor-element-35fde5c elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5e62bf0" class="elementor-element elementor-element-5e62bf0 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/import.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="267" height="353" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/import.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/import.png 267w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/import-227x300.png 227w" sizes="(max-width: 267px) 100vw, 267px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="16372db" class="elementor-element elementor-element-16372db elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="3b4f6fd" class="elementor-element elementor-element-3b4f6fd elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="07a05b4" class="elementor-element elementor-element-07a05b4 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><div style="text-align: justify;">Teraz następuje dodanie maszyny do GNS3. Po kilku kliknięciach next pojawi się okienko z wyborem wersji Windowsa:</div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="7084f99" class="elementor-element elementor-element-7084f99 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="93fdd95" class="elementor-element elementor-element-93fdd95 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="6a7b22f" class="elementor-element elementor-element-6a7b22f elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows1-1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title="">
+							<img width="701" height="532" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows1-1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows1-1.png 701w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows1-1-300x228.png 300w" sizes="(max-width: 701px) 100vw, 701px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="97ce1cc" class="elementor-element elementor-element-97ce1cc elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="0d856e0" class="elementor-element elementor-element-0d856e0 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="079aeee" class="elementor-element elementor-element-079aeee elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">Jak zaznaczymy jakikolwiek plik (np. IE10_-_Win7-disk1.vmdk) to zostaniemy przekierowani na stronę Microsoftu, gdzie będziemy mogli ściągnąć wersję jaka nas interesuje. Do wyboru mamy Windows 7, 8.1 i 10, ja wybrałem Windows 7 z IE10:</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="296513b" class="elementor-element elementor-element-296513b elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="b9ba885" class="elementor-element elementor-element-b9ba885 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c66182c" class="elementor-element elementor-element-c66182c elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title="">
+							<img width="655" height="477" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows2.png 655w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows2-300x218.png 300w" sizes="(max-width: 655px) 100vw, 655px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div data-id="455a275" class="elementor-element elementor-element-455a275 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">Jak ściągniemy interesujący nas obraz, to rozpakujemy go i w GNS3 wybieramy przycisk import i wskazujemy plik z rozszerzeniem vmdk:</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="c19a180" class="elementor-element elementor-element-c19a180 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="9e3c600" class="elementor-element elementor-element-9e3c600 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="2a53424" class="elementor-element elementor-element-2a53424 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows3.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title="">
+							<img width="700" height="533" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows3.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows3.png 700w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows3-300x228.png 300w" sizes="(max-width: 700px) 100vw, 700px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div data-id="d9c5eae" class="elementor-element elementor-element-d9c5eae elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">i czekamy aż plik wgra się do GNS3 (może to potrwać od kilku do kilkunastu minut, trzeba uzbroić się w cierpliwość). Jak plik wgra się do GNS3 klikamy Next &gt; i akceptujemy instalację przyciskiem Yes:</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="4102017" class="elementor-element elementor-element-4102017 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="a0bc6bd" class="elementor-element elementor-element-a0bc6bd elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="ce210dd" class="elementor-element elementor-element-ce210dd elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows4.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-4" data-rl_title="" data-rl_caption="" title="">
+							<img width="685" height="489" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows4.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows4.png 685w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows4-300x214.png 300w" sizes="(max-width: 685px) 100vw, 685px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div data-id="24181d4" class="elementor-element elementor-element-24181d4 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows5.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-5" data-rl_title="" data-rl_caption="" title="">
+							<img width="679" height="489" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows5.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows5.png 679w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows5-300x216.png 300w" sizes="(max-width: 679px) 100vw, 679px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="db39f65" class="elementor-element elementor-element-db39f65 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="52e8101" class="elementor-element elementor-element-52e8101 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="3673c1b" class="elementor-element elementor-element-3673c1b elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">Teraz zostaje już tylko kilkukrotne kliknięcie przycisku Next aż do końcowego ekranu z przyciskiem Finish.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="5288843" class="elementor-element elementor-element-5288843 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="014aed4" class="elementor-element elementor-element-014aed4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="1594a13" class="elementor-element elementor-element-1594a13 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows6.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-6" data-rl_title="" data-rl_caption="" title="">
+							<img width="680" height="491" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows6.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows6.png 680w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows6-300x217.png 300w" sizes="(max-width: 680px) 100vw, 680px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div data-id="f46f031" class="elementor-element elementor-element-f46f031 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows7.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-7" data-rl_title="" data-rl_caption="" title="">
+							<img width="678" height="485" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows7.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows7.png 678w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows7-300x215.png 300w" sizes="(max-width: 678px) 100vw, 678px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div data-id="ab6add8" class="elementor-element elementor-element-ab6add8 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows8.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-8" data-rl_title="" data-rl_caption="" title="">
+							<img width="683" height="489" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows8.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows8.png 683w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows8-300x215.png 300w" sizes="(max-width: 683px) 100vw, 683px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="536606c" class="elementor-element elementor-element-536606c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e3a4115" class="elementor-element elementor-element-e3a4115 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="29623cf" class="elementor-element elementor-element-29623cf elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">To już koniec instalacji. Maszyna jest od teraz dostępna w End Devices i możemy ją używać w projektach. Zarządzanie maszyną odbywa się przy użyciu vncviewer&#8217;a, który jest dołączany o GNS3 w trakcie instalacji. Uruchamiamy go klikając prawym klawiszem na maszynę z Windowsem i wybierająć Console.</p></div>
+				</div>
+				</div>
+				<div data-id="0473a73" class="elementor-element elementor-element-0473a73 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows9.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-9" data-rl_title="" data-rl_caption="" title="">
+							<img width="335" height="414" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows9.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows9.png 335w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows9-243x300.png 243w" sizes="(max-width: 335px) 100vw, 335px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div data-id="44b2f94" class="elementor-element elementor-element-44b2f94 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows11.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-10" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="591" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows11.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows11.png 805w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows11-300x246.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows11-768x631.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div data-id="c83896c" class="elementor-element elementor-element-c83896c elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">Takiej maszyny wirutalnej z Windows 7 w GNS3 możemy używać przez 90 dni, po tym czasie licencja się skończy i będziemy musieli ponownie zainstalować maszynę i znowu będziemy mogli jej używać przez 90 dni.</p><p style="text-align: justify;">Jak widać GNS3 w wersji 2.1.0 da się w bardzo prosty sposób uruchomić Windows 7, dzięki gotowym rozwiązaniom jesteśmy w stanie to zrobić w kilkanaście minut.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/windows-w-gns3/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>VyOS + CISCO w GNS3</title>
+		<link>https://kubsoo.github.io/rsnet-website/vyos-cisco-w-gns3/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/vyos-cisco-w-gns3/#respond</comments>
+		<pubDate>Thu, 28 Sep 2017 21:03:56 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[GNS3]]></category>
+		<category><![CDATA[vyos]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=480</guid>
+		<description><![CDATA[VyOS to system operacyjny spełniający rolę routera. Jest on darmowy i oparty na Debianie. W tym wpisie pokażę jak połączyć router CISCO i VyOS w programie GNS3. VyOS można uruchomić&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;"><a href="https://vyos.io/" title="">VyOS</a> to system operacyjny spełniający rolę routera. Jest on darmowy i oparty na Debianie. W tym wpisie pokażę jak połączyć router CISCO i VyOS w programie <a href="https://www.gns3.com/" title="">GNS3</a>.</p>
+<p style="text-align: justify;">VyOS można uruchomić pod GNS3 na kilka sposobów, ja pokaże najłatwiejszy według mnie, czyli import appliance. W tym celu wchodzimy na stronę <a href="https://www.gns3.com/marketplace/appliances" title="">www.gns3.com/marketplace/appliances</a> wybieramy VyOS i ściągamy plik <a href="https://www.gns3.com/external/download?url=https%3A%2F%2Fraw.githubusercontent.com%2FGNS3%2Fgns3-registry%2Fmaster%2Fappliances%2Fvyos.gns3a" title="">vyos.gns3a</a>. Następnie otwieramy GNS3 i wybieramy File -&gt; Import appliance</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos1.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-481 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos1.png" alt="" width="806" height="527" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos1.png 806w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos1-300x196.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos1-768x502.png 768w" sizes="(max-width: 806px) 100vw, 806px" /></a></p>
+<p>W trakcie importowania pojawi się następujące okienko:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos5.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-485 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos5.png" alt="" width="703" height="535" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos5.png 703w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos5-300x228.png 300w" sizes="(max-width: 703px) 100vw, 703px" /></a></p>
+<p style="text-align: justify;">Będziemy mieli do wyboru kilka wersji systemu VyOS, jeśli nie mamy obrazu *.iso, oraz pliku z obrazem dysku *.qcow2 dostaniemy w polu Status informacje: Missing lub Missing files. Brakujące pliki możemy pobrać klikając przycisk Download w prawym dolnym rogu, a następnie po pobraniu wciskamy przycisk Import w celu zaimportowania plików. Po tych operacjach powinniśmy w statusie mieć na zielono Found i Ready to Install.</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos6.png" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-486 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos6.png" alt="" width="703" height="533" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos6.png 703w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos6-300x227.png 300w" sizes="(max-width: 703px) 100vw, 703px" /></a></p>
+<p style="text-align: justify;">Jak mamy Ready to install to klikamy kilkukrotnie next i czekamy chwilę aż maszyna się załaduje do GNS3. Jak wszystko przebiegło pomyślnie to w GNS3 w All devices powinniśmy zobaczyć router VyOS:</p>
+<p style="text-align: justify;"><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos7.png" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-487 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos7.png" alt="" width="806" height="519" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos7.png 806w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos7-300x193.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos7-768x495.png 768w" sizes="(max-width: 806px) 100vw, 806px" /></a></p>
+<h4></h4>
+<h4>VYOS + CISCO PRZYKŁAD:</h4>
+<p style="text-align: justify;">Teraz zobaczmy możliwości VyOS na prostym przykładzie. Topologia składa się z dwóch routerów. Routera Cisco R1 (c7200) oraz routera VyOS. Routery połączone są ze sobą bezpośrednio zgodnie z poniższą topologią.</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos8.png" data-rel="lightbox-image-4" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-488 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos8.png" alt="" width="404" height="187" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos8.png 404w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/vyos8-300x139.png 300w" sizes="(max-width: 404px) 100vw, 404px" /></a></p>
+<p>Konfiguracja R1:</p>
+<pre><span style="color: #010101; font-family: Calibri;">interface FastEthernet0/0</span>
+<span style="color: #010101; font-family: Calibri;">   ip address 192.168.10.1 255.255.255.0</span></pre>
+<p>Konfiguracja VyOS:</p>
+<pre><span style="color: #010101; font-family: Calibri;">vyos@vyos:~$ configure</span>
+<span style="color: #010101; font-family: Calibri;">[edit]</span>
+<span style="color: #010101; font-family: Calibri;">vyos@vyos#</span>
+<span style="color: #010101; font-family: Calibri;">[edit]</span>
+<span style="color: #010101; font-family: Calibri;">vyos@vyos# set interfaces ethernet eth0 address 192.168.10.2/24</span>
+<span style="color: #010101; font-family: Calibri;">[edit]</span>
+<span style="color: #010101; font-family: Calibri;">vyos@vyos# commit</span>
+<span style="color: #010101; font-family: Calibri;">[edit]</span>
+<span style="color: #010101; font-family: Calibri;">vyos@vyos# save</span>
+<span style="color: #010101; font-family: Calibri;">Saving configuration to '/config/config.boot'...</span>
+<span style="color: #010101; font-family: Calibri;">Done</span></pre>
+<p>Status interfejsu na R1:</p>
+<pre><span style="color: #010101; font-family: Calibri;">R1#show ip int brief
+Interface              IP-Address      OK? Method Status                Protocol</span>
+<span style="color: #010101; font-family: Calibri;">FastEthernet0/0        192.168.10.1    YES manual up                    up</span></pre>
+<p>Status interfejsu na VyOS:</p>
+<pre><span style="color: #010101; font-family: Calibri;">vyos@vyos:~$ show int
+Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+Interface        IP Address                        S/L  Description
+---------        ----------                        ---  -----------
+eth0            192.168.10.2/24               u/u
+eth1             -                                 u/u
+eth2             -                                 u/u
+lo               127.0.0.1/8                       u/u
+                 ::1/128</span></pre>
+<p>Sprawdźmy teraz łączność pomiędzy routerami:</p>
+<pre>R1#ping 192.168.10.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.10.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 4/9/12 ms</pre>
+<pre><span style="color: #010101; font-family: Calibri;">vyos@vyos# ping 192.168.10.1</span>
+<span style="color: #010101; font-family: Calibri;">PING 192.168.10.1 (192.168.10.1) 56(84) bytes of data.</span>
+<span style="color: #010101; font-family: Calibri;">64 bytes from 192.168.10.1: icmp_req=1 ttl=255 time=32.8 ms</span>
+<span style="color: #010101; font-family: Calibri;">64 bytes from 192.168.10.1: icmp_req=2 ttl=255 time=5.85 ms</span>
+<span style="color: #010101; font-family: Calibri;">^C</span>
+<span style="color: #010101; font-family: Calibri;">--- 192.168.10.1 ping statistics ---</span>
+<span style="color: #010101; font-family: Calibri;">2 packets transmitted, 2 received, 0% packet loss, time 1001ms</span>
+<span style="color: #010101; font-family: Calibri;">rtt min/avg/max/mdev = 5.854/19.346/32.839/13.493 ms</span></pre>
+<p style="text-align: justify;">Jak mamy już podstawową łączność między routerami zrobioną to spróbujmy skonfigurować pomiędzy routerami protokół routingu OSPF. Skonfigurujmy w tym celu na routerach intefejsy loopback i rozgłośmy je w OSPF.</p>
+<p>Konfiguracja R1:</p>
+<pre>interface Loopback0
+ ip address 10.0.10.1 255.255.255.0
+!
+router ospf 10
+ network 10.0.10.0 0.0.0.255 area 0
+ network 192.168.10.0 0.0.0.255 area 0
+!</pre>
+<div>
+<div>Konfiguracja VyOS:</div>
+<div>
+<pre>vyos@vyos# set interfaces loopback lo address 10.0.0.1/24
+[edit]
+vyos@vyos# set protocols ospf area 0 network 192.168.10.0/24
+[edit]
+vyos@vyos# set protocols ospf area 0 network 10.0.0.1/24
+[edit]
+vyos@vyos# commit</pre>
+</div>
+</div>
+<p style="text-align: justify;">Po wydaniu komendy commit na vyos na konsoli routera dostaniemy następującą informację:</p>
+<pre>R1#
+*Nov 19 20:45:17.287: %OSPF-5-ADJCHG: Process 10, Nbr 192.168.10.2 on FastEthernet0/0 from LOADING to FULL, Loading Done
+R1#</pre>
+<p style="text-align: justify;">Co oznacza, że utworzyła się relacja sąsiedztwa pomiędzy routerami. Zweryfikujmy to wydając komendy show ip ospf neighbor:</p>
+<pre>R1#show ip ospf neighbor
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+192.168.10.2      1   FULL/BDR        00:00:30    192.168.10.2    FastEthernet0/0</pre>
+<pre>vyos@vyos:~$ show ip ospf neighbor
+Neighbor ID Pri State           Dead Time Address         Interface            RXmtL RqstL DBsmL
+192.168.10.1      1 Full/DR           38.945s 192.168.10.1    eth0:192.168.10.2        0     0     0</pre>
+<p style="text-align: justify;">Oba routery mają status FULL, router vyos został routerem designated (DR) natomiast router R1 routerem backup designated (BDR).  Sprawdźmy teraz tablicę routingu obu routerów:</p>
+<pre>R1#show ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+       + - replicated route, % - next hop override
+
+Gateway of last resort is not set
+      10.0.0.0/24 is subnetted, 1 subnets
+<strong>O        10.0.0.1/24 [110/11] via 192.168.10.2, 00:00:14, FastEthernet0/0</strong>
+      192.168.10.0/24 is variably subnetted, 2 subnets, 2 masks
+C        192.168.10.0/24 is directly connected, FastEthernet0/0
+L        192.168.10.1/32 is directly connected, FastEthernet0/0</pre>
+<div>
+<pre>vyos@vyos:~$ show ip route
+Codes: K - kernel route, C - connected, S - static, R - RIP, O - OSPF,
+       I - ISIS, B - BGP, &gt; - selected route, * - FIB route
+
+O   10.0.0.0/24 [110/10] is directly connected, lo, 00:05:03
+C&gt;* 10.0.0.0/24 is directly connected, lo
+<strong>O&gt;* 10.0.10.0/24 [110/11] via 192.168.10.1, eth0, 00:00:06</strong>
+C&gt;* 127.0.0.0/8 is directly connected, lo
+O   192.168.10.0/24 [110/10] is directly connected, eth0, 00:07:50
+C&gt;* 192.168.10.0/24 is directly connected, eth0</pre>
+</div>
+<div style="text-align: justify;"> Jak widać z powyższych wyników komend show ip route, routery wymieniły się trasami poprawnie.</div>
+<h4></h4>
+<h4>PODSUMOWANIE</h4>
+<p style="text-align: justify;">VyOS jest bardzo dobrą alternatywą dla tradycyjnych routerów. Jak widać konfiguracja jest bardzo podobna do routerów firmy CISCO, właściwie większość komend typu show jest identycznych. Dodatkową zaletą jest to, że obraz VyOS jest całkowicie darmowy, więc możemy go postawić na dowolnym komputerze i cieszyć się z możliwości jakie daje, bez konieczności wydawania pieniędzy na drogie rozwiązania sprzętowe.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/vyos-cisco-w-gns3/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>CSR1000V w GNS3</title>
+		<link>https://kubsoo.github.io/rsnet-website/csr1000v-w-gns3/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/csr1000v-w-gns3/#respond</comments>
+		<pubDate>Sun, 20 Aug 2017 22:24:33 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[CSR1000V]]></category>
+		<category><![CDATA[GNS3]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=500</guid>
+		<description><![CDATA[CSR1000v można uruchomić pod GNS3 na kilka sposobów, ja pokaże najłatwiejszy według mnie, czyli import appliance. W tym celu wchodzimy na stronę www.gns3.com/marketplace/appliances wybieramy Cisco CSR1000v i ściągamy plik cisco-csr1000v.gns3a. Następnie otwieramy GNS3 i&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">CSR1000v można uruchomić pod GNS3 na kilka sposobów, ja pokaże najłatwiejszy według mnie, czyli import appliance. W tym celu wchodzimy na stronę <a href="https://www.gns3.com/marketplace/appliances" title="">www.gns3.com/marketplace/appliances</a> wybieramy Cisco CSR1000v i ściągamy plik <a href="https://www.gns3.com/external/download?url=https%3A%2F%2Fraw.githubusercontent.com%2FGNS3%2Fgns3-registry%2Fmaster%2Fappliances%2Fcisco-csr1000v.gns3a" title="">cisco-csr1000v.gns3a</a>. Następnie otwieramy GNS3 i wybieramy File -&gt; Import appliance</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-504 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr.png" alt="" width="270" height="381" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr.png 270w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr-213x300.png 213w" sizes="(max-width: 270px) 100vw, 270px" /></a></p>
+<p style="text-align: justify;">W trakcie importowania pojawi się następujące okienko:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-506 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3.png" alt="" width="702" height="534" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3.png 702w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3-300x228.png 300w" sizes="(max-width: 702px) 100vw, 702px" /></a></p>
+<p style="text-align: justify;">Będziemy mieli do wyboru kilka wersji CSR1000V, jeśli nie mamy obrazu *.iso, oraz pliku z obrazem dysku *.qcow2 dostaniemy w polu Status informacje: Missing lub Missing files. Brakujące pliki możemy pobrać klikając przycisk Download w prawym dolnym rogu. Zostaniemy przekierowani na stronę cisco. W celu ściągnięcia oprogramowania ze strony cisco.com musimy posiadać konto na stronie cisco.com oraz ważny kontrakt serwisowy umożliwiający ściąganie oprogramowania. Niestety od wersji 3.15 nie da się ściągnąć obrazu ze strony cisco bez ważnego kontraktu serwisowego. Jeśli nie mamy kontraktu serwisowego możemy poszukać obrazu w internecie. Po tych operacjach powinniśmy w statusie mieć na zielono Found i Ready to Install.<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-506 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3.png" alt="" width="702" height="534" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3.png 702w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr3-300x228.png 300w" sizes="(max-width: 702px) 100vw, 702px" /></a></p>
+<p style="text-align: justify;">Jak mamy Ready to install to klikamy kilkukrotnie next i czekamy chwilę aż maszyna się załaduje do GNS3 (może to potrwać chwilę). Jak wszystko przebiegło pomyślnie to w GNS3 w All devices powinniśmy zobaczyć router CSR1000V:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr4.png" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-507 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr4.png" alt="" width="804" height="411" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr4.png 804w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr4-300x153.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr4-768x393.png 768w" sizes="(max-width: 804px) 100vw, 804px" /></a></p>
+<p>Teraz pozostaje tylko uruchomienie maszyny:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr5.png" data-rel="lightbox-image-4" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-508 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr5.png" alt="" width="898" height="349" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr5.png 898w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr5-300x117.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr5-768x298.png 768w" sizes="(max-width: 898px) 100vw, 898px" /></a></p>
+<p style="text-align: justify;">Po uruchomieniu na maszynie jest wgrana startowa licencja, która ogranicza przepustowość do wartości 1000kb/s:</p>
+<pre>Router#show platform hardware throughput level
+The current throughput level is 1000 kb/s</pre>
+<div><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr6.png" data-rel="lightbox-image-5" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-509 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr6.png" alt="" width="901" height="384" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr6.png 901w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr6-300x128.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr6-768x327.png 768w" sizes="(max-width: 901px) 100vw, 901px" /></a></div>
+<div style="text-align: justify;">Do przetestowania funkcjonalności wystarczy, natomiast jeśli chcemy podnieść przepustowość musimy wgrać licencję, którą możemy za darmo mieć w wersji trial 60 dniowej. W tym celu wchodzimy na stronę: <a href="http://cisco.com/go/license" title="">http://cisco.com/go/license</a> wybieramy Licenses -&gt; Get Licenses -&gt; Demo and evaluation&#8230;</div>
+<div><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr8.png" data-rel="lightbox-image-6" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-511 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr8.png" alt="" width="1245" height="445" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr8.png 1245w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr8-300x107.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr8-768x275.png 768w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr8-1024x366.png 1024w" sizes="(max-width: 1245px) 100vw, 1245px" /></a>A następnie wybrać router Cisco Cloud Services Router 1000V:</div>
+<p><img class="alignnone size-full wp-image-512" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr9.png" alt="" width="1012" height="711" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr9.png 1012w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr9-300x211.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/csr9-768x540.png 768w" sizes="(max-width: 1012px) 100vw, 1012px" /></p>
+<p>i odpowiednią licencję (np. 2.5Gbps Full Featured (AX) 60 day evaluation license):</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/csr10-1.png" data-rel="lightbox-image-7" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-517 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/csr10-1.png" alt="" width="1015" height="713" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/csr10-1.png 1015w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/csr10-1-300x211.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/csr10-1-768x539.png 768w" sizes="(max-width: 1015px) 100vw, 1015px" /></a></p>
+<p style="text-align: justify;">Teraz pozostaje jeszcze wpisać UDI Serial Number, który znajdziemy na CSR1000V wydając komendę:</p>
+<pre>Router#show license udi
+SlotID   PID                    SN                      UDI
+--------------------------------------------------------------------------------
+*        CSR1000V              9S5WVGH2A77     CSR1000V:9S5WVGH2A77</pre>
+<p style="text-align: justify;">Po wklejeniu UDI do pola UDI Serial Number klikamy Next, a następnie Submit. Licencja się wygenerowała, teraz zostaje tylko ściągnąć ją na na dysk CSR1000V do flasha i zainstalować na routerze wydać komendy:</p>
+<pre>Router#license install bootflash:lic25ax.lic
+Router(config)#license boot level ax
+Router#wr
+Router#reload</pre>
+<p>Po restarcie router powinien mieć poprawną licencję, możemy to zweryfikować komendami:</p>
+<pre>Router#show license detail
+Router#show platform hardware throughput level</pre>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/csr1000v-w-gns3/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Podłączanie GNS3 VM do internetu</title>
+		<link>https://kubsoo.github.io/rsnet-website/podlaczanie-gns3-vm-do-internetu/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/podlaczanie-gns3-vm-do-internetu/#respond</comments>
+		<pubDate>Mon, 07 Aug 2017 19:41:25 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[GNS3]]></category>
+		<category><![CDATA[vm]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=400</guid>
+		<description><![CDATA[GNS3 jest  bardzo przydatne do symulowania, emulowania sieci komputerowych. Czasami zachodzi potrzeba podłączenia sieci stworzonej w GNS3 do internetu. W tym wpisie pokażę jak to zrobić na przykładzie GNS3 zainstalowanego jako&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;"><a href="https://www.gns3.com/software/download-vm" title="">GNS3</a> jest  bardzo przydatne do symulowania, emulowania sieci komputerowych. Czasami zachodzi potrzeba podłączenia sieci stworzonej w GNS3 do internetu. W tym wpisie pokażę jak to zrobić na przykładzie GNS3 zainstalowanego jako maszyna wirtualna na Vmware Workstation na komputerze lokalnym.  Ja używam GNS3 w wersji VM, ponieważ GNS3 nie działa zbyt stabilnie na Windowsie, a taki posiadam system operacyjny, aczkolwiek tam samo będzie wyglądać podłączanie do Internetu lokalnie zainstalowanego GNS3.</p>
+<h4>TOPOLOGIA</h4>
+<p style="text-align: justify;">Zbudujmy następującą topologię składającą się z routera oraz hosta. Jako host uruchomiłem kontener dockera z zainstalowanym systemem <a href="https://alpinelinux.org/" title="">Alpine Linux</a>, który zajmuje tylko 5MB, a sluży nam tylko w celu zasymulowania hosta w sieci z dostępem do narzędzia diagnostycznego ping. Natomiast jako router posluży obraz z routerem Cisco 7200. Topologia znajduje się na poniższym obrazku:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-405 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int.png" alt="" width="646" height="385" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int.png 646w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int-300x179.png 300w" sizes="(max-width: 646px) 100vw, 646px" /></a></p>
+<p>Konfiguracja routera R1:</p>
+<pre>interface FastEthernet0/0
+ ip address dhcp
+ ip nat outside
+ duplex full
+!
+interface FastEthernet1/0
+ ip address 10.0.0.1 255.255.255.0
+ ip nat inside
+ speed auto
+ duplex auto
+!
+ip nat inside source list 1 interface FastEthernet0/0 overload
+ip forward-protocol nd
+!
+access-list 1 permit 10.0.0.0 0.0.0.255</pre>
+<p><strong>Wyjaśnienie:</strong></p>
+<p style="text-align: justify;">Konfiguracja routera jest bardzo prosta, bo właściwie to tylko konfiguracja interfejsów i NATu. Interfejs wewnętrzny podłączony do hosta (Fa1/0) konfigurujemy z adresem IP 10.0.0.1/24 oraz jako ip nat inside, natomiast interfejs zewnętrzny podłączony do naszej chmury Cloud1 (Fa0/0) konfigurujemy jako ip nat outside z adresem branym z DHCP.  Jeśli sieć w której znajduje się fizyczny interfejs naszego komputera podłączony do internetu nie posiada serwera DHCP to musimy przypisać go na sztywno, a następnie wskazać bramę. Zakładam jednak, że większość osób korzysta w domu z standardowego routera z dostępem do internetu na którym uruchomiona jest usługa DHCP.</p>
+<p>&nbsp;</p>
+<p>Konfiguracja hosta:</p>
+<pre>/ # ifconfig eth0 10.0.0.2 netmask 255.255.255.0
+
+/ # route add default gw 10.0.0.1 eth0</pre>
+<p><strong>Wyjaśnienie:</strong></p>
+<p style="text-align: justify;">Hosta konfigurujemy wydając dwa polecenia. Pierwsze przypisuje adres IP, drugie przypisuje bramę domyślną, dzięki czemu host ma dostęp do internetu. Dodatkowo możemy edytować plik /etc/resolv.conf i wpisać adres serwera dns. Dzięki czemu możliwe będzie pingowanie po nazwach.</p>
+<p>Plik edytujemy edytorem vi:</p>
+<pre>/ # vi /etc/resolv.conf
+nameserver 8.8.8.8
+~
+~
+~
+~
+~
+- /etc/resolv.conf 1/1 100%</pre>
+<p>&nbsp;</p>
+<h4>PODŁĄCZENIE DO INTERNETU</h4>
+<p style="text-align: justify;">W celu podłączenia routera R1 do internetu, a tym samym udostępnieniu internetu na hoście alpine-1 konieczne jest wykonanie następujących kroków:</p>
+<p><strong>Krok 1:</strong> Stworzenie nowego urządzenia (chmury):</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int2.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-407 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int2.png" alt="" width="741" height="385" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int2.png 741w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int2-300x156.png 300w" sizes="(max-width: 741px) 100vw, 741px" /></a></p>
+<p><strong>Krok 2:</strong> Skonfigurowanie chmury poprzez przycisk Configure i dodanie interfejsu fizycznego naszego komputera, który podłączony jest do internetu:</p>
+<p style="text-align: justify;"><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int3.png" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-408 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int3.png" alt="" width="686" height="480" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int3.png 686w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int3-300x210.png 300w" sizes="(max-width: 686px) 100vw, 686px" /></a>W moim przypadku interfejs, którym karta sieciowa mojego komputera podłączona jest do internetu to Local Area Connection 2. Jeśli po otworzeniu zakładki Configure w polu Ethernet Interfaces są jakieś interfejsy to należy je usunąć, a następnie zaznaczyć opcję Show special Ethernet interfaces na spodzie. Po tej operacji będziemy mogli z listy wybrać odpowiedni interfejs i dodać go klikając przycisk Add.</p>
+<p><strong>Krok 3:</strong> Podłączenie chmury do interfejsu fa0/0 routera R1.</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int4.png" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-409 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int4.png" alt="" width="738" height="379" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int4.png 738w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/08/gns3_int4-300x154.png 300w" sizes="(max-width: 738px) 100vw, 738px" /></a></p>
+<p style="text-align: justify;">Po wykonaniu kroku trzeciego interfejs fa0/0 na routerze powinien się podnieść, a po chwili dostać adres IP z DHCP:</p>
+<pre>R1#show ip int brief
+ Interface IP-Address OK? Method Status Protocol
+ FastEthernet0/0 192.168.0.24 YES DHCP up up
+ FastEthernet1/0 10.0.0.1 YES manual up up
+ FastEthernet1/1 unassigned YES unset administratively down down</pre>
+<h4>GOTOWE!</h4>
+<p style="text-align: justify;">Mamy teraz połączenie z internetem w naszej sieci pod GNS3. Sprawdźmy to wydając komendę ping na hoście:</p>
+<pre> / # ping 8.8.8.8
+ PING 8.8.8.8 (8.8.8.8): 56 data bytes
+ 64 bytes from 8.8.8.8: seq=0 ttl=58 time=31.886 ms
+ 64 bytes from 8.8.8.8: seq=1 ttl=58 time=28.761 ms
+ ^C
+ --- 8.8.8.8 ping statistics ---
+ 2 packets transmitted, 2 packets received, 0% packet loss
+ round-trip min/avg/max = 28.761/30.323/31.886 ms
+ / # ping onet.pl
+ PING onet.pl (213.180.141.140): 56 data bytes
+ 64 bytes from 213.180.141.140: seq=0 ttl=58 time=21.966 ms
+ 64 bytes from 213.180.141.140: seq=1 ttl=58 time=11.804 ms
+ ^C
+ --- onet.pl ping statistics ---
+ 2 packets transmitted, 2 packets received, 0% packet loss
+ round-trip min/avg/max = 11.804/16.885/21.966 ms
+ / #</pre>
+<p style="text-align: justify;">Jak widać zarówno ping adresu 8.8.8.8 jak i onet.pl zakończyły się sukcesem. Prędkość takiego połączenia internetowego nie jest zawrotna, ze względu na ograniczenia na wirtualnym routerze R1 oraz na samym GNS3, natomiast do celów diagnostycznych i testowych taka prędkość w zupełności wystarczy.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/podlaczanie-gns3-vm-do-internetu/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

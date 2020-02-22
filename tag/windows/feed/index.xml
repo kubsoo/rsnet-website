@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>windows &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/windows/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Windows w GNS3</title>
+		<link>https://kubsoo.github.io/rsnet-website/windows-w-gns3/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/windows-w-gns3/#respond</comments>
+		<pubDate>Wed, 11 Oct 2017 22:02:26 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[GNS3]]></category>
+		<category><![CDATA[windows]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=526</guid>
+		<description><![CDATA[Windows w GNS3 można szybko uruchomić korzystająć z import appliance. Pokażę jak uruchomić Windows 7 w GNS3 w wersji 2.1.0 pod VMWare Workstation. W tym celu wchodzimy na stronę www.gns3.com/marketplace/appliances wybieramy&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-526">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="4e05d02" class="elementor-element elementor-element-4e05d02 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="7c758cf" class="elementor-element elementor-element-7c758cf elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="3d12a1e" class="elementor-element elementor-element-3d12a1e elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><div style="text-align: justify;">Windows w GNS3 można szybko uruchomić korzystająć z import appliance. Pokażę jak uruchomić Windows 7 w GNS3 w wersji 2.1.0 pod VMWare Workstation. W tym celu wchodzimy na stronę <a href="https://www.gns3.com/marketplace/appliances" title="">www.gns3.com/marketplace/appliances</a> wybieramy Windows <a href="https://www.gns3.com/marketplace/appliance/windows" title="">https://www.gns3.com/marketplace/appliance/windows</a> i ściągamy plik <a href="https://www.gns3.com/external/download?url=https%3A%2F%2Fraw.githubusercontent.com%2FGNS3%2Fgns3-registry%2Fmaster%2Fappliances%2Fwindows.gns3a" title="">windows.gns3a</a>. Następnie otwieramy GNS3 i wybieramy File -&gt; Import appliance</div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="6d850c6" class="elementor-element elementor-element-6d850c6 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="35fde5c" class="elementor-element elementor-element-35fde5c elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5e62bf0" class="elementor-element elementor-element-5e62bf0 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/import.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="267" height="353" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/import.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/import.png 267w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/import-227x300.png 227w" sizes="(max-width: 267px) 100vw, 267px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="16372db" class="elementor-element elementor-element-16372db elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="3b4f6fd" class="elementor-element elementor-element-3b4f6fd elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="07a05b4" class="elementor-element elementor-element-07a05b4 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><div style="text-align: justify;">Teraz następuje dodanie maszyny do GNS3. Po kilku kliknięciach next pojawi się okienko z wyborem wersji Windowsa:</div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="7084f99" class="elementor-element elementor-element-7084f99 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="93fdd95" class="elementor-element elementor-element-93fdd95 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="6a7b22f" class="elementor-element elementor-element-6a7b22f elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows1-1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title="">
+							<img width="701" height="532" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows1-1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows1-1.png 701w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows1-1-300x228.png 300w" sizes="(max-width: 701px) 100vw, 701px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="97ce1cc" class="elementor-element elementor-element-97ce1cc elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="0d856e0" class="elementor-element elementor-element-0d856e0 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="079aeee" class="elementor-element elementor-element-079aeee elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">Jak zaznaczymy jakikolwiek plik (np. IE10_-_Win7-disk1.vmdk) to zostaniemy przekierowani na stronę Microsoftu, gdzie będziemy mogli ściągnąć wersję jaka nas interesuje. Do wyboru mamy Windows 7, 8.1 i 10, ja wybrałem Windows 7 z IE10:</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="296513b" class="elementor-element elementor-element-296513b elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="b9ba885" class="elementor-element elementor-element-b9ba885 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c66182c" class="elementor-element elementor-element-c66182c elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title="">
+							<img width="655" height="477" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows2.png 655w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows2-300x218.png 300w" sizes="(max-width: 655px) 100vw, 655px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div data-id="455a275" class="elementor-element elementor-element-455a275 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">Jak ściągniemy interesujący nas obraz, to rozpakujemy go i w GNS3 wybieramy przycisk import i wskazujemy plik z rozszerzeniem vmdk:</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="c19a180" class="elementor-element elementor-element-c19a180 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="9e3c600" class="elementor-element elementor-element-9e3c600 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="2a53424" class="elementor-element elementor-element-2a53424 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows3.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title="">
+							<img width="700" height="533" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows3.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows3.png 700w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows3-300x228.png 300w" sizes="(max-width: 700px) 100vw, 700px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div data-id="d9c5eae" class="elementor-element elementor-element-d9c5eae elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">i czekamy aż plik wgra się do GNS3 (może to potrwać od kilku do kilkunastu minut, trzeba uzbroić się w cierpliwość). Jak plik wgra się do GNS3 klikamy Next &gt; i akceptujemy instalację przyciskiem Yes:</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="4102017" class="elementor-element elementor-element-4102017 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="a0bc6bd" class="elementor-element elementor-element-a0bc6bd elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="ce210dd" class="elementor-element elementor-element-ce210dd elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows4.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-4" data-rl_title="" data-rl_caption="" title="">
+							<img width="685" height="489" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows4.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows4.png 685w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows4-300x214.png 300w" sizes="(max-width: 685px) 100vw, 685px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div data-id="24181d4" class="elementor-element elementor-element-24181d4 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows5.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-5" data-rl_title="" data-rl_caption="" title="">
+							<img width="679" height="489" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows5.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows5.png 679w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows5-300x216.png 300w" sizes="(max-width: 679px) 100vw, 679px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="db39f65" class="elementor-element elementor-element-db39f65 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="52e8101" class="elementor-element elementor-element-52e8101 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="3673c1b" class="elementor-element elementor-element-3673c1b elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">Teraz zostaje już tylko kilkukrotne kliknięcie przycisku Next aż do końcowego ekranu z przyciskiem Finish.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="5288843" class="elementor-element elementor-element-5288843 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="014aed4" class="elementor-element elementor-element-014aed4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="1594a13" class="elementor-element elementor-element-1594a13 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows6.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-6" data-rl_title="" data-rl_caption="" title="">
+							<img width="680" height="491" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows6.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows6.png 680w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows6-300x217.png 300w" sizes="(max-width: 680px) 100vw, 680px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div data-id="f46f031" class="elementor-element elementor-element-f46f031 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows7.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-7" data-rl_title="" data-rl_caption="" title="">
+							<img width="678" height="485" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows7.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows7.png 678w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows7-300x215.png 300w" sizes="(max-width: 678px) 100vw, 678px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div data-id="ab6add8" class="elementor-element elementor-element-ab6add8 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows8.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-8" data-rl_title="" data-rl_caption="" title="">
+							<img width="683" height="489" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows8.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows8.png 683w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows8-300x215.png 300w" sizes="(max-width: 683px) 100vw, 683px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="536606c" class="elementor-element elementor-element-536606c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e3a4115" class="elementor-element elementor-element-e3a4115 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="29623cf" class="elementor-element elementor-element-29623cf elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">To już koniec instalacji. Maszyna jest od teraz dostępna w End Devices i możemy ją używać w projektach. Zarządzanie maszyną odbywa się przy użyciu vncviewer&#8217;a, który jest dołączany o GNS3 w trakcie instalacji. Uruchamiamy go klikając prawym klawiszem na maszynę z Windowsem i wybierająć Console.</p></div>
+				</div>
+				</div>
+				<div data-id="0473a73" class="elementor-element elementor-element-0473a73 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows9.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-9" data-rl_title="" data-rl_caption="" title="">
+							<img width="335" height="414" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows9.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows9.png 335w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows9-243x300.png 243w" sizes="(max-width: 335px) 100vw, 335px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div data-id="44b2f94" class="elementor-element elementor-element-44b2f94 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows11.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-10" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="591" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows11.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows11.png 805w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows11-300x246.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/11/windows11-768x631.png 768w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div data-id="c83896c" class="elementor-element elementor-element-c83896c elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">Takiej maszyny wirutalnej z Windows 7 w GNS3 możemy używać przez 90 dni, po tym czasie licencja się skończy i będziemy musieli ponownie zainstalować maszynę i znowu będziemy mogli jej używać przez 90 dni.</p><p style="text-align: justify;">Jak widać GNS3 w wersji 2.1.0 da się w bardzo prosty sposób uruchomić Windows 7, dzięki gotowym rozwiązaniom jesteśmy w stanie to zrobić w kilkanaście minut.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/windows-w-gns3/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>MobaXterm &#8211; narzędzie do zdalnego dostępu ssh, rdp, telnet, sftp</title>
+		<link>https://kubsoo.github.io/rsnet-website/110/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/110/#respond</comments>
+		<pubDate>Wed, 24 May 2017 20:30:46 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[rdp]]></category>
+		<category><![CDATA[ssh]]></category>
+		<category><![CDATA[windows]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=110</guid>
+		<description><![CDATA[W pracy administratora konieczne jest łączenie się zdalne z urządzeniami przy użyciu różnych protokołów. Ja na co dzień korzystam z programów typu: Putty, WinSCP, połączeń pulpitu zdalnego Windows. W związku z&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">W pracy administratora konieczne jest łączenie się zdalne z urządzeniami przy użyciu różnych protokołów. Ja na co dzień korzystam z programów typu: <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/" title="">Putty</a>, <a href="http://winscp.net/eng/index.php" title="">WinSCP</a>, <a href="http://windows.microsoft.com/pl-pl/windows7/products/features/remote-desktop-connection" title="">połączeń pulpitu zdalnego Windows</a>. W związku z tym, że najwięcej urządzeń, którymi administruję to serwery z systemem operacyjnym linux oraz urządzenia sieciowe CISCO to najczęściej korzystam z programu Putty, który umożliwia połączenia przez ssh oraz telnet. Połączenie z kilkoma urządzeniami wymaga otwieranie nowych okien putty, co czasami może prowadzić do pomyłek. Parę razy zdarzyło mi się pomylić okienko i wykonywać polecenia nie na tym urządzeniu, na którym miałem to zrobić. Rozwiązać ten problem można instalując modyfikacje programu putty takie jak: <a href="http://ttyplus.com/multi-tabbed-putty/" title="">MTPutty</a> czy <a href="https://code.google.com/p/superputty/" title="">SuperPutty</a>, które umożliwiają otwieranie nowych okienek w zakładkach. Ja korzystałem z SuperPutty, jednak nie byłem do końca zadowolony, dlatego zacząłem poszukiwania innego rozwiązania. W ręce wpadło mi narzędzie <a href="http://www.mremoteng.org/" title="">mRemoteNG</a>, które oprócz połączeń ssh umożliwia również połączenia RDP (zdalny pulpit Windows) i wszystkie te połączenia można pogrupować w zakładkach. Na początku byłem bardzo zadowolony z mRemoteNG, jednak po jakimś czasie pojawiły się problemy ze stabilnością i zmuszony byłem szukać dalej. Poszukiwania nie trwały długo i zakończyły się sukcesem, ponieważ znalazłem oprogramowanie <strong>MobaXterm</strong>.</p>
+<p><span id="more-110"></span></p>
+<p><strong>MobaXterm</strong></p>
+<p style="text-align: justify;">Oprogramownie dostępne jest na platformę Windows i można je pobrać <a href="http://mobaxterm.mobatek.net/" title="">stąd</a>. MobaXTerm dostępne jest w dwóch wersjach: Personal Edition oraz Professional Edition. Wersja Personal Edition dostępna jest za darmo natomiast wersja Professional Edition kosztuje ok. 60 euro. Ja narazie korzystam z wersji bezpłatnej, bo do moich potrzeb nie jest mi potrzebna wersja Professional Editon. Różnice pomiędzy wersjami można znaleźć w zakładce <a href="http://mobaxterm.mobatek.net/download.html" title="">Download/Buy</a> na stronie MobaXterm.mobatek.pl. Do podstawowych różnic należy maksymalna liczba zapisanych sesji (w wersji darmowej 12, w wersji professional nielimitowana) oraz maksymalna liczba zapisanych tuneli SSH (w wersji darmowej 2, w wersji professional nielimitowana). W MobaXterm można tworzyć szereg sesji (SSH, Telnet, Rsh, Xdmcp, RDP, VNC, FTP, SFTP, Serial, File, Shell, Browser, Mosh):</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba1.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-114 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba1.png" alt="" width="854" height="771" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba1.png 854w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba1-300x271.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba1-768x693.png 768w" sizes="(max-width: 854px) 100vw, 854px" /></a></p>
+<p style="text-align: justify;">MobaXterm umożliwia jednoczesne otwarcie sesji m.in. SSH i RDP i łatwe i szybkie przenoszenie się między sesjami. Wystarczy kliknąć w odpowiednią zakładkę. Dzięki możliwości zapisywania haseł, nie musimy za każdym razem wpisywać loginu i hasła do połączenia się ze zdalną maszyną. W praktyce sesje w MobaXterm wyglądają następująco:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba2.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-115 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba2.png" alt="" width="601" height="328" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba2.png 601w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba2-300x164.png 300w" sizes="(max-width: 601px) 100vw, 601px" /></a></p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba3.png" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-116 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba3.png" alt="" width="601" height="331" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba3.png 601w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba3-300x165.png 300w" sizes="(max-width: 601px) 100vw, 601px" /></a></p>
+<p style="text-align: justify;">Na głównej stronie MobaXterm jest prezentacja pokazująca najciekawsze funkcje programu (<a href="http://mobaxterm.mobatek.net/" title="">link</a>).</p>
+<p style="text-align: justify;">Jedną z kluczowych funkcji MobaXterm jest możliwość pracy zdalnej na serwerach linux w trybie graficznym korzystając z Windowsa. W skrócie MobaXterm pozwala na uruchamianie aplikacji linux w trybie graficznym na Windowsie wykorzystując połączenie SSH (<strong>X11 Forwarding</strong>). Na uwagę zasługuje to, że nie musimy w tym celu instalować dodatkowego oprogramowania, ani konfigurować serwera linuksowego. Wystarczy połączyć się w MobaXterm z serwerem linuksowym wykorzystując połączenie ssh, a następnie w konsoli wydać polecenie, które odpali dowolny program w trybie graficznym. Screen z wykonania polecenia gns3 na linuxie poniżej:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba4.png" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-117 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba4.png" alt="" width="601" height="420" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba4.png 601w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2014/06/moba4-300x210.png 300w" sizes="(max-width: 601px) 100vw, 601px" /></a></p>
+<p style="text-align: justify;">Połączyłem się z moim serwerem, na którym zainstalowany jest debian (debian-lab) a następnie odpaliłem oprogramowanie gns3, wpisując w konsoli: <em>gns3</em>. Program gns3 odpalił m się pod Windowsem i mogę z niego korzystać w taki sam sposób, jakbym pracował na nim pod debianem. Dzięki wykorzystaniu tej funkcjonalności administrator, który będzie zmuszony skorzystać z okienek (np. przy instalacji Oracle&#8217;a), nie będzie musiał konfigurować oprogramowania typu <a href="http://www.tightvnc.com/">VNC</a> do podłączenia się do zdalnego pulpitu, ani tym bardziej pracować na serwerze lokalnie, korzystając z podłączonego do serwera monitora klawiatury i myszy, zwłaszcza że w większości przypadków serwery, na których pracuje są w lokalizacjach zdalnych, do których nie ma dostępu.</p>
+<p style="text-align: justify;">Na razie jestem na początku testowania możliwości MobaXterm, jednak już mogę polecić kilka rzeczy, które według mnie zasługują na uwagę. Poza X11 Forwarding, na uwagę zasługuje przeglądarka SFTP, która po podłączneniu z sesją ssh, umożliwia przeglądanie plików na maszynie zdalnej, ściąganie/wgrywanie plików do/z maszyny zdalnej oraz możliwość wykonania tych samych poleceń jednocześnie na wielu maszynach, służy do tego opcja (MultiExec). Ja wykorzystałem tą funkcjonalność gdy musiałem dodać konto użytkownika na kilkunastu serwerach. Zamiast pisać skrypt, który to wykona po prostu otworzyłem wszystkie sesje ssh z serwerami a następnie wpisałem polecenie, które zostało wykonane na każdym serwerze. Jeszcze jedna rzecz, którą zauważyłem po instalacji było, to że program automatycznie zaimportował sesje z programu Putty, więc nie musiałem ich dodawać.</p>
+<p style="text-align: justify;">Podsumowując uważam, że program MobaXterm to doskonałe narzędzie dla administratora, które usprawnia pracę z urządzeniami zdalnymi oraz integruje ze sobą wiele funkcjonalności, dzięki czemu nie trzeba korzystać w wielu programów naraz. Gorąco zachęcam do przetestowania tego oprogramowania, gdyż naprawdę jest godne polecenia.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/110/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Windows SSH Server</title>
+		<link>https://kubsoo.github.io/rsnet-website/windows-ssh-server/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/windows-ssh-server/#respond</comments>
+		<pubDate>Fri, 24 Feb 2017 20:20:32 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[ssh]]></category>
+		<category><![CDATA[windows]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=102</guid>
+		<description><![CDATA[Usługa ssh (ang. secure shell) umożliwia bezpośrednie połączenie z powłoką systemu operacyjnego zdalnego serwera wykorzystując bezpieczne, szyfrowane połączenie. Dostęp do powłoki, inaczej nazywanej terminalem lub konsolą umożliwia zarządzanie serwerem z&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">Usługa ssh (ang. secure shell) umożliwia bezpośrednie połączenie z powłoką systemu operacyjnego zdalnego serwera wykorzystując bezpieczne, szyfrowane połączenie. Dostęp do powłoki, inaczej nazywanej terminalem lub konsolą umożliwia zarządzanie serwerem z linii komend. SSH jest głównie kojarzony z systemami z rodziny GNU/Linux i BSD. Usługa działa w architekturze klient-serwer. Serwer ssh nasłuchuje połączeń od klientów na porcie 22 TCP. Do najpopularniejszych narzędzi do zarządzania SSH należy pakiet OpenSSH domyślnie zainstalowany w większości dystrybucji Linux, w skład którego wchodzą klient i serwer. W systemach Windows jednym z najczęściej wykorzystywanych klientów jest program Putty. W jednym z poprzednich wpisów opisałem innego, godnego uwagi klienta ssh (<a href="http://uptime.com.pl/mobaxterm-narzedzie-do-zdalnego-dostepu-ssh-rdp-telnet-sftp/" title="">MobaXterm</a>).</p>
+<p style="text-align: justify;"><strong> </strong><span id="more-102"></span></p>
+<h3 style="text-align: justify;">WINDOWS</h3>
+<p style="text-align: justify;">Wiele osób nie wie, że istnieją rozwiązania umożliwiające uruchomienie serwera SSH na platformie Windows. W związku z tym, że korzystam z MobaXterm, postanowiłem zainstalować serwer SSH dostarczany przez Mobatek, a mianowicie <a href="http://mobassh.mobatek.net/demo.html" title="">MobaSSH</a>. Instalacja MobaSSH sprowadza się do kliknięcia przycisku Install Now:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh1.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-103 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh1.png" alt="" width="552" height="381" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh1.png 552w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh1-300x207.png 300w" sizes="(max-width: 552px) 100vw, 552px" /></a></p>
+<p style="text-align: justify;">Przy instalacji zostaniemy poproszeni o wybranie użytkowników, którzy mogą się łączyć z naszym serwerem SSH. Są to lokalne konta użytkowników systemu Windows, na którym instalujemy MobaSSH. Po zainstalowaniu serwera pora przetestować połączenie. Do naszego serwera możemy łączyć się korzystając z dowolnego klienta SSH.</p>
+<p style="text-align: justify;">Przykładowe połączenie z serwerem przy wykorzystaniu klienta MobaXterm:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh2.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-104 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh2.png" alt="" width="646" height="388" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh2.png 646w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh2-300x180.png 300w" sizes="(max-width: 646px) 100vw, 646px" /></a></p>
+<p style="text-align: justify;">Przy połączeniu dostajemy kilka ważnych informacji:</p>
+<p style="text-align: justify;">1. Zasoby dyskowe dostępne są w katalogu /cygdrive</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh3.png" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title=""><img class="alignleft wp-image-105 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh3.png" alt="" width="249" height="70" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="text-align: left;">2. Udziały sieciowe dostępne są po wpisaniu //&lt;IP_komputera_zdalnego.</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh4.png" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title=""><img class="alignnone wp-image-106 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh4.png" alt="" width="349" height="188" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh4.png 349w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh4-300x162.png 300w" sizes="(max-width: 349px) 100vw, 349px" /></a></p>
+<p>3. Rejestr Windows można przeglądać z katalogu: /registry</p>
+<p style="text-align: justify;">    <a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh5.png" data-rel="lightbox-image-4" data-rl_title="" data-rl_caption="" title=""><img class="alignleft wp-image-107 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh5.png" alt="" width="476" height="88" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh5.png 476w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ssh5-300x55.png 300w" sizes="(max-width: 476px) 100vw, 476px" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="text-align: justify;">Dzięki instalacji MobaSSH na komputerze z Windowsem, możemy nim zarządzać tak jak byłby to serwer z Linuxem. Przy instalacji możemy wybrać, żeby serwer ssh uruchamiał się ze startem systemu. Jest to przydatne w sytuacji, w  której zarządzamy stacjami roboczymi Windows i chcemy wykonać jakąś operację na komputerze zdalnym bez wiedzy użytkownika.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/windows-ssh-server/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

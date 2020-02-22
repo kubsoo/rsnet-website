@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>ISE &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/ise/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>CISCO ISE 2.x monitoring REST API</title>
+		<link>https://kubsoo.github.io/rsnet-website/cisco-ise-2-x-monitoring-rest-api/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/cisco-ise-2-x-monitoring-rest-api/#respond</comments>
+		<pubDate>Tue, 10 Oct 2017 19:58:55 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[ISE]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[rest api]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=446</guid>
+		<description><![CDATA[Cisco ISE (Identity Services Engine) pozwala na bezpieczny dostęp urządzeń i użytkowników do sieci przewodowych, bezprzewodowych i do VPN. Więcej informacji na temat możliwości i zastosowań ISE można znaleźć na&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">Cisco <a href="https://www.cisco.com/c/en/us/products/security/identity-services-engine/index.html#~stickynav=1" title="">ISE</a> (Identity Services Engine) pozwala na bezpieczny dostęp urządzeń i użytkowników do sieci przewodowych, bezprzewodowych i do VPN. Więcej informacji na temat możliwości i zastosowań ISE można znaleźć na stronie Cisco.com. Ja skupię się na bardzo przydatnej funkcjonalności dostępnej w ISE a mianowicie REST API.</p>
+<p style="text-align: justify;">Po podniesieniu wersji ISE z 2.2 do 2.3 napotkałem następujący problem. Po wejściu do interfejsu webowego do głównego menu nie wyświetla się lista aktywnych Endpointów. Mimo iż stacje końcowe są uwierzytelnione do sieci przez ISE.</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_3.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-449 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_3.png" alt="" width="1182" height="249" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_3.png 1182w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_3-300x63.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_3-768x162.png 768w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_3-1024x216.png 1024w" sizes="(max-width: 1182px) 100vw, 1182px" /></a></p>
+<p style="text-align: justify;">Problem można rozwiązać kontaktując się z supportem CISCO, albo skorzystać z dostępnego REST API.</p>
+<p style="text-align: justify;">Do sprawdzenia ilości sesji posłużymy się <a href="https://www.cisco.com/c/en/us/td/docs/security/ise/2-0/api_ref_guide/api_ref_book/ise_api_ref_ch1.html" title="">Monitoring REST API</a>. W tym celu musimy najpierw stworzyć użytkownika w jednej z poniższych grup:</p>
+<ul>
+<li class="pBu1_Bullet1">Super Admin</li>
+<li class="pBu1_Bullet1">System Admin</li>
+<li class="pBu1_Bullet1">MnT Admin</li>
+</ul>
+<p style="text-align: justify;">Załóżmy że stworzymy sobie użytkownika mnt_admin w grupie MnT Admin, o haśle Cisco123!</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_1.png" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-451 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_1.png" alt="" width="1224" height="321" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_1.png 1224w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_1-300x79.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_1-768x201.png 768w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_1-1024x269.png 1024w" sizes="(max-width: 1224px) 100vw, 1224px" /></a></p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_2.png" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-452 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_2.png" alt="" width="991" height="779" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_2.png 991w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_2-300x236.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/ise_2-768x604.png 768w" sizes="(max-width: 991px) 100vw, 991px" /></a></p>
+<h4>TEST API</h4>
+<p>Teraz możemy przetestować Monitoring REST API wpisując w przeglądarce:</p>
+<p>https://&lt;/ ISE-Management-Node &gt;/API/mnt/Session/ActiveList</p>
+<p style="text-align: justify;">Pojawi się ekran do logowania. W polu username wpisujemy stworzonego przez nas wcześniej usera: mnt_admin, w polu password hasło: Cisco123!. Po poprawnym uwierzytelnieniu powinniśmy zobaczyć plik xml o postaci:</p>
+<pre>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;activeList noOfActiveSession="226"&gt;
+  &lt;activeSession&gt;
+    &lt;user_name&gt;00:22:3C:0D:BA:26&lt;/user_name&gt;
+    &lt;calling_station_id&gt;00:22:3C:0D:BA:26&lt;/calling_station_id&gt;
+    &lt;nas_ip_address&gt;192.168.10.22&lt;/nas_ip_address&gt;
+    &lt;acct_session_id&gt;0000001F&lt;/acct_session_id&gt;
+    &lt;audit_session_id&gt;0A120A02000000D40135DECF&lt;/audit_session_id&gt;
+    &lt;server&gt;ISE01&lt;/server&gt;
+    &lt;framed_ip_address&gt;172.16.22.12&lt;/framed_ip_address&gt;
+    &lt;framed_ipv6_address/&gt;
+  &lt;/activeSession&gt;
+  &lt;activeSession&gt;
+    &lt;user_name&gt;00:F1:4C:47:B2:27&lt;/user_name&gt;
+    &lt;calling_station_id&gt;00:F1:4C:47:B2:27&lt;/calling_station_id&gt;
+    &lt;nas_ip_address&gt;192.168.10.22&lt;/nas_ip_address&gt;
+    &lt;acct_session_id&gt;00000011&lt;/acct_session_id&gt;
+    &lt;audit_session_id&gt;0A120A020000003B004E8945&lt;/audit_session_id&gt;
+    &lt;server&gt;ISE01&lt;/server&gt;
+    &lt;framed_ip_address&gt;172.16.22.16&lt;/framed_ip_address&gt;
+    &lt;framed_ipv6_address/&gt;
+  &lt;/activeSession&gt;
+
+…
+
+  &lt;activeSession&gt;
+    &lt;user_name&gt;00:14:38:28:A9:12&lt;/user_name&gt;
+    &lt;calling_station_id&gt;00:14:38:28:A9:12&lt;/calling_station_id&gt;
+    &lt;nas_ip_address&gt;192.168.10.22&lt;/nas_ip_address&gt;
+    &lt;acct_session_id&gt;000023B1&lt;/acct_session_id&gt;
+    &lt;audit_session_id&gt;0A0C0AED000019DF4879AACD&lt;/audit_session_id&gt;
+    &lt;server&gt;ISE01&lt;/server&gt;
+    &lt;framed_ip_address&gt;172.16.22.32&lt;/framed_ip_address&gt;
+    &lt;framed_ipv6_address/&gt;
+  &lt;/activeSession&gt;
+  &lt;activeSession&gt;
+    &lt;user_name&gt;corp.local/jan.kowalski&lt;/user_name&gt;
+    &lt;calling_station_id&gt;EC:F4:BA:17:AB:0D&lt;/calling_station_id&gt;
+    &lt;nas_ip_address&gt;192.168.10.22&lt;/nas_ip_address&gt;
+    &lt;acct_session_id&gt;00002BDD&lt;/acct_session_id&gt;
+    &lt;audit_session_id&gt;0A0B02E200000DA7DF251399&lt;/audit_session_id&gt;
+    &lt;server&gt;ISE01&lt;/server&gt;
+    &lt;framed_ip_address&gt;172.16.24.12&lt;/framed_ip_address&gt;
+    &lt;framed_ipv6_address/&gt;
+  &lt;/activeSession&gt;
+ &lt;/activeList&gt;</pre>
+<p style="text-align: justify;">Wynikiem jest plik XML z kilkoma wartościami dla każdej aktywnej sesji: user_name (nazwa użytkownika), calling_station_id (adres MAC stacji końcowej), nas_ip_address (adres IP urządzenia sieciowego (NAD), do którego podięty jest użytkownik), acct_session_id, audit_session_id, server (instancja ISE do której należy dana sesja) i framed_ip_address (adres IP stacji końcowej)</p>
+<p>Druga linijka wyniku zawiera informację o liczbie sesji:</p>
+<p><strong>&lt;activeList noOfActiveSession=&#8221;226&#8243;&gt;</strong></p>
+<p style="text-align: justify;">Napiszmy teraz skrypt, który oprócz wyświetlenia listy sesji wyświetli też metodę uwierzytelnienia MAB, albo 802.1X.</p>
+<h4></h4>
+<h4>Skrypt w Pythonie</h4>
+<p style="text-align: justify;">Do stworzenia skryptu posłużymy się biblioteką requests, textfsm oraz lxml. Biblioteka requests umożliwi nam połączenie się z API.</p>
+<p style="text-align: justify;">Skrypt wygląda następująco:</p>
+<pre>#!/usr/bin/python
+import requests, textfsm
+from lxml import etree
+
+user='mnt_admin'
+password='Cisco123!'
+
+r = requests.get('https://&lt;ISE-Management-Node&gt;/admin/API/mnt/Session/ActiveList',auth=(user, password))
+utf8_parser = etree.XMLParser(encoding='utf-8')
+node = etree.fromstring(r.text.encode('utf-8'), parser=utf8_parser)
+xmlstr = etree.tostring(node, xml_declaration=True, encoding="UTF-8", pretty_print=True)
+
+re_table = textfsm.TextFSM(open("ise_sessions.textfsm"))
+fsm_results = re_table.ParseText(xmlstr)
+
+
+total=mab=0
+for i in fsm_results:
+   total=total+1
+   if i[0] == i[1]:
+        mab=mab+1
+
+dot1x=total-mab
+
+print "---------------------------------"
+print "Sessions per Method"
+print "Active Sessions: "+str(total)
+print "802.1X Session Count: "+str(dot1x)
+print "MAB Session Count: "+str(mab)
+print "---------------------------------"</pre>
+<p>Plik z szablonem textfsm wygląda następująco:</p>
+<pre>Value user_name (\S+)
+Value calling_station (\S+)
+Value nas_ip_address (\S+)
+
+Start
+  ^\s*&lt;activeSession&gt;\s* -&gt; Session
+
+Session
+  ^\s*&lt;user_name&gt;${user_name}&lt;\/user_name&gt;
+  ^\s*&lt;calling_station_id&gt;${calling_station}&lt;\/calling_station_id&gt;
+  ^\s*&lt;nas_ip_address&gt;${nas_ip_address}&lt;\/nas_ip_address&gt; -&gt; Record</pre>
+<p>Wynik działania skryptu:</p>
+<pre>root@vm01:~# ./ise_api.py
+
+---------------------------------
+Sessions per Method
+Active Sessions: 226
+802.1X Session Count: 85
+MAB Session Count: 141
+---------------------------------</pre>
+<h4>Wyjaśnienie:</h4>
+<p style="text-align: justify;">Skrypt wyciąga i zapisuje do tablicy fsm_results następujące informacje dla każdej sesji (username, adres MAC, adres IP). Następnie jest zliczana liczba pozycji w tabeli (total) a w przypadku gdy username = adres MAC, a następuje to w sytuacji gdy uwierzytelniono się do sieci używając MAB (MAC Authentication Bypass). Reszta wyników to uwierzytelnienia przy pomocy 802.1x.</p>
+<p style="text-align: justify;">Jak widać liczba aktywnych sesji to 226, a nie tak jak pokazywało WEB GUI 0.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/cisco-ise-2-x-monitoring-rest-api/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

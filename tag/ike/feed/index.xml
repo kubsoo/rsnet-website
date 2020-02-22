@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>ike &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/ike/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>IPSEC VPN &#8211; teoria</title>
+		<link>https://kubsoo.github.io/rsnet-website/ipsec-vpn-teoria/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/ipsec-vpn-teoria/#respond</comments>
+		<pubDate>Sun, 17 Dec 2017 20:41:10 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[ike]]></category>
+		<category><![CDATA[ipsec]]></category>
+		<category><![CDATA[teoria]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=925</guid>
+		<description><![CDATA[Czym jest IPSEC ? IPSEC jest zestawem protokołów, który pozwala na zestawianie bezpiecznego szyfrowanego tunelu pomiędzy dwoma urządzeniami sieciowymi za pośrednictwem internetu. IPSEC zapewnia uwierzytelnianie stron biorących udział w zestawieniu&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-925">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="f566fd3" class="elementor-element elementor-element-f566fd3 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="022622b" class="elementor-element elementor-element-022622b elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="78df4b8" class="elementor-element elementor-element-78df4b8 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><span style="color: #000000;">Czym jest IPSEC ?</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">IPSEC jest zestawem protokołów, który pozwala na zestawianie bezpiecznego szyfrowanego tunelu pomiędzy dwoma urządzeniami sieciowymi za pośrednictwem internetu. IPSEC zapewnia uwierzytelnianie stron biorących udział w zestawieniu tunelu oraz integralność,  poufność przesyłanych danych i ochronę przed atakimi powtórzeniowymi (replay protection). IPSEC służy do budowania sieci VPN w Internecie.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1fe0fbc" class="elementor-element elementor-element-1fe0fbc elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="490e628" class="elementor-element elementor-element-490e628 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="4f300be" class="elementor-element elementor-element-4f300be elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="619" height="304" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_1.png 619w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_1-300x147.png 300w" sizes="(max-width: 619px) 100vw, 619px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="6824db6" class="elementor-element elementor-element-6824db6 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c00cd1a" class="elementor-element elementor-element-c00cd1a elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="4fedc41" class="elementor-element elementor-element-4fedc41 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><span style="color: #000000;">Funkcje bezpieczeństwa IPSEC:</span></strong></p><p><span style="color: #000000;">1. Uwierzytelnianie</span></p><p style="text-align: justify;"><span style="color: #000000;">Obie strony biorące udział w zestawianiu tunelu muszą zostać uwierzytelnione, które potwierdzania tożsamości obu stron podczas komunikacji. W IPSEC istnieją 3 metody uwierzytelniania:</span></p><ul><li><span style="color: #000000;">wstępnie uzgodnione klucze (preshared keys)</span></li><li><span style="color: #000000;">klucze RSA (klucze prywatne i publiczne)</span></li><li><span style="color: #000000;">certyfikaty</span></li></ul><p><span style="color: #000000;">2. Integralność danych</span></p><p style="text-align: justify;"><span style="color: #000000;">Ta funkcja zapewnia, że dane nie zostały zmienione podczas stransmisji. Służą do tego algorytmy haszujące (SHA, MD5)</span></p><p style="text-align: justify;"><span style="color: #000000;">3. Poufność przesyłanych danych </span></p><p style="text-align: justify;"><span style="color: #000000;">Poufność przesyłanych danych w IPSEC otrzymuje się poprzez szyfrowanie danych. Rodzaje stosowanego szyfrowania (DES, 3DES, AES)</span></p><p style="text-align: justify;"><span style="color: #000000;">4. Ochrona odtwarzania</span></p><p style="text-align: justify;"><span style="color: #000000;">Zapewnia otrzymanie danego pakietu tylko raz. Jest to realizowane przez numer sekwencyjny. Każdemu pakietowi nadawany jest numer sekwencyjny. Numer sekwencyjny jest losowany i zwiększany o 1 z każdym wysłanym przez dany kanał pakietem i służy do rozpoznawania pakietów o kolejności przestawionej podczas wędrówki po sieci oraz chroni przed atakami powtórzeniowymi</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="db134b2" class="elementor-element elementor-element-db134b2 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="f6b4412" class="elementor-element elementor-element-f6b4412 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="f8be596" class="elementor-element elementor-element-f8be596 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;"><strong>Tryby IPSEC</strong></span></p><p style="text-align: justify;"><span style="color: #000000;">IPSEC VPN może być skonfigurowane w dwóch trybach:</span></p><ul><li style="text-align: justify;"><span style="color: #000000;">tryb tunelowy</span></li></ul><p style="text-align: justify;"><span style="color: #000000;">domyślny tryb, cały pakiet IP jest szyfrowany przez IPSEC, włącznie z nagłówkiem IP, dodawany jest nowy nagłówek IP. Mówiąc to w prostych słowach, w tym trybie nie widzimy kto ze sobą rozmawia ani o czym.</span></p><ul><li style="text-align: justify;"><span style="color: #000000;">tryb transportowy</span></li></ul><p style="text-align: justify;"><span style="color: #000000;">obejmuje szyfrowanie samych danych, pozostawiając oryginalny nagłówek IP, nowy nagłówek jest dodawany pomiędzy nagłówkiem IP a nagłówkiem transportowym (L4)</span></p><p style="text-align: justify;"><span style="color: #000000;">Tryb tunelowy stosuje się między routerami/gatewayami, natomiast tryb transportowy stosuje się do tworzenia sieci VPN pomiędzy komputerami.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="02b2106" class="elementor-element elementor-element-02b2106 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="2f5e15e" class="elementor-element elementor-element-2f5e15e elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="8ba7364" class="elementor-element elementor-element-8ba7364 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><span style="color: #000000;">Nagłówki IPSEC</span></strong></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="3cfc15f" class="elementor-element elementor-element-3cfc15f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="3e8efa3" class="elementor-element elementor-element-3e8efa3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="1ac6d12" class="elementor-element elementor-element-1ac6d12 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title="">
+							<img width="480" height="440" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_2.png 480w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_2-300x275.png 300w" sizes="(max-width: 480px) 100vw, 480px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="8e33f6a" class="elementor-element elementor-element-8e33f6a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="03be173" class="elementor-element elementor-element-03be173 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="9a15a1a" class="elementor-element elementor-element-9a15a1a elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><span style="color: #000000;">Protokoły wykorzystywane przez IPSEC</span></strong></p><p><span style="color: #000000;">IPSEC korzysta z trzech podstawowych protokołów:</span></p><ul><li><span style="color: #000000;">IKE (Internet Key Exchange)</span></li><li><span style="color: #000000;">ESP (Encapsulating Security Payload</span></li><li><span style="color: #000000;">AH (Authentication Header)</span></li></ul></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="889db17" class="elementor-element elementor-element-889db17 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="1c76d60" class="elementor-element elementor-element-1c76d60 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="0c5cd02" class="elementor-element elementor-element-0c5cd02 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><span style="color: #000000;">IKE (Internet Key Exchange)</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">Przed zestawieniem tunelu IPSec konieczne jest ustalenie związków bezpieczeństwa (Security Association). Może być to realizowane ręcznie albo przy użyciu protokołu IKE. IKE posiada dwie wersje (IKEv1 oraz IKEv2). W tym wpisie będę odwoływał się do wersji IKEv1. Wszystkie informacje o IKE można znaleźć w poniższych RFC:</span></p><p style="text-align: justify;"><span style="color: #ff0000;"><a style="color: #ff0000;" href="https://www.ietf.org/rfc/rfc5996.txt" title="">https://www.ietf.org/rfc/rfc5996.txt</a></span></p><p><span style="color: #ff0000;"><a style="color: #ff0000;" href="https://www.ietf.org/rfc/rfc2409.txt" title="">https://www.ietf.org/rfc/rfc2409.txt</a></span></p><p style="text-align: justify;"><span style="color: #000000;"> Protokół IKE bazuje na algorytmie Diffiego-Hellmana, który pozwala w bezpieczny sposób wyznaczyć bezpieczny klucz sesji.</span></p><p style="text-align: justify;"><span style="color: #000000;">Nawiązanie bezpiecznej sesji IKE składa się z z dwóch faz.</span></p><ul><li style="text-align: justify;"><span style="color: #000000;">faza 1 &#8211; ISAKMP phase 1 w trakcie której tworzy się IKE SA </span></li><li style="text-align: justify;"><span style="color: #000000;">faza 2 &#8211; w trakcie której tworzy się IPSEC SA</span></li></ul><p style="text-align: justify;"><span style="color: #000000;">W fazie 1 następuje uwierzytelnienie stron komunikujących się między sobą, wybór algorytmów uwierzytelniania, ochrony poufności, integralności, sposób wyboru klucza sesji, ustalenie klucza sesji itp. Wynikiem tej fazy jest ISAKMP SA &#8211; security association, które służy dalszej ochronie komunikacji odbywającej się w fazie 2. Utworzone w fazie pierwszej SA jest dwukierunkowe. Standardowo kanał wymiany kluczy działa na porcie UDP/500. Faza 1 może być przeprowadzana w jednym z dwóch trybów: </span></p><ul><li><span style="color: #000000;">main mode</span></li><li><span style="color: #000000;">aggressive mode</span></li></ul><p style="text-align: justify;"><span style="color: #000000;">W trybie main  mode przy preshared keys wymienianych jest 6 wiadomości pomiędzy stronami do utworzenia IKE SA. W trybie aggressive mode IKE SA jest tworzone po 3 wiadomościach.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="4cd6464" class="elementor-element elementor-element-4cd6464 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="9d5b236" class="elementor-element elementor-element-9d5b236 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="f88ffbf" class="elementor-element elementor-element-f88ffbf elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_3.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title="">
+							<img width="480" height="440" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_3.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_3.png 480w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_3-300x275.png 300w" sizes="(max-width: 480px) 100vw, 480px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="d076e61" class="elementor-element elementor-element-d076e61 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e0bc782" class="elementor-element elementor-element-e0bc782 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="29f5fec" class="elementor-element elementor-element-29f5fec elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_4.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title="">
+							<img width="480" height="340" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_4.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_4.png 480w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_4-300x213.png 300w" sizes="(max-width: 480px) 100vw, 480px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="094d661" class="elementor-element elementor-element-094d661 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="bc659e8" class="elementor-element elementor-element-bc659e8 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="f1aae17" class="elementor-element elementor-element-f1aae17 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">LEGENDA:</span></p><p style="text-align: justify;"><span style="color: #000000;"><strong>SA (Security Association) </strong>&#8211; propozycje algorytmów szyfrowania, funkcji skrótu, metod uwierzytelniania, grupy DH&#8230;</span></p><p style="text-align: justify;"><span style="color: #000000;"><strong>klucz</strong> &#8211; służy do wygenerowania algorytmem Diffie Hellman współdzielonego klucza do szyfrowania transmisji</span></p><p style="text-align: justify;"><strong><span style="color: #000000;">Ni, Nr</span></strong><span style="color: #000000;"> &#8211; losowy numer, który jest użyty tylko raz i zapobiega atakom powtórzeniowym </span></p><p style="text-align: justify;"><span style="color: #000000;"><strong>IDii, IDir</strong> &#8211; tożsamość stron  biorących udział w negocjacji IKE SA, mogą to być adresy IP lub FQDN</span></p><p style="text-align: justify;"><span style="color: #000000;"><strong>Hash_I, Hash_R</strong> &#8211; hash który powstaje na podstawie klucza, IDii/IDir i danych.</span></p><p style="text-align: justify;"><span style="color: #000000;"><strong>Nagłówek ISAKMP*</strong> &#8211; oznacza że jest to nagłówek zaszyfrowany  </span></p><p> </p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="8a7fa3c" class="elementor-element elementor-element-8a7fa3c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="10b7308" class="elementor-element elementor-element-10b7308 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="42573e7" class="elementor-element elementor-element-42573e7 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">W fazie 2 zostanie utworzone IPSEC SA, które będzie służyć do ochrony ruchu między komunikującymi się stronami, wykorzystując protokoły ESP i AH. SA w fazie drugiej jest jednokierunkowe, więc tworzone są 2 SA dla komunikacji w obie strony.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="150edda" class="elementor-element elementor-element-150edda elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="5214725" class="elementor-element elementor-element-5214725 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="a524200" class="elementor-element elementor-element-a524200 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><span style="color: #000000;">ESP i AH</span></strong></p><div><span style="color: #000000;">ESP (Encapsulating Security Payload):</span></div><ul><li style="text-align: justify;"><span style="color: #000000;">ESP zapewnia szyfrowanie, uwierzytelnianie i integralność danych</span></li><li><span style="color: #000000;">protokół IP numer 50</span></li><li><span style="color: #000000;">większy narzut niż w AH</span></li></ul><div> </div><div><span style="color: #000000;">AH (Authentication Header):</span></div><ul><li style="text-align: justify;"><span style="color: #000000;">AH zapewnia uwierzytelnianie, integralność danych, ale nie zapewnia poufności jak ESP.</span></li><li><span style="color: #000000;">protokół IP numer 51</span></li><li><span style="color: #000000;">mniejszy narzut niż w ESP</span></li></ul><p> </p><p><span style="color: #000000;">Nagłówki ESP i AH w trybie transportowym:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="4ca1479" class="elementor-element elementor-element-4ca1479 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="a38a638" class="elementor-element elementor-element-a38a638 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="10c120e" class="elementor-element elementor-element-10c120e elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_5.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-4" data-rl_title="" data-rl_caption="" title="">
+							<img width="290" height="300" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/ipsec_teoria_5.png" class="attachment-large size-large" alt="" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="ec96192" class="elementor-element elementor-element-ec96192 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="1f21aa2" class="elementor-element elementor-element-1f21aa2 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="2fc7501" class="elementor-element elementor-element-2fc7501 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><strong><span style="color: #000000;">Konfiguracja tunelu IPSEC VPN</span></strong></p><p style="text-align: justify;"><span style="color: #000000;">W moich poprzednich wpisach pokazałem jak skonfigurować tunel IPSEC pomiędzy dwoma routerami CISCO <a href="https://kubsoo.github.io/rsnet-website/cisco-ipsec-vpn-konfiguracja/">link</a>, oraz pomiędzy routerem CISCO a firewallem Palo Alto <a href="https://kubsoo.github.io/rsnet-website/ipsec-s2s-vpn-palo-alto-cisco/">link</a></span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/ipsec-vpn-teoria/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

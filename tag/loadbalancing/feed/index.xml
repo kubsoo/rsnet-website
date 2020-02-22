@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>loadbalancing &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/loadbalancing/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Load Balancing z NGINX</title>
+		<link>https://kubsoo.github.io/rsnet-website/load-balancing-z-nginx/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/load-balancing-z-nginx/#respond</comments>
+		<pubDate>Sun, 03 Dec 2017 20:40:24 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[loadbalancing]]></category>
+		<category><![CDATA[nginx]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=731</guid>
+		<description><![CDATA[Wstęp Load balancing &#8211; czyli równoważenie obciążenia jest powszechnie stosowaną techniką optymalizacji wykorzystania zasobów, maksymalizowania przepustowości, zmniejszania opóźnień i zapewnienia odpornych na awarię konfiguracji. Możliwe jest wykorzystanie nginx jako bardzo&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-731">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="10b4c5b" class="elementor-element elementor-element-10b4c5b elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="9393295" class="elementor-element elementor-element-9393295 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="e0ada42" class="elementor-element elementor-element-e0ada42 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5><span style="color: #000000;">Wstęp</span></h5><p style="text-align: justify;"><span style="color: #000000;">Load balancing &#8211; czyli równoważenie obciążenia jest powszechnie stosowaną techniką optymalizacji wykorzystania zasobów, maksymalizowania przepustowości, zmniejszania opóźnień i zapewnienia odpornych na awarię konfiguracji. Możliwe jest wykorzystanie nginx jako bardzo wydajnego HTTP Load Balancer&#8217;a do dystrybuowania ruchu do kilku serwerów aplikacji w celu poprawienia wydajności, skalowalności i niezawodności aplikacji internetowych.</span></p><p style="text-align: justify;"><span style="color: #000000;">W poniższym wpisie pokażę jak w łatwy sposób można zbudować Load Balancer HTTP na systemie Linux wykorzystując oprogramowanie</span> <a href="https://nginx.org/en/" title="">NGINX</a>. </p><p style="text-align: justify;"><span style="color: #000000;">Załóżmy że mamy w sieci trzy serwery web, które posiadają kopię tej samej strony WWW. Chcemy dla tych serwerów zastosować równoważenie obciążenia przy pomocy oprogramowania nginx. Najprostszą metodą równoważenia obciążenia w nginx jest round-robin. Round-robin to algorytm karuzelowy, który działa w następujący sposób. </span></p><p style="text-align: justify;"><span style="color: #000000;">Pierwszy użytkownik, który chce uzyskać dostęp do strony WWW zostaje odesłany do adresu IP serwera pierwszego, drugi użytkownik zostaje odesłany do adresu IP drugiego serwera, trzeci użytkownik zostaje odesłany do adresu IP trzeciego serwera, czwarty użytkownik zostaje odesłany do adresu IP pierwszego serwera itd.</span></p><p> </p><h5><span style="color: #000000;">Przykład</span></h5><p style="text-align: justify;"><span style="color: #000000;">Do pokazania przykładu posłużę się topologią zbudowaną w GNS3 przy użyciu maszyn wirtualnych z Ubuntu, które spełniają następujące funkcje:</span></p><p style="text-align: justify;"><span style="color: #000000;">(WEB01, WEB02, WEB03) &#8211; serwery web na których postawiony jest apache, jako serwer www</span></p><p style="text-align: justify;"><span style="color: #000000;"> LoadBalancer, czyli serwer, który będzie realizował równoważenie obciążania przy pomocy oprogramowania nginx</span></p><p><span style="color: #000000;">Client &#8211; klient, który będzie próbował otwierać stronę WWW.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="9094330" class="elementor-element elementor-element-9094330 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="9e98c5b" class="elementor-element elementor-element-9e98c5b elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="a31d1f5" class="elementor-element elementor-element-a31d1f5 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="461" height="464" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology2.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology2.png 461w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology2-150x150.png 150w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology2-298x300.png 298w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology2-160x160.png 160w" sizes="(max-width: 461px) 100vw, 461px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="0bd1e05" class="elementor-element elementor-element-0bd1e05 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c978f03" class="elementor-element elementor-element-c978f03 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="36e6d62" class="elementor-element elementor-element-36e6d62 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Skonfigurujmy powyższą topologię w następujący sposób:</span></p><p style="text-align: justify;"><span style="color: #000000;">WEB01  &#8211; ip 192.168.0.101/24</span></p><p style="text-align: justify;"><span style="color: #000000;">WEB02 &#8211; ip 192.168.0.102/24</span></p><p style="text-align: justify;"><span style="color: #000000;">WEB03 &#8211; ip 192.168.0.103/24</span></p><p style="text-align: justify;"><span style="color: #000000;">CLIENT &#8211; ip 192.168.0.230/24</span></p><p style="text-align: justify;"><span style="color: #000000;">LoadBalancer &#8211; ip 192.168.0.100/24</span></p><p style="text-align: justify;"><span style="color: #000000;">Na serwerach www mamy postawionego apache&#8217;a, zmieńmy na nich index.html w następujący sposób:</span></p><p style="text-align: justify;"><span style="color: #000000;">Na WEB01 (var/www/html/index.html)</span></p><pre><span style="color: #000000;">&lt;html&gt;</span><br /><span style="color: #000000;">&lt;head&gt;</span><br /><span style="color: #000000;">&lt;/head&gt;</span><br /><span style="color: #000000;">&lt;body&gt;</span><br /><span style="color: #000000;">&lt;h1&gt;To jest strona na serwerze WEB01&lt;/h1&gt;</span><br /><span style="color: #000000;">&lt;/body&gt;</span><br /><span style="color: #000000;">&lt;/html&gt;</span></pre><p style="text-align: justify;"><span style="color: #000000;">Na WEB02 (var/www/html/index.html)</span></p><pre style="text-align: justify;"><span style="color: #000000;">&lt;html&gt;</span><br /><span style="color: #000000;">&lt;head&gt;</span><br /><span style="color: #000000;">&lt;/head&gt;</span><br /><span style="color: #000000;">&lt;body&gt;</span><br /><span style="color: #000000;">&lt;h1&gt;To jest strona na serwerze WEB02&lt;/h1&gt;</span><br /><span style="color: #000000;">&lt;/body&gt;</span><br /><span style="color: #000000;">&lt;/html&gt;</span></pre><p style="text-align: justify;"><span style="color: #000000;">Na WEB03 (var/www/html/index.html)</span></p><pre style="text-align: justify;"><span style="color: #000000;">&lt;html&gt;</span><br /><span style="color: #000000;">&lt;head&gt;</span><br /><span style="color: #000000;">&lt;/head&gt;</span><br /><span style="color: #000000;">&lt;body&gt;</span><br /><span style="color: #000000;">&lt;h1&gt;To jest strona na serwerze WEB02&lt;/h1&gt;</span><br /><span style="color: #000000;">&lt;/body&gt;</span><br /><span style="color: #000000;">&lt;/html&gt;</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="36b5946" class="elementor-element elementor-element-36b5946 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="4653da3" class="elementor-element elementor-element-4653da3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c99021b" class="elementor-element elementor-element-c99021b elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Sprawdźmy teraz na kliencie jak wygląda strona na każdym z serwerów WEB.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1e42998" class="elementor-element elementor-element-1e42998 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="2eb1b10" class="elementor-element elementor-element-2eb1b10 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="760932e" class="elementor-element elementor-element-760932e elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web01.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-1" data-rl_title="" data-rl_caption="" title="">
+							<img width="659" height="128" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web01.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web01.png 659w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web01-300x58.png 300w" sizes="(max-width: 659px) 100vw, 659px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="7bebe12" class="elementor-element elementor-element-7bebe12 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="8e43f69" class="elementor-element elementor-element-8e43f69 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="b33a2a9" class="elementor-element elementor-element-b33a2a9 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web02.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-2" data-rl_title="" data-rl_caption="" title="">
+							<img width="620" height="110" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web02.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web02.png 620w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web02-300x53.png 300w" sizes="(max-width: 620px) 100vw, 620px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="8609c98" class="elementor-element elementor-element-8609c98 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="59a47eb" class="elementor-element elementor-element-59a47eb elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="d4ee3ed" class="elementor-element elementor-element-d4ee3ed elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web03.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-3" data-rl_title="" data-rl_caption="" title="">
+							<img width="624" height="120" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web03.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web03.png 624w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web03-300x58.png 300w" sizes="(max-width: 624px) 100vw, 624px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="cfa3719" class="elementor-element elementor-element-cfa3719 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="8c1151e" class="elementor-element elementor-element-8c1151e elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="622f833" class="elementor-element elementor-element-622f833 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Dla celów przykładu na każdym z serwerów jest inna zawartość strony www, w rzeczywistej instalacji zawartość strony powinna być taka sama. Dzięki czemu każdy użytkownik nie zależnie do którego serwera zostanie odesłany otrzyma ten sam kontent.</span></p><p style="text-align: justify;"><span style="color: #000000;"> </span></p><h5>Konfiguracja NGINX</h5><p style="text-align: justify;"><span style="color: #000000;">Teraz skonfigurujmy serwer LoadBalancer, który ma adres IP 192.168.0.100. Wchodzimy do pliku konfiguracyjnego /etc/nginx/nginx.conf w sekcji http przed # Basic Settings:</span></p><pre><span style="color: #000000;">http {</span><br /><br /><span style="color: #000000;">    <strong>upstream myweb {</strong></span><br /><strong><span style="color: #000000;">       server 192.168.0.101;</span></strong><br /><strong><span style="color: #000000;">       server 192.168.0.102;</span></strong><br /><strong><span style="color: #000000;">       server 192.168.0.103;</span></strong><br /><strong><span style="color: #000000;">    }</span></strong><br /><br /><strong><span style="color: #000000;">    server {</span></strong><br /><strong><span style="color: #000000;">        listen 80;</span></strong><br /><strong><span style="color: #000000;">         location / {</span></strong><br /><strong><span style="color: #000000;">            proxy_pass http://myweb;/</span></strong><br /><strong><span style="color: #000000;">        }</span></strong><br /><span style="color: #000000;"><strong>    }</strong></span><br /><br />##<br /># Basic Settings<br />##</pre><p style="text-align: justify;"><span style="color: #000000;">W sekcji upstream podajemy dowolną nazwę, a następnie listę serwerów (w moim przypadku są to adresy IP serwerów WEB01, WEB02 i WEB03.</span></p><p style="text-align: justify;"><span style="color: #000000;">Zapisujemy zmiany i restartujemy serwer nginx (/etc/init.d/nginx restart). Zostaje jeszcze jedna rzecz do zrobienia, a mianowicie należy usunąć dowiązanie symboliczne wskazującę na stronę domyślną nginx: </span></p><pre style="text-align: justify;"><span style="color: #000000;">rm /etc/nginx/sites-enabled/default</span></pre><p><span style="color: #000000;">To wszystko. Nasz LoadBalancer dziala.</span></p><p><span style="color: #000000;"> </span></p><h5><span style="color: #000000;">Weryfikacja</span></h5><p style="text-align: justify;"><span style="color: #000000;">Wróćmy teraz na klienta i otwórzmy przeglądarkę wpisując adres naszego LoadBalancera 192.168.0.100. Wyświetli się strona pierwszego serwera (WEB01):</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="09c750c" class="elementor-element elementor-element-09c750c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="3df7ae3" class="elementor-element elementor-element-3df7ae3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="d394dd8" class="elementor-element elementor-element-d394dd8 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web011.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-4" data-rl_title="" data-rl_caption="" title="">
+							<img width="609" height="120" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web011.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web011.png 609w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web011-300x59.png 300w" sizes="(max-width: 609px) 100vw, 609px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="f171085" class="elementor-element elementor-element-f171085 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="df918c3" class="elementor-element elementor-element-df918c3 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="4e785da" class="elementor-element elementor-element-4e785da elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Odświeżmy stronę i otrzymamy stronę z drugiego serwera (WEB02):</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="14151b4" class="elementor-element elementor-element-14151b4 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="6d59598" class="elementor-element elementor-element-6d59598 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="5f53b38" class="elementor-element elementor-element-5f53b38 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web022.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-5" data-rl_title="" data-rl_caption="" title="">
+							<img width="617" height="101" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web022.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web022.png 617w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web022-300x49.png 300w" sizes="(max-width: 617px) 100vw, 617px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="2a4b237" class="elementor-element elementor-element-2a4b237 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="06b51cb" class="elementor-element elementor-element-06b51cb elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="dfd7ace" class="elementor-element elementor-element-dfd7ace elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Load Balancer działa prawidłowo. Następne odświeżenie strony wyświetli nam stronę z WEB03, kolejne z WEB01 itd. Możemy to sprawdzić pisząc prosty skrypt Python, który otworzy stronę 100 razy i sprawdzi z którego serwera jest ona wyświetlana a następnie wyświetli ile razy z danego serwera została wyświetlona strona.</span></p><p style="text-align: justify;"><span style="color: #000000;"> </span></p><h5 style="text-align: justify;"><span style="color: #000000;">Skrypt</span></h5><p style="text-align: justify;"><span style="color: #000000;">Do połączenia się ze stroną wykorzystam bibliotekę requests i funkcję get. Stronę można otworzyć stosując następujące polecenia:</span></p><pre><span style="color: #000000;">&gt;&gt;&gt;import requests</span><br /><span style="color: #000000;">&gt;&gt;&gt;r=requests.get('http://192.168.0.100/')</span><br /><span style="color: #000000;">&gt;&gt;&gt;r.text<br />u'&lt;html&gt;\n&lt;head&gt;\n&lt;/head&gt;\n&lt;body&gt;\n\n&lt;h1&gt;To jest strona na serwerze WEB02&lt;/h1&gt;\n\n&lt;/body&gt;\n&lt;/html&gt;\n\n'</span></pre><p style="text-align: justify;"><span style="color: #000000;">W wyniku otrzymałem zawartość strony, teraz skorzystam z wyrażeń regularnych i modułu re i przeszukam zawartość wyniku po wyrażeniu regularnym ‚WEB\d\d’, które zwróci tekst pasujący do tego wyrażenia, czyli WEBXX, gdzie XX to dowolne cyfry. A następnie to dopasowanie zapisywane będzie do tablicy, przy każdym otworzeniu strony. Potem z tej tablicy będą brane elementy i porównywane z WEB01, WEB02 i WEB03. Jak będzie dopasowanie to będzie się powiększany o 1 licznik dla każdego dopasowania. W konsekwencji dostaniemy 3 wyniki dla każdego web serwera, czyli informację jak często była otwierana dana strona.</span></p><p><span style="color: #000000;">Cały skrypt wygląda następująco:</span></p><pre><span style="color: #000000;">import re, requests</span><br /><span style="color: #000000;">regex = re.compile(r'(WEB\d\d)')</span><br /><span style="color: #000000;">l = []</span><br /><br /><span style="color: #000000;">for i in range(1,101):</span><br /><span style="color: #000000;">        r = requests.get("http://192.168.0.100/")</span><br /><span style="color: #000000;">        l.append(regex.findall(r.text)[0])</span><br /><br /><span style="color: #000000;">a=b=c=0</span><br /><br /><span style="color: #000000;">for i in l:</span><br /><span style="color: #000000;">        if i == 'WEB01':</span><br /><span style="color: #000000;">                a = a+1</span><br /><span style="color: #000000;">        if i == 'WEB02':</span><br /><span style="color: #000000;">                b = b+1</span><br /><span style="color: #000000;">        if i == 'WEB03':</span><br /><span style="color: #000000;">                c = c+1</span><br /><br /><span style="color: #000000;">print ('WEB01: '+str(a))</span><br /><span style="color: #000000;">print ('WEB02: '+str(b))</span><br /><span style="color: #000000;">print ('WEB03: '+str(c))</span></pre><div><span style="color: #000000;">Odpalmy teraz na kliencie nasz skrypt:</span></div><pre><span style="color: #000000;"><span style="background-color: initial; white-space: pre-wrap;">root@CLIENT:~# python skrypt.py<br /></span>WEB01: 33</span><br /><span style="color: #000000;">WEB02: 34</span><br /><span style="color: #000000;">WEB03: 33</span></pre><div style="text-align: justify;"><span style="color: #000000;">Jak widać algorytm round robin działa tak jak powinien, czyli odsyła do każdego serwera tyle samo razy. Nginx posiada również inne metody równoważenia obciążenia. Sprawdźmy drugą metodę ip-hash. Ip-hash sprawdza IP adres klienta i na tej podstawie zwraca serwer, dzięki temu, jeśli ten sam klient będzie otwierał stronę, to nie będzie za każdym żądaniem GET dostawał zawartości z innego serwera. Dopiszmy więc do konfiguracji linijkę ip_hash;</span></div><pre><span style="color: #000000;">http {</span><br /><br /> <span style="color: #000000;">    upstream myweb {<br />     <strong>ip_hash;</strong></span><br /><span style="color: #000000;">     server 192.168.0.101;</span><br /><span style="color: #000000;">     server 192.168.0.102;</span><br /><span style="color: #000000;">     server 192.168.0.103;</span><br /><span style="color: #000000;">    }</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="c29548d" class="elementor-element elementor-element-c29548d elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="373695a" class="elementor-element elementor-element-373695a elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="f9be6f6" class="elementor-element elementor-element-f9be6f6 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="color: #000000;">Zrestartujmy nginx i odpalmy jeszcze raz skrypt:</span></p><pre><span style="color: #000000;">root@CLIENT:~# python skrypt.py</span><br /><br /><span style="color: #000000;">WEB01: 100</span><br /><span style="color: #000000;">WEB02: 0</span><br /><span style="color: #000000;">WEB03: 0</span></pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="93168b1" class="elementor-element elementor-element-93168b1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="9bf6227" class="elementor-element elementor-element-9bf6227 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="fe4bba0" class="elementor-element elementor-element-fe4bba0 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Jak widać, teraz wszystkie żądania z klienta zostały przesłane do jednego serwera. </span></p><p style="text-align: justify;"><span style="color: #000000;">Teraz możemy zasymulować awarie jednego z serwerów (np. WEB01) w tym celu wyłączamy apache na serwerze 192.168.0.101 i otwieramy stronę 192.168.0.100 kilkukrotnie. Jak widać teraz w odpowiedzi dostajemy tylko strony z serwerów WEB02 i WEB03.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="16c18de" class="elementor-element elementor-element-16c18de elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="236920e" class="elementor-element elementor-element-236920e elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="ceeab6b" class="elementor-element elementor-element-ceeab6b elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web022.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-5" data-rl_title="" data-rl_caption="" title="">
+							<img width="617" height="101" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web022.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web022.png 617w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web022-300x49.png 300w" sizes="(max-width: 617px) 100vw, 617px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1c5f67d" class="elementor-element elementor-element-1c5f67d elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="ab0dc86" class="elementor-element elementor-element-ab0dc86 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="2dd4513" class="elementor-element elementor-element-2dd4513 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web033.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-7" data-rl_title="" data-rl_caption="" title="">
+							<img width="626" height="107" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web033.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web033.png 626w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/web033-300x51.png 300w" sizes="(max-width: 626px) 100vw, 626px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b73f889" class="elementor-element elementor-element-b73f889 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="11fd4f0" class="elementor-element elementor-element-11fd4f0 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="c2bcf13" class="elementor-element elementor-element-c2bcf13 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Sprawdźmy teraz jak wygląda komunikacja pomiędzy LoadBalancerem a serwerami. Uruchomimy do tego celu wiresharka na interefejsie prowadzącym do LoadBalancera.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="9bba700" class="elementor-element elementor-element-9bba700 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="c7e2018" class="elementor-element elementor-element-c7e2018 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="7e49a3a" class="elementor-element elementor-element-7e49a3a elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology1.png" data-elementor-open-lightbox="yes" data-rel="lightbox-image-8" data-rl_title="" data-rl_caption="" title="">
+							<img width="463" height="466" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology1.png 463w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology1-150x150.png 150w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology1-298x300.png 298w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/topology1-160x160.png 160w" sizes="(max-width: 463px) 100vw, 463px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="9da4290" class="elementor-element elementor-element-9da4290 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="6d362d7" class="elementor-element elementor-element-6d362d7 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="18c8dc2" class="elementor-element elementor-element-18c8dc2 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/wireshark1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-9" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="160" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/wireshark1-1024x228.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/wireshark1-1024x228.png 1024w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/wireshark1-300x67.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/wireshark1-768x171.png 768w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/wireshark1.png 1305w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="10e1611" class="elementor-element elementor-element-10e1611 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="bd4f26d" class="elementor-element elementor-element-bd4f26d elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="819be59" class="elementor-element elementor-element-819be59 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;"><span style="color: #000000;">Na powyższym zrzucie ekranu z wiresharka możemy zaobserwować następujące rzeczy:</span></p><p style="text-align: justify;"><span style="color: #000000;">1. Linijka 15 </span></p><p style="text-align: justify;"><span style="color: #000000;">Klient (192.168.0.230) wydaje zapytanie GET / HTTP/1.1 do serwera 192.168.0.100</span></p><p style="text-align: justify;"><span style="color: #000000;">2. Linijka 17 i 18</span></p><p style="text-align: justify;"><span style="color: #000000;">LoadBalancer (192.168.0.100) próbuje się połączyć do pierwszego serwera (192.168.0.101) na porcie 80, w odpowiedzi otrzymuje RST, czyli nie zostało nawiązane połączenie.</span></p><p style="text-align: justify;"><span style="color: #000000;">3. Linijka 19-27</span></p><p style="text-align: justify;"><span style="color: #000000;">LoadBalancer próbuje połączyć się do następnego serwera z listy WEB02 (192.168.0.102) połączenie zakończyło się sukcesem i poszło żądanie GET / HTTP/1.1 (linijka 22) a następnie odpowiedź 200 OK (text/html) od serwera 192.168.0.102 do LoadBalancera 192.168.0.100 (linijka 24)</span></p><p style="text-align: justify;"><span style="color: #000000;">4. Linijka 28</span></p><p style="text-align: justify;"><span style="color: #000000;">LoadBalancer zwraca stronę otrzymaną w poprzednich linijkach od serwera 192.168.0.102 do klienta. Z punktu widzenia klienta serwerem który zwraca tą stronę jest LoadBalancer, dlatego w przykładzie posłużyłem się inną treścią strony na każdym serwerze, dzięki czemu po otrzymanej zawartości strony widać było z którego serwera jest ona pobierana. Poniżej screen z linijki 28 z wireshark:</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1e638b7" class="elementor-element elementor-element-1e638b7 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="259a047" class="elementor-element elementor-element-259a047 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="4ecda6a" class="elementor-element elementor-element-4ecda6a elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/wireshark2.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-10" data-rl_title="" data-rl_caption="" title="">
+							<img width="720" height="574" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/wireshark2-1024x817.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/wireshark2-1024x817.png 1024w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/wireshark2-300x239.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/wireshark2-768x613.png 768w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/12/wireshark2.png 1092w" sizes="(max-width: 720px) 100vw, 720px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="6410997" class="elementor-element elementor-element-6410997 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="d556ea4" class="elementor-element elementor-element-d556ea4 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="261ef44" class="elementor-element elementor-element-261ef44 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h5> </h5><h5><span style="color: #000000;">Podsumowanie</span></h5><p style="text-align: justify;"><span style="color: #000000;">Podsumowując nginx jest narzędziem, które nie tylko umożliwia działanie jako serwer www, ale również w prosty sposób możemy zrobić z niego loadbalancer dla stron www. Jest to bardzo przydatne i wygodne narzędzie, a co najważniejsze jest darmowe.</span></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/load-balancing-z-nginx/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

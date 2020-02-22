@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>unnumbered &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/unnumbered/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Czym jest: IP unnumbered ?</title>
+		<link>https://kubsoo.github.io/rsnet-website/czym-jest-ip-unnumbered/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/czym-jest-ip-unnumbered/#respond</comments>
+		<pubDate>Sun, 08 Oct 2017 22:48:59 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[unnumbered]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=467</guid>
+		<description><![CDATA[Każdy interfejs routera potrzebuje unikalnego adresu IP, na podstawie którego podejmowane są decyzje o przesłaniu pakietu. W przypadku interfejsów typu point-to-point (np. serial, tunnel) możemy skorzystać z funkcji ip unnumbered&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;">Każdy interfejs routera potrzebuje unikalnego adresu IP, na podstawie którego podejmowane są decyzje o przesłaniu pakietu. W przypadku interfejsów typu point-to-point (np. serial, tunnel) możemy skorzystać z funkcji ip unnumbered i nie konfigurować bezpośrednio adresu IP na takim interfejsie, a pożyczyć adres IP z innego interfejsu, dzięki czemu zaoszczędzimy adresy, które użylibyśmy do adresacji takich interfejsów. Przed wprowadzaniem <a href="https://pl.wikipedia.org/wiki/VLSM" title="">VLSM</a> (Variable Lenght Subnet Mask) najmniejszą możliwą maską używaną przy protokołach routingu typu <a href="http://www.routeralley.com/guides/classless_classful.pdf" title="">classfull</a> (RIPv1, IGRP) była maska /24, czyli na połączenia point-to-point z dwoma na które potrzebowalibyśmy 2 adresów traciliśmy całą podsieć 254 adresów.</p>
+<p style="text-align: justify;">Rozwiązaniem tego problemu było wprowadzenie funkcji <a href="https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/13786-20.html" title="">ip unnumbered</a> w urządzeniach sieciowych CISCO. Funkcja ta skonfigurowana na interfejsie typu point-to-point umożliwia pożyczenie adresu IP z innego interfejsu (zazwyczaj korzysta się z interfejsu loopback, ze względu na to iż jest on cały czas podniesiony up/up). Dzięki temu nie trzeba konfigurować interfejsu osobnym adresem IP.</p>
+<h4>PRZYKŁAD</h4>
+<p style="text-align: justify;">Pokażę teraz przykład użycia funkcji ip unnumbered na interfejsie serial. W poniższym przykładzie mamy dwa routery R1 i R2 połączone ze sobą interfejsem serial. Pomiędzy routerami skonfigurowany jest protokół routingu RIPv1. Na każdym z routerów skonfigurowany został interfejs loopback0 zgodnie z poniższym obrazkiem:</p>
+<p><a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/unnumbered_1.png" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title=""><img class="aligncenter wp-image-469 size-full" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/unnumbered_1.png" alt="" width="404" height="216" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/unnumbered_1.png 404w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2017/10/unnumbered_1-300x160.png 300w" sizes="(max-width: 404px) 100vw, 404px" /></a></p>
+<p>Konfiguracja R1:</p>
+<pre>interface Loopback0
+ ip address 192.168.10.1 255.255.255.0
+!
+interface Loopback10
+ ip address 192.168.100.1 255.255.255.0
+!
+interface Serial2/0
+ ip unnumbered Loopback0
+ serial restart-delay 0
+!
+router rip
+ version 1
+ network 192.168.10.0
+ network 192.168.100.0</pre>
+<p>Konfiguracja R2:</p>
+<pre>interface Loopback0
+ ip address 192.168.20.1 255.255.255.0
+!
+interface Loopback10
+ ip address 192.168.200.1 255.255.255.0
+!
+interface Serial2/0
+ ip unnumbered Loopback0
+ serial restart-delay 0
+!
+router rip
+ version 1
+ network 192.168.20.0
+ network 192.168.200.0</pre>
+<p style="text-align: justify;">Z powyższej konfiguracji widać, że na obu routerach interfejsy Serial2/0 zostały zaadresowane poleceniem ip unnumbered Looback0. Sprawdźmy teraz jak wygląda polecenie show ip int brief na obu routerach:</p>
+<pre>R1#show ip int brief
+Interface IP-Address OK? Method Status Protocol
+<strong>Serial2/0 192.168.10.1 YES TFTP up up</strong>
+Loopback0 192.168.10.1 YES NVRAM up up
+Loopback10 192.168.100.1 YES NVRAM up up</pre>
+<pre>R2#show ip int brief
+Interface IP-Address OK? Method Status Protocol
+<strong>Serial2/0 192.168.20.1 YES TFTP up up</strong>
+Loopback0 192.168.20.1 YES NVRAM up up
+Loopback10 192.168.200.1 YES NVRAM up up</pre>
+<p style="text-align: justify;">Jak widać oba interfejsy Serial2/0 posiadają taki sam adres IP jak interfejsy Loopback0. Sprawdźmy teraz tablicę routingu obu routerów poleceniem: show ip route</p>
+<pre>R1#show ip route
+...
+192.168.10.0/24 is variably subnetted, 2 subnets, 2 masks
+C 192.168.10.0/24 is directly connected, Loopback0
+L 192.168.10.1/32 is directly connected, Loopback0
+R 192.168.20.0/24 [120/1] via 192.168.20.1, 00:00:02, Serial2/0
+ 192.168.100.0/24 is variably subnetted, 2 subnets, 2 masks
+C 192.168.100.0/24 is directly connected, Loopback10
+L 192.168.100.1/32 is directly connected, Loopback10
+<strong>R 192.168.200.0/24 [120/1] via 192.168.20.1, 00:00:02, Serial2/0</strong></pre>
+<pre>R2#show ip route
+...
+R 192.168.10.0/24 [120/1] via 192.168.10.1, 00:00:29, Serial2/0
+ 192.168.20.0/24 is variably subnetted, 2 subnets, 2 masks
+C 192.168.20.0/24 is directly connected, Loopback0
+L 192.168.20.1/32 is directly connected, Loopback0
+<strong>R 192.168.100.0/24 [120/1] via 192.168.10.1, 00:00:29, Serial2/0</strong>
+ 192.168.200.0/24 is variably subnetted, 2 subnets, 2 masks
+C 192.168.200.0/24 is directly connected, Loopback100
+L 192.168.200.1/32 is directly connected, Loopback100</pre>
+<p style="text-align: justify;">Jak widać protokół RIP działa i wskazuje, że adresy 192.168.100.0 i 192.168.200.0 są osiągalne przez interfejsy Serial2/0. Sprawdźmy teraz czy łączność pomiędzy tymi podsieciami istnieje. W tym celu wydajmy na routerze R1 polecenie: ping ip 192.168.200.1 source Loopback10, a na R2 polecenie: ping ip 192.168.100.1 source Loopback10. Czyli będziemy pingować adresy IP intefejsów Loopback10.</p>
+<pre>R1#ping 192.168.200.1 source loopback10
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.200.1, timeout is 2 seconds:
+Packet sent with a source address of 192.168.100.1
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 12/17/24 ms</pre>
+<pre>R2#ping 192.168.100.1 source Loopback10
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.100.1, timeout is 2 seconds:
+Packet sent with a source address of 192.168.200.1
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 12/16/20 ms</pre>
+<p>Jak widać wszystko działa poprawnie.</p>
+<h4></h4>
+<h4>PODSUMOWANIE</h4>
+<ul>
+<li>Funkcja ip unnumbered pozwala zaoszczędzić adresy IPv4 na intefejsach point-to-point</li>
+<li>Komenda ip unnumbered może być użyta tylko na interfejsach typu point-to-point</li>
+<li>Interfejs z którego &#8222;pożyczany&#8221; jest adres IP musi być podniesiony (status up/up)</li>
+</ul>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/czym-jest-ip-unnumbered/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

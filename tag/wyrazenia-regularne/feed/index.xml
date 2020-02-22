@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>wyrażenia regularne &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/wyrazenia-regularne/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>BGP &#8211; wyrażenia regularne</title>
+		<link>https://kubsoo.github.io/rsnet-website/bgp-wyrazenia-regularne/</link>
+		<pubDate>Tue, 31 Jul 2018 17:32:43 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[bgp]]></category>
+		<category><![CDATA[regex]]></category>
+		<category><![CDATA[wyrażenia regularne]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=1088</guid>
+		<description><![CDATA[Wyrażenia regularne bardzo często przydają się w manipulacji trasami BGP, oraz przeszukiwaniu tablicy BGP po atrybucie AS-Path. Do sprawadzenia w praktyce wykorzystania wyrażeń regularnych skorzystamy z jednego z dostępnych serwerów&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[<p style="text-align: justify;"><span style="color: #000000;">Wyrażenia regularne bardzo często przydają się w manipulacji trasami BGP, oraz przeszukiwaniu tablicy BGP po atrybucie AS-Path. Do sprawadzenia w praktyce wykorzystania wyrażeń regularnych skorzystamy z jednego z dostępnych serwerów Looking Glass. Ja wybrałem serwer Looking Glass: https://www.as13030.net/looking-glass.php</span></p>
+<p style="text-align: justify;"><span style="color: #000000;">Po wejściu na powyższy serwer możemy wybrać Router (domyślnie Router: RR Zurich (AS13030)), typ zapytania Request: <strong>show ip bgp regexp</strong>, oraz ustawić argumenty, w naszym przypadku będą to wyrażenia regularne.</span></p>
+<p><img class="size-full wp-image-1106 aligncenter" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/Screen-Shot-2018-07-31-at-09.45.55.png" alt="" width="902" height="338" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/Screen-Shot-2018-07-31-at-09.45.55.png 902w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/Screen-Shot-2018-07-31-at-09.45.55-300x112.png 300w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/Screen-Shot-2018-07-31-at-09.45.55-768x288.png 768w" sizes="(max-width: 902px) 100vw, 902px" /></p>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>1.</strong> </span>Wyświetlenie wszystkich podsieci pochodzących tylko z AS4788</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp ^4788$</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i1.32.0.0/19      213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i1.32.32.0/19     213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i23.6.120.0/24    213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i23.212.55.0/24   213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i103.4.140.0/22   213.144.128.221          2    150      0 <strong>4788</strong> i
+*&gt;i137.195.224.0/20 213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i210.195.0.0/19   213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i210.195.32.0/19  213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i210.195.64.0/19  213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i210.195.96.0/19  213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i210.195.128.0/19 213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i210.195.160.0/19 213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i210.195.192.0/19 213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i210.195.224.0/19 213.144.128.173          2    150      0 <strong>4788</strong> ?
+*&gt;i218.208.160.0/19 213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i219.93.2.0       213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i219.95.64.0/20   213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i219.95.104.0/21  213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i219.95.136.0/21  213.144.128.173          2    150      0 <strong>4788</strong> i
+
+Total number of prefixes 19</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>2.</strong> </span>Wyświetlenie wszystkich podsieci pochodzących z AS4788, ale mogących przechodzić przez inne ASy</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp _4788$</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i1.9.0.0/16       213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i1.32.0.0/17      213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i1.32.0.0/19      213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i1.32.32.0/19     213.144.128.173          2    150      0 <strong>4788</strong> i
+*&gt;i1.32.64.0/18     213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i23.6.120.0/24    213.144.128.173          2    150      0 <strong>4788 </strong>i
+*&gt;i23.13.192.0/20   213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i23.15.16.0/20    213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i23.51.32.0/20    213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i23.51.48.0/20    213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i23.197.60.0/23   213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i23.200.82.0/23   213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+*&gt;i23.201.156.0/22  213.144.128.169          1    160      0 1273 <strong>4788</strong> i
+...
+Total number of prefixes 402</span></pre>
+<p><span style="color: #000000;"><strong><span style="font-size: 14pt;">3.</span></strong> Wyświetlenie wszystkich podsieci przechodzących przez AS46887</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp _46887_</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i5.11.28.0/24     213.144.128.216          1    150      0 6939 <strong>46887</strong> 36614 42705 i
+*&gt;i5.61.116.0/23    213.144.128.216          1    150      0 6939 <strong>46887</strong> 199373 199373 199373 199373 199373 199373 199373 199373 199373 199373 i
+*&gt;i8.2.68.0/24      213.144.128.216          1    150      0 6939 <strong>46887</strong> 396835 i
+*&gt;i8.2.104.0/24     213.144.128.216          1    150      0 6939 <strong>46887</strong> 396487 396487 396487 396487 396487 i
+*&gt;i8.11.166.0/24    213.144.128.216          1    150      0 6939 <strong>46887</strong> i
+*&gt;i8.14.103.0/24    213.144.128.216          1    150      0 6939 <strong>46887</strong> 13817 i
+*&gt;i8.14.121.0/24    213.144.128.216          1    150      0 6939 <strong>46887</strong> 12169 i
+*&gt;i8.22.101.0/24    213.144.128.216          1    150      0 6939 <strong>46887</strong> 12220 i
+*&gt;i8.28.55.0/24     213.144.128.216          1    150      0 6939 <strong>46887</strong> 394830 i
+*&gt;i8.33.72.0/24     213.144.128.216          1    150      0 6939 <strong>46887</strong> 17158 17158 17158 17158 i
+*&gt;i8.37.99.0/24     213.144.128.216          1    150      0 6939 <strong>46887</strong> 16491 i
+*&gt;i8.44.200.0/24    213.144.128.216          1    150      0 6939 <strong>46887</strong> 25611 25611 25611 25611 25611 25611 i
+...
+Total number of prefixes 1537</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>4.</strong></span> Wyświetlenie wszystkich podsieci, które są lokalnymi podsieciami routera</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp ^$</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i14.0.0.0         213.144.128.214          1     10      0 i
+*&gt;i27.0.0.0         213.144.128.214          1     10      0 i
+*&gt;i37.17.232.0/22   213.144.128.208          1    100      0 i
+*&gt;i37.17.236.0/23   213.144.128.208          1    100      0 i
+*&gt;i37.17.238.0/23   213.144.128.208          1    100      0 i
+*&gt;i46.28.203.155/32 213.144.128.177          1    100      0 i
+*&gt;i46.28.204.142/32 213.144.128.177          1    100      0 i
+*&gt;i77.109.128.0/18  213.144.128.208          1    100      0 i
+*&gt;i77.109.128.0/19  213.144.128.208          1    100      0 i
+*&gt;i77.109.128.2/32  77.109.129.61            3    100      0 i
+...
+Total number of prefixes 127</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>5.</strong> </span>wyświetlenie wszystkich podsieci tylko z bezpośrednio połączonych ASów</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp ^[0-9]+$</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i1.0.0.0/24       213.144.128.173          1    150      0 13335 i
+*&gt;i1.1.1.0/24       213.144.128.173          1    150      0 13335 i
+*&gt;i1.6.4.0/22       213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.6.0/24       213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.8.0/22       213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.12.0/22      213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.16.0/22      213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.20.0/22      213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.24.0/22      213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.28.0/22      213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.32.0/22      213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.36.0/22      213.144.128.179          2    150      0 9583 i
+*&gt;i1.6.40.0/22      213.144.128.179          2    150      0 9583 i
+...
+Total number of prefixes 41787</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>6.</strong></span> Wyświetlenie wszystkich podsieci osiągalnych przez AS6939</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp ^6939_</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i1.0.4.0/22       213.144.128.216          1    150      0 <strong>6939</strong> 4826 38803 56203 i
+*&gt;i1.0.4.0/24       213.144.128.216          1    150      0 <strong>6939</strong> 4826 38803 56203 i
+*&gt;i1.0.5.0/24       213.144.128.216          1    150      0 <strong>6939</strong> 4826 38803 56203 i
+*&gt;i1.0.6.0/24       213.144.128.216          1    150      0 <strong>6939</strong> 4826 38803 56203 i
+*&gt;i1.0.7.0/24       213.144.128.216          1    150      0 <strong>6939</strong> 4826 38803 56203 i
+*&gt;i1.255.30.0/24    213.144.128.216          1    150      0 <strong>6939</strong> 63199 i
+*&gt;i2.16.36.0/24     213.144.128.216          1    150      0 <strong>6939</strong> 7545 7545 7545 7545 2764 12222 12222 i
+*&gt;i2.17.218.0/24    213.144.128.216          1    150      0 <strong>6939</strong> 7545 7545 7545 7545 2764 32787 i
+*&gt;i2.18.52.0/24     213.144.128.216          1    150      0 <strong>6939</strong> 4826 20940 33905 i
+...
+Total number of prefixes 36028</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>7.</strong> </span>Wyświetlenie wszystkich podsieci</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp .*</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i1.0.0.0/24       213.144.128.173          1    150      0 13335 i
+*&gt;i1.0.4.0/22       213.144.128.216          1    150      0 6939 4826 38803 56203 i
+*&gt;i1.0.4.0/24       213.144.128.216          1    150      0 6939 4826 38803 56203 i
+*&gt;i1.0.5.0/24       213.144.128.216          1    150      0 6939 4826 38803 56203 i
+*&gt;i1.0.6.0/24       213.144.128.216          1    150      0 6939 4826 38803 56203 i
+*&gt;i1.0.7.0/24       213.144.128.216          1    150      0 6939 4826 38803 56203 i
+*&gt;i1.0.16.0/24      213.144.128.221          2    150      0 2497 2519 i
+*&gt;i1.0.64.0/18      213.144.128.221          2    150      0 2497 7670 18144 i
+*&gt;i1.0.128.0/17     213.144.128.203          1     60      0 1299 38040 23969 i
+*&gt;i1.0.128.0/18     213.144.128.203          1     60      0 1299 38040 23969 i
+*&gt;i1.0.128.0/19     213.144.128.203          1     60      0 1299 38040 23969 i
+*&gt;i1.0.128.0/24     213.144.128.203          1     60      0 1299 4809 38040 23969 ?
+...
+Total number of prefixes 695338</span></pre>
+<p><span style="color: #000000;"><strong><span style="font-size: 14pt;">8.</span></strong> Wyświetlenie wszystkich podsieci które pochodzą z AS56201 i przechodzą przez AS18101</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp 18101_56201$</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i220.225.183.0    213.144.128.173          2    150      0 15412 <strong>18101</strong> <strong>56201</strong> i
+
+Total number of prefixes 1</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>9.</strong> </span>Wyświetlenie wszystkich podsieci które pochodzą z AS46164 lub z AS46163</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp _46164$|_46163$</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i4.23.88.0/24     213.144.128.184          1     60      0 1299 7018 <strong>46164</strong> i
+*&gt;i4.23.89.0/24     213.144.128.184          1     60      0 1299 7018 <strong>46164</strong> i
+*&gt;i4.23.92.0/23     213.144.128.184          1     60      0 1299 7018 <strong>46164</strong> i
+*&gt;i107.117.80.0/20  213.144.128.184          1     60      0 1299 7018 <strong>46164</strong> i
+*&gt;i107.239.64.0/20  213.144.128.184          1     60      0 1299 7018 <strong>46164</strong> i
+*&gt;i107.250.192.0/19 213.144.128.184          1     60      0 1299 7018 <strong>46164</strong> i
+*&gt;i107.250.224.0/19 213.144.128.184          1     60      0 1299 7018 <strong>46164</strong> i
+*&gt;i141.160.4.0/22   213.144.128.203          1     60      0 1299 174 <strong>46163</strong> i
+*&gt;i141.160.12.0/22  213.144.128.173          2    150      0 6461 1294 <strong>46163</strong> i
+*&gt;i141.160.20.0/22  213.144.128.173          2    150      0 6461 1294 4616346163 46163 46163 <strong>46163</strong> i
+*&gt;i141.160.25.0/24  213.144.128.203          1     60      0 1299 174 <strong>46163</strong> i
+*&gt;i141.160.26.0/24  213.144.128.184          1     60      0 1299 7018 2687 <strong>46163</strong> i
+*&gt;i141.160.27.0/24  213.144.128.203          1     60      0 1299 174 <strong>46163</strong> i
+*&gt;i141.160.28.0/24  213.144.128.214          2    150      0 7473 3758 <strong>46163</strong> i
+*&gt;i141.160.29.0/24  213.144.128.203          1     60      0 1299 174 <strong>46163</strong> I
+...
+Total number of prefixes 47</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>10.</strong></span> Wyświetlenie wszystkich podsieci, których atrybut AS_Path posiada więcej niż raz AS396835, czyli gdzie została zastosowana technika AS Prepending</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp (396835_){2,}</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i140.102.0.0      213.144.128.216          1    150      0 6939 46887 <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> i
+*&gt;i140.102.2.0/23   213.144.128.216          1    150      0 6939 46887 <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> i
+*&gt;i192.80.85.0      213.144.128.216          1    150      0 6939 46887 <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> i
+*&gt;i192.80.95.0      213.144.128.216          1    150      0 6939 46887 <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> i
+*&gt;i192.138.225.0    213.144.128.216          1    150      0 6939 46887 <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> <strong>396835</strong> i
+
+Total number of prefixes 5</span></pre>
+<p><span style="color: #000000;"><span style="font-size: 14pt;"><strong>11.</strong> </span>Wyświetlenie wszystkich podsieci, które pochodzą z ASów trzy cyfrowych zaczynających się od 1,2 lub 3.</span><br />
+<span style="color: #000000;">np. 312 , 123, 223 itp</span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"><strong>show ip bgp regexp _[123].{2}$</strong></span></p>
+<pre><span style="color: #000000;">BGP table version is 0, local router ID is 213.144.129.123
+Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal,
+r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i5.157.72.0/21    213.144.128.203          1     60      0 1299 <strong>174</strong> i
+*&gt;i5.158.83.0/24    213.144.128.203          1     60      0 1299 <strong>174 </strong>i
+*&gt;i5.178.16.0/21    213.144.128.203          1     60      0 1299 3257 <strong>260</strong> i
+*&gt;i6.64.164.0/23    213.144.128.184          1     60      0 1299 209 721 27064 <strong>367</strong> i
+*&gt;i8.25.217.0/24    213.144.128.173          2    150      0 6461 54756 <strong>100</strong> i
+*&gt;i8.27.160.0/24    213.144.128.184          1     60      0 1299 <strong>209</strong> i
+*&gt;i8.27.167.0/24    213.144.128.184          1     60      0 1299 <strong>209</strong> i
+*&gt;i8.28.178.0/23    213.144.128.216          1    150      0 6939 2381 2381 <strong>103</strong> i
+*&gt;i8.30.248.0/22    213.144.128.216          1    150      0 6939 2381 2381 <strong>103</strong> i
+...
+Total number of prefixes 6168</span></pre>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

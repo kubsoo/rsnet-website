@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>urpf &#8211; RSNET.PL</title>
+	<atom:link href="https://kubsoo.github.io/rsnet-website/tag/urpf/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kubsoo.github.io/rsnet-website/</link>
+	<description>wszystko o sieciach komputerowych</description>
+	<lastBuildDate>Sat, 22 Feb 2020 11:40:47 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>URPF &#8211; Unicast Reverse Path Forwarding</title>
+		<link>https://kubsoo.github.io/rsnet-website/urpf-unicast-reverse-path-forwarding/</link>
+		<comments>https://kubsoo.github.io/rsnet-website/urpf-unicast-reverse-path-forwarding/#respond</comments>
+		<pubDate>Sun, 29 Jul 2018 10:59:47 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+				<category><![CDATA[Poradnik]]></category>
+		<category><![CDATA[cisco]]></category>
+		<category><![CDATA[GNS3]]></category>
+		<category><![CDATA[urpf]]></category>
+
+		<guid isPermaLink="false">https://kubsoo.github.io/rsnet-website/?p=1070</guid>
+		<description><![CDATA[Unicast Reverse Path Forwarding (uRPF) &#8211; jest to technika stosowana w routerach Cisco (oraz u innych producentów), która umożliwia sprawdzenie czy źródło pakietu IP jest osiągalne przez tablice routingu. Zapobiega to&#46;&#46;&#46;]]></description>
+				<content:encoded><![CDATA[		<div class="elementor elementor-1070">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section data-id="23e21db" class="elementor-element elementor-element-23e21db elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="3f2c616" class="elementor-element elementor-element-3f2c616 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="87211c9" class="elementor-element elementor-element-87211c9 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><div style="text-align: justify;"><strong>Unicast Reverse Path Forwarding (uRPF)</strong> &#8211; jest to technika stosowana w routerach Cisco (oraz u innych producentów), która umożliwia sprawdzenie czy źródło pakietu IP jest osiągalne przez tablice routingu. Zapobiega to fałszowaniu adresów IP (<a href="https://pl.wikipedia.org/wiki/IP_spoofing" target="_blank" rel="noopener" title="">IP spoofing</a>). uRFP może działać w dwóch trybach: &#8222;ścisłym&#8221; i &#8222;luźnym&#8221; </div><div>&#8211; strict mode</div><div>&#8211; loose mode</div><div> </div><div><b>STRICT MODE</b></div><div style="text-align: justify;"><span style="background-color: initial;">W trybie ścisłym router sprawdza czy źródłowy adres ip  pakietu otrzymanego na danym interfejsie, jest osiągalny przez router na postawie tablicy CEF FIB przez interfejs z którego przyszedł pakiet, jeśli nie to pakiet jest odrzucany.</span></div><div><span style="background-color: initial;"> </span></div><div><strong>LOOSE MODE</strong></div><div><div style="text-align: justify;">W trybie luźnym w przeciwieństwie do trybu ścisłego router sprawdza czy źródłowy adres ip pakietu otrzymanego na danym interfejsie jest osiągalny przez router na podstawie tablicy CEF FIB przez jakikolwiek z jego interfejsów.</div><div style="text-align: justify;"> </div></div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="9dc0e5c" class="elementor-element elementor-element-9dc0e5c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="871a84f" class="elementor-element elementor-element-871a84f elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="7302ba2" class="elementor-element elementor-element-7302ba2 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><b>PRZYKŁAD:</b></p><p style="text-align: justify;">W celu zademonstrowania działania mechanizmu uRPF w routerach CISCO posłużę się następując topologią zbudowaną w GNS3</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="954de52" class="elementor-element elementor-element-954de52 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="b502cc9" class="elementor-element elementor-element-b502cc9 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="f62ad97" class="elementor-element elementor-element-f62ad97 elementor-widget elementor-widget-image" data-element_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/urpf_1.png" data-elementor-open-lightbox="no" data-rel="lightbox-image-0" data-rl_title="" data-rl_caption="" title="">
+							<img width="496" height="373" src="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/urpf_1.png" class="attachment-large size-large" alt="" srcset="https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/urpf_1.png 496w, https://kubsoo.github.io/rsnet-website/wp-content/uploads/2018/07/urpf_1-300x226.png 300w" sizes="(max-width: 496px) 100vw, 496px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="1d92074" class="elementor-element elementor-element-1d92074 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="b410b8c" class="elementor-element elementor-element-b410b8c elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="b8c3b9b" class="elementor-element elementor-element-b8c3b9b elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Konfiguracja wygląda następująco:</p><p>R1</p><pre style="-en-clipboard: true;"><span style="background-color: initial;">interface FastEthernet0/0</span><br />  ip address 192.168.12.1 255.255.255.0<br />  ip verify unicast source reachable-via rx<br />  duplex full<br />!<br />interface FastEthernet1/0<br />  ip address 192.168.13.1 255.255.255.0<br />  duplex full<br />!<br />router ospf 1<br />  network 192.168.0.0 0.0.255.255 area 0</pre><div><p>R2</p><pre>interface Loopback0<br />  ip address 3.3.3.3 255.255.255.255<br />!<br />interface FastEthernet0/0<br />  ip address 192.168.12.2 255.255.255.0<br />  duplex full<br />!<br />interface FastEthernet1/0<br />  ip address 192.168.23.2 255.255.255.0<br />  duplex full<br />!<br />router ospf 1<br />  network 192.168.0.0 0.0.255.255 area 0</pre></div><p>R3</p><pre style="-en-clipboard: true;">interface Loopback0<br />  ip address 3.3.3.3 255.255.255.255<br />!<br />interface FastEthernet0/0<br />  ip address 192.168.13.3 255.255.255.0<br />  duplex full<br />!<br />interface FastEthernet1/0<br />  ip address 192.168.23.3 255.255.255.0<br />  duplex full<br />!<br />router ospf 1<br />  network 3.3.3.3 0.0.0.0 area 0<br />  network 192.168.0.0 0.0.255.255 area 0</pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="2f65248" class="elementor-element elementor-element-2f65248 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="17a51af" class="elementor-element elementor-element-17a51af elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="720b4ae" class="elementor-element elementor-element-720b4ae elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">Sprawdźmy teraz jak wygląda tablica routingu na routerze R1.</p><pre>R1# show ip route<br /><br />      3.0.0.0/32 is subnetted, 1 subnets<br />O        3.3.3.3 [110/2] via 192.168.13.3, 00:06:01, FastEthernet1/0<br />      192.168.12.0/24 is variably subnetted, 2 subnets, 2 masks<br />C        192.168.12.0/24 is directly connected, FastEthernet0/0<br />L        192.168.12.1/32 is directly connected, FastEthernet0/0<br />      192.168.13.0/24 is variably subnetted, 2 subnets, 2 masks<br />C        192.168.13.0/24 is directly connected, FastEthernet1/0<br />L        192.168.13.1/32 is directly connected, FastEthernet1/0<br />O     192.168.23.0/24 [110/2] via 192.168.13.3, 00:14:33, FastEthernet1/0<br />                      [110/2] via 192.168.12.2, 00:14:33, FastEthernet0/0</pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="109ac1d" class="elementor-element elementor-element-109ac1d elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="e88f338" class="elementor-element elementor-element-e88f338 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="b6f5be7" class="elementor-element elementor-element-b6f5be7 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p style="text-align: justify;">Jak widać na powyższym wyniku prefix 3.3.3.3 jest osiągalny przez interfejs FastEthernet1/0, czyli interfejsu podłączonego do routera R3. Teraz ustawmy uRPF w trybie strict na interfejsach routera R1.</p><pre>interface FastEthernet0/0<br />  ip verify unicast source reachable-via rx<br />!<br />interface FastEthernet1/0<br />  ip verify unicast source reachable-via rx</pre><p style="text-align: justify;">Przetestujmy działanie tego mechanizmu. Z routera R3 spingujmy router R1 i zobaczmy co się stanie.</p><pre>R3#ping 192.168.13.1 source 3.3.3.3<br />Type escape sequence to abort.<br />Sending 5, 100-byte ICMP Echos to 192.168.13.1, timeout is 2 seconds:<br />Packet sent with a source address of 3.3.3.3<br />!!!!!<br />Success rate is 100 percent (5/5), round-trip min/avg/max = 36/46/56 ms</pre><p style="text-align: justify;">Jak widać wszystko przebiegło bez zarzutów, ponieważ pakiet przyszedł przez interfejs FastEthernet1/0, czyli zgodnie z tablicą CEF FIB:</p><pre>R1#show ip cef 3.3.3.3<br />3.3.3.3/32<br />nexthop 192.168.13.3 FastEthernet1/0</pre><p>Sprawdzić działanie uRPF możemy wykonując polecenie:</p><pre>R1#show ip int fa0/0 | in verif<br />IP verify source reachable-via RX<br />0 verification drops<br />0 suppressed verification drops<br />0 verification drop-rate</pre><p style="text-align: justify;">Jak widać mechanizm nie odrzucił pakietów, ponieważ założenia trybu ścisłego zostały spełnione.</p><p style="text-align: justify;">Teraz spróbujmy wysłać pakiet z adresem źródłowym 3.3.3.3 przez interfejs FastEthernet0/0. Najprościej jest to zrobić z routera R2, w tym celu dodajmy interfejs Loopback0 z adresem 3.3.3.3/32 i wykonajmy polecenie ping:</p><pre>R2(config)#int Loopback 0<br />R2(config-if)#ip address 3.3.3.3 255.255.255.255<br />R2(config-if)#do ping 192.168.12.1 source 3.3.3.3<br />Type escape sequence to abort.<br />Sending 5, 100-byte ICMP Echos to 192.168.12.1, timeout is 2 seconds:<br />Packet sent with a source address of 3.3.3.3<br />.....<br />Success rate is 0 percent (0/5)
+</pre><p style="text-align: justify;">Nie otrzymaliśmy odpowiedzi, sprawdźmy więc czy rzeczywiście mechanizm zadziałał:</p><pre>R1#show ip int fa0/0 | in verif<br />IP verify source reachable-via RX<br /><strong>5 verification drops</strong><br />0 suppressed verification drops<br />0 verification drop-rate</pre><p>Teraz sprawdźmy jak działa tryb luźy (loose mode). Zmieńmy konfiguracje intefejsów na R1:</p><pre>interface FastEthernet0/0<br />  ip verify unicast source reachable-via any<br />!<br />interface FastEthernet1/0<br />  ip verify unicast source reachable-via any</pre><p style="text-align: justify;">i spróbujmy wykonać jeszcze raz polecenie ping na routerze R2:</p><pre>R2#ping 192.168.12.1 source 3.3.3.3<br />Type escape sequence to abort.<br />Sending 5, 100-byte ICMP Echos to 192.168.12.1, timeout is 2 seconds:<br />Packet sent with a source address of 3.3.3.3<br />.....<br />Success rate is 0 percent (0/5)</pre><p style="text-align: justify;">Hmm, nie otrzymaliśmy odpowiedzi, czyli wynik jest taki sam jak w przypadku trybu strict, sprawdźmy to dla pewności:</p><pre>R1#show ip int fa0/0 | in verif<br />IP verify source reachable-via ANY<br />5 verification drops<br /><strong>5 suppressed verification drops</strong><br />0 verification drop-rate</pre><p style="text-align: justify;">Wynik powyższej komendy jest jednak inny niż w przypadku trybu strict. Sugeruje to, że pakiety nie zostały odrzucone i powinniśmy dostać odpowiedzi, dlaczego więc się tak nie stało ?</p><p style="text-align: justify;">Odpowiedź jest bardzo prosta (IP spoofing), ponieważ na R2 sfałszowaliśmy adres źródłowy (3.3.3.3), router R1 odesłał odpowiedzi do tego adresu, zgodnie ze swoją tablicą routingu, czyli do R3. Wykonajmy jeszcze raz to samo polecenie ping, ale włączmy tym razem debugowanie pakietów icmp na routerze R3:</p><pre>R3#debug ip icmp<br />R3#<br />*Jul 29 10:38:02.111: ICMP: echo reply rcvd, src 192.168.12.1, dst 3.3.3.3, topology BASE, dscp 0 topoid 0<br />R3#<br />*Jul 29 10:38:04.131: ICMP: echo reply rcvd, src 192.168.12.1, dst 3.3.3.3, topology BASE, dscp 0 topoid 0<br />R3#<br />*Jul 29 10:38:06.079: ICMP: echo reply rcvd, src 192.168.12.1, dst 3.3.3.3, topology BASE, dscp 0 topoid 0<br />R3#<br />*Jul 29 10:38:07.967: ICMP: echo reply rcvd, src 192.168.12.1, dst 3.3.3.3, topology BASE, dscp 0 topoid 0
+</pre><p style="text-align: justify;">Czyli wszystko działa tak jak należy <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section data-id="b09d994" class="elementor-element elementor-element-b09d994 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div data-id="d2f45b6" class="elementor-element elementor-element-d2f45b6 elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div data-id="4fde260" class="elementor-element elementor-element-4fde260 elementor-widget elementor-widget-text-editor" data-element_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong>PODSUMOWANIE</strong></p><p>uRFP jest jednym z mechanizmów ochrony przed fałszowaniem źródłowego adresu IP i powinno być wykorzystywane jeśli tylko jest taka możlwość. Dodatkowe komendy przydatne przy diagnozowani problemów z uRPF to:</p><pre><strong>R1#show ip traffic</strong><br />IP statistics:<br />  Rcvd:  298 total, 296 local destination<br />         0 format errors, 0 checksum errors, 0 bad hop count<br />         0 unknown protocol, 0 not a gateway<br />         0 security failures, 0 bad options, 0 with options<br />  Opts:  0 end, 0 nop, 0 basic security, 0 loose source route<br />         0 timestamp, 0 extended security, 0 record route<br />         0 stream ID, 0 strict source route, 0 alert, 0 cipso, 0 ump<br />         0 other<br />  Frags: 0 reassembled, 0 timeouts, 0 couldn't reassemble<br />         0 fragmented, 0 fragments, 0 couldn't fragment<br />  Bcast: 0 received, 0 sent<br />  Mcast: 255 received, 285 sent<br />  Sent:  332 generated, 0 forwarded<br />  Drop:  0 encapsulation failed, 0 unresolved, 0 no adjacency<br />         0 no route, 7 unicast RPF, 0 forced drop, 0 unsupported-addr<br />         0 options denied, 0 source IP address zero</pre><pre><strong>R1#show cef interface f0/0</strong><br />FastEthernet0/0 is up (if_number 2)<br />  Corresponding hwidb fast_if_number 2<br />  Corresponding hwidb firstsw-&gt;if_number 2<br />  Internet address is 192.168.12.1/24<br />  ICMP redirects are always sent<br />  Per packet load-sharing is disabled<br />  IP unicast RPF check is enabled<br />  Input features: uRPF<br />  IP policy routing is disabled<br />  BGP based policy accounting on input is disabled<br />  BGP based policy accounting on output is disabled<br />  Hardware idb is FastEthernet0/0<br />  Fast switching type 1, interface type 18<br />  IP CEF switching enabled<br />  IP CEF switching turbo vector<br />  IP CEF turbo switching turbo vector<br />  IP prefix lookup IPv4 mtrie 8-8-8-8 optimized<br />  Input fast flags 0x4000, Output fast flags 0x0<br />  ifindex 2(2)<br />  Slot  Slot unit 0 VC -1<br />  IP MTU 1500<br /><br /></pre><pre><strong>R1#show cef interface f1/0</strong><br />FastEthernet1/0 is up (if_number 3)<br />  Corresponding hwidb fast_if_number 3<br />  Corresponding hwidb firstsw-&gt;if_number 3<br />  Internet address is 192.168.13.1/24<br />  ICMP redirects are always sent<br />  Per packet load-sharing is disabled<br />  IP unicast RPF check is enabled<br />  Input features: uRPF<br />  IP policy routing is disabled<br />  BGP based policy accounting on input is disabled<br />  BGP based policy accounting on output is disabled<br />  Hardware idb is FastEthernet1/0<br />  Fast switching type 1, interface type 18<br />  IP CEF switching enabled<br />  IP CEF switching turbo vector<br />  IP CEF turbo switching turbo vector<br />  IP prefix lookup IPv4 mtrie 8-8-8-8 optimized<br />  Input fast flags 0x4000, Output fast flags 0x0<br />  ifindex 3(3)<br />  Slot  Slot unit 0 VC -1<br />  IP MTU 1500</pre></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		]]></content:encoded>
+			<wfw:commentRss>https://kubsoo.github.io/rsnet-website/urpf-unicast-reverse-path-forwarding/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>
